@@ -8,11 +8,16 @@ use Illuminate\View\View;
 
 class PropertiesController extends Controller
 {
+    private Property $property;
+
+    public function __construct(Property $property){
+        $this->property = $property;
+    }
     public function index(): View
     {
         return \view('properties/index');
     }
-    public function create(Property $property): View
+    public function store(Request $store): View
     {
         return \view('properties/index');
     }
