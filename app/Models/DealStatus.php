@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DealStatus extends Model
@@ -16,8 +17,8 @@ class DealStatus extends Model
         'name'
     ];
 
-    public function deal(): HasOne
+    public function deal(): HasMany
     {
-        return $this->hasOne(Deal::class, 'status_id', 'id');
+        return $this->hasMany(Deal::class, 'status_id', 'id');
     }
 }

@@ -23,14 +23,14 @@ class Deal extends Model
 
     public function status(): BelongsTo
     {
-        return $this->belongsTo(DealStatus::class, 'status_id', 'id');
+        return $this->belongsTo(DealStatus::class, 'status_id', 'status_id');
     }
     public function property(): HasMany
     {
-        return $this->hasMany(Property::class, 'property_id', 'id');
+        return $this->hasMany(Property::class, 'property_id', 'property_id');
     }
     public function rent(): HasMany
     {
-        return $this->hasMany(Relation::class, 'rent_id', 'id');
+        return $this->hasMany(Relation::class, 'rent_id', 'rent_id');
     }
 }

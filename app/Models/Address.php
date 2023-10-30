@@ -6,23 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Address extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-      'category',
       'country',
       'place',
       'street',
       'house_number',
-      'flat',
-      'user_id'
+      'flat_number',
     ];
 
-    public function user(): BelongsTo
+    public function property(): HasOne
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->hasOne(Property::class, 'address_id', 'id');
     }
 }

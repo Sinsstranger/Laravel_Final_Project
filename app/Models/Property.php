@@ -13,19 +13,28 @@ class Property extends Model
 
     protected $fillable = [
         'title',
+        'category',
         'description',
         'price_per_day',
-        'is_temporary_registration_possible',
         'address_id',
+        'user_id',
+        'is_temporary_registration_possible',
     ];
 
-    public function address(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(Address::class,'address_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
-    public function property(): BelongsTo
+
+
+    public function address(): BelongsTo
     {
-        return $this->belongsTo(Address::class, 'address_id', 'id');
+        return $this->belongsTo(Address::class,'address_id', 'address_id');
+    }
+
+    public function deal(): BelongsTo
+    {
+        return $this->belongsTo(Deal::class, 'property_id', 'id');
     }
 }
