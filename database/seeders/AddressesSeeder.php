@@ -21,16 +21,13 @@ class AddressesSeeder extends Seeder
         $addresses = [];
         for ($i = 0; $i <= $quantity; $i++) {
             $addresses[] = [
-                'category' => "category-" . $i+1,
                 'country' => fake()->country(),
                 'place' => fake()->city(),
                 'street' => fake()->streetName(),
                 'house_number' => fake()->numberBetween(1, 123),
-                'flat' => fake()->numberBetween(1, 300),
-                'user_id' => fake()->numberBetween(1, 3)
+                'flat_number' => fake()->numberBetween(1, 300),
             ];
         }
-
         return $addresses;
     }
 
