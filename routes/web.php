@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertiesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,20 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('/properties', PropertiesController::class);
 });
+
 
 require __DIR__.'/auth.php';
