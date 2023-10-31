@@ -232,7 +232,7 @@
                 <div class="col-md-6 col-lg-4 d-flex ftco-animate">
                     <div class="blog-entry justify-content-end">
                         <a href="single.html" class="block-20"
-                           style="background-image: url(assets/'assets/images/image_1.jpg');">
+                           style="background-image: url('assets/images/image_1.jpg');">
                         </a>
                         <div class="text float-right d-block">
                             <div class="d-flex align-items-center pt-2 mb-4 topp">
