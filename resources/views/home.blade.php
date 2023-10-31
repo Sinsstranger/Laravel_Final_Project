@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="d-flex pt-5">
                                             <div>
-                                                <h3><a href="properties.html">{{ $prop->title }}</a></h3>
+                                                <h3><a href="{{ route('properties.show', $prop) }}">{{ $prop->title }}</a></h3>
                                             </div>
                                             <div class="pl-md-4">
                                                 <h4 class="price">{{ $prop->price_per_day}}</h4>
@@ -152,7 +152,7 @@
                                     или производственные помещения? Вы обратились по адресу.</p>
                                 <p>Если же Вы желаете сдать в аренду помещение, мы разместим Ваше объявление на нашей
                                     площадке.</p>
-                                <p><a href="#" class="btn btn-primary py-3 px-4">Подобрать помещение</a> <a href="#"
+                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Подобрать помещение</a> <a href="{{ route('dashboard') }}"
                                                                                                             class="btn btn-secondary py-3 px-4">Сдать
                                         помещение</a></p>
                             </div>
@@ -214,7 +214,7 @@
                     <h2 class="mb-4">Вы желаете сдать в аренду Ваше помещение?</h2>
                     <p>Для того, чтобы внести помещение в нашу базу данных, Вы должны зарегестрироваться на саите и
                         заполнить форму, нажав на кнопку "Сдать помещение"</p>
-                    <p class="mb-0"><a href="#" class="btn btn-white px-4 py-3">Сдать помещение</a></p>
+                    <p class="mb-0"><a href="{{ route('dashboard') }}" class="btn btn-white px-4 py-3">Сдать помещение</a></p>
                 </div>
             </div>
         </div>

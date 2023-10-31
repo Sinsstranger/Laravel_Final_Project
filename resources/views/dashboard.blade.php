@@ -9,7 +9,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
-                    <a href="{{ route('properties.index') }}">Мои объявления</a>
+                    <a href="{{ route('user.properties.index') }}">Мои объявления</a>
                 </div>
             </div>
         </div>
