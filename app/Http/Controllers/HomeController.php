@@ -18,11 +18,11 @@ class HomeController extends Controller
     {
         $allProperties = $this->property->all();
 
-        return \view('welcome', ['allProperties' => $allProperties]);
+        return \view('home', ['allProperties' => $allProperties, 'title' => 'Сайт аренды жилья - Главная страница']);
     }
 
     public function store(Request $store): View
     {
-        return \view('welcome');
+        return \view('home');
     }
 }
