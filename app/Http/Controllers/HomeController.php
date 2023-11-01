@@ -6,6 +6,7 @@ use App\Models\Property;
 use App\Services\Interfaces\PropertyInterface;
 use App\Services\PropertiesServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -17,11 +18,19 @@ class HomeController extends Controller
         private readonly PropertiesServices $propertyServices
     ) {}
 
+    protected function getProps(){
+        return $this->propertyServices->allProperties();
+    }
+
     public function index(): View
     {
-        $allProperties = $this->propertyServices->allProperties();
+        $allProperties = $this->getProps();
 
         return \view('home', ['allProperties' => $allProperties, 'title' => 'Сайт аренды жилья - Главная страница']);
+    }
+
+    public function sendIndex(){
+        Http::withHeaders(['Content-Type' => 'application/json'])->post(json_encode($this->getProps()));
     }
 
     public function store(Request $store): View
