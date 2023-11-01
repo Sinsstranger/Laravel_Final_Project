@@ -9,16 +9,15 @@
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="icon-phone2"></span>
                             </div>
-                            <span class="text">+ 8 800 555 3535</span>
+                            <span class="text">+ 1 (234) 567-89-00</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="icon-paper-plane"></span></div>
-                            <span class="text">example@email.com</span>
+                            <span class="text">info@yoursite.com</span>
                         </div>
                         <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
-                            <p class="mb-0 register-link"><a href="{{ route('register') }}" class="mr-3">Регистрация</a><a
-                                    href="{{route('login')}}">Войти</a>
+                            <p class="mb-0 register-link"><a href="#" class="mr-3">Регистрация</a><a href="#">Войти</a>
                             </p>
                         </div>
                     </div>
@@ -29,17 +28,16 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
          id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/">Аренда</a>
+            <a class="navbar-brand" href="index.html">«Золотой ключик»</a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
-                    data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Меню
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav nav ml-auto">
                     <li class="nav-item"><a href="#home-section" class="nav-link"><span>Главная</span></a></li>
-                    <li class="nav-item"><a href="#properties-section" class="nav-link"><span>Список</span></a></li>
+                    <li class="nav-item"><a href="#properties-section" class="nav-link"><span>Каталог</span></a></li>
                     <li class="nav-item"><a href="#about-section" class="nav-link"><span>О нас</span></a></li>
                     <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Контакты</span></a></li>
                 </ul>
@@ -59,14 +57,14 @@
                         арендой недвижимости
                     </h1>
                     <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">У нас размещают
-                        квартиры, дома, комнаты, помещения для бизнеса. Мы поможем Вам подобрать то, что Вам нужно.</p>
+                        квартиры, дома, комнаты, помещения для бизнеса. Мы поможем найти то, что Вам нужно.</p>
                     <form action="#" class="search-location">
                         <div class="row">
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
                                     <div class="form-field">
                                         <!-- Считаю, что здесь должна быть форма с фильтрами для подбора квартиры -->
-                                        <input type="text" class="form-control" placeholder="Search location">
+                                        <input type="text" class="form-control" placeholder="Подобрать варианты">
                                         <button><span class="ion-ios-search"></span></button>
                                     </div>
                                 </div>
@@ -107,9 +105,7 @@
                                                 <h4 class="price">{{ $prop->price_per_day}}</h4>
                                             </div>
                                         </div>
-                                        <p class="h-info"><span class="location">New York</span> <span
-                                                class="details">&mdash; 3bds,
-											2bath</span></p>
+                                        <p class="h-info"><span class="location">Москва</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +122,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-9 text-center">
                     <h2>Найдите дом своей мечты</h2>
-                    <p>Мы поможем Вам найти желаемое.</p>
+                    <p>Мы знаем, как это сделать</p>
                 </div>
             </div>
         </div>
@@ -144,15 +140,15 @@
                     <div class="py-md-5">
                         <div class="row justify-content-start pb-3">
                             <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
-                                <h2 class="mb-4">Сервис аренды помещений "Золотой ключик"</h2>
+                                <h2 class="mb-4">Сервис аренды «Золотой ключик»</h2>
                                 <p>Мы работаем, чтобы Вы могли найти то, что ищите. Вам нужен дом на длительный срок? Мы
                                     подберем Вам различные варианты. Вы ищте квартиру на сутки-другие? У нас есть, что
                                     Вам предложить.</p>
-                                <p>А, может быть, вам нужна просто комната? Подберем. Или, возможно, Вам нужны оффисные
+                                <p>А, может быть, вам нужна просто комната? Подберем. Вам нужны офисные
                                     или производственные помещения? Вы обратились по адресу.</p>
-                                <p>Если же Вы желаете сдать в аренду помещение, мы разместим Ваше объявление на нашей
+                                <p>Если же Вы хотите сдать в аренду помещение, мы разместим Ваше объявление на нашей
                                     площадке.</p>
-                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Подобрать помещение</a> <a href="{{ route('dashboard') }}"
+                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="{{ route('dashboard') }}"
                                                                                                             class="btn btn-secondary py-3 px-4">Сдать
                                         помещение</a></p>
                             </div>
@@ -168,14 +164,13 @@
             <div class="row">
                 <div class="col-md-4 heading-section ftco-animate">
                     <h2 class="mb-4">Как это работет</h2>
-                    <p>Для того, чтобы арендовать помещение, Вам необходимо пройти несложную процедуру
-                        регитрации.</p>
+                    <p>Для того, чтобы арендовать помещение, Вам необходимо пройти несложную процедуру регитрации.</p>
                     <div class="media block-6 services text-center d-block pt-md-5 mt-md-5">
                         <div class="icon justify-content-center align-items-center d-flex"><span>1</span></div>
                         <div class="media-body p-md-3">
                             <h3 class="heading mb-3">Расскажите о своих пожеланиях</h3>
-                            <p class="mb-5">Нажмите кнопку "Подобрать помещение" и в появившейся форме отметьте, что Вы
-                                желаете найти и нажмите кнопку "Искать"</p>
+                            <p class="mb-5">Нажмите кнопку «Найти помещение» и в появившейся форме отметьте всё, что
+                                имеет для вас значение, и нажмите кнопку «Искать»</p>
                             <hr>
                         </div>
                     </div>
@@ -185,8 +180,8 @@
                         <div class="icon justify-content-center align-items-center d-flex"><span>2</span></div>
                         <div class="media-body p-md-3">
                             <h3 class="heading mb-3">Рассмотрите варианты</h3>
-                            <p class="mb-5">Мы подберем из нашей базы данных подходящие варианты и предложим Вам на
-                                рассмотрение.</p>
+                            <p class="mb-5">Мы подберем из нашего обширного катлога самые подходящие варианты и
+                                предложим Вам на рассмотрение</p>
                             <hr>
                         </div>
                     </div>
@@ -195,9 +190,9 @@
                     <div class="media block-6 services text-center d-block">
                         <div class="icon justify-content-center align-items-center d-flex"><span>3</span></div>
                         <div class="media-body p-md-3">
-                            <h3 class="heading mb-3">Свяжитесь с арендателем</h3>
+                            <h3 class="heading mb-3">Свяжитесь с арендодателем</h3>
                             <p class="mb-5">После того, как вы определитесь с наиболее подходящим вариантом, свяжитесь
-                                по указанным контактом с арендатором и договоритесь о сделке</p>
+                                по указанным контактом с арендодателем и договоритесь о бронировании</p>
                             <hr>
                         </div>
                     </div>
@@ -211,10 +206,95 @@
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-md-7">
-                    <h2 class="mb-4">Вы желаете сдать в аренду Ваше помещение?</h2>
-                    <p>Для того, чтобы внести помещение в нашу базу данных, Вы должны зарегестрироваться на саите и
-                        заполнить форму, нажав на кнопку "Сдать помещение"</p>
+                    <h2 class="mb-4">Хотите сдать в аренду Ваше помещение?</h2>
+                    <p>Добавьте помещение в нашу базу: зарегестрируйтесь на сайте и
+                        заполнить форму, нажав на кнопку «Сдать помещение»</p>
                     <p class="mb-0"><a href="{{ route('dashboard') }}" class="btn btn-white px-4 py-3">Сдать помещение</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Остались вопросы?</span>
+                    <h2 class="mb-4">Свяжитесь с нами</h2>
+                </div>
+            </div>
+
+            <div class="row block-9">
+                <div class="col-md-7 order-md-last d-flex ftco-animate">
+                    <form action="#" class="bg-light p-4 p-md-5 contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваш Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Откуда Вы">
+                        </div>
+                        <div class="form-group">
+							<textarea name="" id="" cols="30" rows="7" class="form-control"
+                                      placeholder="Ваш вопрос"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Отправить сообщение" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="col-md-5 d-flex">
+                    <div class="row d-flex contact-info mb-5">
+                        <div class="col-md-12 ftco-animate">
+                            <div class="box p-2 px-3 bg-light d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-map-signs"></span>
+                                </div>
+                                <div>
+                                    <h3 class="mb-3">Наш адрес</h3>
+                                    <p>123456, Москва, Длинная аллея, д.78</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ftco-animate">
+                            <div class="box p-2 px-3 bg-light d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-phone2"></span>
+                                </div>
+                                <div>
+                                    <h3 class="mb-3">Контактный телефон</h3>
+                                    <p><a href="tel://1234567920">+ 1 (234) 567-89-00</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ftco-animate">
+                            <div class="box p-2 px-3 bg-light d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-paper-plane"></span>
+                                </div>
+                                <div>
+                                    <h3 class="mb-3">Наш Email</h3>
+                                    <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ftco-animate">
+                            <div class="box p-2 px-3 bg-light d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-globe"></span>
+                                </div>
+                                <div>
+                                    <h3 class="mb-3">Вебсайт</h3>
+                                    <p><a href="#">yoursite.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -242,7 +322,7 @@
                                 <div class="text px-4 pb-5">
                                     <p class="mb-4">Теперь мне есть, где выпить чашечку кофе в спокойной обстановке.</p>
                                     <p class="name">Мессир Воланд</p>
-                                    <span class="position">Artist</span>
+                                    <span class="position">Москва</span>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +336,7 @@
                                 <div class="text px-4 pb-5">
                                     <p class="mb-4">Я все не могу нарадоваться на снятую здесь лубяную избушку</p>
                                     <p class="name">Бедный Зайка</p>
-                                    <span class="position">Artist</span>
+                                    <span class="position">Вологда</span>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +350,7 @@
                                 <div class="text px-4 pb-5">
                                     <p class="mb-4">Это просто фантастика! Я нашел своей собаке конуру мечты!</p>
                                     <p class="name">Проф. Преображенский</p>
-                                    <span class="position">Artist</span>
+                                    <span class="position">Москва</span>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +364,7 @@
                                 <div class="text px-4 pb-5">
                                     <p class="mb-4">Теперь мне есть, где выпить чашечку кофе в спокойной обстановке.</p>
                                     <p class="name">Мессир Воланд</p>
-                                    <span class="position">Artist</span>
+                                    <span class="position">Москва</span>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +378,7 @@
                                 <div class="text px-4 pb-5">
                                     <p class="mb-4">Это просто фантастика! Я нашел своей собаке конуру мечты!</p>
                                     <p class="name">Проф. Преображенский</p>
-                                    <span class="position">Artist</span>
+                                    <span class="position">Москва</span>
                                 </div>
                             </div>
                         </div>
@@ -307,92 +387,6 @@
             </div>
         </div>
     </section>
-
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section text-center ftco-animate">
-                    <span class="subheading">Контакты</span>
-                    <h2 class="mb-4">Свяжитесь с нами</h2>
-                    <p>Если у вас возникли какие-либо вопросы или Вы хотите оставить отзыв</p>
-                </div>
-            </div>
-
-            <div class="row block-9">
-                <div class="col-md-7 order-md-last d-flex ftco-animate">
-                    <form action="#" class="bg-light p-4 p-md-5 contact-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваш Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="От куда Вы">
-                        </div>
-                        <div class="form-group">
-							<textarea name="" id="" cols="30" rows="7" class="form-control"
-                                      placeholder="Ваш отзыв"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Отправить отзыв" class="btn btn-primary py-3 px-5">
-                        </div>
-                    </form>
-
-                </div>
-
-                <div class="col-md-5 d-flex">
-                    <div class="row d-flex contact-info mb-5">
-                        <div class="col-md-12 ftco-animate">
-                            <div class="box p-2 px-3 bg-light d-flex">
-                                <div class="icon mr-3">
-                                    <span class="icon-map-signs"></span>
-                                </div>
-                                <div>
-                                    <h3 class="mb-3">Наш адрес</h3>
-                                    <p>198 West 21th Street, Suite 721 New York NY 10016</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 ftco-animate">
-                            <div class="box p-2 px-3 bg-light d-flex">
-                                <div class="icon mr-3">
-                                    <span class="icon-phone2"></span>
-                                </div>
-                                <div>
-                                    <h3 class="mb-3">Контактный телефон (круглосуточный)</h3>
-                                    <p><a href="tel://1234567920">+ 1235 2355 98</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 ftco-animate">
-                            <div class="box p-2 px-3 bg-light d-flex">
-                                <div class="icon mr-3">
-                                    <span class="icon-paper-plane"></span>
-                                </div>
-                                <div>
-                                    <h3 class="mb-3">Наш Email</h3>
-                                    <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 ftco-animate">
-                            <div class="box p-2 px-3 bg-light d-flex">
-                                <div class="icon mr-3">
-                                    <span class="icon-globe"></span>
-                                </div>
-                                <div>
-                                    <h3 class="mb-3">Вебсайт (Вы на нем)</h3>
-                                    <p><a href="#">yoursite.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- <section class="map">
         <div id="map" class="bg-white"></div>
     </section> -->
@@ -402,8 +396,8 @@
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Stayhome</h2>
-                        <p>Far far away, behind the word mountains, far from the countries.</p>
+                        <h2 class="ftco-heading-2">Будьте как дома</h2>
+                        <p>В любой стране, в любом городе, в любое время</p>
                         <ul class="ftco-footer-social list-unstyled mt-5">
                             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -413,48 +407,36 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Community</h2>
+                        <h2 class="ftco-heading-2">Каталолг помещений</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search Properties</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For Agents</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>FAQs</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Комнаты</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Квартиры</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Дома</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Коммерческая
+                                    недвижимость</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">About Us</h2>
+                        <h2 class="ftco-heading-2">Что я хочу?</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Our Story</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Meet the team</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Careers</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Найти помещение</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Сдать помещение</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Company</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About Us</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Press</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Careers</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <h2 class="ftco-heading-2">Контакты</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain
-										View, San
-										Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929
-											210</span></a></li>
+                                <li><span class="icon icon-map-marker"></span><span class="text">123456, Москва, Длинная
+										аллея, д.78</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 1 (234)
+											567-89-00</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope pr-4"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
+                                            class="text">info@yoursite.com</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -463,14 +445,8 @@
             <div class="row">
                 <div class="col-md-12 text-center">
 
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
+                    <p>Copyright &copy;
                         <script>document.write(new Date().getFullYear());</script>
-                        All rights reserved | This template
-                        is made with
-                        <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                                         target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
             </div>
