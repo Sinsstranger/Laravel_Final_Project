@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <div class="form-field">
                                         <!-- Считаю, что здесь должна быть форма с фильтрами для подбора квартиры -->
-                                        <input type="text" class="form-control" placeholder="Подобрать варианты">
+                                        <input type="text" class="form-control" placeholder="Найти недвижимость">
                                         <button><span class="ion-ios-search"></span></button>
                                     </div>
                                 </div>
@@ -95,14 +95,14 @@
                                     <div class="desc">
                                         <div
                                             class="text bg-primary d-flex text-center align-items-center justify-content-center">
-                                            <span>Sale</span>
+                                            <span>Хит</span>
                                         </div>
                                         <div class="d-flex pt-5">
                                             <div>
                                                 <h3><a href="{{ route('properties.show', $prop) }}">{{ $prop->title }}</a></h3>
                                             </div>
                                             <div class="pl-md-4">
-                                                <h4 class="price">{{ $prop->price_per_day}}</h4>
+                                                <h4 class="price">{{ $prop->price_per_day}}₽</h4>
                                             </div>
                                         </div>
                                         <p class="h-info"><span class="location">Москва</span></p>
@@ -166,7 +166,8 @@
                     <h2 class="mb-4">Как это работет</h2>
                     <p>Для того, чтобы арендовать помещение, Вам необходимо пройти несложную процедуру регитрации.</p>
                     <div class="media block-6 services text-center d-block pt-md-5 mt-md-5">
-                        <div class="icon justify-content-center align-items-center d-flex"><span>1</span></div>
+                        <div class="icon justify-content-center align-items-center d-flex"><span>1</span>
+                        </div>
                         <div class="media-body p-md-3">
                             <h3 class="heading mb-3">Расскажите о своих пожеланиях</h3>
                             <p class="mb-5">Нажмите кнопку «Найти помещение» и в появившейся форме отметьте всё, что
@@ -407,7 +408,7 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Каталолг помещений</h2>
+                        <h2 class="ftco-heading-2">Каталог помещений</h2>
                         <ul class="list-unstyled">
                             <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Комнаты</a></li>
                             <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Квартиры</a></li>
