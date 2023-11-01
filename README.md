@@ -49,4 +49,4 @@ WSL запускается командой `wsl` из консоли Windows
 - `php composer install` == `sail composer install`
 - `php artisan make:model ModelName.php` === `sail artisan make:model ModelName.php`
 
-** Приведено с учетом настроенного alias
+** Приведено с учетом настроенного alias и справедливо после первой установки зависимостей командой `php composer install` так как sail сам является composer зависимостью
