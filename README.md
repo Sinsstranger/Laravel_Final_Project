@@ -1,66 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Проект &laquo;Сайт аренды жилья&raquo;
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Используемый стек технологий:
+![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-## About Laravel
+#### Настройка перед запуском
+Проект развернут на Laravel Sail
+- Устанавливаем бэкенд зависимости командой `bash vendor/bin/sail composer install` набрав ее находясь в корневой директории проекта
+- Устанавливаем фронтенд зависимости командой `yarn install` или `npm install` в зависимости от вашего пакетного менеджера (потребуется установленная nodejs)
+- Собираем бандл из фронтенд зависимостей командой `yarn build` или `npm run build` в зависимости от вашего пакетного менеджера и ждем окончания сборки
+Запуск проекта осуществляется при помощи командного интерпретатора для `shell script`
+Который не поставляется с ОС Windows по умолчанию. Но он необходим для запуска проекта
+Можно установить в windows [WSL](https://learn.microsoft.com/ru-ru/windows/wsl/install) или же воспользоваться установкой отдельных интерпритаторов таких как [Git Bash](https://git-scm.com/downloads) идущий в официальной поставке при установке git
+#### Список комманд для установки WSL 2 версии и OS Ubuntu для Windows
+```shell
+wsl --install # Устанавливает подсистему WSL в вашу OS
+wsl --set-default-version 2 # Устанавливает версию по умолчанию для WSL
+wsl --update # Обновляет подсистему WSL если это необходимо
+wsl --install Ubuntu # Устанавливает в WSL OS Ubuntu
+```
+После установки необходимо будет ввести логин и пароль пользователя для Ubuntu
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+В дальнейшем с WSL можно будет работать практически как с полноценной *nix системой.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Если у вас есть еще wsl контейнеры в вашей хостовой OC, то имеет смысл установить для WSL операционной системой по умолчанию Ubuntu командой: 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+`wsl --set-default Ubuntu`
 
-## Learning Laravel
+WSL запускается командой `wsl` из консоли Windows
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+В случае если у вас *nix система, все будет работать по умолчанию как и должно
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Непосредственно запуск приложения
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Находясь в корневой директории проекта запустить все необходимые для работы Docker Контейнеры командой 
 
-## Laravel Sponsors
+`bash ./vendor/bin/sail up -d`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+или можно настроить алиас для части комманды 'bash ./vendor/bin/sail' добавив в файл `.bashrc` в директории вашего пользователя, в нашем примере в Ubuntu следующую строку `alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'`
+и перезапустить wsl (выйти, а потом снова войти), послле этого проект можно будет запустить командой
+`sail up -d`
+ В обоих случаях sail подменяет собой php интерпретатор соответственно:
+- `php composer install` == `sail composer install`
+- `php artisan make:model ModelName.php` === `sail artisan make:model ModelName.php`
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+** Приведено с учетом настроенного alias
