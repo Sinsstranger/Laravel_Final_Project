@@ -14,7 +14,7 @@ class PropertiesController extends Controller
 
     public function __construct
     (
-        private PropertiesServices $propertyServices
+        private readonly PropertiesServices $propertyServices
     ){}
     public function index(): View
     {
