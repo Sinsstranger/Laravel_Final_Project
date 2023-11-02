@@ -17,7 +17,7 @@
                             <span class="text">info@yoursite.com</span>
                         </div>
                         <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
-                            <p class="mb-0 register-link"><a href="#" class="mr-3">Регистрация</a><a href="#">Войти</a>
+                            <p class="mb-0 register-link"><a href="{{ route('register') }}" class="mr-3">Регистрация</a><a href="{{ route('login') }}">Войти</a>
                             </p>
                         </div>
                     </div>
@@ -148,9 +148,7 @@
                                     или производственные помещения? Вы обратились по адресу.</p>
                                 <p>Если же Вы хотите сдать в аренду помещение, мы разместим Ваше объявление на нашей
                                     площадке.</p>
-                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="{{ route('dashboard') }}"
-                                                                                                            class="btn btn-secondary py-3 px-4">Сдать
-                                        помещение</a></p>
+                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="#"class="btn btn-secondary py-3 px-4">Сдать помещение</a></p>
                             </div>
                         </div>
                     </div>
