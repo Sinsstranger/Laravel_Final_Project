@@ -446,7 +446,7 @@ pre code {
     margin-right: auto;
     margin-left: auto; }
 @media (min-width: 576px) {
-    .container {
+    .cd {
         max-width: 540px; } }
 @media (min-width: 768px) {
     .container {
@@ -8087,7 +8087,7 @@ h1, h2, h3, h4, h5,
     z-index: 3; }
 @media (max-width: 991.98px) {
     .ftco-navbar-light {
-        background: #000000 !important;
+        background: #4B69BD !important;
         position: relative;
         top: 0;
         padding-top: 0;
@@ -9090,7 +9090,7 @@ h1, h2, h3, h4, h5,
     margin: 0 auto;
     z-index: 1;
     margin-bottom: 20px;
-    background: #5778d5;
+    background: #4B69BD;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
