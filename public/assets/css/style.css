@@ -446,7 +446,7 @@ pre code {
     margin-right: auto;
     margin-left: auto; }
 @media (min-width: 576px) {
-    .cd {
+    .container {
         max-width: 540px; } }
 @media (min-width: 768px) {
     .container {
