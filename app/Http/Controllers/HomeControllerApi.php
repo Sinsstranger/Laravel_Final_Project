@@ -20,6 +20,7 @@ class HomeControllerApi extends Controller
      */
     public function index()
     {
+
         return response()->json(['title' => 'Сайт аренды жилья - Главная страница', 'accommodation' => $this->getProps()]);
     }
 

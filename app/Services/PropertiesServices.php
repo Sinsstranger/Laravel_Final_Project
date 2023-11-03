@@ -30,4 +30,11 @@ class PropertiesServices implements PropertyInterface
     {
         return $this->property->query()->where('user_id', $user_id)->get();
     }
+    public function getPropertiesByContent(string $content): Collection
+    {
+        return $this->property->query()->where('title', 'LIKE', "%{$content}%", 'or')
+            ->where('description', 'LIKE', "%{$content}%", 'or')
+            ->where('price_per_day', 'LIKE', "%{$content}%")
+            ->get();
+    }
 }

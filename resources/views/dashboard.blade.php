@@ -10,8 +10,11 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     <a href="{{ route('user.properties.index') }}">Мои объявления</a>
+
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+{{--<h1>Профиль блок</h1>--}}
