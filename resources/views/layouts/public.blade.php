@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <x-head name="head" :title="$title"></x-head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -18,6 +18,7 @@
 <script src="assets/js/scrollax.min.js"></script>
 
 <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

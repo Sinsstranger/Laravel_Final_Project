@@ -214,7 +214,6 @@
         </div>
     </section>
 
-
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
@@ -298,7 +297,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="ftco-section testimony-section">
         <div class="container">
@@ -451,8 +449,6 @@
             </div>
         </div>
     </footer>
-
-
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
