@@ -215,7 +215,7 @@
                                     или производственные помещения? Вы обратились по адресу.</p>
                                 <p>Если же Вы хотите сдать в аренду помещение, мы разместим Ваше объявление на нашей
                                     площадке.</p>
-                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="#"class="btn btn-secondary py-3 px-4">Сдать помещение</a></p>
+                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="{{ route('login') }}" class="btn btn-secondary py-3 px-4">Сдать помещение</a></p>
                             </div>
                         </div>
                     </div>
