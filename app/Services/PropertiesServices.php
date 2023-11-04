@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\Property;
 use App\Models\User;
 use App\Services\Interfaces\PropertyInterface;
@@ -13,7 +14,8 @@ class PropertiesServices implements PropertyInterface
 
     public function __construct
     (
-        private Property $property
+        private Property $property,
+        private Category $category,
     ) {}
 
     public function allProperties(): Collection
@@ -36,5 +38,9 @@ class PropertiesServices implements PropertyInterface
             ->where('description', 'LIKE', "%{$content}%", 'or')
             ->where('price_per_day', 'LIKE', "%{$content}%")
             ->get();
+    }
+    public function getAllCategoriesProperty(): Collection
+    {
+        return $this->category->getAllCategories();
     }
 }
