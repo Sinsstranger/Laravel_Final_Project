@@ -77,11 +77,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Min</label>
-                                    <input class="form-control" placeholder="$0" type="number">
+                                    <input type="number" class="form-control" name="min-price" placeholder="0">
                                 </div>
                                 <div class="form-group text-right col-md-6">
                                     <label>Max</label>
-                                    <input class="form-control" placeholder="$1,0000" type="number">
+                                    <input type="number" class="form-control" name="max-price" placeholder="100000">
                                 </div>
                             </div>
                             {{-- <button class="btn btn-block btn-primary">Применить</button> --}}
@@ -91,24 +91,24 @@
                 <article class="filter-group">
                     <header class="card-header">
                         <i class="icon-control fa fa-chevron-down"></i>
-                        <h6 class="title">Количество человек</h6>
+                        <h6 class="title">Количество гостей</h6>
                     </header>
                     <div class="filter-content collapse show" id="collapse_4">
                         <ul class="list-menu">
                             <li class="checkbox-btn">
-                                <input type="checkbox">
+                                <input type="radio" name="guests" value="1">
                                 1
                             </li>
                             <li class="checkbox-btn">
-                                <input type="checkbox">
+                                <input type="radio" name="guests" value="2">
                                 2
                             </li>
                             <li class="checkbox-btn">
-                                <input type="checkbox">
+                                <input type="radio" name="guests" value="3">
                                 3
                             </li>
                             <li class="checkbox-btn">
-                                <input type="checkbox">
+                                <input type="radio" name="guests" value="0">
                                 Более
                             </li>
                         </ul>
@@ -121,7 +121,7 @@
                     </header>
                 </article>
                 <div class="card-body">
-                    <input type="submit" class="btn btn-block block-primary" value="apply">
+                    <input type="submit" class="btn btn-block btn-primary" value="Применить">
                 </div>
             </form>
         </aside>
