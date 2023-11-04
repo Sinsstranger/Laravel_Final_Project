@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Сайт аренды недвижимости</title>
+    <title>@section('title')Сайт аренды недвижимости | @show</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset("assets/css/open-iconic-bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/animate.css") }}">
@@ -212,6 +213,7 @@
     </svg>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="{{ asset("assets/js/jquery.min.js") }}"></script>
 <script src="{{ asset("assets/js/jquery-migrate-3.0.1.min.js") }}"></script>
 <script src="{{ asset("assets/js/popper.min.js") }}"></script>

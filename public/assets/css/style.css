@@ -4011,7 +4011,6 @@ input[type="button"].btn-block {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: #e9ecef;
     border-radius: 0.25rem; }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -9823,9 +9822,9 @@ textarea.form-control {
 .comment-list li .comment-body {
     float: right;
     width: calc(100% - 80px); }
-.comment-list li .comment-body h3 {
+.comment-body h3 {
     font-size: 20px; }
-.comment-list li .comment-body .meta {
+.comment-body .meta {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: .1em;
@@ -9987,3 +9986,54 @@ textarea.form-control {
     100% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -136px; } }
+
+/*стили для страницы объектов*/
+.object-title {
+    padding-top: 12px;
+    background-color: #f8f9fa;
+}
+
+.header-object .breadcrumb{
+    font-size: 12px;
+}
+
+.content-object {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: start;
+    align-content: stretch;
+}
+
+.content-object-right div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-object-right div .price {
+    color: #4b69bd;
+}
+.object-review {
+    background-color: #f8f9fa;
+}
+
+.details-section {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 24px 0;
+    color: black;
+}
+
+.details-section p,
+.details-section address{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details-section .info {
+    color: #999999;
+}
+
+.carousel-item img {
+    height: 400px;
+    object-fit: scale-down;
+}

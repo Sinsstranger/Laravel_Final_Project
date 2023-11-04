@@ -1,4 +1,7 @@
 @extends('layouts.public')
+@section('title')
+    @parentГлавная страница
+@endsection
 @section('content')
     <section class="hero-wrap js-fullheight" style="background-image: url('assets/images/bg_2.jpg');"
              data-section="home"
@@ -45,7 +48,7 @@
                             <div class="item">
                                 <div class="properties ftco-animate">
                                     <div class="img">
-                                        <img src="assets/images/work-1.jpg" class="img-fluid" alt="Colorlib Template">
+                                        <img src="assets/images/work-1.jpg" class="img-fluid" alt="Дом для аренды">
                                     </div>
                                     <div class="desc">
                                         <div
