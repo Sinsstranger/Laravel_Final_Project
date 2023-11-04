@@ -13,7 +13,7 @@ class Property extends Model
 
     protected $fillable = [
         'title',
-        'category',
+        'category_id',
         'description',
         'price_per_day',
         'address_id',
@@ -26,8 +26,6 @@ class Property extends Model
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
-
-
     public function address(): BelongsTo
     {
         return $this->belongsTo(Address::class,'address_id', 'address_id');
@@ -37,4 +35,6 @@ class Property extends Model
     {
         return $this->belongsTo(Deal::class, 'property_id', 'id');
     }
+
+
 }

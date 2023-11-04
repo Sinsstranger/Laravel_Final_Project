@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title', 120);
-            $table->foreignId('category_id')
-                ->constrained('properties')
-                ->nullable();
+            // $table->foreignId('category_id')
+            //     ->constrained('categories')
+            //     ->nullable();
+            $table->integer('category_id')->nullable();
             $table->text('description');
             $table->decimal('price_per_day', 9, 2);
             $table->foreignId('address_id')
