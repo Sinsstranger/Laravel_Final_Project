@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <aside class="col-md-3">
-            <form class="card" action="/search" method="GET">
+            <form class="card" action="#" method="GET">
                 <div class="card-body">
                     <input type="text" class="form-control mb-2" placeholder="Поиск">
                     {{-- <div class="input-group-append"> --}}
@@ -24,17 +24,16 @@
                     <header class="card-header">
                         <i class="icon-control fa fa-chevron-down"></i>
                         <h6 class="title">Тип жилья</h6>
-                        {{-- </a> --}}
                     </header>
                     <div class="filter-content collapse show" id="collapse_1" style="">
                         <div class="card-body">
                             <ul class="list-menu">
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;">Дома</li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;">Коттеджи</li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;">Квартиры</li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;">Хостелы</li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;">Комнаты</li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;">Турбазы</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="houses">Дома</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="cottages">Коттеджи</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="flats">Квартиры</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="hostels">Хостелы</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="rooms">Комнаты</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="campings">Турбазы</li>
                             </ul>
                         </div>
                     </div>
@@ -42,12 +41,17 @@
                 <article class="filter-group">
                     <header class="card-header">
                         <i class="icon-control fa fa-chevron-down"></i>
-                        <h6 class="title">Время сдачи</h6>
-
+                        <h6 class="title">Срок сдачи</h6>
                     </header>
                     <div class="filter-content collapse show" id="collapse_2">
                         <div class="card-body">
-                            <label class="custom-control custom-checkbox">
+                            <ul class="list-menu">
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="daily">Посуточно</li>
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="longtime">На длительный срок</li>
+                            </ul>
+                            {{-- Код закомментил, чтоб сделать единообразно с предыдущим фильтром (по категории жилья)
+                            Когда нибудь можно будет вернуться и к такому варианту --}}
+                            {{-- <label class="custom-control custom-checkbox">
                                 <input type="checkbox" checked="" class="custom-control-input">
                                 <div class="custom-control-label">Сутки
                                     <b class="badge badge-pill badge-light float-right">120</b>
@@ -55,16 +59,10 @@
                             </label>
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" checked="" class="custom-control-input">
-                                <div class="custom-control-label">Неделя
+                                <div class="custom-control-label">Длительно
                                     <b class="badge badge-pill badge-light float-right">15</b>
                                 </div>
-                            </label>
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" checked="" class="custom-control-input">
-                                <div class="custom-control-label">Другое
-                                    <b class="badge badge-pill badge-light float-right">35</b>
-                                </div>
-                            </label>
+                            </label> --}}
                         </div>
                     </div>
                 </article>
@@ -304,7 +302,6 @@
                     </figure>
                 </div> <!-- col.// -->
             </div> <!-- row end.// -->
-
 
             <nav class="mt-4" aria-label="Page navigation sample">
                 <ul class="pagination">
