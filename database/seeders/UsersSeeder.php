@@ -13,18 +13,27 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'name' => 'admin',
+                'email' => 'admin@x.x',
+                'is_admin' => 1,
+                'password' => Hash::make('00000000') // Восемь нулей (меньше восьми нельзя)
+            ],
+            [
                 'name' => 'user-1',
                 'email' => 'u1@x.x',
+                'is_admin' => 0,
                 'password' => Hash::make('00000000') // Восемь нулей (меньше восьми нельзя)
             ],
             [
                 'name' => 'user-2',
                 'email' => 'u2@x.x',
+                'is_admin' => 0,
                 'password' => Hash::make('00000000') // Восемь нулей (меньше восьми нельзя)
             ],
             [
                 'name' => 'user-3',
                 'email' => 'u3@x.x',
+                'is_admin' => 0,
                 'password' => Hash::make('00000000') // Восемь нулей (меньше восьми нельзя)
             ],
         ]);

@@ -8,7 +8,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <!-- Scripts -->
-
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap/bootstrap-filter.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
 

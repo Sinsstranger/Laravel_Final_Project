@@ -43,4 +43,4 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(
     Route::get('/', AdminController::class)->name('index');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

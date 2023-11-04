@@ -1,4 +1,3 @@
-<h1>Личный кабинет</h1>
 
 <x-app-layout>
     <x-slot name="header">
@@ -18,5 +17,3 @@
         </div>
     </div>
 </x-app-layout>
-
-

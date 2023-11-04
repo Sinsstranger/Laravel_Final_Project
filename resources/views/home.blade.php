@@ -215,7 +215,7 @@
                                     или производственные помещения? Вы обратились по адресу.</p>
                                 <p>Если же Вы хотите сдать в аренду помещение, мы разместим Ваше объявление на нашей
                                     площадке.</p>
-                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="#"class="btn btn-secondary py-3 px-4">Сдать помещение</a></p>
+                                <p><a href="{{ route('properties') }}" class="btn btn-primary py-3 px-4">Найти помещение</a> <a href="{{ route('login') }}" class="btn btn-secondary py-3 px-4">Сдать помещение</a></p>
                             </div>
                         </div>
                     </div>
@@ -280,7 +280,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
         <div class="container">
@@ -365,7 +364,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="ftco-section testimony-section">
         <div class="container">
@@ -518,8 +516,6 @@
             </div>
         </div>
     </footer>
-
-
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
