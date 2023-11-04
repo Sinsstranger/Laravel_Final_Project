@@ -492,7 +492,13 @@ pre code {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px; }
-
+/*+ Васенин С.А. 2023-11-04*/
+.properties_grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+/*- Васенин С.А. 2023-11-04*/
 .col {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;

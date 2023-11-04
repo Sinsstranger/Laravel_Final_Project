@@ -132,7 +132,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav nav ml-auto">
                 <li class="nav-item"><a href="#home-section" class="nav-link"><span>Главная</span></a></li>
-                <li class="nav-item"><a href="#properties-section" class="nav-link"><span>Каталог</span></a></li>
+                <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>Каталог</span></a></li>
                 <li class="nav-item"><a href="#about-section" class="nav-link"><span>О нас</span></a></li>
                 <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Контакты</span></a></li>
             </ul>

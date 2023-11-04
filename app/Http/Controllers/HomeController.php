@@ -35,8 +35,8 @@ class HomeController extends Controller
     }
     public function properties(): View
     {
-        $allProperties = $this->propertyServices->allProperties();
-        return \view('properties/index', ['title'=>'props', 'allProperties' => $allProperties]);
+        $properties = Property::paginate(9);
+        return \view('properties/index', ['title'=>'props', 'properties' => $properties]);
     }
 
     public function show(Property $property): View
