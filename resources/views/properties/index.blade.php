@@ -2,33 +2,32 @@
 @section('content')
 
 <div class="container">
-    <br><br><br> <div class="row justify-content-center mb-5 pb-3">
+    <br><br><br>
+    <div class="row justify-content-center mb-5 pb-3">
         <h2 class="mb-4">Список недвижимости</h2>
     </div>
     <div class="row">
         <aside class="col-md-3">
-
-            <div class="card">
+            <form class="card" action="/search" method="GET">
+                <div class="card-body">
+                    <input type="text" class="form-control mb-2" placeholder="Поиск">
+                    {{-- <div class="input-group-append"> --}}
+                    <button class="btn btn-primary" type="button">
+                        {{-- <img style="width: 10%" style="height: 10%" src="https://cdn-icons-png.flaticon.com/256/650/650154.png"> --}}
+                        <img width="10%" height="10%" src="https://cdn-icons-png.flaticon.com/256/650/650154.png">
+                    </button>
+                    {{-- </div> --}}
+                </div>
+            </form>
+            <form class="card">
                 <article class="filter-group">
                     <header class="card-header">
                         <i class="icon-control fa fa-chevron-down"></i>
                         <h6 class="title">Тип жилья</h6>
-                        </a>
+                        {{-- </a> --}}
                     </header>
                     <div class="filter-content collapse show" id="collapse_1" style="">
                         <div class="card-body">
-                            <form class="pb-3">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Поиск">
-                                    <div class="input-group-append">
-                                        <button class="btn-light" type="button"><img style="width: 10%"
-                                                                                     style="height: 10%"
-                                                                                     src="https://cdn-icons-png.flaticon.com/256/650/650154.png">
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-
                             <ul class="list-menu">
                                 <li class="li"><input type="checkbox" style="margin-right: 5px;">Дома</li>
                                 <li class="li"><input type="checkbox" style="margin-right: 5px;">Коттеджи</li>
@@ -37,7 +36,6 @@
                                 <li class="li"><input type="checkbox" style="margin-right: 5px;">Комнаты</li>
                                 <li class="li"><input type="checkbox" style="margin-right: 5px;">Турбазы</li>
                             </ul>
-
                         </div>
                     </div>
                 </article>
@@ -52,17 +50,20 @@
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" checked="" class="custom-control-input">
                                 <div class="custom-control-label">Сутки
-                                    <b class="badge badge-pill badge-light float-right">120</b></div>
+                                    <b class="badge badge-pill badge-light float-right">120</b>
+                                </div>
                             </label>
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" checked="" class="custom-control-input">
                                 <div class="custom-control-label">Неделя
-                                    <b class="badge badge-pill badge-light float-right">15</b></div>
+                                    <b class="badge badge-pill badge-light float-right">15</b>
+                                </div>
                             </label>
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" checked="" class="custom-control-input">
                                 <div class="custom-control-label">Другое
-                                    <b class="badge badge-pill badge-light float-right">35</b></div>
+                                    <b class="badge badge-pill badge-light float-right">35</b>
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -85,7 +86,7 @@
                                     <input class="form-control" placeholder="$1,0000" type="number">
                                 </div>
                             </div>
-                            <button class="btn btn-block btn-primary">Применить</button>
+                            {{-- <button class="btn btn-block btn-primary">Применить</button> --}}
                         </div>
                     </div>
                 </article>
@@ -121,8 +122,10 @@
                         <h6 class="title">Другие фильтры </h6>
                     </header>
                 </article>
-            </div>
-
+                <div class="card-body">
+                    <input type="submit" class="btn btn-block block-primary" value="apply">
+                </div>
+            </form>
         </aside>
         <main class="col-md-9">
 
@@ -137,10 +140,10 @@
                     </select>
                     <div class="btn-group">
                         <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title=""
-                           data-original-title="List view">
+                            data-original-title="List view">
                             <i class="fa fa-bars"></i></a>
                         <a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip" title=""
-                           data-original-title="Grid view">
+                            data-original-title="Grid view">
                             <i class="fa fa-th"></i></a>
                     </div>
                 </div>
@@ -152,7 +155,7 @@
                         <div class="img-wrap">
                             <span class="badge badge-danger"> NEW </span>
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -172,7 +175,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -191,7 +194,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -210,7 +213,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -229,7 +232,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -248,7 +251,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -267,7 +270,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
@@ -286,7 +289,7 @@
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
                             <img src="https://m.terem-pro.ru/upload/iblock/f50/f503b998a14db71227b0382f06b00c0a.jpg"
-                                 class="img-fluid">
+                                class="img-fluid">
                             <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
