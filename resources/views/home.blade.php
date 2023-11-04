@@ -49,7 +49,7 @@
                                         @endif
                                     </li>
                                     <li class="nav-item" style="display: flex">
-                                        <a href="{{ route('profile.edit') }}" class="mr-3" style="color: #FFFFFF">
+                                        <a href="{{ route('dashboard') }}" class="mr-3" style="color: #FFFFFF">
                                             <span class="text"> {{ Auth::user()->name }} </span>
                                         </a>
 
