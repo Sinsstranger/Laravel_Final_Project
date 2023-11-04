@@ -1,10 +1,10 @@
 @extends('layouts.public')
 @section('content')
-<header class="main-filter">
-    <h2 class="main-text">Список недвижимости</h2><br><br>
-</header>
 
 <div class="container">
+    <br><br><br> <div class="row justify-content-center mb-5 pb-3">
+        <h2 class="mb-4">Список недвижимости</h2>
+    </div>
     <div class="row">
         <aside class="col-md-3">
 
