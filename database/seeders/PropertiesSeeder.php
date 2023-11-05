@@ -24,7 +24,7 @@ class PropertiesSeeder extends Seeder
         for ($i = 0; $i <= $quantity; $i++) {
             $properties[] = [
                 'title' => "квартира " . fake()->numberBetween(1, 5) . "-комнатная",
-                'category' => "category-" . $i+1,
+                'category_id' => null,
                 'description' => fake()->text(),
                 'price_per_day' => fake()->randomFloat(2, 1000, 999999),
                 'address_id' => fake()->numberBetween(1, 10),

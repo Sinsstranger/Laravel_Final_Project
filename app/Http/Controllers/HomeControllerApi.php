@@ -12,16 +12,14 @@ class HomeControllerApi extends Controller
         private readonly PropertiesServices $propertyServices
     ) {}
 
-    protected function getProps(){
-        return $this->propertyServices->allProperties();
-    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        return response()->json(['title' => 'Сайт аренды жилья - Главная страница', 'accommodation' => $this->getProps()]);
+        $allProperties = $this->propertyServices->allProperties();
+        return view('home', ['allProperties' => $allProperties]);
     }
 
     /**

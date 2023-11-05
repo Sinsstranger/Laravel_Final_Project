@@ -60,5 +60,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Relation::class, 'tenant_id', 'id');
     }
+    public function getUserModel(int $user_id): User
+    {
+        return $this->find($user_id);
+    }
 
 }
