@@ -5645,6 +5645,7 @@ input[type="button"].btn-block {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
+    background-color: #e9ecef;
     border-radius: 0.25rem;
 }
 
@@ -11663,6 +11664,10 @@ h5,
     }
 }
 
+.navbar-nav>.nav-item>.mr-3:hover {
+    color: #002752 !important;
+}
+
 .ftco-navbar-light {
     background: transparent !important;
     position: absolute;
@@ -11691,14 +11696,14 @@ h5,
 }
 
 .ftco-navbar-light .navbar-brand {
-    color: #e88941;
+    color: #4b69bd;
     padding-top: .7rem;
     padding-bottom: .7rem;
 }
 
 .ftco-navbar-light .navbar-brand:hover,
 .ftco-navbar-light .navbar-brand:focus {
-    color: #4b69bd !important;
+    color: gold !important;
 }
 
 @media (max-width: 991.98px) {
@@ -11720,8 +11725,9 @@ h5,
     padding-bottom: .7rem;
     padding-left: 20px;
     padding-right: 20px;
-    color: #e88941;
-    font-weight: 400;
+    color: #4b69bd;
+    text-shadow: #fff 1px 0px 1px, #fff 0px 1px 1px, #fff 0px -1px 1px, #fff -1px 0px 1px;
+    font-weight: 600;
     opacity: 1 !important;
 }
 
@@ -11912,7 +11918,8 @@ h5,
 }
 
 .ftco-navbar-light.scrolled .nav-link {
-    color: #000000 !important;
+    color: #000 !important;
+    text-shadow: none !important;
 }
 
 .ftco-navbar-light.scrolled .nav-link.active {
@@ -11958,6 +11965,11 @@ h5,
 
 .owl-carousel .owl-item {
     opacity: .4;
+}
+
+.owl-item:hover {
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 
 .owl-carousel .owl-item.active {
@@ -12141,12 +12153,17 @@ h5,
 .search-location .form-group .form-field .form-control {
     border: none;
     height: 70px !important;
+    transition: background-color 1.5s ease;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
     -ms-border-radius: 40px;
     border-radius: 40px;
     padding-left: 25px;
     padding-right: 50px;
+}
+
+.form-control:hover {
+    background-color: #a9dbf7 !important;
 }
 
 @media (max-width: 991.98px) {
@@ -12209,12 +12226,12 @@ h5,
 .btn.btn-primary {
     background: #4b69bd;
     border: 1px solid #4b69bd !important;
-    color: #fff !important;
+    color: #fff;
 }
 
 .btn.btn-primary:hover {
     border: 1px solid #4b69bd;
-    background: #4b69bd;
+    background: #fff;
     color: #4b69bd;
 }
 
@@ -12255,14 +12272,14 @@ h5,
 }
 
 .btn.btn-white {
-    background: #fff !important;
+    background: #fff;
     border: 1px solid #fff !important;
-    color: #000000 !important;
+    color: #4b69bd;
 }
 
 .btn.btn-white:hover {
     border: 1px solid #000000;
-    background: #fff !important;
+    background: #4b69bd;
     color: #fff;
 }
 
@@ -13368,6 +13385,10 @@ textarea.form-control {
     display: inline-block;
 }
 
+.ftco-footer-social li:hover {
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+}
+
 .ftco-footer-social li a {
     height: 50px;
     width: 50px;
@@ -13386,6 +13407,18 @@ textarea.form-control {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     color: #fff !important;
+}
+
+.list-unstyled li .icon-long-arrow-right,
+.block-23 ul li {
+    display: inline-block;
+    transition: 0.5s ease;
+}
+
+.list-unstyled li:hover,
+.block-23 ul li:hover {
+    transition: 0.5s ease;
+    transform: translateX(15px);
 }
 
 .footer-small-nav>li {
@@ -14169,10 +14202,14 @@ textarea.form-control {
 
 .comment-list li .comment-body {
     float: right;
-    width: calc(100% - 80px); }
-.comment-body h3 {
-    font-size: 20px; }
-.comment-body .meta {
+    width: calc(100% - 80px);
+}
+
+.comment-list li .comment-body h3 {
+    font-size: 20px;
+}
+
+.comment-list li .comment-body .meta {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: .1em;
@@ -14386,55 +14423,6 @@ textarea.form-control {
 
     100% {
         stroke-dasharray: 89, 200;
-        stroke-dashoffset: -136px; } }
-
-/*стили для страницы объектов*/
-.object-title {
-    padding-top: 12px;
-    background-color: #f8f9fa;
-}
-
-.header-object .breadcrumb{
-    font-size: 12px;
-}
-
-.content-object {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: start;
-    align-content: stretch;
-}
-
-.content-object-right div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.content-object-right div .price {
-    color: #4b69bd;
-}
-.object-review {
-    background-color: #f8f9fa;
-}
-
-.details-section {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    margin: 24px 0;
-    color: black;
-}
-
-.details-section p,
-.details-section address{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.details-section .info {
-    color: #999999;
-}
-
-.carousel-item img {
-    height: 400px;
-    object-fit: scale-down;
+        stroke-dashoffset: -136px;
+    }
 }
