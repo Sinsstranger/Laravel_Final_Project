@@ -11634,13 +11634,12 @@ h5,
 }
 
 .top {
-    background: transparent !important;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 3;
-    background: rgba(0, 0, 0, 0.1) !important;
+    background: #abb2b8 !important;
     color: #fff;
     font-size: 14px;
 }
@@ -11669,7 +11668,8 @@ h5,
 }
 
 .ftco-navbar-light {
-    background: transparent !important;
+    background: linear-gradient(#abb2b8, #fff);
+    /*background: transparent !important;*/
     position: absolute;
     top: 30px;
     left: 0;
@@ -14429,11 +14429,10 @@ textarea.form-control {
 
 /*стили для страницы объектов*/
 .object-title {
-    padding-top: 12px;
-    background-color: #f8f9fa;
+    padding-top: 22px;
 }
 
-.header-object .breadcrumb{
+.header-object .breadcrumb {
     font-size: 12px;
 }
 
@@ -14453,6 +14452,7 @@ textarea.form-control {
 .content-object-right div .price {
     color: #4b69bd;
 }
+
 .object-review {
     background-color: #f8f9fa;
 }
@@ -14462,10 +14462,11 @@ textarea.form-control {
     grid-template-columns: 1fr 3fr;
     margin: 24px 0;
     color: black;
+    font-weight: 550;
 }
 
 .details-section p,
-.details-section address{
+.details-section address {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -14482,5 +14483,9 @@ textarea.form-control {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: .1em;
-    color: #ccc;
+    color: #555;
+}
+
+.list-real {
+    padding-top: 20px;
 }
