@@ -19,17 +19,21 @@ class PropertiesSeeder extends Seeder
 
     private function getData(): array
     {
-        $quantity = 12;
+        $quantity = 120;
         $properties = [];
         for ($i = 0; $i <= $quantity; $i++) {
             $properties[] = [
                 'title' => "квартира " . fake()->numberBetween(1, 5) . "-комнатная",
-                'category_id' => null,
+                'category_id' => fake()->numberBetween(1, 8),
+                'number_of_rooms' => fake()->numberBetween(1, 10),
+                'number_of_guests' => fake()->numberBetween(1, 20),
                 'description' => fake()->text(),
-                'price_per_day' => fake()->randomFloat(2, 1000, 999999),
+                'photo' => 'https://loremflickr.com/640/640/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
+                'price_per_day' => fake()->numberBetween(10000, 200000),
                 'address_id' => fake()->numberBetween(1, 10),
                 'user_id' => fake()->numberBetween(1, 3),
                 'is_temporary_registration_possible' => fake()->boolean(),
+                'daily_rent' => fake()->boolean(),
             ];
         }
         return $properties;
