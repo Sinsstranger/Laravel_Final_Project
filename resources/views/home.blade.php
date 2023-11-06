@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('title')
-    @parentГлавная страница
+    @parent Главная страница
 @endsection
 @section('content')
     <section class="hero-wrap js-fullheight" style="background-image: url('assets/images/bg_2.jpg');"

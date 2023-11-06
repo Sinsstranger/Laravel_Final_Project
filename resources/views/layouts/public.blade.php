@@ -63,7 +63,7 @@
 
                                         <a class="mr-3" href="{{ route('register') }}"
                                            style="color: #FFFFFF">
-                                            <span style="font-size:14px; font-weight: 600">РЕГИСТРАЦИЯ</span>
+                                            <span style="font-size:14px; font-weight: 600">Регистрация</span>
                                         </a>
 
                                     @endif
@@ -132,7 +132,7 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav nav ml-auto">
-                <li class="nav-item"><a href="#home-section" class="nav-link"><span>Главная</span></a></li>
+                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>Главная</span></a></li>
                 <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>Каталог</span></a></li>
                 <li class="nav-item"><a href="#about-section" class="nav-link"><span>О нас</span></a></li>
                 <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Контакты</span></a></li>
