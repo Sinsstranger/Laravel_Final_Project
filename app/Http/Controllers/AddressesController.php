@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class AddressesController extends Controller
 {
-    public function store(AddressRequest $request)
+    public function store(Request $request)
     {
-
+        dump('Он дошел до адреса!!!');
+            dd($request);
     }
 }

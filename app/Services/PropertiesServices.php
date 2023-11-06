@@ -2,11 +2,14 @@
 
 namespace App\Services;
 
+use App\Http\Requests\AddressRequest;
+use App\Models\Address;
 use App\Models\Category;
 use App\Models\Property;
 use App\Models\User;
 use App\Services\Interfaces\PropertyInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PropertiesServices implements PropertyInterface
@@ -14,8 +17,10 @@ class PropertiesServices implements PropertyInterface
 
     public function __construct
     (
-        private Property $property,
-        private Category $category,
+        protected Property $property,
+        protected Category $category,
+        protected Address $address,
+        protected User $user
     ) {}
 
     public function allProperties(): Collection
@@ -42,5 +47,12 @@ class PropertiesServices implements PropertyInterface
     public function getAllCategoriesProperty(): Collection
     {
         return $this->category->getAllCategories();
+    }
+    public function create(array $dataProperty, array $dataAddress)
+    {
+        $user = $this->user->find(Auth::user()->getAuthIdentifier());
+        $address = $this->address->createModel($dataAddress);
+
+        return $this->property->createModel($dataProperty, $user, $address);
     }
 }

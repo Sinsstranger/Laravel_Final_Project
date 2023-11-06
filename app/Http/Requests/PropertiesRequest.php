@@ -35,6 +35,7 @@ class PropertiesRequest extends FormRequest
             'price_per_day' => ['required', 'numeric', 'regex:/^\d*(\.\d{1,2})?$/'],
             'address_id' => ['required', 'integer', "exists:{$tableNameAddresses},id"],
             'user_id' => ['required', 'integer', "exists:{$tableNameUsers},id"],
+            'is_temporary_registration_possible' => ['nullable', 'boolean']
         ];
     }
 }
