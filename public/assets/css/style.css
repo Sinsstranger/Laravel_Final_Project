@@ -14426,3 +14426,61 @@ textarea.form-control {
         stroke-dashoffset: -136px;
     }
 }
+
+/*стили для страницы объектов*/
+.object-title {
+    padding-top: 12px;
+    background-color: #f8f9fa;
+}
+
+.header-object .breadcrumb{
+    font-size: 12px;
+}
+
+.content-object {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: start;
+    align-content: stretch;
+}
+
+.content-object-right div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-object-right div .price {
+    color: #4b69bd;
+}
+.object-review {
+    background-color: #f8f9fa;
+}
+
+.details-section {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 24px 0;
+    color: black;
+}
+
+.details-section p,
+.details-section address{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details-section .info {
+    color: #999999;
+}
+
+.carousel-item img {
+    height: 400px;
+    object-fit: scale-down;
+}
+
+.review-body .date {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .1em;
+    color: #ccc;
+}

@@ -36,6 +36,9 @@
                         <h5 class="price">{{ $property->price_per_day }}₽</h5>
                     </div>
                     <p>{{ $property->description }}</p>
+                    <!--<div class="form-group">
+                        <input type="submit" value="Забронировать" class="btn btn-primary py-3 px-5">
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -129,18 +132,18 @@
             <h4>Отзывы</h4>
                 <hr>
                 <!--Запустить через foreach-->
-                <div class="comment-body">
+                <div class="review-body">
                     <h5>Мессир Воланд</h5>
                     <!--<p>Рейтинг</p>-->
-                    <p class="meta">4 ноября 2023</p>
+                    <p class="date">4 ноября 2023</p>
                     <p>Теперь мне есть, где выпить чашечку кофе в спокойной обстановке.</p>
                 </div>
                 <hr>
                 <div>
-                    <div class="comment-body">
+                    <div class="review-body">
                         <h5>Имя пользователя</h5>
                         <!--<p>Рейтинг</p>-->
-                        <p class="meta">Дата</p>
+                        <p class="date">Дата</p>
                         <p>Текст отзыва</p>
                     </div>
                 <hr>
