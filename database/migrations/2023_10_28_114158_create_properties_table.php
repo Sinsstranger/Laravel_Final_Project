@@ -14,19 +14,20 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title', 120);
-            // $table->foreignId('category_id')
-            //     ->constrained('categories')
-            //     ->nullable();
-            $table->integer('category_id')->nullable();
+            $table->foreignId('category_id')
+                ->constrained('categories');
+            $table->tinyInteger('number_of_rooms');
+            $table->tinyInteger('number_of_guests');
             $table->text('description');
-            $table->decimal('price_per_day', 9, 2);
+            $table->string('photo');
+            $table->decimal('price_per_day', 6, 0);
             $table->foreignId('address_id')
-                ->constrained('addresses')
-                ->nullable();
+                ->constrained('addresses');
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
-            $table->boolean('is_temporary_registration_possible')->default(0);
+            $table->boolean('is_temporary_registration_possible')->default(0);;
+            $table->boolean('daily_rent');
             $table->timestamps();
         });
     }
