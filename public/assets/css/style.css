@@ -11579,7 +11579,7 @@ a.text-dark:focus {
 }
 
 body {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: #fff;
     font-size: 16px;
     line-height: 1.8;
@@ -12074,7 +12074,7 @@ h5,
 }
 
 .slider-text .icon-video span.watch {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-transform: uppercase;
 }
@@ -13006,7 +13006,7 @@ h5,
 }
 
 .day-wrap h3 {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -13159,7 +13159,7 @@ h5,
 .ftco-services-2 .services .media-body h3 {
     font-size: 20px;
     font-weight: 500;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .aside-stretch {
@@ -14435,32 +14435,48 @@ textarea.form-control {
 
 .header-object .breadcrumb{
     font-size: 12px;
+    background-color: unset;
 }
 
-.content-object {
+.object-content {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+"description-section rent-section"
+"smth-div rent-section";
+    grid-template-rows: auto;
+    grid-column-gap: 2%;
+}
+
+.description-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     align-items: start;
     align-content: stretch;
 }
 
-.content-object-right div {
+.description-content-left img {
+    padding-right: 5%;
+    width: 100%;
+}
+
+.description-content-left img:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.description-content-right div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.content-object-right div .price {
+.description-content-right div .price {
     color: #4b69bd;
 }
-.object-review {
-    background-color: #f8f9fa;
-}
 
-.details-section {
+.details-content {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    margin: 24px 0;
+    grid-template-columns: 1.4fr 2fr;
+    margin: 24px 0 0 0;
     color: black;
 }
 
@@ -14471,6 +14487,85 @@ textarea.form-control {
 
 .details-section .info {
     color: #999999;
+}
+
+.rent-section {
+    padding: 24px 0;
+    background: #4b69bd;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    position: sticky;
+    top: 78px;
+    z-index: 3;
+}
+
+.rent-section h4 {
+    color: #FFFFFF;
+}
+
+.rent-section .form-check-rent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.rent-section input {
+    margin-bottom: 5%;
+}
+
+.rent-section .form-check-label-rent {
+    margin: 0 20px 10px 10px;
+    line-height: 13px;
+}
+
+.rent-section .hidden {
+    display: none;
+}
+
+.rent-section .rent-radio {
+    margin: 0;
+}
+
+.rent-section input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+}
+
+.rent-section input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #e88941 ;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+}
+
+.rent-section input[type='number'] {
+    border: 1px solid #EAEAEA;
+    width: 60px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-weight: 300;
+}
+
+.photo-section .carousel {
+    padding: 5% 0%;
 }
 
 .carousel-item img {
