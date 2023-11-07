@@ -2,6 +2,9 @@
 @section('title')
     @parent{{ $property->title }}
 @endsection
+@section('style')
+    @parent<link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
+@endsection
 @section('content')
     <br>
     <br>
@@ -28,7 +31,7 @@
     <section class="description-section container">
             <div class="description-content">
                <div class="description-content-left">
-                   <img src="{{ asset("assets/images/work-6.jpg") }}">
+                   <img src="{{ asset("assets/images/work-9.jpg") }}">
                </div>
                 <div class="description-content-right">
                     <div>
@@ -58,7 +61,7 @@
                     <input type="date" name="calendar" value="{{ now() }}" min="{{ now() }}" required>
                     <div>
                         <p>Количество гостей</p>
-                        <input type="number" placeholder="1" min="1" step="1" value="1" required="">
+                        <input type="number" name="guests" step="1" value="0" required>
                     </div>
                     @if($property->is_temporary_registration_possible)
                         <p class="rent-radio">Нужна временная регистрация</p>
