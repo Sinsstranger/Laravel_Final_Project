@@ -7,6 +7,7 @@ use App\Services\Interfaces\PropertyInterface;
 use App\Services\PropertiesServices;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Filters\PropertyFilter;
 
 class HomeController extends Controller
 {
@@ -33,9 +34,9 @@ class HomeController extends Controller
     {
         return \view('home');
     }
-    public function properties(): View
+    public function properties(PropertyFilter $request): View
     {
-        $properties = Property::paginate(9);
+        $properties = Property::filter($request)->paginate(9);
         return \view('properties/index', ['title'=>'props', 'properties' => $properties]);
     }
 

@@ -28,17 +28,17 @@
                     <div class="filter-content collapse show" id="collapse_1" style="">
                         <div class="card-body">
                             <ul class="list-menu">
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="houses">Дома
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="houses" disabled>Дома
                                 </li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="cottages">Коттеджи
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="cottages" disabled>Коттеджи
                                 </li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="flats">Квартиры
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="flats" disabled>Квартиры
                                 </li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="hostels">Хостелы
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="hostels" disabled>Хостелы
                                 </li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="rooms">Комнаты
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="rooms" disabled>Комнаты
                                 </li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="campings">Турбазы
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="campings" disabled>Турбазы
                                 </li>
                             </ul>
                         </div>
@@ -52,9 +52,9 @@
                     <div class="filter-content collapse show" id="collapse_2">
                         <div class="card-body">
                             <ul class="list-menu">
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="daily">Посуточно
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="daily" disabled>Посуточно
                                 </li>
-                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="longtime">На
+                                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="longtime" disabled>На
                                     длительный срок
                                 </li>
                             </ul>
@@ -82,15 +82,15 @@
                     </header>
                     <div class="filter-content collapse show" id="collapse_3" style="">
                         <div class="card-body">
-                            <input type="range" class="custom-range" min="0" max="100" name="">
+                            <input type="range" class="custom-range" min="0" max="100" name="" disabled>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Min</label>
-                                    <input type="number" class="form-control" name="min-price" placeholder="0">
+                                    <input type="number" class="form-control" name="min-price" placeholder="0" disabled>
                                 </div>
                                 <div class="form-group text-right col-md-6">
                                     <label>Max</label>
-                                    <input type="number" class="form-control" name="max-price" placeholder="100000">
+                                    <input type="number" class="form-control" name="max-price" placeholder="100000" disabled>
                                 </div>
                             </div>
                             {{-- <button class="btn btn-block btn-primary">Применить</button> --}}
@@ -105,19 +105,19 @@
                     <div class="filter-content collapse show" id="collapse_4">
                         <ul class="list-menu">
                             <li class="checkbox-btn">
-                                <input type="radio" name="guests" value="1">
+                                <input type="radio" name="number_of_guests" value="1">
                                 1
                             </li>
                             <li class="checkbox-btn">
-                                <input type="radio" name="guests" value="2">
+                                <input type="radio" name="number_of_guests" value="2">
                                 2
                             </li>
                             <li class="checkbox-btn">
-                                <input type="radio" name="guests" value="3">
+                                <input type="radio" name="number_of_guests" value="3">
                                 3
                             </li>
                             <li class="checkbox-btn">
-                                <input type="radio" name="guests" value="0">
+                                <input type="radio" name="number_of_guests" value="-1">
                                 Более
                             </li>
                         </ul>
@@ -179,7 +179,7 @@
                 Нет Объектов.
                 @endforelse
             </div>
-            {{$properties->links()}}
+            {{$properties->withQueryString()->links()}}
             {{--<nav class="mt-4" aria-label="Page navigation sample">
                     <ul class="pagination">
                         <li class="page-item disabled"><a class="page-link" href="#">Пред.</a></li>
