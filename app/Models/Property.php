@@ -28,7 +28,7 @@ class Property extends Model
 
     public function address(): BelongsTo
     {
-        return $this->belongsTo(Address::class,'address_id', 'address_id');
+        return $this->belongsTo(Address::class,'address_id', 'id');
     }
 
     public function deal(): BelongsTo
