@@ -33,13 +33,3 @@ class AddressesSeeder extends Seeder
 
 
 }
-
-// [
-            //     'category' => '',
-            //     'country' => '',
-            //     'place' => '',
-            //     'street' => '',
-            //     'house_number' => ,
-            //     'flat' => ,
-            //     'user_id' =>
-            // ],
