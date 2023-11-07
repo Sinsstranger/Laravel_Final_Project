@@ -1,79 +1,57 @@
 @extends('layouts/app')
 @section('content')
-    <div class="container">
+    <div class="container" style="display: flex;">
+            <!doctype html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <title>Card edit</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        </head>
 
-        <form method="post" action="{{ route('user.properties.store') }}">
-            @csrf
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Заголовок</label>
-                <input name="title" type="text" class="form-control" id="exampleFormControlInput1" >
-            </div>
-            <div class="mb-3">
-                Категория
-                <select name="category_id">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Описание</label>
-                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Цена</label>
-                <input name="price_per_day" type="number" class="form-control" id="exampleFormControlInput1" >
-            </div>
-            <div class="mb-3">
-
-{{--                <div class="form-check">--}}
-{{--                    <input class="form-check-input" type="radio" name="my_address" id="flexRadioDefault2" checked>--}}
-{{--                    <label class="form-check-label" for="flexRadioDefault2">--}}
-{{--                        Мои сохраненные адреса:--}}
-{{--                    </label>--}}
-{{--                </div>--}}
-{{--                @if(isset($user->property))--}}
-{{--                <select name="address_id">--}}
-{{--                    @foreach($user->property as $property)--}}
-{{--                         <option value="{{ $property->address->id }}"> {{$property->category->title . ' - ' . $property->address->street }} </option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--                @endif--}}
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="new_address" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Добавить новое объявление
-                    </label>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Страна</label>
-                        <input name="country" type="text" class="form-control" id="exampleFormControlInput1" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Город/поселок</label>
-                        <input name="place" type="text" class="form-control" id="exampleFormControlInput1" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Улица</label>
-                        <input name="street" type="text" class="form-control" id="exampleFormControlInput1" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Дом</label>
-                        <input name="house_number" type="text" class="form-control" id="exampleFormControlInput1" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Квартира</label>
-                        <input name="flat_number" type="text" class="form-control" id="exampleFormControlInput1" >
-                    </div>
+        {{-- @foreach --}}
+            <body class="p-3 m-0 border-0 bd-example">
+                <div class="card" style="width: 23rem; margin-top: 30px;">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+                <div class="card-body">
+                    <h5 class="card-title"><textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">Заголовок</textarea></h5>
+                    <p class="card-text"><textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">Some quick example text to build on the card title and make up the bulk of the card's content.</textarea></p>
                 </div>
-
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Временная регистрация</label>
-                <input name="is_temporary_registration_possible" type="checkbox" value="1" id="exampleFormControlInput1" >
-            </div>
-            <button class="btn btn-primary" type="submit">Отправить</button>
-        </form>
-    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Категория
+                        <select name="category_id">
+                        @foreach($categories as $category)
+                            <option selected>{{ $category->title }}</option>
+                        @endforeach
+                    </select></li>
+                    <li class="list-group-item">Описание
+                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="exampleFormControlInput1" class="form-label">Цена</label>
+                        <input name="price_per_day" type="number" class="form-control" id="exampleFormControlInput1" >
+                    </li>
+                    <li class="list-group-item">
+                        Адрес:
+                        <select style="margin-left: 5px;" name="address_id">
+                            <option>Адрес</option>
+                        </select>
+                    </li>
+                    <li class="list-group-item">Добавить ранее сохранённое объявление
+                        <select style="margin-top: 5px;" name="address_id">
+                            <option>Категория квартиры</option>
+                            <option>Адрес</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Сохранить</a>
+                    <a href="#" class="card-link">Отменить изменения</a>
+                </div>
+            </body>
+        {{-- @endforeach --}}
+    </html>
 @endsection
