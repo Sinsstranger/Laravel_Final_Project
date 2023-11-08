@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertiesController;
@@ -42,6 +43,7 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function () {
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(function () {
     Route::get('/', AdminController::class)->name('index');
+    Route::resource('users',AdminUserController::class);
 });
 
 require __DIR__ . '/auth.php';
