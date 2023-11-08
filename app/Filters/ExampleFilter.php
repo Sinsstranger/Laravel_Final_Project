@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-class ProductFilter extends QueryFilter{
+class ExampleFilter extends QueryFilter{
     public function category_id($id = null){
         return $this->builder->when($id, function($query) use($id){
             $query->where('category_id', $id);
