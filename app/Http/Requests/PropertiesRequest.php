@@ -25,16 +25,20 @@ class PropertiesRequest extends FormRequest
      */
     public function rules(): array
     {
-        $tableNameProperties = (new Property())->getTable();
-        $tableNameAddresses = (new Address())->getTable();
-        $tableNameUsers = (new User())->getTable();
+
         return [
-            'title' => ['required','string', 'max:255'],
-            'category_id' => ['required', 'integer', "exists:{$tableNameProperties},id"],
-            'description' => ['required', 'string', 'max:255'],
-            'price_per_day' => ['required', 'numeric', 'regex:/^\d*(\.\d{1,2})?$/'],
-            'address_id' => ['required', 'integer', "exists:{$tableNameAddresses},id"],
-            'user_id' => ['required', 'integer', "exists:{$tableNameUsers},id"],
+            'title' => 'required|string|max:120',
+            'category_id' => 'required|integer|exists:properties,id',
+            'number_of_rooms' => 'required|integer',
+            'number_of_guests' =>  'required|integer',
+            'description' => 'required|string|max:255',
+            'price_per_day' => 'required|integer|regex:/^\d*(\.\d{1,2})?$/',
+
+            'country' => 'required|string|max:150',
+            'place' => 'required|string|max:150',
+            'street' => 'required|string|max:150',
+            'house_number' => 'required|integer',
+            'flat_number' => 'nullable|integer',
         ];
     }
 }

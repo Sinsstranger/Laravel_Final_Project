@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('user')->name('user.')->middleware('auth')->group(function () {
     Route::resource('properties', PropertiesController::class);
+    Route::resource('addresses', \App\Http\Controllers\AddressesController::class);
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(function () {

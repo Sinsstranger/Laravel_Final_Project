@@ -26,8 +26,8 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
-            $table->boolean('is_temporary_registration_possible');
-            $table->boolean('daily_rent');
+            $table->boolean('is_temporary_registration_possible')->default(0);;
+            $table->boolean('daily_rent')->default(0);
             $table->timestamps();
         });
     }

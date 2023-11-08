@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 
+
 class Property extends Model
 {
     use HasFactory;
@@ -27,6 +28,11 @@ class Property extends Model
         'daily_rent'
     ];
 
+    protected $casts = [
+        'is_temporary_registration_possible' => 'boolean',
+        'daily_rent' => 'boolean',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
@@ -41,7 +47,6 @@ class Property extends Model
     {
         return $this->belongsTo(Deal::class, 'property_id', 'id');
     }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -50,9 +55,23 @@ class Property extends Model
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }
-
-
-
+    public function createModel(array $data): bool
+    {
+        $property = $this->firstOrCreate([
+            'title' => $data['title'],
+            'category_id' => $data['category_id'],
+            'number_of_rooms' => $data['number_of_rooms'],
+            'number_of_guests' => $data['number_of_guests'],
+            'description' => $data['description'],
+            'photo' => $data['photo'],
+            'price_per_day' => $data['price_per_day'],
+            'address_id' => $data['address_id'],
+            'user_id' => $data['user_id'],
+            'is_temporary_registration_possible' => isset($data['is_temporary_registration_possible']),
+            'daily_rent' => isset($data['daily_rent'])
+        ]);
+        return $property->save();
+    }
 
 
 }

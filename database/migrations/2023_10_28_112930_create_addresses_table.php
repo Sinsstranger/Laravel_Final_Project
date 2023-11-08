@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('place', 150);
             $table->string('street', 150);
             $table->integer('house_number');
-            $table->integer('flat_number');
+            $table->integer('flat_number')->nullable();
             $table->timestamps();
         });
     }

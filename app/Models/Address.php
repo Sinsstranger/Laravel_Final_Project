@@ -24,4 +24,16 @@ class Address extends Model
     {
         return $this->hasOne(Property::class, 'address_id', 'id');
     }
+    public function createModel(array $data): Address
+    {
+        $address = Address::firstOrCreate([
+            'country' => $data['country'],
+            'place' => $data['place'],
+            'street' => $data['street'] ,
+            'house_number' => $data['house_number'],
+            'flat_number' => isset($data['flat_number'])
+        ]);
+        $address->save();
+        return $address;
+    }
 }
