@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset("assets/css/flaticon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-    @section('style')@show
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -80,7 +80,8 @@
                                         @endif
                                 </li>
                                 <li class="nav-item" style="display: flex">
-                                    <a href="{{ route('dashboard') }}" class="mr-3" style="color: #FFFFFF">
+                                    <a href="{{ route('dashboard') }}" class="mr-3 link-text"
+                                       style="color: #FFFFFF">
                                         <span class="text"> {{ Auth::user()->name }} </span>
                                     </a>
 

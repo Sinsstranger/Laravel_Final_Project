@@ -42,7 +42,17 @@ class Property extends Model
         return $this->belongsTo(Deal::class, 'property_id', 'id');
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }
+
+
+
+
+
 }
