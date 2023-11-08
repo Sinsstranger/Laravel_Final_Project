@@ -11665,7 +11665,7 @@ h5,
 }
 
 .navbar-nav>.nav-item>.mr-3:hover {
-    color: #002752 !important;
+    color: #4b69bd !important;
 }
 
 .ftco-navbar-light {
@@ -11704,7 +11704,7 @@ h5,
 
 .ftco-navbar-light .navbar-brand:hover,
 .ftco-navbar-light .navbar-brand:focus {
-    color: gold !important;
+    color: #f4c430 !important;
 }
 
 @media (max-width: 991.98px) {
@@ -11727,7 +11727,6 @@ h5,
     padding-left: 20px;
     padding-right: 20px;
     color: #4b69bd;
-    text-shadow: #fff 1px 0px 1px, #fff 0px 1px 1px, #fff 0px -1px 1px, #fff -1px 0px 1px;
     font-weight: 600;
     opacity: 1 !important;
 }
@@ -11952,7 +11951,7 @@ h5,
 }
 
 .navbar-brand {
-    font-weight: 900;
+    font-weight: 700;
     font-size: 24px;
 }
 
@@ -12081,10 +12080,10 @@ h5,
 }
 
 .slider-text h1 {
-    font-size: 48px;
-    color: #000000;
+    font-size: 40px;
+    color: #252d2f;
     line-height: 1.2;
-    font-weight: 800;
+    font-weight: 500;
 }
 
 @media (max-width: 991.98px) {

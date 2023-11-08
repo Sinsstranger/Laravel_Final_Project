@@ -53,7 +53,7 @@
                                         <a class="mr-3" href="{{ route('login') }}"
                                            style="color: #FFFFFF">
                                                     <span
-                                                        style="font-size:14px; font-weight: 600">ВОЙТИ
+                                                        style="font-size:14px; font-weight: 500">Войти
                                                     </span>
                                         </a>
 
@@ -63,7 +63,7 @@
 
                                         <a class="mr-3" href="{{ route('register') }}"
                                            style="color: #FFFFFF">
-                                            <span style="font-size:14px; font-weight: 600">Регистрация</span>
+                                            <span style="font-size:14px; font-weight: 500">Регистрация</span>
                                         </a>
 
                                     @endif
@@ -124,7 +124,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
      id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="/">«Золотой ключик»</a>
+        <a class="navbar-brand" href="/">"ЗОЛОТОЙ КЛЮЧИК"</a>
         <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Меню
@@ -132,10 +132,10 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav nav ml-auto">
-                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>Главная</span></a></li>
-                <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>Каталог</span></a></li>
-                <li class="nav-item"><a href="#about-section" class="nav-link"><span>О нас</span></a></li>
-                <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Контакты</span></a></li>
+                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>ГЛАВНАЯ</span></a></li>
+                <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>КАТАЛОГ</span></a></li>
+                <li class="nav-item"><a href="#about-section" class="nav-link"><span>О НАС</span></a></li>
+                <li class="nav-item"><a href="#contact-section" class="nav-link"><span>КОНТАКТЫ</span></a></li>
             </ul>
         </div>
     </div>
