@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset("assets/css/open-iconic-bootstrap.min.css") }}">
@@ -22,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset("assets/css/flaticon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    @section('style')@show
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -53,7 +56,7 @@
                                         <a class="mr-3" href="{{ route('login') }}"
                                            style="color: #FFFFFF">
                                                     <span
-                                                        style="font-size:14px; font-weight: 600">ВОЙТИ
+                                                        style="font-size:14px; font-weight: 500">Войти
                                                     </span>
                                         </a>
 
@@ -63,7 +66,7 @@
 
                                         <a class="mr-3" href="{{ route('register') }}"
                                            style="color: #FFFFFF">
-                                            <span style="font-size:14px; font-weight: 600">Регистрация</span>
+                                            <span style="font-size:14px; font-weight: 500">Регистрация</span>
                                         </a>
 
                                     @endif
@@ -77,7 +80,8 @@
                                         @endif
                                 </li>
                                 <li class="nav-item" style="display: flex">
-                                    <a href="{{ route('dashboard') }}" class="mr-3" style="color: #FFFFFF">
+                                    <a href="{{ route('dashboard') }}" class="mr-3 link-text"
+                                       style="color: #FFFFFF">
                                         <span class="text"> {{ Auth::user()->name }} </span>
                                     </a>
 
@@ -124,7 +128,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
      id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="/">«Золотой ключик»</a>
+        <a class="navbar-brand" href="/">"ЗОЛОТОЙ КЛЮЧИК"</a>
         <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Меню
@@ -132,10 +136,10 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav nav ml-auto">
-                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>Главная</span></a></li>
-                <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>Каталог</span></a></li>
-                <li class="nav-item"><a href="#about-section" class="nav-link"><span>О нас</span></a></li>
-                <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Контакты</span></a></li>
+                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>ГЛАВНАЯ</span></a></li>
+                <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>КАТАЛОГ</span></a></li>
+                <li class="nav-item"><a href="{{ route('about') }}" class="nav-link"><span>О НАС</span></a></li>
+                <li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link"><span>КОНТАКТЫ</span></a></li>
             </ul>
         </div>
     </div>
