@@ -28,7 +28,7 @@ class PropertiesServices implements PropertyInterface
 
     public function allProperties(): Collection
     {
-        return $this->property->all();
+        return $this->property->getAllProperties();
     }
 
     public function showProperty(): Property
@@ -76,5 +76,18 @@ class PropertiesServices implements PropertyInterface
         ]);
         $path = Storage::putFile("public/images/property/{$data['photo']}", $request->file('photo'));
         return Storage::url($path);
+    }
+    public function updateProperty(PropertiesRequest $request, Property $property): bool
+    {
+        $dataProperty = $request->only('title','category_id', 'number_of_rooms', 'number_of_guests', 'description' , 'photo', 'daily_rent', 'price_per_day', 'address_id' , 'user_id', 'is_temporary_registration_possible');
+        if ($request->file('photo')) {
+            $url = $this->urlImage($dataProperty, $request);
+            $dataProperty['photo'] = $url;
+        }
+        return $this->property->updatePropertyModel($dataProperty, $property);
+    }
+    public function destroyProperty(Property $property): bool
+    {
+        return $this->property->deleteProperty($property);
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
+
 
 
 class Property extends Model
@@ -55,6 +57,10 @@ class Property extends Model
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }
+    public function getAllProperties(): Collection
+    {
+        return $this->all();
+    }
     public function createModel(array $data): bool
     {
         $property = $this->firstOrCreate([
@@ -71,6 +77,15 @@ class Property extends Model
             'daily_rent' => isset($data['daily_rent'])
         ]);
         return $property->save();
+    }
+    public function updatePropertyModel(array $data, Property $property): bool
+    {
+        $property->fill($data);
+        return $property->save();
+    }
+    public function deleteProperty(Property $property): bool
+    {
+        return $property->delete();
     }
 
 

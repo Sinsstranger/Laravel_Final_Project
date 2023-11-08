@@ -15,16 +15,13 @@ class HomeController extends Controller
 
     public function __construct
     (
-        private readonly PropertiesServices $propertyServices
+        private PropertiesServices $propertyServices
     ) {}
 
-    protected function getProps(){
-        return $this->propertyServices->allProperties();
-    }
 
     public function index(): View
     {
-        $allProperties = $this->getProps();
+        $allProperties = $this->propertyServices->allProperties();
 
         return \view('home', ['allProperties' => $allProperties, 'title' => 'Сайт аренды жилья - Главная страница']);
     }

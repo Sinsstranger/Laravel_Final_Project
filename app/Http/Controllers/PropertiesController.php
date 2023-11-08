@@ -12,6 +12,7 @@ use App\Services\Interfaces\UserInterface;
 use App\Services\PropertiesServices;
 
 use App\Services\UsersServices;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -28,6 +29,7 @@ class PropertiesController extends Controller
     public function index(): View
     {
         $propertiesUser = $this->propertyServices->getPropertiesByUserId(Auth::user()->getAuthIdentifier());
+
         return \view('user/properties/index', ['propertiesUser' => $propertiesUser]);
     }
     public function edit(Property $property): View
@@ -55,8 +57,25 @@ class PropertiesController extends Controller
 
         $propertySave = $this->propertyServices->createProperty($request, $address);
         if ($propertySave) {
-            return redirect()->route('user.properties.index');
+            return redirect()->route('user.properties.index')->with('success', 'Объявление опубликовано');
         }
         return back()->with('error', 'Не удалось создать объявление');
+    }
+    public function update(PropertiesRequest $request, Property $property): RedirectResponse
+    {
+         $saveProperty = $this->propertyServices->updateProperty($request, $property);
+         if ($saveProperty) {
+             return redirect()->route('user.properties.index')->with('success', 'Объявление успешно отредактировано');
+         }
+         return back()->with('error', 'Не удалось внести изменения');
+
+    }
+    public function destroy(Property $property): RedirectResponse
+    {
+        $deleteProperty = $this->propertyServices->destroyProperty($property);
+        if ($deleteProperty) {
+            return redirect()->route('user.properties.index')->with('success', 'Объявление удалено');
+        }
+        return back()->with('error', 'Объявление не удалено');
     }
 }

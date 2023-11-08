@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('photo');
             $table->decimal('price_per_day', 6, 0);
             $table->foreignId('address_id')
-                ->constrained('addresses');
+                ->constrained('addresses')->cascadeOnDelete();
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();

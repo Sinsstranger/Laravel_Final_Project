@@ -130,6 +130,13 @@
                                                     </a>
                                     </x-primary-button>
                                 </div>
+                                <div class="flex items-center gap-4">
+                                        <form method="post" action="{{ route('user.properties.destroy', $property) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <x-primary-button :type="'submit'"> Удалить объявление</x-primary-button>
+                                        </form>
+                                </div>
                             </li>
 
                         </ul>
