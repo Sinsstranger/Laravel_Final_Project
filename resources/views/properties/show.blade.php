@@ -85,7 +85,7 @@
     подробности
     Возможность временной регистрации (как делаем? Строка в описании + глаочка в форме бронирования нужна/нет?)-->
         <div class="object-content-details">
-            <section class="details-section container">
+            <section class="details-section-1 container">
 
                 <div class="details-content">
                     <p>Тип жилья</p>
