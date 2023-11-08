@@ -1,9 +1,13 @@
-/*стили для страницы объектов*/
+/*стили для страницы объектов и каталога*/
 .object-title {
     padding-top: 12px;
-    background-image: url('/assets/images/estate-man.jpg');
-    background-position: 50% 0%;
+    background-image: url('/assets/images/real-estate.jpg');
+    background-position: 100% 0%;
     height: 340px;
+}
+
+.object-title-catalog {
+    background-image: url('/assets/images/estate-man.jpg');
 }
 
 .header-object {
@@ -24,9 +28,13 @@
     display: grid;
     grid-template-areas:
 "description-section rent-section"
-"smth-div rent-section";
+"object-content-details rent-section";
     grid-template-rows: auto;
     grid-column-gap: 2%;
+    margin-top: 24px;
+}
+
+.property-content {
     margin-top: 24px;
 }
 
@@ -36,14 +44,9 @@
     align-items: start;
     align-content: stretch;
 }
-
 .description-content-left img {
     padding-right: 5%;
     width: 100%;
-}
-
-.description-content-left img:hover {
-    transform: scale(1.1, 1.1);
 }
 
 .description-content-right div {
@@ -54,6 +57,25 @@
 
 .description-content-right div .price {
     color: #4b69bd;
+}
+
+.properties_grid .properties {
+    margin: 0;
+}
+
+.properties .desc .pt-5 {
+    padding-top: 1rem !important;
+}
+
+.properties .desc .price {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.properties .desc .title a {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
 }
 
 .details-content {
