@@ -138,8 +138,8 @@
             <ul class="navbar-nav nav ml-auto">
                 <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>ГЛАВНАЯ</span></a></li>
                 <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>КАТАЛОГ</span></a></li>
-                <li class="nav-item"><a href="#about-section" class="nav-link"><span>О НАС</span></a></li>
-                <li class="nav-item"><a href="#contact-section" class="nav-link"><span>КОНТАКТЫ</span></a></li>
+                <li class="nav-item"><a href="{{ route('about') }}" class="nav-link"><span>О НАС</span></a></li>
+                <li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link"><span>КОНТАКТЫ</span></a></li>
             </ul>
         </div>
     </div>
