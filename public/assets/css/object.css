@@ -85,12 +85,12 @@
     color: black;
 }
 
-.details-section p,
-.details-section address{
+.details-section-1 p,
+.details-section-1 address{
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.details-section .info {
+.details-section-1 .info {
     color: #999999;
 }
 

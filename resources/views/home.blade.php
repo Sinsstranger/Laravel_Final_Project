@@ -45,6 +45,9 @@
                 <div class="col-md-12">
                     <div class="carousel-properties owl-carousel">
                         @foreach($allProperties as $prop)
+                            @if($loop->iteration > 9)
+                                @break
+                            @endif
                             <div class="item">
                                 <div class="properties ftco-animate">
                                     <div class="img">
