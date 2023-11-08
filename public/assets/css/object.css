@@ -1,0 +1,186 @@
+/*стили для страницы объектов и каталога*/
+.object-title {
+    padding-top: 12px;
+    background-image: url('/assets/images/real-estate.jpg');
+    background-position: 100% 0%;
+    height: 340px;
+}
+
+.object-title-catalog {
+    background-image: url('/assets/images/estate-man.jpg');
+}
+
+.header-object {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 330px;
+    position: relative;
+}
+
+.header-object .breadcrumb{
+    font-size: 12px;
+    background-color: unset;
+    padding: 0;
+}
+
+.object-content {
+    display: grid;
+    grid-template-areas:
+"description-section rent-section"
+"object-content-details rent-section";
+    grid-template-rows: auto;
+    grid-column-gap: 2%;
+    margin-top: 24px;
+}
+
+.property-content {
+    margin-top: 24px;
+}
+
+.description-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    align-content: stretch;
+}
+.description-content-left img {
+    padding-right: 5%;
+    width: 100%;
+}
+
+.description-content-right div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description-content-right div .price {
+    color: #4b69bd;
+}
+
+.properties_grid .properties {
+    margin: 0;
+}
+
+.properties .desc .pt-5 {
+    padding-top: 1rem !important;
+}
+
+.properties .desc .price {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.properties .desc .title a {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+}
+
+.details-content {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    margin: 24px 0 0 0;
+    color: black;
+}
+
+.details-section p,
+.details-section address{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details-section .info {
+    color: #999999;
+}
+
+.rent-section {
+    padding: 24px 0;
+    background: #4b69bd;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    position: sticky;
+    top: 78px;
+    z-index: 3;
+}
+
+.rent-section h4 {
+    color: #FFFFFF;
+}
+
+.rent-section .form-check-rent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.rent-section input {
+    margin-bottom: 5%;
+}
+
+.rent-section .form-check-label-rent {
+    margin: 0 20px 10px 10px;
+    line-height: 13px;
+}
+
+.rent-section .hidden {
+    display: none;
+}
+
+.rent-section .rent-radio {
+    margin: 0;
+}
+
+.rent-section input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+}
+
+.rent-section input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #e88941 ;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+}
+
+.rent-section input[type='number'] {
+    border: 1px solid #EAEAEA;
+    width: 60px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-weight: 300;
+}
+
+.photo-section .carousel {
+    padding: 5% 0%;
+}
+
+.carousel-item img {
+    height: 400px;
+    object-fit: scale-down;
+}
+
+.review-body .date {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .1em;
+    color: #ccc;
+}

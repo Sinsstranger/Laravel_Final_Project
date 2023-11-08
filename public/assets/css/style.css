@@ -115,7 +115,6 @@ address {
     line-height: inherit;
 }
 
-
 ol,
 ul,
 dl {
@@ -711,7 +710,8 @@ pre code {
 .properties_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 3%;
+    margin-bottom: 4em;
 }
 
 /*- Васенин С.А. 2023-11-04*/
@@ -11580,7 +11580,7 @@ a.text-dark:focus {
 }
 
 body {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: #fff;
     font-size: 16px;
     line-height: 1.8;
@@ -11635,12 +11635,13 @@ h5,
 }
 
 .top {
+    background: transparent !important;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 3;
-    background: #abb2b8 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
     color: #fff;
     font-size: 14px;
 }
@@ -11669,8 +11670,7 @@ h5,
 }
 
 .ftco-navbar-light {
-    background: linear-gradient(#abb2b8, #fff);
-    /*background: transparent !important;*/
+    background: transparent !important;
     position: absolute;
     top: 30px;
     left: 0;
@@ -12074,7 +12074,7 @@ h5,
 }
 
 .slider-text .icon-video span.watch {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-transform: uppercase;
 }
@@ -13006,7 +13006,7 @@ h5,
 }
 
 .day-wrap h3 {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -13159,7 +13159,7 @@ h5,
 .ftco-services-2 .services .media-body h3 {
     font-size: 20px;
     font-weight: 500;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .aside-stretch {
@@ -14427,6 +14427,7 @@ textarea.form-control {
     }
 }
 
+
 /*стили для страницы объектов*/
 .object-title {
     padding-top: 22px;
@@ -14489,3 +14490,4 @@ textarea.form-control {
 .list-real {
     padding-top: 20px;
 }
+
