@@ -14,6 +14,7 @@ use App\Services\PropertiesServices;
 use App\Services\UsersServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class PropertiesController extends Controller
@@ -46,12 +47,13 @@ class PropertiesController extends Controller
 
         return \view('user/properties/create', ['user' => $user, 'categories' => $categoriesProperty]);
     }
-    //Почему-то не доходят данные с PropertyRequest и AddressRequest, попробую разобраться позже
-    public function store(Request $request)
+
+    public function store(PropertiesRequest $request)
     {
-        $dataProperty = $request->only('title','category_id', 'description' , 'price_per_day', 'address_id' , 'user_id', 'is_temporary_registration_possible');
-        $dataAddress = $request->only('country', 'place', 'street' , 'house_number', 'flat_number');
-        $propertySave = $this->propertyServices->create($dataProperty, $dataAddress);
+
+        $address = $this->propertyServices->createAddress($request);
+
+        $propertySave = $this->propertyServices->createProperty($request, $address);
         if ($propertySave) {
             return redirect()->route('user.properties.index');
         }

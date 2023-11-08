@@ -15,14 +15,20 @@ class Property extends Model
     protected $fillable = [
         'title',
         'category_id',
+        'number_of_rooms',
+        'number_of_guests',
         'description',
+        'photo',
         'price_per_day',
         'address_id',
         'user_id',
+        'is_temporary_registration_possible',
+        'daily_rent'
     ];
 
     protected $casts = [
-        'is_temporary_registration_possible' => 'boolean'
+        'is_temporary_registration_possible' => 'boolean',
+        'daily_rent' => 'boolean'
     ];
 
     public function user(): BelongsTo
@@ -44,16 +50,20 @@ class Property extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function createModel($data, User $user, $address = null): bool
+    public function createModel(array $data): bool
     {
         $property = $this->firstOrCreate([
             'title' => $data['title'],
             'category_id' => $data['category_id'],
+            'number_of_rooms' => $data['number_of_rooms'],
+            'number_of_guests' => $data['number_of_guests'],
             'description' => $data['description'],
+            'photo' => $data['photo'],
             'price_per_day' => $data['price_per_day'],
-            'address_id' => $address->id,
-            'user_id' => $user->id,
-            'is_temporary_registration_possible' => isset($data['is_temporary_registration_possible'])
+            'address_id' => $data['address_id'],
+            'user_id' => $data['user_id'],
+            'is_temporary_registration_possible' => isset($data['is_temporary_registration_possible']),
+            'daily_rent' => isset($data['daily_rent'])
         ]);
         return $property->save();
     }
