@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <p style="font-size: 1.5rem; color: black">Личный кабинет</p>
+                    <p class="cabinet-title">Личный кабинет</p>
 
                    {{-- <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800"/>

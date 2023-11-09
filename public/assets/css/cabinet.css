@@ -3,8 +3,35 @@
     margin:4px 0 0;
 }
 
-.dashboard {
+.avatar-block {
     margin:0 5px 0 0;
     border:1px solid gray;
 }
+
+.cabinet-title {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    color: black;
+}
+
+.auth-nav-text {
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.auth-nav-text:active {
+    transform: scale(.9);
+    transition: 0.3s ease;
+}
+
+.auth-nav-span {
+    font-size:14px;
+    font-weight: 500
+}
+
+.auth-nav-span:active {
+    color: #FFFFFF;
+    transition: 0.4s ease;
+}
+
 

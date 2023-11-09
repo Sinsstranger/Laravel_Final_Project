@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset("assets/css/flaticon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
     @section('style')@show
 </head>
 
@@ -44,7 +45,10 @@
                                 class="icon-paper-plane"></span></div>
                         <span class="text">info@yoursite.com</span>
                     </div>
-                    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
+
+                    <x-auth-nav></x-auth-nav>
+
+                    {{--<div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ms-auto">
@@ -100,7 +104,7 @@
                                 </li>
                             @endguest
                         </ul>
-                        {{--<p class="mb-0 register-link">
+                        <p class="mb-0 register-link">
                             @auth()
                                 @if(Auth::user())
                                     <a href="{{ route('profile.edit') }}" class="mr-3">{{ Auth::user()->name }}</a>
@@ -118,8 +122,8 @@
                             @endauth
 
 
-                        </p>--}}
-                    </div>
+                        </p>
+                    </div>--}}
                 </div>
             </div>
         </div>

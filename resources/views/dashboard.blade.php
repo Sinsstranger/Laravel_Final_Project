@@ -11,7 +11,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex">
-                <div class="dashboard">
+                <div class="avatar-block">
                     <img src="#" alt="avatar">
                 </div>
                 <ul class="max-w-xl">

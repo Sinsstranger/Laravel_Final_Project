@@ -1,4 +1,9 @@
 @extends('layouts/app')
+
+@section('style')
+    @parent<link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+@endsection
+
 @section('content')
 
 
@@ -18,7 +23,7 @@
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex between">
 
                         <ul class="max-w-xl">
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Наименование
                                 </h2>
@@ -27,12 +32,12 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <img src="{{$property->photo}}" alt="property photo"
                                 style = "max-width:200px">
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Описание
                                 </h2>
@@ -41,7 +46,7 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Категория
                                 </h2>
@@ -50,7 +55,7 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Количество комнат
                                 </h2>
@@ -59,7 +64,7 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Количество гостей
                                 </h2>
@@ -68,7 +73,7 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                     <h2 class="text-lg font-medium text-gray-900">
                                         Срок аренды
                                     </h2>
@@ -85,7 +90,7 @@
                                     </div>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Адрес
                                 </h2>
@@ -100,7 +105,7 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Цена за сутки
                                 </h2>
@@ -109,7 +114,7 @@
                                 </p>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Возможность временной регистрации
                                 </h2>
@@ -122,7 +127,7 @@
                                     </div>
                             </li>
 
-                            <li style="margin:4px 0 0">
+                            <li class="dashboard-link">
                                 <div class="flex items-center gap-4">
                                     <x-primary-button>
                                     <a href="{{ route('user.properties.edit', $property) }}">
