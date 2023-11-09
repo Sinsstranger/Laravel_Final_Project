@@ -14,14 +14,14 @@ class CategoriesSeeder extends Seeder
     public function run(): void
     {
         DB::table('categories')->insert([
-            ['title' => 'квартира'],
-            ['title' => 'дом'],
-            ['title' => 'коттедж'],
-            ['title' => 'комната'],
-            ['title' => 'гостиница'],
-            ['title' => 'кемпинг'],
-            ['title' => 'база отдыха'],
-            ['title' => 'хостел'],
+            ['title' => 'Квартира'],
+            ['title' => 'Дом'],
+            ['title' => 'Коттедж'],
+            ['title' => 'Комната'],
+            ['title' => 'Гостиница'],
+            ['title' => 'Кемпинг'],
+            ['title' => 'База отдыха'],
+            ['title' => 'Хостел'],
         ]);
     }
 }

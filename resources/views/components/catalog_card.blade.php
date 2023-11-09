@@ -13,7 +13,10 @@
                     <h5 class="price">{{ $property->price_per_day}}₽</h5>
                 </div>
             </div>
-            <p class="h-info"><span class="location">Москва</span></p>
+            <p class="h-info"><span class="location">
+                    {{$property->address->country}}
+                    {{$property->address->place}}</span>
+            </p>
         </div>
     </div>
 </div>

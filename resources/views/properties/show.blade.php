@@ -31,11 +31,12 @@
         <section class="description-section container">
                 <div class="description-content">
                     <div class="description-content-left">
-                       <img src="{{ asset("assets/images/work-9.jpg") }}">
+                       <img src="{{$property->photo}}">
                     </div>
                     <div class="description-content-right">
                         <div>
-                            <h5>Place, country </h5>
+                            <h5>{{$property->address->country}},
+                                {{$property->address->place}}</h5>
                             <h5 class="price">{{ $property->price_per_day }}₽</h5>
                         </div>
                         <p>{{ $property->description }}</p>
@@ -55,7 +56,7 @@
                         <input type="date" name="calendar" value="{{ now() }}" min="{{ now() }}" required>
                         <div>
                             <p>Количество гостей</p>
-                            <input type="number" name="guests" step="1" value="0" required>
+                            <input type="number" name="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" required>
                         </div>
                         @if($property->is_temporary_registration_possible)
                             <p class="rent-radio">Нужна временная регистрация</p>
@@ -89,13 +90,17 @@
 
                 <div class="details-content">
                     <p>Тип жилья</p>
-                    <p class="info">Квартира</p>
+                    <p class="info">{{$property->category->title}}</p>
                     <p>Количество комнат</p>
-                    <p class="info">Много</p>
+                    <p class="info">{{$property->number_of_rooms}}</p>
                     <p>Количество гостей</p>
-                    <p class="info">Ещё больше</p>
+                    <p class="info">{{$property->number_of_guests}}</p>
                     <p>Срок аренды</p>
-                    <p class="info">Посуточно</p>
+                    @if($property->daily_rent)
+                        <p class="info">Посуточная аренда</p>
+                    @else
+                        <p class="info">Долгосрочная аренда</p>
+                    @endif
                     <p>Временная регистрация</p>
                     @if($property->is_temporary_registration_possible)
                         <p class="info">Возможна</p>
@@ -103,14 +108,17 @@
                         <p class="info">Нет</p>
                     @endif
                     <address>Адрес</address>
-                    <p class="info">Какой-то адрес</p>
+                    <p class="info">
+                        {{$property->address->country}},
+                        {{$property->address->place}},
+                        {{$property->address->street}},
+                        {{$property->address->house_number}} -
+                        {{$property->address-> flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">Какой-то Иван</p>
-                    <p>Телефон владельца</p>
-                    <p class="info">Какой-то номер</p>
-
+                    <p class="info">Mozelle Boehm</p>
+                    <!--<p>Телефон владельца</p>
+                    <p class="info">Какой-то номер</p>-->
                 </div>
-
         </section>
         <!--Локация (текст или карта?)-->
         <!--<section>

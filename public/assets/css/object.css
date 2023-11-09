@@ -47,6 +47,7 @@
 .description-content-left img {
     padding-right: 5%;
     width: 100%;
+    object-fit: contain;
 }
 
 .description-content-right div {

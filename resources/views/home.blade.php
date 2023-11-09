@@ -66,7 +66,7 @@
                                                 <h4 class="price">{{ $prop->price_per_day}}₽</h4>
                                             </div>
                                         </div>
-                                        <p class="h-info"><span class="location">Москва</span></p>
+                                        <p class="h-info"><span class="location">{{$prop->address->country}}, {{$prop->address->place}}</span></p>
                                     </div>
                                 </div>
                             </div>
