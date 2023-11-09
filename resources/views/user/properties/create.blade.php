@@ -3,7 +3,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-        <form method="post" enctype="multipart/form-data" action=" @if(empty($property)) {{ route('user.properties.store') }} @else {{ route('user.properties.update', $property) }}" @endif >
+        <form method="post" enctype="multipart/form-data" action=" @if(empty($property)) {{ route('user.properties.store') }} @else {{ route('user.properties.update', $property) }} @endif ">
                 @csrf
                 @if(isset($property)) @method('PUT')@else @method('POST') @endif
                 <div class="card">
@@ -152,7 +152,7 @@
                     </ul>
 
                     <div class="card-body">
-                        <x-primary-button>@if(empty($property))Опубликовать объявление @else Изменить данные @endif </x-primary-button>
+                        <x-primary-button >@if(empty($property))Опубликовать объявление @else Изменить данные @endif </x-primary-button>
                     </div>
 
                     {{--<div class="card-body">

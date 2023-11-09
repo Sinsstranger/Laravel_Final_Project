@@ -6,6 +6,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/css/bootstrap.min.css',
                 'resources/css/open-iconic-bootstrap.min.css',
                 'resources/css/animate.css',
                 'resources/css/owl.carousel.min.css',

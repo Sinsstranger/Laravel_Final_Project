@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -45,9 +46,9 @@ class Property extends Model
         return $this->belongsTo(Address::class,'address_id', 'id');
     }
 
-    public function deal(): BelongsTo
+    public function deal(): HasMany
     {
-        return $this->belongsTo(Deal::class, 'property_id', 'id');
+        return $this->hasMany(Deal::class, 'property_id', 'id');
     }
     public function category(): BelongsTo
     {
@@ -60,6 +61,10 @@ class Property extends Model
     public function getAllProperties(): Collection
     {
         return $this->all();
+    }
+    public function reviews():HasMany
+    {
+        return $this->hasMany(Review::class, 'property_id', 'id');
     }
     public function createModel(array $data): bool
     {
