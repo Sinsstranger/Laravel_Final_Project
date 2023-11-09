@@ -9,7 +9,7 @@
             {{-- </div> --}}
     </div>
 </form>
-<form class="card">
+<form class="card" name="filter">
     <article class="filter-group"> {{-- Тип жилья --}}
         <header class="card-header">
             <i class="icon-control fa fa-chevron-down"></i>
@@ -17,18 +17,14 @@
         </header>
         <div class="filter-content collapse show pt-3 pr-3" id="collapse_1" style="">
             <ul class="list-menu">
-                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="houses" disabled>Дома
-                </li>
-                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="cottages" disabled>Коттеджи
-                </li>
-                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="flats" disabled>Квартиры
-                </li>
-                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="hostels" disabled>Хостелы
-                </li>
-                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="rooms" disabled>Комнаты
-                </li>
-                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="campings" disabled>Турбазы
-                </li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="1">Квартира</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="2">Дом</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="3">Коттедж</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="4">Комната</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="5">Гостиница</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="6">Кемпинг</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="7">База отдыха</li>
+                <li class="li"><input type="checkbox" style="margin-right: 5px;" name="category" value="8">Хостел</li>
             </ul>
         </div>
     </article>
@@ -40,19 +36,23 @@
         <div class="filter-content collapse show pt-3 pr-3" id="collapse_4">
             <ul class="list-menu">
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_rooms" value="1">
+                    <input type="radio" name="rooms" value="0" disabled>
+                    Любое
+                </li>
+                <li class="checkbox-btn">
+                    <input type="radio" name="rooms" value="1">
                     1
                 </li>
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_rooms" value="2">
+                    <input type="radio" name="rooms" value="2">
                     2
                 </li>
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_rooms" value="3">
+                    <input type="radio" name="rooms" value="3">
                     3
                 </li>
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_rooms" value="-1">
+                    <input type="radio" name="rooms" value="-1">
                     Более
                 </li>
             </ul>
@@ -66,19 +66,23 @@
         <div class="filter-content collapse show pt-3 pr-3" id="collapse_4">
             <ul class="list-menu">
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_guests" value="1">
+                    <input type="radio" name="guests" value="0" disabled>
+                    Любое
+                </li>
+                <li class="checkbox-btn">
+                    <input type="radio" name="guests" value="1">
                     1
                 </li>
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_guests" value="2">
+                    <input type="radio" name="guests" value="2">
                     2
                 </li>
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_guests" value="3">
+                    <input type="radio" name="guests" value="3">
                     3
                 </li>
                 <li class="checkbox-btn">
-                    <input type="radio" name="number_of_guests" value="-1">
+                    <input type="radio" name="guests" value="-1">
                     Более
                 </li>
             </ul>
@@ -141,6 +145,6 @@
         </header>
     </article>
     <div class="card-body">
-        <input type="submit" class="btn btn-block btn-primary" value="Применить">
+        <input type="submit" id="filterBtn" class="btn btn-block btn-primary" value="Применить">
     </div>
 </form>
