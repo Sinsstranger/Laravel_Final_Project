@@ -14,7 +14,8 @@
                         <th>#</th>
                         <th>Имя</th>
                         <th>Почта</th>
-                        <th>Админ</th>
+                        <th>Права</th>
+                        <th>Опции</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -22,7 +23,8 @@
                         <th>#</th>
                         <th>Имя</th>
                         <th>Почта</th>
-                        <th>Админ</th>
+                        <th>Права</th>
+                        <th>Опции</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -31,7 +33,14 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->is_admin }}</td> 
+                        <td>
+                    @if($user->is_admin)
+                        Админ
+                    @else
+                        Пользователь
+                    @endif    
+                </td>
+                        <td><a href="{{ route('admin.users.show', $user) }}" type="button" class="btn btn-success">Показать</a> <a href="{{ route('admin.users.edit', $user) }}" type="button" class="btn btn-success">Редактировать</a></td>
                     </tr>
                     @empty
                     <tr>
