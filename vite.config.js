@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/css/icomoon.css',
                 'resources/css/style.css',
                 'resources/css/app.css',
+                'resources/css/bootstrap.min.css',
                 'resources/js/jquery.min.js',
                 'resources/js/jquery-migrate-3.0.1.min.js',
                 'resources/js/popper.min.js',

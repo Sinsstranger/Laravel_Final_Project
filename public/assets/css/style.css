@@ -14491,3 +14491,11 @@ textarea.form-control {
     padding-top: 20px;
 }
 
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: stretch;
+    padding: auto;
+    margin-bottom: 20px;
+}
