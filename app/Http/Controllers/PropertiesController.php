@@ -52,7 +52,6 @@ class PropertiesController extends Controller
 
     public function store(PropertiesRequest $request)
     {
-
         $address = $this->propertyServices->createAddress($request);
 
         $propertySave = $this->propertyServices->createProperty($request, $address);
@@ -63,6 +62,7 @@ class PropertiesController extends Controller
     }
     public function update(PropertiesRequest $request, Property $property): RedirectResponse
     {
+
          $saveProperty = $this->propertyServices->updateProperty($request, $property);
          if ($saveProperty) {
              return redirect()->route('user.properties.index')->with('success', 'Объявление успешно отредактировано');

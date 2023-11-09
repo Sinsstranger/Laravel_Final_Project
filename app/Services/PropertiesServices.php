@@ -38,7 +38,7 @@ class PropertiesServices implements PropertyInterface
 
     public function getPropertiesByUserId(int $user_id): Collection
     {
-        return $this->property->query()->where('user_id', $user_id)->get();
+        return $this->property->query()->where('user_id', $user_id)->orderByDesc('created_at')->get();
     }
     public function getPropertiesByContent(string $content): Collection
     {
