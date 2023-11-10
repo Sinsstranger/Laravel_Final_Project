@@ -2,10 +2,22 @@
 @section('content')
 
     <div class="py-12">
+{{--        @include('inc.message')--}}
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-        <form method="post" enctype="multipart/form-data" action=" @if(empty($property)) {{ route('user.properties.store') }} @else {{ route('user.properties.update', $property) }} @endif ">
+
+        <form method="post"
+              enctype="multipart/form-data"
+              action=" @if(empty($property)) {{ route('user.properties.store') }}
+                       @else {{ route('user.properties.update', $property) }}
+                       @endif ">
+
+
                 @csrf
-                @if(isset($property)) @method('PUT')@else @method('POST') @endif
+
+                @if(isset($property)) @method('PUT')
+                @else @method('POST')
+                @endif
+
                 <div class="card">
 {{--                    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>--}}
                     {{--<div class="card-body">
@@ -23,6 +35,11 @@
                                 <input name="title" type="text" value = "{{$property->title ?? old('title')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                        shadow-sm mt-1 block w-full" id="title" required >
+                                @error('title')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </li>
 
@@ -48,6 +65,11 @@
                                        value = "{{ $property->number_of_rooms ?? old('number_of_rooms')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                        shadow-sm mt-1 block w-full" required >
+                                @error('number_of_rooms')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </li>
 
@@ -59,6 +81,12 @@
                                        value = "{{$property->number_of_guests ?? old('number_of_guests')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                        shadow-sm mt-1 block w-full" required >
+                                @error('number_of_guests')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+
                             </div>
                         </li>
 
@@ -71,6 +99,11 @@
                                        shadow-sm mt-1 block w-full" required >
                                     {{$property->description ?? old('description')}}
                                 </textarea>
+                                @error('description')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </li>
 
@@ -81,6 +114,11 @@
                                        value = "{{$property->price_per_day ?? old('price_per_day')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                            shadow-sm mt-1 block w-full" required >
+                                @error('price_per_day')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </li>
 
@@ -93,34 +131,63 @@
                                            value = "{{$property->address->country ?? old('country')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                            shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif >
+                                    @error('country')
+                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="place" class="text-lg font-medium text-gray-900">Город/поселок</label>
                                     <input name="place" type="text" id="place"
                                            value = "{{$property->address->place ?? old('place')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                            shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                    @error('place')
+                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="street" class="text-lg font-medium text-gray-900">Улица</label>
                                     <input name="street" type="text" id="street"
                                            value = "{{$property->address->street ?? old('street')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                            shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                    @error('street')
+                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="house_number" class="text-lg font-medium text-gray-900">Дом</label>
                                     <input name="house_number" type="text" id="house_number"
                                            value = "{{$property->address->house_number ?? old('house_number')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                            shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                    @error('house_number')
+                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="flat_number" class="text-lg font-medium text-gray-900">Квартира</label>
                                     <input name="flat_number" type="text" id="flat_number"
                                            value = "{{$property->address->flat_number ?? old('flat_number')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                            shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                    @error('flat_number')
+                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </li>
@@ -129,14 +196,16 @@
                                     <label for="is_temporary_registration_possible" class="text-lg font-medium text-gray-900">
                                         Временная регистрация</label>
                                     <input name="is_temporary_registration_possible" type="checkbox" value="1"
-                                           id="is_temporary_registration_possible" @if(!empty($property->is_temporary_registration_possible)) checked @endif>
+                                           id="is_temporary_registration_possible"
+                                           @if(!empty($property->is_temporary_registration_possible)) checked @endif>
                                 </div>
                         </li>>
 
                         <li class="list-group-item">
                                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                                     <label for="daily_rent" class="text-lg font-medium text-gray-900">Посуточная аренда</label>
-                                    <input name="daily_rent" type="checkbox" value="1" id="daily_rent" @if(!empty($property->daily_rent)) checked @endif >
+                                    <input name="daily_rent" type="checkbox" value="1" id="daily_rent"
+                                           @if(!empty($property->daily_rent)) checked @endif >
                                 </div>
                         </li>
 
@@ -152,7 +221,12 @@
                     </ul>
 
                     <div class="card-body">
-                        <x-primary-button >@if(empty($property))Опубликовать объявление @else Изменить данные @endif </x-primary-button>
+
+                        <x-primary-button>
+                            @if(empty($property))Опубликовать объявление
+                            @else Изменить данные @endif
+                        </x-primary-button>
+
                     </div>
 
                     {{--<div class="card-body">

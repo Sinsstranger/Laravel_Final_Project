@@ -127,7 +127,7 @@
                                     </div>
                             </li>
 
-                            <li class="dashboard-link">
+                            <li class="dashboard-link flex justify-between">
                                 <div class="flex items-center gap-4">
                                     <x-primary-button>
                                     <a href="{{ route('user.properties.edit', $property) }}">
@@ -139,7 +139,9 @@
                                         <form method="post" action="{{ route('user.properties.destroy', $property) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button :type="'submit'"> Удалить объявление</x-primary-button>
+                                            <x-primary-button :type="'submit'" style="background-color: #a50a0a">
+                                                Удалить объявление
+                                            </x-primary-button>
                                         </form>
                                 </div>
                             </li>

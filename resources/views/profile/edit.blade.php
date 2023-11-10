@@ -1,6 +1,10 @@
 <x-app-layout>
+    @section('style')
+        @parent<link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+    @endsection
+
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight uppercase">
             Личные данные
         </h2>
     </x-slot>
