@@ -33,4 +33,25 @@ class PropertyFilter extends QueryFilter{
                 $query->whereIn('category_id', $categoriesArray);
         });
     }
+
+    public function daily($string) {
+
+        return $this->builder->when($string, function($query) use($string){
+            if ($string !== 'any') {
+                $query->where('daily_rent', $string === 'true' ? true : false);
+            }
+        });
+    }
+
+    public function price($string) {
+
+        return $this->builder->when($string, function($query) use($string){
+            $prices = explode(',', $string);
+            if (!$prices[1]) {
+                $query->where('price_per_day', '>', $prices[0]);
+            } else {
+                $query->whereBetween('price_per_day', $prices);
+            }
+        });
+    }
 }
