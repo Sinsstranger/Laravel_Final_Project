@@ -1,11 +1,12 @@
-
 .dashboard-link {
-    margin:4px 0 0;
+    margin: 4px 0 0;
 }
 
 .avatar-block {
-    margin:0 5px 0 0;
-    border:1px solid gray;
+    height: 100px;
+    width: 100px;
+    margin: 0 15px 0 0;
+    border: 1px solid gray;
 }
 
 .cabinet-title {
@@ -25,7 +26,7 @@
 }
 
 .auth-nav-span {
-    font-size:14px;
+    font-size: 14px;
     font-weight: 500
 }
 
@@ -33,5 +34,3 @@
     color: #FFFFFF;
     transition: 0.4s ease-in;
 }
-
-
