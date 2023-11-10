@@ -1,9 +1,12 @@
 @extends('layouts/app')
 @section('content')
 
+
     <div class="py-12">
-{{--        @include('inc.message')--}}
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+
+            @include('inc.message')
 
         <form method="post"
               enctype="multipart/form-data"

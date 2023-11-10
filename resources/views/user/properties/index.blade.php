@@ -10,6 +10,8 @@
     <div class="py-12">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            @include('inc.message')
+
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
                     Мои объявления</h1>
@@ -18,6 +20,7 @@
                         Добавить объявление</a>
                 </x-primary-button>
             </div>
+
 
             @forelse($propertiesUser as $property)
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex between">
