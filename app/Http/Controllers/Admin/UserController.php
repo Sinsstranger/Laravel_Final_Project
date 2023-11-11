@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\UserEditRequest;
+use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function back;
+use function redirect;
 use function view;
 
 class UserController extends Controller
@@ -40,25 +44,34 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        $properties = Property::query()->where('user_id','=',$user->id)->get();
+        return \view('admin.users.show')->with([
+            'user' => $user,
+            'properties' => $properties,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return \view('admin.users.edit',['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserEditRequest $request, User $user)
     {
-        //
+        $data = $request->only(['name']);
+        $user->fill($data);
+        if ($user->save()) {
+            return redirect()->route('admin.users.edit',$user)->with('success', 'Пользователь успешно изменен');
+        }
+        return back()->with('error', 'Пользователя не удалось изменить');
     }
 
     /**

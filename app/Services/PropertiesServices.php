@@ -74,7 +74,7 @@ class PropertiesServices implements PropertyInterface
         $request->validate([
             'image' => ['sometimes', 'image', 'mimes:jpeg,bmp,png']
         ]);
-        $path = Storage::putFile("public/images/property/{$data['photo']}", $request->file('photo'));
+        $path = Storage::putFile("public/images/property/", $request->file('photo'));
         return Storage::url($path);
     }
     public function updateProperty(PropertiesRequest $request, Property $property): bool

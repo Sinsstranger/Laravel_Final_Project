@@ -10,6 +10,8 @@
     <div class="py-12">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            @include('inc.message')
+
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
                     Мои объявления</h1>
@@ -18,6 +20,7 @@
                         Добавить объявление</a>
                 </x-primary-button>
             </div>
+
 
             @forelse($propertiesUser as $property)
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex between">
@@ -127,7 +130,7 @@
                                     </div>
                             </li>
 
-                            <li class="dashboard-link">
+                            <li class="dashboard-link flex justify-between">
                                 <div class="flex items-center gap-4">
                                     <x-primary-button>
                                     <a href="{{ route('user.properties.edit', $property) }}">
@@ -139,7 +142,9 @@
                                         <form method="post" action="{{ route('user.properties.destroy', $property) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button :type="'submit'"> Удалить объявление</x-primary-button>
+                                            <x-primary-button :type="'submit'" style="background-color: #a50a0a">
+                                                Удалить объявление
+                                            </x-primary-button>
                                         </form>
                                 </div>
                             </li>

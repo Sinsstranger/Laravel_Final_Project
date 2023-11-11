@@ -485,6 +485,16 @@ mark,
     text-transform: uppercase;
 }
 
+.header-link {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.header-link>span {
+    padding-right: 5px;
+}
+
 .blockquote {
     margin-bottom: 1rem;
     font-size: 1.25rem;
@@ -13308,7 +13318,7 @@ textarea.form-control {
 .ftco-footer {
     font-size: 16px;
     background: #f3f5fb;
-    padding: 7em 0;
+    padding: 4em 0;
     z-index: 0;
     position: relative;
 }
@@ -14491,3 +14501,11 @@ textarea.form-control {
     padding-top: 20px;
 }
 
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: stretch;
+    padding: auto;
+    margin-bottom: 20px;
+}

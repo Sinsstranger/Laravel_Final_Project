@@ -12,6 +12,9 @@ class Deal extends Model
 {
     use HasFactory;
 
+    protected $table = [
+        'deals'
+    ];
     protected $fillable = [
         'rent_starts_at',
         'rent_ends_at',
@@ -25,9 +28,9 @@ class Deal extends Model
     {
         return $this->belongsTo(DealStatus::class, 'status_id', 'status_id');
     }
-    public function property(): HasMany
+    public function property(): BelongsTo
     {
-        return $this->hasMany(Property::class, 'property_id', 'property_id');
+        return $this->belongsTo(Property::class, 'property_id', 'id');
     }
     public function rent(): HasMany
     {

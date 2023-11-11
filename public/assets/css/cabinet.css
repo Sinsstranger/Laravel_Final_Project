@@ -1,11 +1,12 @@
-
 .dashboard-link {
-    margin:4px 0 0;
+    margin: 4px 0 0;
 }
 
 .avatar-block {
-    margin:0 5px 0 0;
-    border:1px solid gray;
+    height: 100px;
+    width: 100px;
+    margin: 0 15px 0 0;
+    border: 1px solid gray;
 }
 
 .cabinet-title {
@@ -20,18 +21,16 @@
 }
 
 .auth-nav-text:active {
-    transform: scale(.9);
-    transition: 0.3s ease;
+    transform: scale(.8);
+    transition: 0.4s ease-in-out;
 }
 
 .auth-nav-span {
-    font-size:14px;
+    font-size: 14px;
     font-weight: 500
 }
 
 .auth-nav-span:active {
     color: #FFFFFF;
-    transition: 0.4s ease;
+    transition: 0.4s ease-in;
 }
-
-

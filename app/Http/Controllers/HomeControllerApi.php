@@ -9,7 +9,7 @@ class HomeControllerApi extends Controller
 {
     public function __construct
     (
-        private readonly PropertiesServices $propertyServices
+        private PropertiesServices $propertyServices
     ) {}
 
 
