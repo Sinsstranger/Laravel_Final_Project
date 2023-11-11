@@ -4,6 +4,7 @@
 @endsection
 @section('style')
     @parent<link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset("assets/css/lightpick.css") }}">
 @endsection
 @section('content')
     <br>
@@ -31,7 +32,7 @@
         <section class="description-section container">
                 <div class="description-content">
                     <div class="description-content-left">
-                       <img src="{{$property->photo}}">
+                       <img src="{{$property->photo}}" alt="main object photo">
                     </div>
                     <div class="description-content-right">
                         <div>
@@ -49,39 +50,58 @@
             <div class="container">
                 <div class="heading-section">
                     <h4>Хочу забронировать</h4></div>
-                    <form action="#">
-                        <p>Укажите даты заезда и выезда</p>
-                        <input type="date" name="calendar" value="{{ now() }}" min="{{ now() }}" required>
-
-                        <input type="date" name="calendar" value="{{ now() }}" min="{{ now() }}" required>
+                    <form id="new-reservation" action="" method="post">
+                        @csrf
+                        <p>Укажите даты <label for="date-check-in">заезда</label> и <label for="date-check-out">выезда</label></p>
+                        <input type="text" id="datepicker" required class="form-control form-control-sm"/>
+                        <!--<input type="date" name="calendar" id="date-check-in" min="{{ now() }}" form="new-reservation" required>
+                        <input type="date" name="calendar" id="date-check-out" min="{{ now() }}" form="new-reservation" required>-->
                         <div>
-                            <p>Количество гостей</p>
-                            <input type="number" name="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" required>
+                            <p><label for="guests">Количество гостей</label></p>
+                            <input type="number" name="guests" id="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
                         </div>
                         @if($property->is_temporary_registration_possible)
                             <p class="rent-radio">Нужна временная регистрация</p>
                             <div class="form-check-rent">
-                                <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="">
+                                <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation">
                                 <label class="form-check-label-rent" for="temporary_reg0">
                                     Нет
                                 </label>
-                                <input class="form-check-input-rent" type="radio" name="temporary_reg" value="1" id="temporary_reg1">
+                                <input class="form-check-input-rent" type="radio" name="temporary_reg" value="1" id="temporary_reg1" form="new-reservation">
                                 <label class="form-check-label-rent" for="temporary_reg1">
                                     Да
                                 </label>
                             </div>
                         @else
-                            <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" hidden>
+                            <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
                             <label class="form-check-label-rent" for="temporary_reg0" hidden>
                                 Нет
                             </label>
                         @endif
                         <div>
-                            <input type="submit" value="Забронировать" class="btn btn-white">
+                            <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
                         </div>
                     </form>
             </div>
         </aside>
+        <!-- Modal-->
+        <div class="modal fade" id="reservation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="reservationLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="reservationLabel">Готово!</h1>
+                        <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                    </div>
+                    <div class="modal-body">
+                        Ваша заявка на бронирование принята. В ближайшее время с вами свяжается владелец объекта для подтверждения аренды.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Всё понятно</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!--Блок подробности
     подробности
     Возможность временной регистрации (как делаем? Строка в описании + глаочка в форме бронирования нужна/нет?)-->
@@ -113,9 +133,10 @@
                         {{$property->address->place}},
                         {{$property->address->street}},
                         {{$property->address->house_number}} -
-                        {{$property->address-> flat_number}}</p>
+                        {{$property->address->flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">Mozelle Boehm</p>
+                    <p class="info">
+                        Mozelle Boehm</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
@@ -143,22 +164,22 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset("assets/images/image_4.jpg") }}" class="d-block w-100" alt="Дом для аренды">
+                            <img src="https://loremflickr.com/600/450/furniture,interior?random1" class="d-block w-100" alt="Дом для аренды">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset("assets/images/image_5.jpg") }}" class="d-block w-100" alt="Дом для аренды">
+                            <img src="https://loremflickr.com/600/450/furniture,interior?random2" class="d-block w-100" alt="Дом для аренды">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset("assets/images/image_6.jpg") }}" class="d-block w-100" alt="Дом для аренды">
+                            <img src="https://loremflickr.com/600/450/furniture,interior?random3" class="d-block w-100" alt="Дом для аренды">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset("assets/images/image_3.jpg") }}" class="d-block w-100" alt="Дом для аренды">
+                            <img src="https://loremflickr.com/600/450/furniture,interior?random4" class="d-block w-100" alt="Дом для аренды">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset("assets/images/image_2.jpg") }}" class="d-block w-100" alt="Дом для аренды">
+                            <img src="https://loremflickr.com/600/450/furniture,interior?random5" class="d-block w-100" alt="Дом для аренды">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset("assets/images/image_1.jpg") }}" class="d-block w-100" alt="Дом для аренды">
+                            <img src="https://loremflickr.com/600/450/furniture,interior?random6" class="d-block w-100" alt="Дом для аренды">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -194,7 +215,7 @@
                         <p>Текст отзыва</p>
                     </div>
                     <hr>
-                    <span class="subheading">Оставить отзыв</span>
+                    <span class="subheading"><label for="review">Оставить отзыв</label></span>
                     <form action="#" class="p-4 p-md-5 contact-form">
                                 <!--По идее, нужно только поле для отзыва и доступ только для авторизованных пользователей-->
                                 <!--
@@ -209,7 +230,7 @@
                                 </div>
                                 -->
                         <div class="form-group">
-                            <textarea name="" id="" cols="5" rows="5" class="form-control" placeholder="Ваш отзыв"></textarea>
+                            <textarea name="" id="review" cols="5" rows="5" class="form-control" placeholder="Ваш отзыв"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Отправить отзыв" class="btn btn-primary py-3 px-5">
@@ -224,4 +245,11 @@
     <span>{{ $property->title }}</span>
     </div>-->
 @endsection
+@section('script')
+    @parent <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="{{ asset("assets/js/lightpick.js") }}"></script>
+    <script>
+        const picker = new Lightpick({field: document.getElementById('datepicker')});
+    </script>
 
+@endsection

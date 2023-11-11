@@ -168,11 +168,12 @@
                 <div class="ftco-footer-widget mb-4 ml-md-4">
                     <h2 class="ftco-heading-2">Каталог помещений</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Комнаты</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Квартиры</a></li>
                         <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Дома</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Коммерческая
-                                недвижимость</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Квартиры</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Комнаты</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Коттеджи</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Турбазы</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Хостелы</a></li>
                     </ul>
                 </div>
             </div>
@@ -220,7 +221,7 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
-
+@section('script')@show
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="{{ asset("assets/js/jquery.min.js") }}"></script>
 <script src="{{ asset("assets/js/jquery-migrate-3.0.1.min.js") }}"></script>
