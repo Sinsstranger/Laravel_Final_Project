@@ -162,12 +162,12 @@
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">Каталог помещений</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Дома</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Квартиры</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Комнаты</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Коттеджи</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Турбазы</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Хостелы</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Дома</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Квартиры</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Комнаты</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Коттеджи</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Турбазы</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Хостелы</a></li>
                         </ul>
                     </div>
                 </div>
@@ -175,8 +175,8 @@
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">Что я хочу?</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Найти помещение</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Сдать помещение</a></li>
+                            <li><a href="{{ route('properties') }}"><span class="icon-long-arrow-right mr-2"></span>Найти помещение</a></li>
+                            <li><a href="{{ route('user.properties.index') }}"><span class="icon-long-arrow-right mr-2"></span>Сдать помещение</a></li>
                         </ul>
                     </div>
                 </div>
@@ -208,29 +208,29 @@
         </div>
     </footer>
 
-<!-- loader -->
-<div id="ftco-loader" class="show fullscreen">
-    <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
-    </svg>
-</div>
-@section('script')@show
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="{{ asset("assets/js/jquery.min.js") }}"></script>
-<script src="{{ asset("assets/js/jquery-migrate-3.0.1.min.js") }}"></script>
-<script src="{{ asset("assets/js/popper.min.js") }}"></script>
-<script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
-<script src="{{ asset("assets/js/jquery.easing.1.3.js") }}"></script>
-<script src="{{ asset("assets/js/jquery.waypoints.min.js") }}"></script>
-<script src="{{ asset("assets/js/jquery.stellar.min.js") }}"></script>
-<script src="{{ asset("assets/js/owl.carousel.min.js") }}"></script>
-<script src="{{ asset("assets/js/jquery.magnific-popup.min.js") }}"></script>
-<script src="{{ asset("assets/js/aos.js") }}"></script>
-<script src="{{ asset("assets/js/jquery.animateNumber.min.js") }}"></script>
-<script src="{{ asset("assets/js/scrollax.min.js") }}"></script>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+        </svg>
+    </div>
+    @section('script')@show
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="{{ asset("assets/js/jquery.min.js") }}"></script>
+    <script src="{{ asset("assets/js/jquery-migrate-3.0.1.min.js") }}"></script>
+    <script src="{{ asset("assets/js/popper.min.js") }}"></script>
+    <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("assets/js/jquery.easing.1.3.js") }}"></script>
+    <script src="{{ asset("assets/js/jquery.waypoints.min.js") }}"></script>
+    <script src="{{ asset("assets/js/jquery.stellar.min.js") }}"></script>
+    <script src="{{ asset("assets/js/owl.carousel.min.js") }}"></script>
+    <script src="{{ asset("assets/js/jquery.magnific-popup.min.js") }}"></script>
+    <script src="{{ asset("assets/js/aos.js") }}"></script>
+    <script src="{{ asset("assets/js/jquery.animateNumber.min.js") }}"></script>
+    <script src="{{ asset("assets/js/scrollax.min.js") }}"></script>
 
-<script src="{{ asset("assets/js/main.js") }}"></script>
+    <script src="{{ asset("assets/js/main.js") }}"></script>
 
 </body>
 
