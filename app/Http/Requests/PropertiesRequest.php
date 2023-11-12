@@ -27,7 +27,7 @@ class PropertiesRequest extends FormRequest
     {
 
         return [
-            'title' => 'required|string|max:120',
+            'title' => 'required|string|max:120|min:5',
             'category_id' => 'required|integer|exists:properties,id',
             'number_of_rooms' => 'required|integer',
             'number_of_guests' =>  'required|integer',
