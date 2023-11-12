@@ -63,8 +63,8 @@
         },
         locale: {
             buttons: {
-                prev: '&leftarrow;',
-                next: '&rightarrow;',
+                prev: '&#10094;',
+                next: '&#10095;',
                 close: '&times;',
                 reset: 'Сбросить',
                 apply: 'Подтвердить',

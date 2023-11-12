@@ -30,58 +30,73 @@
     description-->
     <div class="object-content container">
         <section class="description-section container">
-                <div class="description-content">
-                    <div class="description-content-left">
-                       <img src="{{$property->photo}}" alt="main object photo">
-                    </div>
-                    <div class="description-content-right">
-                        <div>
-                            <h5>{{$property->address->country}},
-                                {{$property->address->place}}</h5>
-                            <h5 class="price">{{ $property->price_per_day }}₽</h5>
-                        </div>
-                        <p>{{ $property->description }}</p>
-                    </div>
+            <div class="description-content">
+                <div class="description-content-left">
+                    <img src="{{$property->photo}}" alt="main object photo">
                 </div>
+                <div class="description-content-right">
+                    <div class="rent-location">
+                        <h5>{{$property->address->country}},
+                            {{$property->address->place}}</h5>
+                        <div class="rent-price">
+                            <h5 class="price">{{ $property->price_per_day }}₽</h5>
+                            @if($property->daily_rent)
+                                <p>за сутки</p>
+                            @else
+                                <p>за 30 дней</p>
+                            @endif
+                        </div>
+                    </div>
+                    <p>{{ $property->description }}</p>
+                </div>
+            </div>
         </section>
 
-            <!--Форма бронирования-->
+        <!--Форма бронирования-->
         <aside class="rent-section">
             <div class="container">
                 <div class="heading-section">
                     <h4>Хочу забронировать</h4></div>
-                    <form id="new-reservation" action="" method="post">
-                        @csrf
-                        <p>Укажите даты <label for="date-check-in">заезда</label> и <label for="date-check-out">выезда</label></p>
-                        <input type="text" id="datepicker" required class="form-control form-control-sm"/>
-                        <!--<input type="date" name="calendar" id="date-check-in" min="{{ now() }}" form="new-reservation" required>
-                        <input type="date" name="calendar" id="date-check-out" min="{{ now() }}" form="new-reservation" required>-->
-                        <div>
-                            <p><label for="guests">Количество гостей</label></p>
-                            <input type="number" name="guests" id="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
-                        </div>
-                        @if($property->is_temporary_registration_possible)
-                            <p class="rent-radio">Нужна временная регистрация</p>
-                            <div class="form-check-rent">
-                                <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation">
-                                <label class="form-check-label-rent" for="temporary_reg0">
-                                    Нет
-                                </label>
-                                <input class="form-check-input-rent" type="radio" name="temporary_reg" value="1" id="temporary_reg1" form="new-reservation">
-                                <label class="form-check-label-rent" for="temporary_reg1">
-                                    Да
-                                </label>
-                            </div>
+                <form id="new-reservation" action="" method="post">
+                    @csrf
+                    <div>
+                    <p>Укажите даты <label for="datepicker">заезда и выезда</label></p>
+                        @if($property->daily_rent)
+                            <p class="condition">Срок аренды - не <b>более</b> 30 дней</p>
                         @else
-                            <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
-                            <label class="form-check-label-rent" for="temporary_reg0" hidden>
+                            <p class="condition">Срок аренды - не <b>менее</b> 30 дней</p>
+                        @endif
+                    <input type="text" id="datepicker" required class="form-control form-control-sm"/>
+
+            </div>
+                    <div>
+                        <p><label for="guests">Количество гостей</label></p>
+                        <input type="number" name="guests" id="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
+                    </div>
+                    <div>
+                    @if($property->is_temporary_registration_possible)
+                        <p class="rent-radio">Нужна временная регистрация</p>
+                        <div class="form-check-rent">
+                            <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation">
+                            <label class="form-check-label-rent" for="temporary_reg0">
                                 Нет
                             </label>
-                        @endif
-                        <div>
-                            <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
+                            <input class="form-check-input-rent" type="radio" name="temporary_reg" value="1" id="temporary_reg1" form="new-reservation">
+                            <label class="form-check-label-rent" for="temporary_reg1">
+                                Да
+                            </label>
                         </div>
-                    </form>
+                    @else
+                        <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
+                        <label class="form-check-label-rent" for="temporary_reg0" hidden>
+                            Нет
+                        </label>
+                    @endif</div>
+                    <div>
+                        <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
+                    </div>
+                </form>
+
             </div>
         </aside>
         <!-- Modal-->
@@ -93,7 +108,7 @@
                         <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
                     </div>
                     <div class="modal-body">
-                        Ваша заявка на бронирование принята. В ближайшее время с вами свяжается владелец объекта для подтверждения аренды.
+                        Ваша заявка на бронирование с <span id="result"> </span> принята. В ближайшее время с вами свяжается владелец объекта для подтверждения аренды.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Всё понятно</button>
@@ -102,9 +117,9 @@
             </div>
         </div>
 
-    <!--Блок подробности
-    подробности
-    Возможность временной регистрации (как делаем? Строка в описании + глаочка в форме бронирования нужна/нет?)-->
+        <!--Блок подробности
+        подробности
+        Возможность временной регистрации (как делаем? Строка в описании + глаочка в форме бронирования нужна/нет?)-->
         <div class="object-content-details">
             <section class="details-section-1 container">
 
@@ -140,18 +155,18 @@
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
-        </section>
-        <!--Локация (текст или карта?)-->
-        <!--<section>
-            <div class="container">
-                <div class="heading-section">
-                    <h4>Карта</h4>
+            </section>
+            <!--Локация (текст или карта?)-->
+            <!--<section>
+                <div class="container">
+                    <div class="heading-section">
+                        <h4>Карта</h4>
+                    </div>
                 </div>
-            </div>
-        </section>-->
-        <!--Фотографии
-        Отдельным блоком или прикрутить вверху, где описание...-->
-        <section class="photo-section container">
+            </section>-->
+            <!--Фотографии
+            Отдельным блоком или прикрутить вверху, где описание...-->
+            <section class="photo-section container">
 
                 <!-- <div class="heading-section">
                    <h4>Фотогалерея</h4>
@@ -192,10 +207,10 @@
                     </button>
                 </div>
 
-        </section>
+            </section>
 
-        <!--Отзывы
-        Форма добавления отзыва-->
+            <!--Отзывы
+            Форма добавления отзыва-->
             <section class="review-section container">
                 <div class="heading-section">
                     <h4>Отзывы</h4>
@@ -215,20 +230,21 @@
                         <p>Текст отзыва</p>
                     </div>
                     <hr>
+                    @auth
                     <span class="subheading"><label for="review">Оставить отзыв</label></span>
                     <form action="#" class="p-4 p-md-5 contact-form">
-                                <!--По идее, нужно только поле для отзыва и доступ только для авторизованных пользователей-->
-                                <!--
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Ваше имя">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Ваш Email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Откуда Вы">
-                                </div>
-                                -->
+                        <!--По идее, нужно только поле для отзыва и доступ только для авторизованных пользователей-->
+                        <!--
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваш Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Откуда Вы">
+                        </div>
+                        -->
                         <div class="form-group">
                             <textarea name="" id="review" cols="5" rows="5" class="form-control" placeholder="Ваш отзыв"></textarea>
                         </div>
@@ -236,6 +252,7 @@
                             <input type="submit" value="Отправить отзыв" class="btn btn-primary py-3 px-5">
                         </div>
                     </form>
+                    @endauth
                 </div>
             </section>
         </div>
@@ -249,7 +266,24 @@
     @parent <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="{{ asset("assets/js/lightpick.js") }}"></script>
     <script>
-        const picker = new Lightpick({field: document.getElementById('datepicker')});
+        const picker = new Lightpick({
+            field: document.getElementById('datepicker'),
+            singleDate: false,
+            @if($property->daily_rent)
+            maxDays: 30,
+            @else
+            minDays: 30,
+            numberOfMonths: 4,
+            numberOfColumns: 2,
+            @endif
+            onSelect: function(start, end){
+                let str = '';
+                str += start ? start.format('DD.MM.YYYY') + ' по ' : '';
+                str += end ? end.format('DD.MM.YYYY') : '...';
+                document.getElementById('result').innerHTML = str;
+            }
+        })
+
     </script>
 
 @endsection

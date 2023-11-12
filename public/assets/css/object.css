@@ -2,7 +2,7 @@
 .object-title {
     padding-top: 12px;
     background-image: url('/assets/images/real-estate.jpg');
-    background-position: 100% 0%;
+    background-position: 100% 0;
     height: 340px;
 }
 
@@ -50,14 +50,27 @@
     object-fit: contain;
 }
 
-.description-content-right div {
+.description-content-right .rent-location {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.description-content-right div .rent-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .description-content-right div .price {
     color: #4b69bd;
+    margin-bottom: 0;
+}
+
+.description-content-right div .rent-price p {
+    margin: 0;
+    color: #4b69bd;
+    font-size: 12px;
 }
 
 .properties_grid .properties {
@@ -111,6 +124,15 @@
     color: #FFFFFF;
 }
 
+.rent-section p {
+    font-size: 15px;
+    margin-bottom: unset;
+}
+
+.rent-section .condition {
+    font-size: 12px;
+}
+
 .rent-section .form-check-rent {
     display: flex;
     justify-content: flex-start;
@@ -132,6 +154,11 @@
 
 .rent-section .rent-radio {
     margin: 0;
+}
+
+.rent-section input[type='text'] {
+    height: unset !important;;
+    font-size: 14px;
 }
 
 .rent-section input[type='radio']:after {
@@ -171,7 +198,7 @@
 }
 
 .photo-section .carousel {
-    padding: 5% 0%;
+    padding: 5% 0;
 }
 
 .carousel-item img {
