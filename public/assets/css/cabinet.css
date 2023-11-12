@@ -34,3 +34,28 @@
     color: #FFFFFF;
     transition: 0.4s ease-in;
 }
+
+.cabinet-index-btn {
+    margin: 0 10px 0 0;
+}
+
+.show-catalog-item-link {
+    margin: 10px 0;
+}
+
+.show-catalog-item-link:active {
+    transform: translate(30px);
+    transition: 0.4s ease-in;
+}
+
+.index-del-btn {
+    background-color: #df1919 !important;
+}
+
+.index-del-btn:hover {
+    background-color: #931717 !important;
+}
+
+.index-btn-span:hover {
+    color: #e79f15;
+}

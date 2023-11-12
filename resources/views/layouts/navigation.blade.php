@@ -18,11 +18,17 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         Главная
                     </x-nav-link>
+
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         Личные данные
                     </x-nav-link>
+
                     <x-nav-link :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')">
                        Мои объявления
+                    </x-nav-link>
+
+                    <x-nav-link href="#">
+                       Мои бронирования
                     </x-nav-link>
 
                     @if(Auth::user()->is_admin)
@@ -127,3 +133,5 @@
         </div>
     </div>
 </nav>
+
+                    
