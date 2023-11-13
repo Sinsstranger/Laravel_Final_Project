@@ -50,7 +50,8 @@ class User extends Authenticatable
 
     public function property(): HasMany
     {
-        return $this->hasMany(Property::class, 'user_id', 'id');
+        // return $this->hasMany(Property::class, 'user_id', 'id');
+        return $this->hasMany(Property::class);
     }
     public function owner(): BelongsTo
     {
