@@ -3,16 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdminNewsController extends Controller
+class PropertyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $properties = Property::query()//извлечение всех пользователей кроме авторизованного(себя)
+        ->where('id', '!=', Auth::id())
+            ->get();
+        return view('admin.properties.index', ['propertiesList' => $properties]);
     }
 
     /**
