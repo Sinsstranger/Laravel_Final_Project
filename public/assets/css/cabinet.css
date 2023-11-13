@@ -59,3 +59,53 @@
 .index-btn-span:hover {
     color: #e79f15;
 }
+
+.popUpCabinetEnter{
+    display: none;
+    position: absolute;
+    /*position: fixed;*/
+    z-index: 5;
+    left: -30px;
+    top: 30px;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    /*border: 1px solid #000000;*/
+    background-color: #f6f6f6;
+    opacity: .81;
+}
+
+.modal-text {
+    box-sizing: border-box;
+    /*padding: 2px;*/
+    text-align: center;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 16px;
+    color: #957676;
+    margin: 0;
+}
+
+.modal-link-text {
+    box-sizing: border-box;
+    /*padding: 2px;*/
+    text-align: center;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    display: block;
+    color: #7b928e
+}
+
+.modal-link-text:hover {
+    opacity: .3;
+}
+
+.modal-link-text:active {
+    transform: scale(.8);
+    color: #957676;
+    transition: 0.4s ease-in-out;
+}

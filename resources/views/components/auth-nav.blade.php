@@ -26,14 +26,39 @@
 
                     @if(Auth::user()->avatar !== null)
 
-                        <img src="{{ Auth::user()->avatar }}" style="width:45px;">
+                        <img id="#"  src="{{ Auth::user()->avatar }}" style="width:45px;">
 
                     @endif
             </li>
-            <li class="nav-item" style="display: flex">
-                <a href="{{ route('dashboard') }}" class="mr-3 auth-nav-text">
+            <li class="nav-item" style="display: flex; position: relative">
+                <a id="userName"  href="{{ route('dashboard') }}" class="mr-3 auth-nav-text">
                     <span class="auth-nav-span"> {{ Auth::user()->name }} </span>
                 </a>
+
+                <div class="popUpCabinetEnter">
+
+                    <p class="modal-text">{{Auth::user()->name}}</p>
+
+                    <p class="modal-text">{{Auth::user()->email}}</p>
+
+                    <p class="modal-text">Телефон</p>
+                    <hr style="background-color: darkkhaki; margin:5px 0">
+                    <ul style="padding: 0">
+                        <li style="list-style-type: none; margin: 0 0 10px 0">
+                            <a class="modal-link-text"
+                               href="{{route('profile.edit')}}">Личные данные</a>
+                        </li>
+                        <li style="list-style-type: none; margin: 0 0 10px 0">
+                            <a class="modal-link-text"
+                               href="{{route('user.properties.index')}}">Мои объявления</a>
+                        </li>
+                        <li style="list-style-type: none; margin: 0 0 10px 0">
+                            <a class="modal-link-text"
+                               href="#">Мои бронирования</a>
+                        </li>
+
+                    </ul>
+                </div>
 
                 <div class="auth-nav-text">
 
@@ -69,4 +94,34 @@
 
 
     </p>--}}
+
 </div>
+
+@push('child-scripts')
+
+    <script>
+
+        let popUP = document.getElementsByClassName("popUpCabinetEnter");
+        let enterLink = document.getElementById("userName");
+
+        enterLink.onmouseover = function (){
+            popUP[0].style.display="block";
+        }
+
+        /*enterLink.onmouseout = function (){
+            popUP[0].style.display = "none";
+        }*/
+
+        window.onclick = function(event) {
+            if (event.target !== popUP[0]) {
+                popUP[0].style.display = "none";
+            }
+        }
+
+    </script>
+
+@endpush
+
+
+
+
