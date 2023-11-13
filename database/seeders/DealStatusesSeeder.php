@@ -14,11 +14,11 @@ class DealStatusesSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('deal_statuses')->insert([
-        //     'name' => 'test-status-1'
-        // ]);
-        DealStatus::factory()
-            ->count(3)
-            ->create();
+        DB::table('deal_statuses')->insert([
+            ['name' => 'на рассмотрении'],
+            ['name' => 'подтверждена'],
+            ['name' => 'отклонена'],
+            ['name' => 'завершена'],
+        ]);
     }
 }
