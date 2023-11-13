@@ -57,16 +57,16 @@
             <div class="container">
                 <div class="heading-section">
                     <h4>Хочу забронировать</h4></div>
-                <form id="new-reservation" action="" method="post">
+                <form id="new-reservation" action="{{ route('user.deals.store') }}" method="post">
                     @csrf
                     <div>
-                    <p>Укажите даты <label for="datepicker">заезда и выезда</label></p>
+                    <p>Укажите даты <label  for="datepicker">заезда и выезда</label></p>
                         @if($property->daily_rent)
                             <p class="condition">Срок аренды - не <b>более</b> 30 дней</p>
                         @else
                             <p class="condition">Срок аренды - не <b>менее</b> 30 дней</p>
                         @endif
-                    <input type="text" id="datepicker" required class="form-control form-control-sm"/>
+                    <input type="text" name="rent_start_and_end" id="datepicker" required class="form-control form-control-sm"/>
             </div>
                     <div>
                         <p><label for="guests">Количество гостей</label></p>
@@ -93,6 +93,8 @@
                     @endif</div>
                     <div>
                         <p id="result2">...</p>
+                        <input type="hidden" name="tenant_id" value="{{ \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() }}">
+                        <input type="hidden" name="property_id" value="{{ $property->id }}">
                         <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
                     </div>
                 </form>

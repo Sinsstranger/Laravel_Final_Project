@@ -59,7 +59,7 @@
                                 Статус бронирования
                                 </h2>
                                 <p class="mt-1 text-sm text-gray-600">
-                                {{$deal->status_id}}
+                                {{$deal->status->name}}
                                 </p>
                             </li>
 
@@ -84,7 +84,7 @@
                                 rent_id -??
                                 </h2>
                                 <p class="mt-1 text-sm text-gray-600">
-                                {{$property->title}}
+                                {{$deal->property->title}}
                                 </p>
                             </li>
 
