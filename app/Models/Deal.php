@@ -12,9 +12,7 @@ class Deal extends Model
 {
     use HasFactory;
 
-    protected $table = [
-        'deals'
-    ];
+    protected $table = 'deals';
     protected $fillable = [
         'property_id',
         'tenant_id',

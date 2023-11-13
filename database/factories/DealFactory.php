@@ -15,9 +15,10 @@ class DealFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    { [
-            // 'rent_starts_at' => fake()->dateTimeBetween('-1 day', '+1 day'),
-            // 'rent_starts_at' => fake()->dateTimeBetween('-1 day', '+1 day'),
+    {
+        return [
+            'rent_starts_at' => fake()->dateTimeBetween('-1 month', '+1 day'),
+            'rent_ends_at' => fake()->dateTimeBetween('+1 day', '+1 year'),
             'property_id' => '1',
             'tenant_id' => '1',
             'rent_costs' => '1000',
