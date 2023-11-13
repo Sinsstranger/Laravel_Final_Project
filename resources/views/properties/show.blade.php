@@ -39,7 +39,7 @@
                         <h5>{{$property->address->country}},
                             {{$property->address->place}}</h5>
                         <div class="rent-price">
-                            <h5 class="price">{{ $property->price_per_day }}₽</h5>
+                            <h5 class="price"><span id="price-per-day">{{ $property->price_per_day }}</span>₽</h5>
                             @if($property->daily_rent)
                                 <p>за сутки</p>
                             @else
@@ -67,7 +67,6 @@
                             <p class="condition">Срок аренды - не <b>менее</b> 30 дней</p>
                         @endif
                     <input type="text" id="datepicker" required class="form-control form-control-sm"/>
-
             </div>
                     <div>
                         <p><label for="guests">Количество гостей</label></p>
@@ -93,6 +92,7 @@
                         </label>
                     @endif</div>
                     <div>
+                        <p id="result2">...</p>
                         <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
                     </div>
                 </form>
@@ -281,8 +281,21 @@
                 str += start ? start.format('DD.MM.YYYY') + ' по ' : '';
                 str += end ? end.format('DD.MM.YYYY') : '...';
                 document.getElementById('result').innerHTML = str;
-            }
-        })
+
+                let ran = "";
+                let pr = "";
+                let res = "";
+                ran = (end - start) / 86400000 +1;
+                pr = document.getElementById('price-per-day').outerText;
+                res = ran * pr;
+                @if ($property->daily_rent)
+                    res = 'Стоимость аренды за весь срок: ' + res + '₽.';
+                @else
+                    res = 'Стоимость аренды за весь срок: ' + Math.round(res/30) + '₽.';
+                @endif
+                document.getElementById('result2').innerHTML = res;
+                },
+            })
 
     </script>
 
