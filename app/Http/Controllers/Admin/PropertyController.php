@@ -39,9 +39,9 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Property $property)
     {
-        //
+        return \view('admin.properties.show',['property' => $property]);
     }
 
     /**
