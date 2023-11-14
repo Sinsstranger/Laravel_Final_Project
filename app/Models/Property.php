@@ -49,7 +49,7 @@ class Property extends Model
 
     public function deal(): HasMany
     {
-        return $this->hasMany(Deal::class, 'property_id', 'id');
+        return $this->hasMany(Deal::class, 'property_id');
     }
     public function category(): BelongsTo
     {

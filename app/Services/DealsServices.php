@@ -21,7 +21,7 @@ class DealsServices
     public function createDeal(DealsRequest $request): Deal
     {
 
-        $dataRelation = $request->only('rent_start_and_end', 'temporary_reg', 'guests', 'property_id', 'tenant_id');
+        $dataRelation = $request->only('rent_start_and_end', 'temporary_reg', 'guests', 'property_id', 'tenant_id', 'registration');
         $date = $this->getDateTimestamp($dataRelation['rent_start_and_end']);
 
         $property = $this->propertyModel->find($dataRelation['property_id']);

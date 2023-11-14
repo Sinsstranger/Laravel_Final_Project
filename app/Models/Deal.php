@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Deal extends Model
 {
@@ -19,6 +20,10 @@ class Deal extends Model
         'rent_ends_at',
         'rent_costs',
         'status_id',
+        'registration'
+    ];
+    protected $casts = [
+        'registration' => 'boolean'
     ];
 
     public function status(): BelongsTo
@@ -29,8 +34,8 @@ class Deal extends Model
 
     public function property(): BelongsTo
     {
-        // return $this->belongsTo(Property::class, 'property_id', 'id');
-        return $this->belongsTo(Property::class);
+         return $this->belongsTo(Property::class, 'property_id');
+//
     }
 
     public function tenant(): BelongsTo
@@ -45,7 +50,8 @@ class Deal extends Model
             'rent_starts_at' => $data['rent_starts_at'],
             'rent_ends_at' => $data['rent_ends_at'],
             'rent_costs' => $data['rent_costs'],
-            'status_id' => 1
+            'status_id' => 1,
+            'registration' => $data['registration']
         ]);
     }
     public function getDealsByUserId(int $user_id): Collection

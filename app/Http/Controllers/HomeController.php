@@ -12,7 +12,6 @@ use App\Filters\PropertyFilter;
 class HomeController extends Controller
 {
 
-
     public function __construct
     (
         private PropertiesServices $propertyServices

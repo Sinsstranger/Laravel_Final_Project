@@ -52,6 +52,8 @@
             </div>
         </section>
 
+        @dump($property->deal);
+
         <!--Форма бронирования-->
         <aside class="rent-section">
             <div class="container">
@@ -76,17 +78,17 @@
                     @if($property->is_temporary_registration_possible)
                         <p class="rent-radio">Нужна временная регистрация</p>
                         <div class="form-check-rent">
-                            <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation">
+                            <input class="form-check-input-rent" type="radio" name="registration" id="temporary_reg0" value="0" checked="" form="new-reservation">
                             <label class="form-check-label-rent" for="temporary_reg0">
                                 Нет
                             </label>
-                            <input class="form-check-input-rent" type="radio" name="temporary_reg" value="1" id="temporary_reg1" form="new-reservation">
+                            <input class="form-check-input-rent" type="radio" name="registration" value="1" id="temporary_reg1" form="new-reservation">
                             <label class="form-check-label-rent" for="temporary_reg1">
                                 Да
                             </label>
                         </div>
                     @else
-                        <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
+                        <input class="form-check-input-rent" type="radio" name="registration" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
                         <label class="form-check-label-rent" for="temporary_reg0" hidden>
                             Нет
                         </label>

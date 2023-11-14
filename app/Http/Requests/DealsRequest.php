@@ -25,10 +25,10 @@ class DealsRequest extends FormRequest
 
         return [
             'rent_start_and_end' => 'required|string',
-            'temporary_reg' => 'required|boolean',
-            'guests' => 'nullable|integer|max:15',
+            'registration' => 'required|boolean',
+            'guests' => 'required|integer|max:15',
             'property_id' => 'required|integer|exists:properties,id',
-            'tenant_id' => 'required|integer|exists:users,id'
+            'tenant_id' => 'required|integer|exists:users,id',
         ];
     }
 }

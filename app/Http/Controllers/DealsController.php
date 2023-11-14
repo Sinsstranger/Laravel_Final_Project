@@ -23,9 +23,10 @@ class DealsController extends Controller
 
     public function store(DealsRequest $request)
     {
+
         $save = $this->dealsServices->createDeal($request);
         if ($save) {
-            return redirect()->route('user.properties.index');
+            return redirect()->route('user.deals.index');
         }
         return back()->with('error', 'Не удалось забронировать');
     }
