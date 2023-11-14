@@ -67,7 +67,7 @@
                             <p class="condition">Срок аренды - не <b>менее</b> 30 дней</p>
                         @endif
                     <input type="text" name="rent_start_and_end" id="datepicker" required class="form-control form-control-sm"/>
-            </div>
+                    </div>
                     <div>
                         <p><label for="guests">Количество гостей</label></p>
                         <input type="number" name="guests" id="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
@@ -93,13 +93,22 @@
                     @endif</div>
                     <div>
                         <p id="result2">...</p>
+                        @auth
                         <input type="hidden" name="tenant_id" value="{{ \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() }}">
                         <input type="hidden" name="property_id" value="{{ $property->id }}">
                         <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
+                        @endauth
                     </div>
                 </form>
 
             </div>
+            @guest
+            <div class="deal-form-popup">
+                <div class="deal-form-popup-content p-3">
+                    <a href="{{ route('register') }}" class="btn btn-block btn-primary">Зарегистрируйтесь, чтобы забронировать</a>
+                </div>
+            </div>
+            @endguest
         </aside>
         <!-- Modal-->
         <div class="modal fade" id="reservation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="reservationLabel" aria-hidden="true">
