@@ -17,9 +17,10 @@ return new class extends Migration
                 ->constrained('properties');
             $table->foreignId('tenant_id')
                 ->constrained('users');
-            $table->timestamp('rent_starts_at')->nullable();
-            $table->timestamp('rent_ends_at')->nullable();
+            $table->timestamp('rent_starts_at');
+            $table->timestamp('rent_ends_at');
             $table->decimal('rent_costs', 11, 0);
+            $table->integer('guests')->nullable();
             $table->foreignId('status_id')
                 ->constrained('deal_statuses');
             $table->timestamps();

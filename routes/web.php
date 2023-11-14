@@ -1,9 +1,9 @@
 <?php
 
-
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\PropertyController as AdminPropertyController;
+use App\Http\Controllers\DealsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertiesController;
@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('user')->name('user.')->middleware('auth')->group(function () {
     Route::resource('properties', PropertiesController::class);
     Route::resource('addresses', \App\Http\Controllers\AddressesController::class);
+    Route::resource('deals', DealsController::class,);
 });
 
 //Админка

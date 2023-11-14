@@ -211,6 +211,21 @@
 .rent-section .rent-summary p {
     text-align: end;
 }
+
+.deal-form-popup {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+}
+
+.deal-form-popup .deal-form-popup-content {
+    position: absolute;
+    bottom: 20px;
+}
+
 .photo-section .carousel {
     padding: 5% 0;
 }

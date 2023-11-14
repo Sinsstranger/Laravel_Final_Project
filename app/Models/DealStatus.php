@@ -11,7 +11,7 @@ class DealStatus extends Model
 {
     use HasFactory;
 
-    protected $table = ['deal_statuses'];
+    protected $table = 'deal_statuses';
 
     protected $fillable = [
         'name'
