@@ -2,9 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Address;
-use App\Models\Property;
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

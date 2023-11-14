@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             AddressesSeeder::class,
             CategoriesSeeder::class,
-            PropertiesSeeder::class
+            PropertiesSeeder::class,
+            DealStatusesSeeder::class,
+            DealsSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

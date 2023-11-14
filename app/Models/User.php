@@ -23,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'is_admin',
     ];
@@ -50,23 +51,17 @@ class User extends Authenticatable
 
     public function property(): HasMany
     {
-        return $this->hasMany(Property::class, 'user_id', 'id');
+        // return $this->hasMany(Property::class, 'user_id', 'id');
+        return $this->hasMany(Property::class);
     }
-    public function owner(): BelongsTo
-    {
-        return $this->belongsTo(Relation::class, 'owner_id', 'id');
-    }
-    public function tenant(): BelongsTo
-    {
-        return $this->belongsTo(Relation::class, 'tenant_id', 'id');
-    }
-    public function getUserModel(int $user_id): User
-    {
-        return $this->find($user_id);
-    }
+
     public function review(): HasMany
     {
         return $this->hasMany(Review::class, 'author_id', 'id');
     }
 
+    public function getUserModel(int $user_id): User
+    {
+        return $this->find($user_id);
+    }
 }

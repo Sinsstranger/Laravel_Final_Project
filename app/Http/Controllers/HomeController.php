@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
-use App\Services\Interfaces\PropertyInterface;
+
 use App\Services\PropertiesServices;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

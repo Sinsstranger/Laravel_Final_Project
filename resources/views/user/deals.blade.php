@@ -22,7 +22,7 @@
                 </x-primary-button>
             </div>
 
-            <!-- @forelse($deals as $deal) -->
+            @forelse($deals as $deal)
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex between">
 
                         <ul class="max-w-xl">
@@ -59,7 +59,7 @@
                                 Статус бронирования
                                 </h2>
                                 <p class="mt-1 text-sm text-gray-600">
-                                {{$deal->status_id}}
+                                {{$deal->status->name}}
                                 </p>
                             </li>
 
@@ -84,7 +84,7 @@
                                 rent_id -??
                                 </h2>
                                 <p class="mt-1 text-sm text-gray-600">
-                                {{$property->title}}
+                                {{$deal->property->title}}
                                 </p>
                             </li>
 
@@ -110,9 +110,11 @@
                         </ul>
 
                     </div>
-            <!-- @empty
+            @empty
                     <h1>У Вас пока нет бронирований</h1>
-            @endforelse -->
+            @endforelse
 
         </div>
   </div>
+
+@endsection

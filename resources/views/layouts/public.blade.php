@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/deal-form-popup.css") }}">
     @section('style')@show
 </head>
 
@@ -123,7 +124,8 @@
         </div>
     </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+         id="ftco-navbar" style="z-index: 1">
         <div class="container">
             <a class="navbar-brand" href="/">"ЗОЛОТОЙ КЛЮЧИК"</a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,6 +233,8 @@
     <script src="{{ asset("assets/js/scrollax.min.js") }}"></script>
     <script src="{{ asset("assets/js/filter-form.js") }}"></script>
     <script src="{{ asset("assets/js/main.js") }}"></script>
+
+@stack('child-scripts')
 
 </body>
 

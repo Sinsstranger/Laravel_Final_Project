@@ -27,7 +27,7 @@
                        Мои объявления
                     </x-nav-link>
 
-                    <x-nav-link href="#">
+                    <x-nav-link href="{{ route('user.deals.index') }}">
                        Мои бронирования
                     </x-nav-link>
 
@@ -134,4 +134,4 @@
     </div>
 </nav>
 
-                    
+
