@@ -79,15 +79,6 @@
                                 </p>
                             </li>
 
-                            <li class="dashboard-link">
-                                <h2 class="text-lg font-medium text-gray-900">
-                                rent_id -??
-                                </h2>
-                                <p class="mt-1 text-sm text-gray-600">
-                                {{$deal->property->title}}
-                                </p>
-                            </li>
-
                             <li class="dashboard-link flex justify-between">
                                 <div class="flex items-center gap-4 cabinet-index-btn">
                                     <x-primary-button>

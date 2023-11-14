@@ -41,8 +41,8 @@
 
                     <p class="modal-text">{{Auth::user()->email}}</p>
 
-                    <p class="modal-text">Телефон</p>
-                    <hr style="background-color: darkkhaki; margin:5px 0">
+                    <p class="modal-text">{{Auth::user()->phone}}</p>
+                    <hr class="hr-line">
                     <ul style="padding: 0">
                         <li style="list-style-type: none; margin: 0 0 10px 0">
                             <a class="modal-link-text"
@@ -66,10 +66,25 @@
                         </li>
                         @endif
 
+                        <hr class="hr-line">
+
+                        <li style="list-style-type: none; margin: 10px 0">
+                            <a class="modal-link-text" href="{{ route('logout') }}"
+                               style="text-transform: uppercase; color: #6458a0;"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                Выход
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+
                     </ul>
                 </div>
 
-                <div class="auth-nav-text">
+                {{--<div class="auth-nav-text">
 
                     <a class="mr-3 auth-nav-text" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -80,7 +95,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </div>
+                </div>--}}
             </li>
         @endguest
     </ul>
