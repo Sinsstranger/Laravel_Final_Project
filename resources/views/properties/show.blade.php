@@ -43,7 +43,7 @@
                             @if($property->daily_rent)
                                 <p>за сутки</p>
                             @else
-                                <p>за 30 дней</p>
+                                <p>за 30 суток</p>
                             @endif
                         </div>
                     </div>
@@ -62,11 +62,11 @@
                     <div>
                     <p>Укажите даты <label for="datepicker">заезда и выезда</label></p>
                         @if($property->daily_rent)
-                            <p class="condition">Срок аренды - не <b>более</b> 30 дней</p>
+                            <p class="condition">Время заезда и выезда — 9:00.</p>
                         @else
-                            <p class="condition">Срок аренды - не <b>менее</b> 30 дней</p>
+                            <p class="condition">Срок аренды - <b>от 30 суток</b></p>
                         @endif
-                    <input type="text" id="datepicker" required class="form-control form-control-sm"/>
+                    <input type="text" id="datepicker" placeholder="Выберите даты..." required class="form-control form-control-sm"/>
             </div>
                     <div>
                         <p><label for="guests">Количество гостей</label></p>
@@ -91,8 +91,9 @@
                             Нет
                         </label>
                     @endif</div>
-                    <div>
-                        <p id="result2">...</p>
+                    <div class="rent-summary">
+                        <hr>
+                        <p id="result2">&nbsp;</p>
                         <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
                     </div>
                 </form>
@@ -108,7 +109,8 @@
                         <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
                     </div>
                     <div class="modal-body">
-                        Ваша заявка на бронирование с <span id="result"> </span> принята. В ближайшее время с вами свяжается владелец объекта для подтверждения аренды.
+                        <p>Ваша заявка на бронирование <b>{{$property->title}} с <span id="result"> </span></b> оформлена. Ожидайте, пожалуйста, рассмотрения заявки владельцем помещения.</p>
+                        <p>Статус заявки вы можете отслеживать в личном кабинете.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Всё понятно</button>
@@ -150,8 +152,7 @@
                         {{$property->address->house_number}} -
                         {{$property->address->flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">
-                        Mozelle Boehm</p>
+                    <p class="info">{{$property->user->name}}</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
@@ -270,9 +271,9 @@
             field: document.getElementById('datepicker'),
             singleDate: false,
             @if($property->daily_rent)
-            maxDays: 30,
+            minDays: 2,
             @else
-            minDays: 30,
+            minDays: 31,
             numberOfMonths: 4,
             numberOfColumns: 2,
             @endif
@@ -282,16 +283,14 @@
                 str += end ? end.format('DD.MM.YYYY') : '...';
                 document.getElementById('result').innerHTML = str;
 
-                let ran = "";
-                let pr = "";
-                let res = "";
-                ran = (end - start) / 86400000 +1;
-                pr = document.getElementById('price-per-day').outerText;
-                res = ran * pr;
+                let ran = (end - start) / 86400000;
+                let pr = document.getElementById('price-per-day').outerText;
+                let res = ran * pr;
+
                 @if ($property->daily_rent)
-                    res = 'Стоимость аренды за весь срок: ' + res + '₽.';
+                    res = 'Стоимость аренды за весь срок: ' + res + '₽';
                 @else
-                    res = 'Стоимость аренды за весь срок: ' + Math.round(res/30) + '₽.';
+                    res = 'Стоимость аренды за весь срок: ' + Math.round(res/30) + '₽';
                 @endif
                 document.getElementById('result2').innerHTML = res;
                 },

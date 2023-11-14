@@ -29,6 +29,7 @@
     grid-template-areas:
 "description-section rent-section"
 "object-content-details rent-section";
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: auto;
     grid-column-gap: 2%;
     margin-top: 24px;
@@ -182,7 +183,7 @@
     top: -2px;
     left: -1px;
     position: relative;
-    background-color: #e88941 ;
+    background-color: #e88941;
     content: '';
     display: inline-block;
     visibility: visible;
@@ -197,6 +198,19 @@
     font-weight: 300;
 }
 
+.rent-section .rent-summary {
+    display: grid;
+    justify-items: stretch;
+}
+
+.rent-section .rent-summary hr {
+    border-top: 1px solid #fff;
+    opacity: 1;
+}
+
+.rent-section .rent-summary p {
+    text-align: end;
+}
 .photo-section .carousel {
     padding: 5% 0;
 }
