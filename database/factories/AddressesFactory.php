@@ -1,14 +1,17 @@
 <?php
 
 namespace Database\Factories;
+use App\Models\Address;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class DealStatusFactory extends Factory
+class AddressesFactory extends Factory
 {
+    protected $model = Address::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,7 +20,11 @@ class DealStatusFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word
+            'country' => fake()->country(),
+            'place' => fake()->city(),
+            'street' => fake()->streetName(),
+            'house_number' => fake()->numberBetween(1, 123),
+            'flat_number' => fake()->numberBetween(1, 300),
         ];
     }
 }

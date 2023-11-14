@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\AddressesFactory;
 
 class Address extends Model
 {
@@ -20,10 +22,16 @@ class Address extends Model
       'flat_number',
     ];
 
+    protected static function newFactory(): Factory
+    {
+        return AddressesFactory::new();
+    }
+
     public function property(): HasOne
     {
         return $this->hasOne(Property::class, 'address_id', 'id');
     }
+
     public function createModel(array $data): Address
     {
         $address = Address::firstOrCreate([
