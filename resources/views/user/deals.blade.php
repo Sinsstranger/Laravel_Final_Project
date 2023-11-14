@@ -22,7 +22,7 @@
                 </x-primary-button>
             </div>
 
-            <!-- @forelse($deals as $deal) -->
+            @forelse($deals as $deal)
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex between">
 
                         <ul class="max-w-xl">
@@ -110,9 +110,11 @@
                         </ul>
 
                     </div>
-            <!-- @empty
+            @empty
                     <h1>У Вас пока нет бронирований</h1>
-            @endforelse -->
+            @endforelse
 
         </div>
   </div>
+
+@endsection

@@ -48,14 +48,23 @@
                             <a class="modal-link-text"
                                href="{{route('profile.edit')}}">Личные данные</a>
                         </li>
+
                         <li style="list-style-type: none; margin: 0 0 10px 0">
                             <a class="modal-link-text"
                                href="{{route('user.properties.index')}}">Мои объявления</a>
                         </li>
+
                         <li style="list-style-type: none; margin: 0 0 10px 0">
                             <a class="modal-link-text"
-                               href="#">Мои бронирования</a>
+                               href="{{ route('user.deals.index') }}">Мои бронирования</a>
                         </li>
+
+                        @if(Auth::user()->is_admin)
+                        <li style="list-style-type: none; margin: 0 0 10px 0">
+                            <a class="modal-link-text"
+                               href="{{route('admin.index')}}">Админка</a>
+                        </li>
+                        @endif
 
                     </ul>
                 </div>

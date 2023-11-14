@@ -68,7 +68,7 @@
     left: -30px;
     top: 30px;
     max-width: 150px;
-    height: 150px;
+    max-height: 250px;
     border-radius: 5px;
     padding: 5px;
     box-sizing: border-box;
