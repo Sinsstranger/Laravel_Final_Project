@@ -22,6 +22,7 @@ class DealFactory extends Factory
             'property_id' => '1',
             'tenant_id' => '1',
             'rent_costs' => '1000',
+            'registration' => fake()->boolean(),
             'status_id' => '2',
         ];
     }
