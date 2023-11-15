@@ -178,7 +178,7 @@
 {{--                                @forelse($property->deals as $deal)--}}
                                     <li class="dashboard-link">
                                         <h2 class="text-lg font-small text-gray-900">
-                                            Заявка от
+                                            Заявка от {{ $deal->created_at->format('d.m.Y') }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
 
@@ -192,9 +192,9 @@
 {{--                                            {{$deal->deal_statuses->name}}                                            --}}
                                         </p>
 
-                                        <a class="modal-link-text"
-                                           href="#" id="showDeal">
-                                            Показать заявку</a>
+                                        <button type="submit" class="modal-link-text showDeals"
+                                           href="#" data-deal="{{$deal->id}}" id="showDeal{{$deal->id}}">
+                                            Показать заявку</button>
 
                                     </li>
 {{--                                @empty--}}
@@ -202,7 +202,7 @@
 {{--                                @endforelse--}}
                             </ul>
                             {{--                        Модалка брони--}}
-                            <div id="dealModal" class="dealModalWindow">
+                            <div id="dealModal" class="dealModalWindow dealModalElement{{$deal->id}}">
                                 <ul class="max-w-xl">
                                     <li class="dashboard-link">
                                         <h2 class="text-lg font-medium text-gray-900">
@@ -274,7 +274,7 @@
                                             {{--                                        {{$deal->property->address-> flat_number}},--}}
                                         </p>
                                     </li>
-
+                                    @if($deal->status->id == 1)
                                     <li class="dashboard-link flex justify-between">
                                         <div class="flex items-center gap-4 cabinet-index-btn">
                                             <form  method="post" action="{{ route('user.deals.update', $deal) }}">
@@ -294,8 +294,19 @@
                                                 </x-primary-button>
                                             </form>
                                         </div>
-
                                     </li>
+                                    @else
+                                    <li class="dashboard-link flex justify-between">
+                                        <form  method="post" action="{{ route('user.deals.update', $deal) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" class="form-control" id="status_id" value="4">
+                                            <x-primary-button>
+                                                Завершить
+                                            </x-primary-button>
+                                        </form>
+                                    </li>
+                                    @endif
 
                                 </ul>
 
@@ -314,20 +325,29 @@
 
     <script>
 
-        let dealPopUP = document.getElementById("dealModal");
-        let dealLinkPopUP = document.getElementById("showDeal");
+        let dealPopUP = document.querySelectorAll(".dealModalWindow");
 
-        dealLinkPopUP.onclick = function (){
-            //console.log('Hello')
-            dealPopUP.style.display="block";
-        }
+        const dealLinkPopUP = document.querySelectorAll('.showDeals')
+        document.addEventListener('DOMContentLoaded', () => {
+            dealPopUP.forEach((popUp) => {
+             popUp.style.display = 'none';
+            });
+        });
 
-        /*enterLink.onmouseout = function (){
-            popUP[0].style.display = "none";
-        }*/
+        dealLinkPopUP.forEach((link) => {
+            link.addEventListener('click', () => {
+                let id = link.dataset.deal;
+                let dealPopUPClass = document.querySelector(`.dealModalElement${id}`);
+                if(dealPopUPClass.style.display == "block") {
+                    dealPopUPClass.style.display="none";
+                } else {
+                    dealPopUPClass.style.display="block";
+                }
+            })
+        })
 
         window.onclick = function(event) {
-            if (event.target !== dealLinkPopUP) {
+            {
                 dealPopUP.style.display = "none";
             }
         }
