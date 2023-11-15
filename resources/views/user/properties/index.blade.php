@@ -346,12 +346,6 @@
             })
         })
 
-        window.onclick = function(event) {
-            {
-                dealPopUP.style.display = "none";
-            }
-        }
-
     </script>
 
 @endsection

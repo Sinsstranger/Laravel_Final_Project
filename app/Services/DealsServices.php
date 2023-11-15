@@ -33,8 +33,8 @@ class DealsServices
             $month = $this->getCountMonth($date);
             $dataRelation['rent_costs'] = +$property->price_per_day * $month;
         }
-        $dataRelation['rent_starts_at'] = $date[0];
-        $dataRelation['rent_ends_at'] = $date[1];
+        $dataRelation['rent_starts_at'] = new \DateTime($date[0]);
+        $dataRelation['rent_ends_at'] = new \DateTime($date[1]);
 
         return $this->dealModel->createModel($dataRelation);
     }
@@ -42,6 +42,7 @@ class DealsServices
     {
         $date = str_replace( ' ', '', $data);
         return explode('–', $date);
+
     }
     public function getCountDays(array $date): int
     {
