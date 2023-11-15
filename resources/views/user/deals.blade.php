@@ -15,11 +15,11 @@
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
                     Мои бронирования</h1>
-                <x-primary-button>
+                {{-- <x-primary-button>
                     <a href="#">
                         Добавить бронирование
                     </a>
-                </x-primary-button>
+                </x-primary-button> --}}
             </div>
 
             @forelse($deals as $deal)

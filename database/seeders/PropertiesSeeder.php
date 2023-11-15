@@ -96,9 +96,7 @@ class PropertiesSeeder extends Seeder
             ],
         ];
 
-
         for ($i = 0; $i <= $quantity; $i++) {
-
 
             $category = fake()->numberBetween(1, 2);
             $rooms = fake()->numberBetween($categories[$category]['minRooms'], $categories[$category]['maxRooms']);
@@ -111,7 +109,7 @@ class PropertiesSeeder extends Seeder
                 'description' => fake()->text(),
                 'photo' => 'https://loremflickr.com/450/600/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
                 'price_per_day' => fake()->numberBetween(10000, 200000),
-                'address_id' => 1,
+                'address_id' => fake()->numberBetween(1, 100),
                 'user_id' => fake()->numberBetween(1, $usersQty),
                 'is_temporary_registration_possible' => fake()->boolean(),
                 'daily_rent' => fake()->boolean(),
