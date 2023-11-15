@@ -16,6 +16,7 @@ class Deal extends Model
     protected $fillable = [
         'property_id',
         'tenant_id',
+        'guests',
         'rent_starts_at',
         'rent_ends_at',
         'rent_costs',

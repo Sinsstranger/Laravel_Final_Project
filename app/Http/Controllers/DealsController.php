@@ -32,6 +32,19 @@ class DealsController extends Controller
         return back()->with('error', 'Не удалось забронировать');
     }
 
+    public function update(Request $request, Deal $deal)
+    {
+        $data = $request->only([
+            'status_id'
+        ]);
+
+        $deal->fill($data);
+        if ($deal->save()) {
+            return redirect()->route('user.properties.index', $deal)->with('success', 'Информация отправлена');
+        }
+        return back()->with('error', 'Не получилось отправить');
+    }
+
     public function destroy(Deal $deal) {
         if ($deal->delete()) {
             return redirect()->route('user.deals.index')->with('success', 'Заявка на бронирование успешно удалена');
