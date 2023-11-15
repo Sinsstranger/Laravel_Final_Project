@@ -88,7 +88,7 @@
                                     </x-primary-button>
                                 </div>
                                 <div class="flex items-center gap-4 cabinet-index-btn">
-                                        <form method="post" action="#">
+                                        <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
                                             @csrf
                                             @method('DELETE')
                                             <x-primary-button :type="'submit'" class="index-del-btn">
