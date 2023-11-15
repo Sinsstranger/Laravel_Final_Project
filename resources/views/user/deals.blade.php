@@ -6,20 +6,12 @@
 
 @section('content')
 
-
     <div class="py-12">
-
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             @include('inc.message')
 
             <div class="flex justify-between items-center gap-4">
-                <h1 class="text-lg font-medium text-gray-900 uppercase">
-                    Мои бронирования</h1>
-                <x-primary-button>
-                    <a href="#">
-                        Добавить бронирование
-                    </a>
-                </x-primary-button>
+                <h1 class="text-lg font-medium text-gray-900 uppercase">Мои бронирования</h1>
             </div>
 
             @forelse($deals as $deal)
@@ -88,7 +80,7 @@
                                     </x-primary-button>
                                 </div>
                                 <div class="flex items-center gap-4 cabinet-index-btn">
-                                        <form method="post" action="#">
+                                        <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
                                             @csrf
                                             @method('DELETE')
                                             <x-primary-button :type="'submit'" class="index-del-btn">
@@ -97,9 +89,7 @@
                                         </form>
                                 </div>
                             </li>
-
                         </ul>
-
                     </div>
             @empty
                     <h1>У Вас пока нет бронирований</h1>
