@@ -209,7 +209,7 @@
 }
 
 .rent-section .rent-summary p {
-    text-align: end;
+    font-size: 13px;
 }
 
 .deal-form-popup {
@@ -242,3 +242,29 @@
     color: #ccc;
 }
 
+.d-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.desc-price h5 {
+    margin-bottom: 0;
+}
+
+.desc-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc-number img {
+    height: 30px;
+}
+
+.desc-number p {
+    color: black;
+}
+
+.properties .desc .location {
+    color: rgb(0 0 0 / 45%);
+}
