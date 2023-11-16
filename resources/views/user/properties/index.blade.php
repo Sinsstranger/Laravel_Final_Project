@@ -468,21 +468,9 @@
 
 
 
-            /*let dealPopUP = document.querySelectorAll('dealModalWindow');
-            let dealLinkPopUP = document.querySelectorAll(".modal-link-text");
-            let dealPopUpClose = document.querySelectorAll(".dealModalCloseCross");
 
-            dealLinkPopUP.forEach(function (link) {
-                link.onclick = function () {
-                    dealPopUP.style.display = "block";
-                }
-            })
-            dealPopUpClose.forEach(function (link) {
-                link.onclick = function () {
+           
 
-                    dealPopUP.style.display = "none";
-                }
-            })*/
 
 
     </script>
