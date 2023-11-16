@@ -28,10 +28,10 @@ class DealsServices
 
         if ($property->daily_rent) {
             $days = $this->getCountDays($date);
-            $dataRelation['rent_costs'] = +$property->price_per_day * ($days + 1);
+            $dataRelation['rent_costs'] = +$property->price_per_day * $days;
         } else {
             $month = $this->getCountMonth($date);
-            $dataRelation['rent_costs'] = +$property->price_per_day * $month;
+            $dataRelation['rent_costs'] = +($property->price_per_day)/30 * $month;
         }
         $dataRelation['rent_starts_at'] = $date[0];
         $dataRelation['rent_ends_at'] = $date[1];
@@ -41,7 +41,7 @@ class DealsServices
     public function getDateTimestamp(string $data): array
     {
         $date = str_replace( ' ', '', $data);
-        return explode('–', $date);
+        return explode('—', $date);
     }
     public function getCountDays(array $date): int
     {
@@ -55,7 +55,7 @@ class DealsServices
         $date1 = new \DateTime($date[0]);
         $date2 = new \DateTime($date[1]);
         $day = $date1->diff($date2);
-        return intval($day->format('%m'));
+        return intval($day->format('%a'));
     }
     public function getDealsByUserId(int $user_id): Collection
     {

@@ -4,7 +4,7 @@
 @endsection
 @section('style')
     @parent<link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset("assets/css/lightpick.css") }}">
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
 @endsection
 @section('content')
     <br>
@@ -72,7 +72,7 @@
             </div>
                     <div>
                         <p><label for="guests">Количество гостей</label></p>
-                        <input type="number" name="guests" id="guests" step="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
+                        <input type="number" name="guests" id="guests" step="1" min="1" max="{{$property->number_of_guests}}" placeholder="0" form="new-reservation" required>
                     </div>
                     <div>
                     @if($property->is_temporary_registration_possible)
@@ -232,34 +232,23 @@
                     <hr>
                     <!--Запустить через foreach-->
                     <div class="review-body">
-                        <h5>Мессир Воланд</h5>
+                        <h5>Violet Blue</h5>
                         <!--<p>Рейтинг</p>-->
-                        <p class="date">4 ноября 2023</p>
-                        <p>Теперь мне есть, где выпить чашечку кофе в спокойной обстановке.</p>
+                        <p class="date">15 июля 2023</p>
+                        <p>Pellentesque vehicula lectus non elit consequat, tempor porta tortor condimentum. Mauris sagittis aliquet nulla, id pellentesque magna congue ut. In tristique orci a mollis semper. Morbi varius nibh in elit aliquam convallis at eget magna. Cras ex nunc, egestas ac ex ut, fermentum dignissim tortor. In lectus nibh, laoreet vitae fermentum ut, efficitur eu ligula. Praesent iaculis viverra ligula, vitae laoreet eros volutpat eu. Aliquam nec risus commodo, finibus nisl vel, pulvinar massa. Sed a erat dictum, luctus enim ac, iaculis enim.</p>
                     </div>
                     <hr>
                     <div class="review-body">
-                        <h5>Имя пользователя</h5>
+                        <h5>Gomer Sinpson</h5>
                         <!--<p>Рейтинг</p>-->
-                        <p class="date">Дата</p>
-                        <p>Текст отзыва</p>
+                        <p class="date">25 мая 2023</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas sollicitudin quam a commodo. Vestibulum non erat mi. Etiam molestie efficitur quam, nec eleifend risus pretium sed. Duis sodales orci id semper luctus. Pellentesque sit amet elit odio. Quisque viverra nunc ac sodales lobortis. Donec vehicula, ante vel ultricies blandit, nunc nulla auctor lectus, ut dictum ex urna id neque. Sed pretium metus non maximus scelerisque. Sed viverra, libero a luctus pulvinar, mauris purus volutpat orci, auctor iaculis massa nulla ut eros. Aliquam non lorem et eros sagittis auctor eu sit amet libero. Nulla consequat lectus quis auctor porttitor. Ut ut rhoncus justo. Nulla in sem sed ante imperdiet eleifend eget vitae mauris.</p>
                     </div>
                     <hr>
                     @auth
                     <span class="subheading"><label for="review">Оставить отзыв</label></span>
                     <form action="#" class="p-4 p-md-5 contact-form">
-                        <!--По идее, нужно только поле для отзыва и доступ только для авторизованных пользователей-->
-                        <!--
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваш Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Откуда Вы">
-                        </div>
-                        -->
+
                         <div class="form-group">
                             <textarea name="" id="review" cols="5" rows="5" class="form-control" placeholder="Ваш отзыв"></textarea>
                         </div>
@@ -278,14 +267,106 @@
     </div>-->
 @endsection
 @section('script')
-    @parent <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="{{ asset("assets/js/lightpick.js") }}"></script>
+    @parent
     <script>
+        const DateTime = easepick.DateTime;
+        const bookedDates = [
+            '2023-11-02',
+            ['2023-11-06', '2023-11-11'],
+            '2023-11-18',
+            '2023-11-19',
+            '2023-11-20',
+            '2023-11-25',
+            '2023-11-28',
+        ].map(d => {
+            if (d instanceof Array) {
+                const start = new DateTime(d[0], 'YYYY-MM-DD');
+                const end = new DateTime(d[1], 'YYYY-MM-DD');
 
+                return [start, end];
+            }
 
-            const picker = new Lightpick({
+            return new DateTime(d, 'YYYY-MM-DD');
+        });
+        const picker = new easepick.create({
+            element: document.getElementById('datepicker'),
+            css: [
+                'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
+            ],
+            lang: "ru-RU",
+            format: "YYYY-MM-DD",
+            setup (picker) {
+                picker.on('select', function (start, end) {
+                start = picker.getStartDate();
+                end = picker.getEndDate();
+                    let str = "";
+                      str += start ? start.format('DD.MM.YYYY') + ' по ' : '';
+                       str += end ? end.format('DD.MM.YYYY') : '...';
+                       str = 'Заявка на аренду {{$property->title}} с ' + str + '.'
+                        document.getElementById('result1').innerHTML = str;
+
+                    let ran = (end - start) / 86400000;
+                    let pr = document.getElementById('price-per-day').outerText;
+                    let res = ran * pr;
+
+                    @if ($property->daily_rent)
+                        res = 'Стоимость аренды за весь период: ' + res + '₽';
+                    @else
+                        res = 'Стоимость аренды за весь период: ' + Math.round(res/30) + '₽';
+                    @endif
+                    document.getElementById('result2').innerHTML = res;
+                })
+            },
+            @if($property->daily_rent)
+            calendars: 1,
+            @else
+            calendars: 2,
+            @endif
+
+            plugins: ["AmpPlugin",'RangePlugin', 'LockPlugin'],
+            AmpPlugin: {
+                dropdown: {
+                    months: true,
+                    years: true,
+                    minYear: 2023,
+                    maxYear: 2030
+                },
+                resetButton: true
+            },
+            RangePlugin: {
+                tooltipNumber(num) {
+                    return num - 1;
+                },
+                locale: {
+                    one: 'сутки',
+                    few: 'суток',
+                    many: 'суток',
+                    other: 'суток',
+                },
+                delimiter: " — "
+            },
+            LockPlugin: {
+                minDate: new Date(),
+                @if($property->daily_rent)
+                minDays: 2,
+                @else
+                minDays: 31,
+                @endif
+                inseparable: true,
+                filter(date, picked) {
+                    if (picked.length === 1) {
+                        const incl = date.isBefore(picked[0]) ? '[)' : '(]';
+                        return !picked[0].isSame(date, 'day') && date.inArray(bookedDates, incl);
+                    }
+                    return date.inArray(bookedDates, '[)');
+
+            },
+
+        }, })
+            /*const picker = new Lightpick({
             field: document.getElementById('datepicker'),
             singleDate: false,
+                disableDates: ['20/11/2023'],
             @if($property->daily_rent)
             minDays: 2,
             @else
@@ -311,16 +392,6 @@
                 @endif
                 document.getElementById('result2').innerHTML = res;
                 },
-            })
-
-        const form = document.getElementById('new-reservation');
-        form.noValidate = true;
-
-        form.addEventListener('submit', function(event) {
-            if (!event.target.checkValidity()) {
-                event.preventDefault();
-                alert('Пожалуйста, заполните все пункты формы бронирования'); // error message
-            }
-        }, false);
+            })*/
     </script>
 @endsection
