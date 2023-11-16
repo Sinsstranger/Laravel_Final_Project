@@ -24,7 +24,7 @@
 
             @forelse($propertiesUser as $property)
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex justify-between">
-
+{{--                       @dump($property->deal);--}}
                         <ul class="max-w-xl">
                             <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
@@ -165,51 +165,167 @@
 
                         </ul>
 
+
+
+
+
 {{--                        Список бронирований--}}
-                        @forelse($property->deal as $deal)
-                        <div class="max-w-xl">
+{{--                        @forelse($property->deal as $deal)--}}
+                        <div class="max-w-xl" style="position: relative;">
                             <h1 class="text-lg font-medium text-gray-900"
                                 style="text-align: center">
                                 Заявки на бронирование
                             </h1>
 
-                            <ul class="max-w-xl"
-                            style="border:1px solid darkgray; border-radius: 10px;">
-{{--                                @forelse($property->deals as $deal)--}}
+
+                                <ul class="max-w-xl"
+                                style="border:1px solid darkgray; border-radius: 10px;">
+                                    @forelse($property->deal as $deal)
                                     <li class="dashboard-link">
                                         <h2 class="text-lg font-small text-gray-900">
                                             Заявка от {{ $deal->created_at->format('d.m.Y') }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
 
-{{--                                            {{$deal->created_at}}--}}
+                                            {{$deal->created_at}}
                                         </p>
 
                                         <h2 class="text-lg font-small text-gray-900">
                                             Статус
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-{{--                                            {{$deal->deal_statuses->name}}                                            --}}
+                                            {{$deal->status->name}}
                                         </p>
+
 
                                         <button type="submit" class="modal-link-text showDeals"
                                            href="#" data-deal="{{$deal->id}}" id="showDeal{{$deal->id}}">
                                             Показать заявку</button>
 
+                                        <div id="dealModal" class="dealModalWindow dealModalElement{{$deal->id}}">
+                                            <ul class="max-w-xl">
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Старт бронирования: {{ $deal->rent_starts_at }}
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->rent_starts_at}}--}}
+                                                    </p>
+                                                </li>
+
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Окончание бронирования: {{ $deal->rent_ends_at }}
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->rent_ends_at}}--}}
+                                                    </p>
+                                                </li>
+
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Общая сумма бронирования: {{ $deal->rent_costs }}
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->rent_costs}}--}}
+                                                    </p>
+                                                </li>
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Кол-во гостей: {{ $deal->guests }}
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->rent_costs}}--}}
+                                                    </p>
+                                                </li>
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Регистрация: @if($deal->registration) требуется
+                                                        @else не требуется
+                                                        @endif
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->rent_costs}}--}}
+                                                    </p>
+                                                </li>
+
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Статус бронирования: {{ $deal->status->name }}
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->status->name}}--}}
+
+                                                    </p>
+                                                </li>
+
+                                                <li class="dashboard-link">
+                                                    <h2 class="text-lg font-medium text-gray-900">
+                                                        Объект бронирования
+                                                    </h2>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->property->title}}--}}
+                                                    </p>
+                                                    <p class="mt-1 text-sm text-gray-600">
+                                                        {{--                                        {{$deal->property->address->country}},--}}
+                                                        {{--                                        {{$deal->property->address->place}},--}}
+                                                        {{--                                        {{$deal->property->address->street}},--}}
+                                                        {{--                                        {{$deal->property->address->house_number}},--}}
+                                                        {{--                                        {{$deal->property->address-> flat_number}},--}}
+                                                    </p>
+                                                </li>
+                                                @if($deal->status->id == 1)
+                                                    <li class="dashboard-link flex justify-between">
+                                                        <div class="flex items-center gap-4 cabinet-index-btn">
+                                                            <form  method="post" action="{{ route('user.deals.update', $deal) }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status_id" class="form-control" id="status_id" value="2">
+                                                                <x-primary-button>
+                                                                    Подтвердить
+                                                                </x-primary-button>
+                                                            </form>
+                                                            <form  method="post" action="{{ route('user.deals.update', $deal) }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status_id" class="form-control" id="status_id" value="3">
+                                                                <x-primary-button>
+                                                                    Отклонить
+                                                                </x-primary-button>
+                                                            </form>
+                                                        </div>
+                                                    </li>
+                                                @else
+                                                    <li class="dashboard-link flex justify-between">
+                                                        <form  method="post" action="{{ route('user.deals.update', $deal) }}">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status_id" class="form-control" id="status_id" value="4">
+                                                            <x-primary-button>
+                                                                Завершить
+                                                            </x-primary-button>
+                                                        </form>
+                                                    </li>
+                                                @endif
+                                            </ul>
+                                        </div>
+
+
                                     </li>
-{{--                                @empty--}}
-{{--                                    <h1>У Вас пока нет заявок</h1>--}}
-{{--                                @endforelse--}}
-                            </ul>
+
+                            {{--@empty
+                                <h1>У Вас пока нет заявок</h1>
+                            @endforelse--}}
+
                             {{--                        Модалка брони--}}
-                            <div id="dealModal" class="dealModalWindow dealModalElement{{$deal->id}}">
+                            {{--<div id="dealModal" class="dealModalWindow dealModalElement{{$deal->id}}">
                                 <ul class="max-w-xl">
                                     <li class="dashboard-link">
                                         <h2 class="text-lg font-medium text-gray-900">
                                             Старт бронирования: {{ $deal->rent_starts_at }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->rent_starts_at}}--}}
+                                            --}}{{--                                        {{$deal->rent_starts_at}}--}}{{--
                                         </p>
                                     </li>
 
@@ -218,7 +334,7 @@
                                             Окончание бронирования: {{ $deal->rent_ends_at }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->rent_ends_at}}--}}
+                                            --}}{{--                                        {{$deal->rent_ends_at}}--}}{{--
                                         </p>
                                     </li>
 
@@ -227,7 +343,7 @@
                                             Общая сумма бронирования: {{ $deal->rent_costs }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->rent_costs}}--}}
+                                            --}}{{--                                        {{$deal->rent_costs}}--}}{{--
                                         </p>
                                     </li>
                                     <li class="dashboard-link">
@@ -235,7 +351,7 @@
                                             Кол-во гостей: {{ $deal->guests }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->rent_costs}}--}}
+                                            --}}{{--                                        {{$deal->rent_costs}}--}}{{--
                                         </p>
                                     </li>
                                     <li class="dashboard-link">
@@ -245,7 +361,7 @@
                                             @endif
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->rent_costs}}--}}
+                                            --}}{{--                                        {{$deal->rent_costs}}--}}{{--
                                         </p>
                                     </li>
 
@@ -254,7 +370,7 @@
                                             Статус бронирования: {{ $deal->status->name }}
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                        {{--                                        {{$deal->status->name}}--}}
+                                        --}}{{--                                        {{$deal->status->name}}--}}{{--
 
                                         </p>
                                     </li>
@@ -264,14 +380,14 @@
                                             Объект бронирования
                                         </h2>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->property->title}}--}}
+                                            --}}{{--                                        {{$deal->property->title}}--}}{{--
                                         </p>
                                         <p class="mt-1 text-sm text-gray-600">
-                                            {{--                                        {{$deal->property->address->country}},--}}
-                                            {{--                                        {{$deal->property->address->place}},--}}
-                                            {{--                                        {{$deal->property->address->street}},--}}
-                                            {{--                                        {{$deal->property->address->house_number}},--}}
-                                            {{--                                        {{$deal->property->address-> flat_number}},--}}
+                                            --}}{{--                                        {{$deal->property->address->country}},--}}{{--
+                                            --}}{{--                                        {{$deal->property->address->place}},--}}{{--
+                                            --}}{{--                                        {{$deal->property->address->street}},--}}{{--
+                                            --}}{{--                                        {{$deal->property->address->house_number}},--}}{{--
+                                            --}}{{--                                        {{$deal->property->address-> flat_number}},--}}{{--
                                         </p>
                                     </li>
                                     @if($deal->status->id == 1)
@@ -307,15 +423,17 @@
                                         </form>
                                     </li>
                                     @endif
-
                                 </ul>
+                            </div>--}}
 
-                            </div>
+{{--                            </div>--}}
 
+                            @empty
+                                <h1>У Вас пока нет заявок</h1>
+                            @endforelse
+                                </ul>
                         </div>
-                        @empty
-                            <h1>У Вас пока нет заявок</h1>
-                        @endforelse
+
                     </div>
             @empty
                     <h1>У Вас пока нет объявлений</h1>
@@ -325,9 +443,11 @@
 
     <script>
 
+
         let dealPopUP = document.querySelectorAll(".dealModalWindow");
 
-        const dealLinkPopUP = document.querySelectorAll('.showDeals')
+        const dealLinkPopUP = document.querySelectorAll('.showDeals');
+
         document.addEventListener('DOMContentLoaded', () => {
             dealPopUP.forEach((popUp) => {
              popUp.style.display = 'none';
@@ -346,11 +466,24 @@
             })
         })
 
-        window.onclick = function(event) {
-            {
-                dealPopUP.style.display = "none";
-            }
-        }
+
+
+            /*let dealPopUP = document.querySelectorAll('dealModalWindow');
+            let dealLinkPopUP = document.querySelectorAll(".modal-link-text");
+            let dealPopUpClose = document.querySelectorAll(".dealModalCloseCross");
+
+            dealLinkPopUP.forEach(function (link) {
+                link.onclick = function () {
+                    dealPopUP.style.display = "block";
+                }
+            })
+            dealPopUpClose.forEach(function (link) {
+                link.onclick = function () {
+
+                    dealPopUP.style.display = "none";
+                }
+            })*/
+
 
     </script>
 
