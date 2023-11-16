@@ -21,6 +21,7 @@ class DealFactory extends Factory
             'rent_ends_at' => fake()->dateTimeBetween('+1 day', '+1 year'),
             'property_id' => '1',
             'tenant_id' => '1',
+            'guests' => fake()->numberBetween(1,10),
             'rent_costs' => '1000',
             'registration' => fake()->boolean(),
             'status_id' => '2',
