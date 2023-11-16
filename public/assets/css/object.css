@@ -29,6 +29,7 @@
     grid-template-areas:
 "description-section rent-section"
 "object-content-details rent-section";
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: auto;
     grid-column-gap: 2%;
     margin-top: 24px;
@@ -182,7 +183,7 @@
     top: -2px;
     left: -1px;
     position: relative;
-    background-color: #e88941 ;
+    background-color: #e88941;
     content: '';
     display: inline-block;
     visibility: visible;
@@ -195,6 +196,34 @@
     padding-left: 10px;
     box-sizing: border-box;
     font-weight: 300;
+}
+
+.rent-section .rent-summary {
+    display: grid;
+    justify-items: stretch;
+}
+
+.rent-section .rent-summary hr {
+    border-top: 1px solid #fff;
+    opacity: 1;
+}
+
+.rent-section .rent-summary p {
+    font-size: 13px;
+}
+
+.deal-form-popup {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+}
+
+.deal-form-popup .deal-form-popup-content {
+    position: absolute;
+    bottom: 20px;
 }
 
 .photo-section .carousel {
@@ -213,3 +242,29 @@
     color: #ccc;
 }
 
+.d-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.desc-price h5 {
+    margin-bottom: 0;
+}
+
+.desc-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc-number img {
+    height: 30px;
+}
+
+.desc-number p {
+    color: black;
+}
+
+.properties .desc .location {
+    color: rgb(0 0 0 / 45%);
+}

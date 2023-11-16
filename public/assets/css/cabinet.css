@@ -67,10 +67,10 @@
     z-index: 5;
     left: -30px;
     top: 30px;
-    max-width: 150px;
-    max-height: 250px;
-    border-radius: 5px;
-    padding: 5px;
+    max-width: fit-content;
+    max-height: 350px;
+    border-radius: 10px;
+    padding: 10px;
     box-sizing: border-box;
     /*border: 1px solid #000000;*/
     background-color: #f6f6f6;
@@ -85,7 +85,7 @@
     font-size: 14px;
     line-height: 16px;
     color: #957676;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 
 .modal-link-text {
@@ -108,4 +108,33 @@
     transform: scale(.8);
     color: #957676;
     transition: 0.4s ease-in-out;
+}
+
+.hr-line {
+    background-color: darkkhaki;
+    margin:5px 0;
+    border-radius: 40%;
+    height: 2px;
+}
+
+.dealModalWindow {
+    /*display: none;*/
+    position: absolute;
+    /*position: fixed;*/
+    z-index: 5;
+    right: 250px;
+    top: 0;
+    max-width: fit-content;
+    max-height: 450px;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    /*border: 1px solid #000000;*/
+    background-color: #f6f6f6;
+    opacity: .81;
+}
+
+.dealModalCloseCross {
+    width: 10px;
+
 }

@@ -49,7 +49,7 @@ class Property extends Model
 
     public function deal(): HasMany
     {
-        return $this->hasMany(Deal::class, 'property_id', 'id');
+        return $this->hasMany(Deal::class, 'property_id');
     }
     public function category(): BelongsTo
     {
@@ -82,6 +82,7 @@ class Property extends Model
             'is_temporary_registration_possible' => isset($data['is_temporary_registration_possible']),
             'daily_rent' => isset($data['daily_rent'])
         ]);
+        event(new \App\Events\DefineNewPropertyEvent($property));
         return $property->save();
     }
     public function updatePropertyModel(array $data, Property $property): bool

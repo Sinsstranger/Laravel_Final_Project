@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('rent_ends_at');
             $table->decimal('rent_costs', 11, 0);
             $table->integer('guests')->nullable();
+            $table->boolean('registration');
             $table->foreignId('status_id')
                 ->constrained('deal_statuses');
             $table->timestamps();

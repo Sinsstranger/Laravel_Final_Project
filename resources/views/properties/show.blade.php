@@ -43,7 +43,7 @@
                             @if($property->daily_rent)
                                 <p>за сутки</p>
                             @else
-                                <p>за 30 дней</p>
+                                <p>за 30 суток</p>
                             @endif
                         </div>
                     </div>
@@ -51,6 +51,8 @@
                 </div>
             </div>
         </section>
+
+        @dump($property->deal);
 
         <!--Форма бронирования-->
         <aside class="rent-section">
@@ -62,41 +64,43 @@
                     <div>
                     <p>Укажите даты <label  for="datepicker">заезда и выезда</label></p>
                         @if($property->daily_rent)
-                            <p class="condition">Срок аренды - не <b>более</b> 30 дней</p>
+                            <p class="condition">&nbsp;</p>
                         @else
-                            <p class="condition">Срок аренды - не <b>менее</b> 30 дней</p>
+                            <p class="condition">Срок аренды - <b>от 30 суток</b></p>
                         @endif
-                    <input type="text" name="rent_start_and_end" id="datepicker" required class="form-control form-control-sm"/>
-                    </div>
+                    <input type="text" name="rent_start_and_end" id="datepicker" placeholder="Выберите даты..." required class="form-control form-control-sm"/>
+            </div>
                     <div>
                         <p><label for="guests">Количество гостей</label></p>
-                        <input type="number" name="guests" id="guests" step="1" value="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
+                        <input type="number" name="guests" id="guests" step="1" min="1" max="{{$property->number_of_guests}}" form="new-reservation" required>
                     </div>
                     <div>
                     @if($property->is_temporary_registration_possible)
                         <p class="rent-radio">Нужна временная регистрация</p>
                         <div class="form-check-rent">
-                            <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation">
+                            <input class="form-check-input-rent" type="radio" name="registration" id="temporary_reg0" value="0" checked="" form="new-reservation">
                             <label class="form-check-label-rent" for="temporary_reg0">
                                 Нет
                             </label>
-                            <input class="form-check-input-rent" type="radio" name="temporary_reg" value="1" id="temporary_reg1" form="new-reservation">
+                            <input class="form-check-input-rent" type="radio" name="registration" value="1" id="temporary_reg1" form="new-reservation">
                             <label class="form-check-label-rent" for="temporary_reg1">
                                 Да
                             </label>
                         </div>
                     @else
-                        <input class="form-check-input-rent" type="radio" name="temporary_reg" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
+                        <input class="form-check-input-rent" type="radio" name="registration" id="temporary_reg0" value="0" checked="" form="new-reservation" hidden>
                         <label class="form-check-label-rent" for="temporary_reg0" hidden>
                             Нет
                         </label>
                     @endif</div>
-                    <div>
-                        <p id="result2">...</p>
+                    <div class="rent-summary">
+                        <hr>
+                        <p id="result1">&nbsp;</p>
+                        <p id="result2">&nbsp;</p>
                         @auth
-                        <input type="hidden" name="tenant_id" value="{{ \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() }}">
-                        <input type="hidden" name="property_id" value="{{ $property->id }}">
-                        <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
+                            <input type="hidden" name="tenant_id" value="{{ \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() }}">
+                            <input type="hidden" name="property_id" value="{{ $property->id }}">
+                            <input type="submit" value="Забронировать" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#reservation" form="new-reservation">
                         @endauth
                     </div>
                 </form>
@@ -111,22 +115,23 @@
             @endguest
         </aside>
         <!-- Modal-->
-        <div class="modal fade" id="reservation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="reservationLabel" aria-hidden="true">
+        <!--<div class="modal fade" id="reservation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="reservationLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="reservationLabel">Готово!</h1>
-                        <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Ваша заявка на бронирование с <span id="result"> </span> принята. В ближайшее время с вами свяжается владелец объекта для подтверждения аренды.
+                        <p> Ожидайте, пожалуйста, рассмотрения заявки владельцем помещения.</p>
+                        <p>Статус заявки вы можете отслеживать в личном кабинете.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Всё понятно</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!--Блок подробности
         подробности
@@ -161,8 +166,7 @@
                         {{$property->address->house_number}} -
                         {{$property->address->flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">
-                        Mozelle Boehm</p>
+                    <p class="info">{{$property->user->name}}</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
@@ -277,13 +281,15 @@
     @parent <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="{{ asset("assets/js/lightpick.js") }}"></script>
     <script>
-        const picker = new Lightpick({
+
+
+            const picker = new Lightpick({
             field: document.getElementById('datepicker'),
             singleDate: false,
             @if($property->daily_rent)
-            maxDays: 30,
+            minDays: 2,
             @else
-            minDays: 30,
+            minDays: 31,
             numberOfMonths: 4,
             numberOfColumns: 2,
             @endif
@@ -291,23 +297,30 @@
                 let str = '';
                 str += start ? start.format('DD.MM.YYYY') + ' по ' : '';
                 str += end ? end.format('DD.MM.YYYY') : '...';
-                document.getElementById('result').innerHTML = str;
+                str = 'Заявка на аренду {{$property->title}} с ' + str + '.'
+                document.getElementById('result1').innerHTML = str;
 
-                let ran = "";
-                let pr = "";
-                let res = "";
-                ran = (end - start) / 86400000 +1;
-                pr = document.getElementById('price-per-day').outerText;
-                res = ran * pr;
+                let ran = (end - start) / 86400000;
+                let pr = document.getElementById('price-per-day').outerText;
+                let res = ran * pr;
+
                 @if ($property->daily_rent)
-                    res = 'Стоимость аренды за весь срок: ' + res + '₽.';
+                    res = 'Стоимость аренды за весь период: ' + res + '₽';
                 @else
-                    res = 'Стоимость аренды за весь срок: ' + Math.round(res/30) + '₽.';
+                    res = 'Стоимость аренды за весь период: ' + Math.round(res/30) + '₽';
                 @endif
                 document.getElementById('result2').innerHTML = res;
                 },
             })
 
-    </script>
+        const form = document.getElementById('new-reservation');
+        form.noValidate = true;
 
+        form.addEventListener('submit', function(event) {
+            if (!event.target.checkValidity()) {
+                event.preventDefault();
+                alert('Пожалуйста, заполните все пункты формы бронирования'); // error message
+            }
+        }, false);
+    </script>
 @endsection

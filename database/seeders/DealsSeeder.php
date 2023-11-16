@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Deal;
 use App\Models\DealStatus;
 use App\Models\Property;
+use App\Models\User;
 
 class DealsSeeder extends Seeder
 {
@@ -17,34 +18,34 @@ class DealsSeeder extends Seeder
      */
     public function run(): void
     {
-        Deal::factory(20)
-        ->state(new Sequence(
-            fn (Sequence $sequence) => ['status_id' => DealStatus::all()->random()],
-        ))
-        ->state(new Sequence(
-            fn (Sequence $sequence) => ['property_id' => Property::all()->random()],
-        ))
-        ->create();
+        /*
+        Генерация завершенных сделок (даты в прошлом)
+        */
+        Deal::factory(30)
+            ->finished()
+            ->state(new Sequence(
+                fn (Sequence $sequence) => ['property_id' => Property::all()->random()],
+            ))
+            ->state(new Sequence(
+                fn (Sequence $sequence) => ['tenant_id' => User::all()->random()],
+            ))
+            ->create();
 
-        // DB::table('deals')->insert(
-        //     $this->getData()
-        // );
+        /*
+        Генерация активных сделок (старт в прошлом, финиш - в будущем)
+        */
+        Deal::factory(30)
+            ->active()
+            ->state(new Sequence(
+                ['status_id' => '2'],
+                ['status_id' => '3'],
+            ))
+            ->state(new Sequence(
+                fn (Sequence $sequence) => ['property_id' => Property::all()->random()],
+            ))
+            ->state(new Sequence(
+                fn (Sequence $sequence) => ['tenant_id' => User::all()->random()],
+            ))
+            ->create();
     }
-
-    // private function getData(): array
-    // {
-    //     $quantity = 300;
-    //     $deals = [];
-    //     for ($i = 0; $i <= $quantity; $i++) {
-    //         $deals[] = [
-    //             'rent_starts_at' => fake()->dateTimeBetween('-1 month', '+1 day'),
-    //             'rent_ends_at' => fake()->dateTimeBetween('+1 day', '+1 month'),
-    //             'rent_costs' => fake()->numberBetween(10000, 120000),
-    //         +    'status_id' => 1,
-    //             'property_id' => fake()->numberBetween(1, 120),
-    //             'tenant_id' => fake()->numberBetween(1, 20),
-    //         ];
-    //     }
-    //     return $deals;
-    // }
 }

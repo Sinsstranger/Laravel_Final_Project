@@ -7558,6 +7558,7 @@ button.bg-dark:focus {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
+    justify-content: space-between;
 }
 
 .d-inline-flex {
@@ -14509,3 +14510,4 @@ textarea.form-control {
     padding: auto;
     margin-bottom: 20px;
 }
+

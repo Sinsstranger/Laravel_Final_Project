@@ -66,8 +66,13 @@ class UserController extends Controller
      */
     public function update(UserEditRequest $request, User $user)
     {
-        $data = $request->only(['name']);
+        $data = $request->only(['name','email']);
         $user->fill($data);
+        if($request->is_admin === 'true'){
+            $user->is_admin = 1;
+        }else{
+            $user->is_admin = 0;
+        }
         if ($user->save()) {
             return redirect()->route('admin.users.edit',$user)->with('success', 'Пользователь успешно изменен');
         }

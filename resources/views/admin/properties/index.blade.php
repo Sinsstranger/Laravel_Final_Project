@@ -12,10 +12,10 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Заголовок</th>
+                        <th>Категория</th>
                         <th>Номер категории</th>
-                        <th>Номер недвижимости</th>
-                        <th>Номер гостя</th>
+                        <th>Количество комнат</th>
+                        <th>Количество гостей</th>
                         <th>Описание</th>
                         <th>Фото</th>
                         <th>Цена за день</th>
@@ -30,10 +30,10 @@
                     <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>Заголовок</th>
+                        <th>Категория</th>
                         <th>Номер категории</th>
-                        <th>Номер недвижимости</th>
-                        <th>Номер гостя</th>
+                        <th>Количество комнат</th>
+                        <th>Количество гостей</th>
                         <th>Описание</th>
                         <th>Фото</th>
                         <th>Цена за день</th>
@@ -67,7 +67,8 @@
                                     Пользователь
                                 @endif
                             </td>
-                            <td><a href="#" type="button" class="btn btn-success">Показать</a> <a href="#" type="button" class="btn btn-success">Редактировать</a></td>
+                            <td><a href="{{ route('admin.properties.show', $property) }}" type="button" class="btn btn-success">Показать</a>
+                                <a href="{{ route('admin.properties.edit', $property) }}" type="button" class="btn btn-success">Редактировать</a></td>
                         </tr>
                     @empty
                         <tr>
