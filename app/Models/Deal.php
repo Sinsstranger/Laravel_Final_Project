@@ -16,6 +16,7 @@ class Deal extends Model
     protected $fillable = [
         'property_id',
         'tenant_id',
+        'guests',
         'rent_starts_at',
         'rent_ends_at',
         'rent_costs',
@@ -44,15 +45,18 @@ class Deal extends Model
     }
     public function createModel(array $data): Deal
     {
+
         return $this::create([
             'property_id' => $data['property_id'],
             'tenant_id' => $data['tenant_id'],
             'rent_starts_at' => $data['rent_starts_at'],
             'rent_ends_at' => $data['rent_ends_at'],
             'rent_costs' => $data['rent_costs'],
+            'guests' => $data['guests'],
             'status_id' => 1,
             'registration' => $data['registration']
         ]);
+
     }
     public function getDealsByUserId(int $user_id): Collection
     {
