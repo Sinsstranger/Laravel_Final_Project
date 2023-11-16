@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('title')
-@parentКаталог недвижимости
+@parent Каталог недвижимости
 @endsection
 @section('style')
 @parent
