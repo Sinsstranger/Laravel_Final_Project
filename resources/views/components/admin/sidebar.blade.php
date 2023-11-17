@@ -10,6 +10,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Пользователи
                 </a>
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Категории
+                </a>
                 <a class="nav-link" href="{{ route('admin.properties.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Объявления
