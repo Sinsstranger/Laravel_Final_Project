@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\PropertyController as AdminPropertyController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\DealsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -53,6 +54,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(
     Route::get('/', AdminController::class)->name('index');
     Route::resource('users',AdminUserController::class);
     Route::resource('properties',AdminPropertyController::class);
+    Route::resource('categories',AdminCategoryController::class);
 });
 
 require __DIR__ . '/auth.php';

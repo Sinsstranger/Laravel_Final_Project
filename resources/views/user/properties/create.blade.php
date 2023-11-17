@@ -14,8 +14,6 @@
               action=" @if(empty($property)) {{ route('user.properties.store') }}
                        @else {{ route('user.properties.update', $property) }}
                        @endif ">
-
-
                 @csrf
 
                 @if(isset($property)) @method('PUT')
@@ -203,7 +201,7 @@
                                            id="is_temporary_registration_possible"
                                            @if(!empty($property->is_temporary_registration_possible)) checked @endif>
                                 </div>
-                        </li>>
+                        </li>
 
                         <li class="list-group-item">
                                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

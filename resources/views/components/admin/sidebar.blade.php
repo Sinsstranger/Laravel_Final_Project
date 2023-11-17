@@ -10,6 +10,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Пользователи
                 </a>
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Категории
+                </a>
                 <a class="nav-link" href="{{ route('admin.properties.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Объявления
@@ -18,10 +22,6 @@
                 <a class="nav-link" href="charts.html">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Графики
-                </a>
-                <a class="nav-link" href="tables.html">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Таблицы
                 </a>
             </div>
         </div>
