@@ -172,23 +172,23 @@
 {{--                        Список бронирований--}}
 {{--                        @forelse($property->deal as $deal)--}}
                         <div class="max-w-xl" style="position: relative;">
-                            <h1 class="text-lg font-medium text-gray-900"
-                                style="text-align: center">
-                                Заявки на бронирование
-                            </h1>
+                            <div class="dealsWrap">
+                                <h1 class="text-lg font-medium text-gray-900"
+                                    style="text-align: center">
+                                    Заявки на бронирование
+                                </h1>
 
 
-                                <ul class="max-w-xl"
-                                style="border:1px solid darkgray; border-radius: 10px;">
+                                <ul class="max-w-xl dealsList">
                                     @forelse($property->deal as $deal)
                                     <li class="dashboard-link">
                                         <h2 class="text-lg font-small text-gray-900">
                                             Заявка от {{ $deal->created_at->format('d.m.Y') }}
                                         </h2>
-                                        <p class="mt-1 text-sm text-gray-600">
+                                        {{--<p class="mt-1 text-sm text-gray-600">
 
                                             {{$deal->created_at}}
-                                        </p>
+                                        </p>--}}
 
                                         <h2 class="text-lg font-small text-gray-900">
                                             Статус
@@ -198,9 +198,15 @@
                                         </p>
 
 
-                                        <button type="submit" class="modal-link-text showDeals"
+                                        <button class="modal-link-text showDeals"
+                                                style="margin: 5px 0 0 0;"
                                            href="#" data-deal="{{$deal->id}}" id="showDeal{{$deal->id}}">
                                             Показать заявку</button>
+
+                                        <hr class="hr-line">
+
+
+
 
                                         <div id="dealModal" class="dealModalWindow dealModalElement{{$deal->id}}">
                                             <ul class="max-w-xl">
@@ -310,12 +316,9 @@
                                             </ul>
                                         </div>
 
-
                                     </li>
 
-                            {{--@empty
-                                <h1>У Вас пока нет заявок</h1>
-                            @endforelse--}}
+
 
                             {{--                        Модалка брони--}}
                             {{--<div id="dealModal" class="dealModalWindow dealModalElement{{$deal->id}}">
@@ -428,12 +431,12 @@
 
 {{--                            </div>--}}
 
-                            @empty
-                                <h1>У Вас пока нет заявок</h1>
-                            @endforelse
+                                    @empty
+                                        <h1>У Вас пока нет заявок</h1>
+                                    @endforelse
                                 </ul>
+                            </div>
                         </div>
-
                     </div>
             @empty
                     <h1>У Вас пока нет объявлений</h1>
@@ -442,7 +445,6 @@
     </div>
 
     <script>
-
 
         let dealPopUP = document.querySelectorAll(".dealModalWindow");
 
@@ -465,13 +467,6 @@
                 }
             })
         })
-
-
-
-
-           
-
-
 
     </script>
 
