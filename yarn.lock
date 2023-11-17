@@ -7,6 +7,83 @@
   "resolved" "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz"
   "version" "5.2.0"
 
+"@easepick/amp-plugin@^1.1.0":
+  "integrity" "sha512-LbGd7RU+fiucxTqJnBpT5SwACX1BoEK4yi1joLqN50O57jpN0jQMMvDO/vp/F4Zr8MO6kwaamRmOXhqo/Vb4aw=="
+  "resolved" "https://registry.npmjs.org/@easepick/amp-plugin/-/amp-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/base-plugin@^1.1.0":
+  "integrity" "sha512-aonBQaRyZwNH/gmPzSzZDVjQjgy/rxWd+TXnM0E3Nxkeu4yMbXV+GnWVQbBwTvJx74M7iSCHJowdmZ5T46B7Vg=="
+  "resolved" "https://registry.npmjs.org/@easepick/base-plugin/-/base-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/core" "^1.1.0"
+
+"@easepick/bundle@^1.2.1":
+  "integrity" "sha512-M9DGu7rrIltbTEPuBfc8fTOdK1E2CjTIiSqXmVRcof/peDnDC7U7h3XaTx7nbB0gq4HUTUO8BKHrofPC0jPqSw=="
+  "resolved" "https://registry.npmjs.org/@easepick/bundle/-/bundle-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/amp-plugin" "^1.1.0"
+    "@easepick/base-plugin" "^1.1.0"
+    "@easepick/core" "^1.1.0"
+    "@easepick/datetime" "^1.1.0"
+    "@easepick/kbd-plugin" "^1.1.0"
+    "@easepick/lock-plugin" "^1.1.0"
+    "@easepick/preset-plugin" "^1.1.0"
+    "@easepick/range-plugin" "^1.1.0"
+    "@easepick/time-plugin" "^1.1.0"
+
+"@easepick/core@^1.1.0":
+  "integrity" "sha512-V/blEia/ykAq+0mnQ9djOU5wvMZ+iffL5iuQrKLObpMOw38kL/qo4inH4pCbB3wm7sDjrJTuDKf+6+FrgdFGsw=="
+  "resolved" "https://registry.npmjs.org/@easepick/core/-/core-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/datetime" "^1.1.0"
+
+"@easepick/datetime@^1.1.0":
+  "integrity" "sha512-KIUvWo/kEipwBqPTazjfUf6R7dKb2ztPizPoB/0ZMYz3HrWJptsLSZQma3R1nM/zkaexnk/e4L4nX+vDjwBtYA=="
+  "resolved" "https://registry.npmjs.org/@easepick/datetime/-/datetime-1.2.1.tgz"
+  "version" "1.2.1"
+
+"@easepick/kbd-plugin@^1.1.0":
+  "integrity" "sha512-t/bEtKuvAbo9b9iw4J5h5DsGYEL4Wm2sLA2VzR2rvmMfJuo1extktgzw2eCy+w6Q/s4ObdKzhXLnjMvFeiJ8Xg=="
+  "resolved" "https://registry.npmjs.org/@easepick/kbd-plugin/-/kbd-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/lock-plugin@^1.1.0":
+  "integrity" "sha512-6sJCdliMpnQtzL9dwznS9vYaQUy66VRKPZ+jFdVR1ohiNUVM6C7dSGdG3dPntVTywTy2Z9uU+yJOeWcVFDT61A=="
+  "resolved" "https://registry.npmjs.org/@easepick/lock-plugin/-/lock-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/preset-plugin@^1.1.0":
+  "integrity" "sha512-VAnjyWpf39kXTR6DYbpCJIBeBhbOgRoNTqntpSb5uF9O398KuHUpIM4Ep1id3fTIlfnRrKxzp54rAFwvc48eCA=="
+  "resolved" "https://registry.npmjs.org/@easepick/preset-plugin/-/preset-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+    "@easepick/range-plugin" "^1.1.0"
+
+"@easepick/range-plugin@^1.1.0":
+  "integrity" "sha512-yEHLUq32Kj0exLz4txxchALQVJUbwyXvnovfN7yxTrCJLpi6uMmPXcW4lyYig2P9+xM9JqF6JsNqOsi0+5GlHQ=="
+  "resolved" "https://registry.npmjs.org/@easepick/range-plugin/-/range-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/time-plugin@^1.1.0":
+  "integrity" "sha512-mjynAAppLxlqiDSdHdkBEqi4A67CH17FqO3UH2n6mfAIKPZLQA7R8Y6jEkp+Fpl5tj0/HFqdrk82ceiYYnLFYw=="
+  "resolved" "https://registry.npmjs.org/@easepick/time-plugin/-/time-plugin-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
 "@esbuild/win32-x64@0.18.20":
   "integrity" "sha512-kTdfRcSiDfQca/y9QIkng02avJ+NCaQvrMejlsB3RRv5sE9rRoeBPISaZpKxHELzRxZyLvNts1P27W3wV+8geQ=="
   "resolved" "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz"

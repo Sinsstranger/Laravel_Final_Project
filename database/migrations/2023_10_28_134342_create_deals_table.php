@@ -17,8 +17,8 @@ return new class extends Migration
                 ->constrained('properties');
             $table->foreignId('tenant_id')
                 ->constrained('users');
-            $table->timestamp('rent_starts_at');
-            $table->timestamp('rent_ends_at');
+            $table->date('rent_starts_at');
+            $table->date('rent_ends_at');
             $table->decimal('rent_costs', 11, 0);
             $table->integer('guests')->nullable();
             $table->boolean('registration');

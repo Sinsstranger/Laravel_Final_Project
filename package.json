@@ -17,6 +17,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@easepick/bundle": "^1.2.1",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.2",
         "lightpick": "^1.6.2",
