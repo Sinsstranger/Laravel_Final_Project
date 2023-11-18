@@ -67,16 +67,14 @@
                                 {{$deal->property->address->place}},
                                 {{$deal->property->address->street}},
                                 {{$deal->property->address->house_number}},
-                                {{$deal->property->address-> flat_number}},
+                                {{$deal->property->address->flat_number}},
                                 </p>
                             </li>
 
                             <li class="dashboard-link flex justify-between">
                                 <div class="flex items-center gap-4 cabinet-index-btn">
                                     <x-primary-button>
-                                        <a href="#">
-                                            Редактировать бронирование
-                                        </a>
+                                        <a href="{{ route('properties.show', $deal->property) }}">Забронировать повторно</a>
                                     </x-primary-button>
                                 </div>
                                 <div class="flex items-center gap-4 cabinet-index-btn">
