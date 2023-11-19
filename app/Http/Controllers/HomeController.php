@@ -38,6 +38,7 @@ class HomeController extends Controller
 
     public function show(Property $property): View
     {
-        return \view('properties/show', ['property' => $property]);
+        $categories = $this->propertyServices->getAllCategoriesProperty();
+        return \view('properties/show', ['property' => $property, 'categories' => $categories]);
     }
 }

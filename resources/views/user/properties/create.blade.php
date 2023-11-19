@@ -1,13 +1,12 @@
 @extends('layouts/app')
 @section('content')
 
-
     <div class="py-12">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
             @include('inc.message')
-            <!-- @dump(session()->all()); -->
+
 
         <form method="post"
               enctype="multipart/form-data"
@@ -21,7 +20,7 @@
                 @endif
 
                 <div class="card">
-                  
+
                     {{--<div class="card-body">
                         <h5 class="card-title">
                             <textarea name="title" class="form-control" id="exampleFormControlTextarea1" rows="3" required>
@@ -39,7 +38,7 @@
                                        shadow-sm mt-1 block w-full" id="title" required >
                                 @error('title')
                                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                        {{$message}}
+{{--                                        {{$message}}--}}
                                     </div>
                                 @enderror
                             </div>
@@ -53,7 +52,9 @@
                                        shadow-sm mt-1 block w-full" required>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}"
-                                            @selected ($property->category->id ?? (old('category->id') == $category->id))>{{$category->title}}</option>
+                                                @if(empty($property->category_id)) @selected(old('category_id'))@else @selected($property->category_id == $category->id) @endif>
+                                             {{ $category->title }}
+                                                 </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -215,9 +216,11 @@
                                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                                     <label for="photo" class="text-lg font-medium text-gray-900">Добавить фотографию</label>
                                     @if(!empty($property->photo))
-                                        <img src="{{ $property->photo }}" width="100">
+                                        @foreach($property->photo as $photo)
+                                            <img src="{{ $photo }}" width="100">
+                                        @endforeach
                                     @endif
-                                    <input name="photo" class="form-control form-control-sm" id="photo" type="file">
+                                    <input name="photo[]" multiple  class="form-control form-control-sm" id="photo" type="file">
                                 </div>
                         </li>
                     </ul>

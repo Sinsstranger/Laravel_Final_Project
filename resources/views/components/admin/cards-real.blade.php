@@ -3,9 +3,11 @@
     @forelse($properties as $property)
     <div class="col">
         <div class="card shadow-sm">
+            @foreach($property->photo as $photo)
             <div>
-                <img src="{{ $property->photo }}" class="img-fluid" alt="Дом для аренды">
+                <img src="{{ $photo }}" class="img-fluid" alt="Дом для аренды">
             </div>
+            @endforeach
             <div class="card-body">
                 <div class="d-flex pt-5">
                     <div>

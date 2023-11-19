@@ -28,10 +28,12 @@
                 Описание -
                 {{ $property->description }}
             </div>
+            @foreach($property->photo as $photo)
             <div class="card-header">
                 Фото -
-                {{ $property->photo}}
+                <img src="{{ $photo}}" width="100px">
             </div>
+            @endforeach
             <div class="card-header">
                 Цена за день -
                 {{ $property->price_per_day}}

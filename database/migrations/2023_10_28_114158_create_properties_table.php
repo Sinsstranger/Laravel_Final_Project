@@ -19,7 +19,7 @@ return new class extends Migration
             $table->tinyInteger('number_of_rooms');
             $table->tinyInteger('number_of_guests');
             $table->text('description');
-            $table->string('photo');
+            $table->json('photo');
             $table->decimal('price_per_day', 6, 0);
             $table->foreignId('address_id')
                 ->constrained('addresses')->cascadeOnDelete();

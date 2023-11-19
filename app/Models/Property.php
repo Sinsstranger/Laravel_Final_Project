@@ -34,6 +34,7 @@ class Property extends Model
     protected $casts = [
         'is_temporary_registration_possible' => 'boolean',
         'daily_rent' => 'boolean',
+        'photo' => 'array',
     ];
 
     public function user(): BelongsTo
@@ -53,7 +54,7 @@ class Property extends Model
     }
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class,  'category_id');
     }
 
     public function scopeFilter(Builder $builder, QueryFilter $filter){
@@ -69,6 +70,7 @@ class Property extends Model
     }
     public function createModel(array $data): bool
     {
+
         $property = $this->firstOrCreate([
             'title' => $data['title'],
             'category_id' => $data['category_id'],

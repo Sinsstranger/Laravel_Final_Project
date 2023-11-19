@@ -21,7 +21,7 @@ class PropertiesSeeder extends Seeder
                     'number_of_rooms' => 3,
                     'number_of_guests' => 5,
                     'description' => fake()->text(),
-                    'photo' => 'https://loremflickr.com/450/600/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
+                    'photo' => json_encode(["https://loremflickr.com/450/600/furniture,interior/all"]), // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
                     'price_per_day' => fake()->numberBetween(10000, 200000),
                     'address_id' => 1,
                     'user_id' => 1,
@@ -34,7 +34,7 @@ class PropertiesSeeder extends Seeder
                     'number_of_rooms' => 3,
                     'number_of_guests' => 5,
                     'description' => fake()->text(),
-                    'photo' => 'https://loremflickr.com/450/600/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
+                    'photo' => json_encode(["https://loremflickr.com/450/600/furniture,interior/all"]), // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
                     'price_per_day' => fake()->numberBetween(10000, 200000),
                     'address_id' => 2,
                     'user_id' => 1,
@@ -47,7 +47,7 @@ class PropertiesSeeder extends Seeder
                     'number_of_rooms' => 2,
                     'number_of_guests' => 2,
                     'description' => fake()->text(),
-                    'photo' => 'https://loremflickr.com/450/600/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
+                    'photo' => json_encode(["https://loremflickr.com/450/600/furniture,interior/all"]), // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
                     'price_per_day' => fake()->numberBetween(10000, 200000),
                     'address_id' => 3,
                     'user_id' => 1,
@@ -60,7 +60,7 @@ class PropertiesSeeder extends Seeder
                     'number_of_rooms' => 3,
                     'number_of_guests' => 5,
                     'description' => fake()->text(),
-                    'photo' => 'https://loremflickr.com/450/600/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
+                    'photo' => json_encode(["https://loremflickr.com/450/600/furniture,interior/all"]), // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
                     'price_per_day' => fake()->numberBetween(10000, 200000),
                     'address_id' => 4,
                     'user_id' => 1,
@@ -107,7 +107,7 @@ class PropertiesSeeder extends Seeder
                 'number_of_rooms' => $rooms,
                 'number_of_guests' => fake()->numberBetween($rooms, $rooms * 3),
                 'description' => fake()->text(),
-                'photo' => 'https://loremflickr.com/450/600/furniture,interior/all', // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
+                'photo' => json_encode(['https://loremflickr.com/450/600/furniture,interior/all']), // по ссылке генерируются случайные изображения с сайта flickr с ключевыми словами 'design' и 'interior'
                 'price_per_day' => fake()->numberBetween(10000, 200000),
                 'address_id' => fake()->numberBetween(1, 100),
                 'user_id' => fake()->numberBetween(1, $usersQty),

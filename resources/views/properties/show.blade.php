@@ -31,9 +31,11 @@
     <div class="object-content container">
         <section class="description-section container">
             <div class="description-content">
+                @foreach($property->photo as $photo)
                 <div class="description-content-left">
-                    <img src="{{$property->photo}}" alt="main object photo">
+                    <img src="{{$photo}}" alt="main object photo">
                 </div>
+                @endforeach
                 <div class="description-content-right">
                     <div class="rent-location">
                         <h5>{{$property->address->country}},
