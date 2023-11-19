@@ -60,6 +60,43 @@
     color: #e79f15;
 }
 
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+/* .tablinks {
+    margin: 0 5px 0 0;
+} */
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+
 .popUpCabinetEnter{
     display: none;
     position: absolute;
@@ -117,40 +154,50 @@
     height: 2px;
 }
 
-.dealsWrap {
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    background-color: #f6f6f6;
-
+.notDealsText {
+    text-align: center;
+    width: 100%;
+    max-width: 36rem;
+    font-weight: 700;
+    font-style: italic;
 }
 
-.dealsList {
-    border:1px solid #e4e3fd;
-    border-radius: 10px;
-    padding: 5px;
-    box-sizing: border-box;
-    max-height: 480px;
-    overflow-y: auto;
-}
 
-.dealModalWindow {
-    /*display: none;*/
-    position: absolute;
-    /*position: fixed;*/
-    z-index: 5;
-    right: 250px;
-    top: 0;
-    max-width: fit-content;
-    max-height: 450px;
-    border-radius: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    /*border: 1px solid #000000;*/
-    background-color: #f6f6f6;
-    opacity: .81;
-}
 
-.dealModalCloseCross {
-    width: 10px;
-}
+/*.dealsWrap {*/
+/*    padding: 5px;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 10px;*/
+/*    background-color: #f6f6f6;*/
+
+/*}*/
+
+/*.dealsList {*/
+/*    border:1px solid #e4e3fd;*/
+/*    border-radius: 10px;*/
+/*    padding: 5px;*/
+/*    box-sizing: border-box;*/
+/*    max-height: 480px;*/
+/*    overflow-y: auto;*/
+/*}*/
+
+/*.dealModalWindow {*/
+/*    !*display: none;*!*/
+/*    position: absolute;*/
+/*    !*position: fixed;*!*/
+/*    z-index: 5;*/
+/*    right: 250px;*/
+/*    top: 0;*/
+/*    max-width: fit-content;*/
+/*    max-height: 450px;*/
+/*    border-radius: 10px;*/
+/*    padding: 10px;*/
+/*    box-sizing: border-box;*/
+/*    !*border: 1px solid #000000;*!*/
+/*    background-color: #f6f6f6;*/
+/*    opacity: .81;*/
+/*}*/
+
+/*.dealModalCloseCross {*/
+/*    width: 10px;*/
+/*}*/
