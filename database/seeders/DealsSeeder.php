@@ -37,14 +37,30 @@ class DealsSeeder extends Seeder
         Deal::factory(30)
             ->active()
             ->state(new Sequence(
+                ['status_id' => '1'],
                 ['status_id' => '2'],
-                ['status_id' => '3'],
             ))
             ->state(new Sequence(
                 fn (Sequence $sequence) => ['property_id' => Property::all()->random()],
             ))
             ->state(new Sequence(
                 fn (Sequence $sequence) => ['tenant_id' => User::all()->random()],
+            ))
+            ->create();
+        /*
+Генерация активных сделок для Админа (старт в прошлом, финиш - в будущем)
+*/
+        Deal::factory(5)
+            ->active()
+            ->state(new Sequence(
+                ['status_id' => '1'],
+                ['status_id' => '2'],
+            ))
+            ->state(new Sequence(
+                fn (Sequence $sequence) => ['property_id' => Property::all()->random()],
+            ))
+            ->state(new Sequence(
+                fn (Sequence $sequence) => ['tenant_id' => 1],
             ))
             ->create();
     }

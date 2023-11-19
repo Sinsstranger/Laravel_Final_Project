@@ -77,6 +77,7 @@
                                         <a href="{{ route('properties.show', $deal->property) }}">Забронировать повторно</a>
                                     </x-primary-button>
                                 </div>
+                                @if(($deal->rent_ends_at <= now() && $deal->status_id == 4) || $deal->status_id == 4 || $deal->status_id == 3)
                                 <div class="flex items-center gap-4 cabinet-index-btn">
                                         <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
                                             @csrf
@@ -86,14 +87,31 @@
                                             </x-primary-button>
                                         </form>
                                 </div>
+                                @endif
+                                @if($deal->rent_ends_at > now() && $deal->status_id != 4)
+                                    <div class="flex items-center gap-4 cabinet-index-btn">
+                                        <form method="post" action="{{ route('user.deals.update', $deal) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="4">
+                                            <x-primary-button :type="'submit'" class="index-del-btn">
+                                                <span class="index-btn-span">Завершить досрочно</span>
+                                            </x-primary-button>
+                                        </form>
+                                    </div>
+                                @endif
+
                             </li>
                         </ul>
+{{--                        <x-rent-form :property="$deal->property" :deal="$deal">--}}
+{{--                        </x-rent-form>--}}
                     </div>
+
             @empty
                     <h1>У Вас пока нет бронирований</h1>
             @endforelse
 
         </div>
   </div>
-
 @endsection
+
