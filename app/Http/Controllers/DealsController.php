@@ -43,8 +43,9 @@ class DealsController extends Controller
         ]);
 
         $deal->fill($data);
+
         if ($deal->save()) {
-            return redirect()->route('user.properties.index', $deal)->with('success', 'Информация отправлена');
+            return back()->with('success', 'Информация отправлена');
         }
         return back()->with('error', 'Не получилось отправить');
     }

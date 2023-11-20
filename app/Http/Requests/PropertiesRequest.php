@@ -25,11 +25,12 @@ class PropertiesRequest extends FormRequest
 
         return [
             'title' => 'required|string|max:120|min:5',
-            'category_id' => 'required|integer|exists:properties,id',
+            'category_id' => 'required|integer|exists:categories,id',
             'number_of_rooms' => 'required|integer',
             'number_of_guests' =>  'required|integer',
             'description' => 'required|string|max:255',
             'price_per_day' => 'required|integer|regex:/^\d*(\.\d{1,2})?$/',
+            'photo.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
             'country' => 'required|string|max:150',
             'place' => 'required|string|max:150',

@@ -12,8 +12,7 @@
                     <div class="card-header">Фото профиля</div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <div class="small font-italic text-muted mb-4">JPG или PNG не больше 5 MB</div>
-                        <button class="btn btn-primary" type="button">Загрузить фото</button>
+                        <button class="btn btn-primary" style="margin-top: 15px;" type="button"><a href="{{ route('profile.edit') }}">Изменить фото</a></button>
                     </div>
                 </div>
             </div>
@@ -24,29 +23,29 @@
                         <form>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Юзернейм (как ваше имя будет отображаться для других пользователей сайта)</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Введите свой ник" value="{{$user->name}}">
+                                <input class="form-control" style="border-radius: 10px;" id="inputUsername" type="text" placeholder="Введите свой ник" value="{{$user->name}}" readonly>
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">Имя</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Введите ваше имя" value="Valerie">
+                                    <input class="form-control" style="border-radius: 10px;" id="inputFirstName" type="text" placeholder="Введите ваше имя" value="Иван" readonly>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName">Фамимлия</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Введите вашу фамилию" value="Luna">
+                                    <input class="form-control"  style="border-radius: 10px;"id="inputLastName" type="text" placeholder="Введите вашу фамилию" value="Иванов" readonly>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Почта</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Введите вашу почту" value="{{$user->email}}">
+                                <input class="form-control"  style="border-radius: 10px;"id="inputEmailAddress" type="email" placeholder="Введите вашу почту" value="{{$user->email}}" readonly>
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone">Номер телефона</label>
-                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Введите ваш номер телефона" value="{{$user->phone}}">
+                                    <input class="form-control"  style="border-radius: 10px;"id="inputPhone" type="tel" placeholder="Введите ваш номер телефона" value="{{$user->phone}}" readonly>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="button">Сохранить изменения</button>
+                            <button class="btn btn-primary" type="button"><a href="{{ route('profile.edit') }}">Изменить данные</a></button>
                         </form>
                     </div>
                 </div>
