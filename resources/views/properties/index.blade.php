@@ -1,36 +1,36 @@
 @extends('layouts.public')
 @section('title')
-    @parentКаталог недвижимости
+@parentКаталог недвижимости
 @endsection
 @section('style')
-    @parent
-    <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
+@parent
+<link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
 @endsection
 @section('content')
 
-    <br><br><br>
-    <section class="object-title object-title-catalog">
-        <div class="container">
-            <div class="header-object">
-                <h2 class="mb-4 list-real">Каталог недвижимости</h2>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../">Главная</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Каталог недвижимости</li>
-                    </ol>
-                </nav>
-            </div>
+<br><br><br>
+<section class="object-title object-title-catalog">
+    <div class="container">
+        <div class="header-object">
+            <h2 class="mb-4 list-real">Каталог недвижимости</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Каталог недвижимости</li>
+                </ol>
+            </nav>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="property-content">
-        <div class="container">
-            <div class="row">
-                <aside class="col-md-3">
-                    <x-filter/>
-                </aside>
-                <main class="col-md-9">
-                    <!--<header class="border-bottom mb-4 pb-3">
+<section class="property-content">
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-3">
+                <x-filter />
+            </aside>
+            <main class="col-md-9">
+                <!--<header class="border-bottom mb-4 pb-3">
                         <div class="form-inline">
                              <span class="mr-md-auto">найдено ? вариантов </span>
                             -    <select class="mr-2 form-control">
@@ -47,10 +47,10 @@
                                  </div
                         </div>
                     </header>>-->
-                    <x-catalog :properties="$properties"/>
-                    {{$properties->withQueryString()->links()}}
-                </main>
-            </div>
+                <x-catalog :properties="$properties" />
+                {{$properties->withQueryString()->links()}}
+            </main>
         </div>
-    </section>
+    </div>
+</section>
 @endsection
