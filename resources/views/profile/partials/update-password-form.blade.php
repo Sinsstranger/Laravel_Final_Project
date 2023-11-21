@@ -32,7 +32,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>Сохранить</x-primary-button>
+            <x-primary-button style="margin-top: 15px">Сохранить</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p

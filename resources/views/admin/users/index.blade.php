@@ -40,7 +40,9 @@
                         Пользователь
                     @endif    
                 </td>
-                        <td><a href="{{ route('admin.users.show', $user) }}" type="button" class="btn btn-success">Показать</a> <a href="{{ route('admin.users.edit', $user) }}" type="button" class="btn btn-success">Редактировать</a></td>
+                        <td><a href="{{ route('admin.users.show', $user) }}" type="button" class="btn btn-success">Показать</a> 
+                            <a href="{{ route('admin.users.edit', $user) }}" type="button" class="btn btn-success">Редактировать</a> 
+                        <a rel="{{ $user->id  }}" type="button" class="btn btn-success delete" href="javascript:"  style="color: red">Удалить</a></td>
                     </tr>
                     @empty
                     <tr>
@@ -54,3 +56,37 @@
 </div>
 
 @endsection
+@push('js')
+<script>    
+    let elements = document.querySelectorAll(".delete");
+    
+        elements.forEach(function (element, key) {
+            element.addEventListener('click', function() {
+                console.log('click');
+                const id = this.getAttribute('rel');
+                console.log(id);
+                if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {
+                    send(`/admin/users/${id}`).then( () => {
+                        //location.reload();
+                        console.log(id);
+                        document.getElementById(id).remove();
+                    });
+                } else {
+                    alert("Вы отменили удаление записи");
+                }
+            });
+        });
+
+
+        async function send(url) {
+            let response = await fetch (url, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+            let result = await response.json();
+            return result.ok;
+        }
+</script>
+@endpush

@@ -45,25 +45,27 @@
                     @break
                     @endif
                     <div class="item">
-                        <div class="properties ftco-animate">
-                            <div class="img">
-                                <img src="assets/images/work-<?php echo (rand(1, 9)); ?>.jpg" class="img-fluid" alt="Дом для аренды">
-                            </div>
-                            <div class="desc">
-                                <div class="text bg-primary d-flex text-center align-items-center justify-content-center">
-                                    <span>Хит</span>
+                        <a href="{{ route('properties.show', $prop) }}">
+                            <div class="properties ftco-animate">
+                                <div class="img">
+                                    <img src="assets/images/work-<?php echo (rand(1, 9)); ?>.jpg" class="img-fluid" alt="Дом для аренды">
                                 </div>
-                                <div class="d-flex pt-5">
-                                    <div>
-                                        <h3><a href="{{ route('properties.show', $prop) }}">{{ $prop->title }}</a></h3>
+                                <div class="desc">
+                                    <div class="text bg-primary d-flex text-center align-items-center justify-content-center">
+                                        <span>Хит</span>
                                     </div>
-                                    <div class="pl-md-4">
-                                        <h4 class="price">{{ $prop->price_per_day}}₽</h4>
+                                    <div class="d-flex pt-5">
+                                        <div>
+                                            <h3>{{ $prop->title }}</h3>
+                                        </div>
+                                        <div class="pl-md-4">
+                                            <h4 class="price">{{ $prop->price_per_day}}₽</h4>
+                                        </div>
                                     </div>
+                                    <p class="h-info"><span class="location">{{$prop->address->country}}, {{$prop->address->place}}</span></p>
                                 </div>
-                                <p class="h-info"><span class="location">{{$prop->address->country}}, {{$prop->address->place}}</span></p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>

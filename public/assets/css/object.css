@@ -268,3 +268,22 @@
 .properties .desc .location {
     color: rgb(0 0 0 / 45%);
 }
+
+.favourites_img{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    z-index: 2 !important;
+}
+
+.properties{
+    position: relative;
+}
+
+.img_opacity{
+    opacity: 0;
+}
+
+.properties:hover .favourites_img{
+    opacity: 1;
+}

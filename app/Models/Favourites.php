@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Favourities extends Model
+class Favourites extends Model
 {
     use HasFactory;
 
@@ -30,17 +30,17 @@ class Favourities extends Model
         return $this->belongsTo(Property::class, 'foreign_key');
     }
 
-    public function createModel(array $data): bool
+    public function createModel($property_id, $user_id): bool
     {
         $favourites = $this->firstOrCreate([
-            'property_id' => $data['property_id'],
-            'user_id' => $data['user_id'],
+            'property_id' => $property_id,
+            'user_id' => $user_id,
 
         ]);
         return $favourites->save();
     }
 
-    public function deleteFavourities(Favourities $favourities): bool
+    public function deleteFavourities(Favourites $favourities): bool
     {
         return $favourities->delete();
     }
