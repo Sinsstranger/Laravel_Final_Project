@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favourities', function (Blueprint $table) {
+        Schema::create('favourites', function (Blueprint $table) {
 
             $table->foreignId('fav_property_id')
                 ->constrained('properties');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favourities');
+        Schema::dropIfExists('favourites');
     }
 };

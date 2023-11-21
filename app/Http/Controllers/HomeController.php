@@ -38,7 +38,7 @@ class HomeController extends Controller
         if(Auth::check()){
 
             $properties = Property::filter($request)
-                ->leftJoin('favourities as f', function($join){
+                ->leftJoin('favourites as f', function($join){
                     $join->on('f.fav_property_id', '=', 'properties.id')
                         ->where('f.fav_user_id','=', Auth::user()->getAuthIdentifier());
                 })->paginate(9);

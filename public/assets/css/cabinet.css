@@ -97,7 +97,7 @@
 }
 
 
-.popUpCabinetEnter{
+.popUpCabinetEnter {
     display: none;
     position: absolute;
     /*position: fixed;*/
@@ -149,7 +149,7 @@
 
 .hr-line {
     background-color: darkkhaki;
-    margin:5px 0;
+    margin: 5px 0;
     border-radius: 40%;
     height: 2px;
 }

@@ -10,7 +10,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\FavouritesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,8 @@ Route::get('/properties', [HomeController::class, 'properties'])->name('properti
 Route::get('/properties/{property}', [HomeController::class, 'show'])->name('properties.show');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts');
+Route::post('/favorites/{property}/{action}', [FavouritesController::class, 'store'])->name('favorites');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -56,5 +60,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(
     Route::resource('properties',AdminPropertyController::class);
     Route::resource('categories',AdminCategoryController::class);
 });
+
+Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment');
 
 require __DIR__ . '/auth.php';

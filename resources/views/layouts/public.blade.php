@@ -5,7 +5,7 @@
     <title>@section('title')Сайт аренды недвижимости | @show</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -123,8 +123,7 @@
         </div>
     </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
-         id="ftco-navbar" style="z-index: 1">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar" style="z-index: 10">
         <div class="container">
             <a class="navbar-brand" href="/">"ЗОЛОТОЙ КЛЮЧИК"</a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -233,7 +232,7 @@
     <script src="{{ asset("assets/js/filter-form.js") }}"></script>
     <script src="{{ asset("assets/js/main.js") }}"></script>
 
-@stack('child-scripts')
+    @stack('child-scripts')
 
 </body>
 
