@@ -270,8 +270,8 @@
 }
 
 .favourites_img{
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
     position: absolute;
     z-index: 2 !important;
 }
