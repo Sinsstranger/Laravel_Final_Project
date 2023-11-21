@@ -60,9 +60,10 @@
                                     <td style="display: flex">
 
                                         <form style="margin: 0 15px 5px;" method="POST" enctype="multipart/form-data"
-                                              action="#">
+                                              action="{{ route('user.deals.update', $item) }}">
                                             @csrf
-                                            @method('POST')
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="4">
                                             <button class="btn btn-sm" style="color: red; text-decoration: underline", type="submit">
                                                Завершить
                                             </button>
@@ -116,18 +117,20 @@
                                 <td style="display: flex">
 
                                     <form style="margin: 0 15px 5px;" method="POST" enctype="multipart/form-data"
-                                          action="#">
+                                          action="{{ route('user.deals.update', $item) }}">
                                         @csrf
-                                        @method('POST')
+                                        @method('PUT')
+                                        <input type="hidden" name="status_id" value="2">
                                         <button class="btn btn-sm" style="color: red; text-decoration: underline", type="submit">
                                             Подтвердить
                                         </button>
                                     </form>
 
                                     <form style="margin: 0 15px 5px;" method="POST" enctype="multipart/form-data"
-                                          action="#">
+                                          action="{{ route('user.deals.update', $item) }}">
                                         @csrf
-                                        @method('POST')
+                                        @method('PUT')
+                                        <input type="hidden" name="status_id" value="3">
                                         <button class="btn btn-sm" style="color: red; text-decoration: underline", type="submit">
                                             Отклонить
                                         </button>
