@@ -3,8 +3,9 @@
     @parent
     <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
     @endsection
-  
-    <div class="container-xl px-4 mt-4">
+  {{-- старый дизайн профиля, при необходимости можно вернуть --}}
+
+    {{-- <div class="container-xl px-4 mt-4">
         <hr class="mt-0 mb-4">
         <div artisan cache:clearv class="row">
             <div class="col-xl-4">
@@ -51,6 +52,81 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    
+    <div class="container">
+        <div class="main-body">
+              <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                          <h4>Иван Иванов</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div style="margin-bottom: 10px; margin-top:10px" class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Юзернейм</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{$user->name}}
+                            </div>
+                        </div>
+                      <hr style="border: 2px solid black;">
+                      <div style="margin-bottom: 10px; margin-top:10px" class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Имя</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                            </div>
+                        </div>
+                      <hr style="border: 2px solid black;">
+                      <div style="margin-bottom: 10px; margin-top:10px" class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Фамилия</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                            </div>
+                        </div>
+                      <hr style="border: 2px solid black;">
+                      <div style="margin-bottom: 10px; margin-top:10px" class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Почта</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{$user->email}}
+                        </div>
+                      </div>
+                      <hr style="border: 2px solid black;">
+                      <div style="margin-bottom: 10px; margin-top:10px" class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Телефон</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{$user->phone}}
+                        </div>
+                      </div>
+                      <hr style="border: 2px solid black;">
+                      <div style="margin-bottom: 10px; margin-top:10px" class="row">
+                        <div class="col-sm-12">
+                          <a class="btn btn-info" href="{{ route('profile.edit') }}">Изменить</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
 
 </x-app-layout>
