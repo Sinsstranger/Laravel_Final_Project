@@ -29,7 +29,7 @@
 
             </div>
 
-{{--ДЕЙСТВУЮЩИЕ ЗАЯВКИ--}}
+            {{--ДЕЙСТВУЮЩИЕ ЗАЯВКИ--}}
 
             <div id="DealsInProgress{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
                 <h3>Действующие заявки</h3>
@@ -38,53 +38,69 @@
 
                     <table class="table table-striped table-sm" style="min-width: 300px!important;">
                         <thead>
-                        <tr>
+                            <tr>
 
-                            <th scope="col">Дата начала</th>
-                            <th scope="col">Дата окончания</th>
-                            <th scope="col">Количество гостей</th>
-                            <th scope="col">Контакты</th>
-                            <th scope="col">Действия</th>
+                                <th scope="col">Дата начала</th>
+                                <th scope="col">Дата окончания</th>
+                                <th scope="col">Количество гостей</th>
+                                <th scope="col">Контакты</th>
+                                <th scope="col">Действия</th>
 
-                        </tr>
+                            </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($property->deal as $item)
-                            @if($item->status_id === 2)
-                                <tr style="text-align: center!important">
-                                    <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                                    <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                                    <td style="text-align: center!important">{{$item->guests}}</td>
-                                    <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
-                                    <td style="display: flex">
+                            @foreach($property->deal as $item)
+                                @if($item->status_id === 2)
+                                    <tr style="text-align: center!important">
+                                        <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
+                                        <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
+                                        <td style="text-align: center!important">{{$item->guests}}</td>
+                                        <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
+                                        <td style="display: flex">
+                                            {{--<div class="formWrap">
+                                                <form style="margin: 0 15px;" method="POST" enctype="multipart/form-data"
+                                                      action="#">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <button class="btn btn-sm actionButton" style="color: cornflowerblue",
+                                                            type="submit">
+                                                       Завершить
+                                                    </button>
+                                                </form>
+                                            </div>--}}
 
-                                        <form style="margin: 0 15px 5px;" method="POST" enctype="multipart/form-data"
-                                              action="{{ route('user.deals.update', $item) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="status_id" value="4">
-                                            <button class="btn btn-sm" style="color: red; text-decoration: underline", type="submit">
-                                               Завершить
-                                            </button>
-                                        </form>
+                                            <div class="formWrap">
+                                                <form style="display: flex; justify-content: center;" method="POST"
+                                                      enctype="multipart/form-data"
+                                                      action="{{ route('user.deals.update', $item) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status_id" value="4">
+                                                    <button class="btn btn-sm actionButton" style="color: cornflowerblue",
+                                                            type="submit">
+                                                       Завершить
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-                                    </td>
-                                </tr>
-                            @else
+                                @else
+                                    <tr>
+                                        <td colspan="6">
+                                            <span style="margin: 5px">Нет заявок</span>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
 
-                                <tr>
-                                    <td colspan="6">Нет заявок</td>
-                                </tr>
-                            @endif
-                        @endforeach
                         </tbody>
                     </table>
                     {{--<div style="padding-right: 65px">
                         {{ $categories->links() }}
                     </div>--}}
                 </div>
-
             </div>
 
             {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
@@ -115,35 +131,65 @@
                                 <td style="text-align: center!important">{{$item->guests}}</td>
                                 <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
                                 <td style="display: flex">
+                                    {{--<div class="formWrap">
+                                        <form style="margin: 0 15px;" method="POST" enctype="multipart/form-data"
+                                              action="#">
+                                            @csrf
+                                            @method('POST')
+                                            <button class="btn btn-sm actionButton", style="color: mediumseagreen",
+                                                    type="submit">
+                                                Подтвердить
+                                            </button>
+                                        </form>
+                                    </div>--}}
 
-                                    <form style="margin: 0 15px 5px;" method="POST" enctype="multipart/form-data"
-                                          action="{{ route('user.deals.update', $item) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status_id" value="2">
-                                        <button class="btn btn-sm" style="color: red; text-decoration: underline", type="submit">
-                                            Подтвердить
-                                        </button>
-                                    </form>
+                                    <div class="formWrap">
+                                        <form method="POST" enctype="multipart/form-data"
+                                              action="{{ route('user.deals.update', $item) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="2">
+                                            <button class="btn btn-sm actionButton" style="color: mediumseagreen",
+                                                    type="submit">
+                                                Подтвердить
+                                            </button>
+                                        </form>
+                                    </div>
 
-                                    <form style="margin: 0 15px 5px;" method="POST" enctype="multipart/form-data"
-                                          action="{{ route('user.deals.update', $item) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status_id" value="3">
-                                        <button class="btn btn-sm" style="color: red; text-decoration: underline", type="submit">
-                                            Отклонить
-                                        </button>
+                                    <div class="formWrap">
+                                        <form method="POST" enctype="multipart/form-data"
+                                              action="{{ route('user.deals.update', $item) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="3">
+                                            <button class="btn btn-sm actionButton" style="color: indianred;",
+                                                    type="submit">
+                                                Отклонить
+                                            </button>
+                                        </form>
+                                    </div>
 
-                                    </form>
+                                    {{--<div class="formWrap">
+                                        <form style="margin: 0 15px;" method="POST" enctype="multipart/form-data"
+                                              action="#" >
+                                            @csrf
+                                            @method('POST')
+                                            <button class="btn btn-sm actionButton", style="color: indianred;", type="submit">
+                                                Отклонить
+                                            </button>
 
+                                        </form>
+                                    </div>--}}
                                 </td>
                             </tr>
                             @else
 
-                            <tr>
-                                <td colspan="6">Нет заявок</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <span style="margin: 5px">Нет заявок</span>
+                                    </td>
+                                </tr>
+
                             @endif
                         @endforeach
                         </tbody>
@@ -164,16 +210,17 @@
 
                     <table class="table table-striped table-sm" style="min-width: 300px!important;">
                         <thead>
-                        <tr>
+                            <tr>
 
-                            <th scope="col">Дата начала</th>
-                            <th scope="col">Дата окончания</th>
-                            <th scope="col">Количество гостей</th>
-                            <th scope="col">Контакты</th>
-{{--                            <th scope="col">Действия</th>--}}
+                                <th scope="col">Дата начала</th>
+                                <th scope="col">Дата окончания</th>
+                                <th scope="col">Количество гостей</th>
+                                <th scope="col">Контакты</th>
+    {{--                            <th scope="col">Действия</th>--}}
 
-                        </tr>
+                            </tr>
                         </thead>
+
                         <tbody>
 
                         @foreach($property->deal as $item)
@@ -187,7 +234,9 @@
                             @else
 
                                 <tr>
-                                    <td colspan="6">Нет заявок</td>
+                                    <td colspan="6">
+                                        <span style="margin: 5px">Нет заявок</span>
+                                    </td>
                                 </tr>
                             @endif
                         @endforeach
@@ -197,14 +246,11 @@
                         {{ $categories->links() }}
                     </div>--}}
                 </div>
-
-
             </div>
 
             <div id="dealsMessages{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
                 <h3>Сообщения</h3>
             </div>
-
         </div>
     @else
 

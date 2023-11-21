@@ -35,10 +35,12 @@
                                 <label for="title" class="text-lg font-medium text-gray-900" >Наименование</label>
                                 <input name="title" type="text" value = "{{$property->title ?? old('title')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                       shadow-sm mt-1 block w-full" id="title" required >
+                                       shadow-sm mt-1 block w-full
+                                       @error('title') is-invalid @enderror"
+                                       id="title">
                                 @error('title')
                                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
-{{--                                        {{$message}}--}}
+                                        {{$message}}
                                     </div>
                                 @enderror
                             </div>
@@ -67,7 +69,8 @@
                                 <input name="number_of_rooms" type="number" id="number_of_rooms"
                                        value = "{{ $property->number_of_rooms ?? old('number_of_rooms')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                       shadow-sm mt-1 block w-full" required >
+                                       shadow-sm mt-1 block w-full
+                                        @error('number_of_rooms') is-invalid @enderror" >
                                 @error('number_of_rooms')
                                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                         {{$message}}
@@ -83,7 +86,8 @@
                                 <input name="number_of_guests" type="text" id="number_of_guests"
                                        value = "{{$property->number_of_guests ?? old('number_of_guests')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                       shadow-sm mt-1 block w-full" required >
+                                       shadow-sm mt-1 block w-full
+                                       @error('number_of_guests') is-invalid @enderror">
                                 @error('number_of_guests')
                                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                         {{$message}}
@@ -99,7 +103,7 @@
                                     Описание</label>
                                 <textarea name="description" id="description"
                                           class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                       shadow-sm mt-1 block w-full" required >
+                                       shadow-sm mt-1 block w-full @error('description') is-invalid @enderror">
                                     {{$property->description ?? old('description')}}
                                 </textarea>
                                 @error('description')
@@ -116,7 +120,7 @@
                                 <input name="price_per_day" id="price_per_day" type="number"
                                        value = "{{$property->price_per_day ?? old('price_per_day')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                           shadow-sm mt-1 block w-full" required >
+                                           shadow-sm mt-1 block w-full @error('price_per_day') is-invalid @enderror">
                                 @error('price_per_day')
                                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                         {{$message}}
@@ -133,7 +137,8 @@
                                     <input name="country" type="text" id="country"
                                            value = "{{$property->address->country ?? old('country')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                           shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif >
+                                           shadow-sm mt-1 block w-full @error('country') is-invalid @enderror"
+                                           @if(!empty($property)) readonly @endif >
                                     @error('country')
                                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                             {{$message}}
@@ -146,7 +151,8 @@
                                     <input name="place" type="text" id="place"
                                            value = "{{$property->address->place ?? old('place')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                           shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                           shadow-sm mt-1 block w-full @error('place') is-invalid @enderror"
+                                           @if(!empty($property)) readonly @endif>
                                     @error('place')
                                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                             {{$message}}
@@ -159,7 +165,8 @@
                                     <input name="street" type="text" id="street"
                                            value = "{{$property->address->street ?? old('street')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                           shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                           shadow-sm mt-1 block w-full @error('street') is-invalid @enderror"
+                                           @if(!empty($property)) readonly @endif>
                                     @error('street')
                                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                             {{$message}}
@@ -172,7 +179,8 @@
                                     <input name="house_number" type="text" id="house_number"
                                            value = "{{$property->address->house_number ?? old('house_number')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                           shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                           shadow-sm mt-1 block w-full @error('house_number') is-invalid @enderror"
+                                           @if(!empty($property)) readonly @endif>
                                     @error('house_number')
                                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                             {{$message}}
@@ -185,7 +193,8 @@
                                     <input name="flat_number" type="text" id="flat_number"
                                            value = "{{$property->address->flat_number ?? old('flat_number')}}"
                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
-                                           shadow-sm mt-1 block w-full" required @if(!empty($property)) readonly @endif>
+                                           shadow-sm mt-1 block w-full @error('flat_number') is-invalid @enderror"
+                                           @if(!empty($property)) readonly @endif>
                                     @error('flat_number')
                                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                             {{$message}}
