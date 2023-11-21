@@ -3,11 +3,20 @@
     @forelse($properties as $property)
     <div class="col">
         <div class="card shadow-sm">
-            @foreach($property->photo as $photo)
+            @if(is_array($property->photo))
+                @foreach($property->photo as $photo) 
             <div>
                 <img src="{{ $photo }}" class="img-fluid" alt="Дом для аренды">
             </div>
             @endforeach
+            @else
+             
+            <div>
+                <img src="{{ /*$photo*/ $property->photo }}" class="img-fluid" alt="Дом для аренды">
+            </div>
+           
+            @endif
+            
             <div class="card-body">
                 <div class="d-flex pt-5">
                     <div>

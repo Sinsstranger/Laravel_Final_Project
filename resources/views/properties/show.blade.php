@@ -272,6 +272,7 @@
             zIndex: 10,
             lang: "ru-RU",
             format: "YYYY-MM-DD",
+            reaonly: false,
             setup (picker) {
                 picker.on('select', function (start, end) {
                 start = picker.getStartDate();

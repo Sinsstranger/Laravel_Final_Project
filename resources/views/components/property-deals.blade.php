@@ -22,6 +22,11 @@
                     Архив
                 </button>
 
+                <button class="tablinks" onclick="openTab(event, 'dealsDates{{$property->id}}',
+                                            {{$property->id}})">
+                    Календарь
+                </button>
+
                 <button class="tablinks" onclick="openTab(event, 'dealsMessages{{$property->id}}',
                                             {{$property->id}})">
                     Сообщения
@@ -248,6 +253,13 @@
                 </div>
             </div>
 
+            {{--Календарь--}}
+            <div id="dealsDates{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
+                <h3>Календарь занятости</h3>
+                <p> Здесь отображаются действующие и архивные бронирования</p>
+                <input id="datepicker{{$property->id}}" hidden />
+            </div>
+
             <div id="dealsMessages{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
                 <h3>Сообщения</h3>
             </div>
@@ -289,6 +301,66 @@
     for (let i = 0; i < defaultOpen.length; i++) {
         defaultOpen[i].click();
     }
+
+    {{--Скрипт календаря--}}
+    const DateTime{{$property->id}} = easepick.DateTime;
+    books{{$property->id}} = [];
+    bookedDates{{$property->id}} = [];
+    @foreach($property->deal as $item)
+        @if($item->status_id === 2 || $item->status_id === 4)
+        startat = new Date("{{$item->rent_starts_at}}");
+        startat = startat.getFullYear() + "-" + (startat.getMonth() + 1).toString().padStart(2, "0") + "-" + startat.getDate().toString().padStart(2, "0");
+
+        endat = new Date("{{$item->rent_ends_at}}");
+        endat = endat.getFullYear() + "-" + (endat.getMonth() + 1).toString().padStart(2, "0") + "-" + endat.getDate().toString().padStart(2, "0");
+        booksmini = [startat,endat];
+        //console.log(booksmini);
+        books{{$property->id}}.push(booksmini);
+        //console.log(books);
+        bookedDates{{$property->id}} = books{{$property->id}}.map(d => {
+            if (d instanceof Array) {
+                const startat = new DateTime{{$property->id}}(d[0], 'YYYY-MM-DD');
+                const endat = new DateTime{{$property->id}}(d[1], 'YYYY-MM-DD');
+
+                return [startat, endat];
+            }
+        });
+    @endif
+    @endforeach
+
+    const picker{{$property->id}} = new easepick.create({
+        element: document.getElementById('datepicker{{$property->id}}'),
+        zIndex: 10,
+        lang: "ru-RU",
+        grid: 2,
+        calendars: 2,
+        inline: true,
+        css: [
+            'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
+            'https://easepick.com/css/demo_hotelcal.css',
+        ],
+        plugins: ["AmpPlugin", 'LockPlugin', "KbdPlugin"],
+        LockPlugin: {
+            minDate: new Date(),
+            minDays: 2,
+            inseparable: true,
+            filter(date, picked) {
+                if (picked.length === 1) {
+                    const incl = date.isBefore(picked[0]) ? '[)' : '(]';
+                    return !picked[0].isSame(date, 'day') && date.inArray(bookedDates{{$property->id}}, incl);
+                }
+                return date.inArray(bookedDates{{$property->id}}, '[)');
+            },
+        },
+        AmpPlugin: {
+            dropdown: {
+                months: true,
+                years: true,
+                minYear: 2023,
+                maxYear: 2030
+            }
+        }
+    })
 
     /* let dealPopUP = document.querySelectorAll(".dealModalWindow");
 
