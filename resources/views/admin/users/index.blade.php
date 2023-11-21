@@ -38,11 +38,11 @@
                         Админ
                     @else
                         Пользователь
-                    @endif    
+                    @endif
                 </td>
-                        <td><a href="{{ route('admin.users.show', $user) }}" type="button" class="btn btn-success">Показать</a> 
-                            <a href="{{ route('admin.users.edit', $user) }}" type="button" class="btn btn-success">Редактировать</a> 
-                        <a rel="{{ $user->id  }}" type="button" class="btn btn-success delete" href="javascript:"  style="color: red">Удалить</a></td>
+                        <td><a href="{{ route('admin.users.show', $user) }}" type="button" class="btn btn-success">Показать</a>
+                            <a href="{{ route('admin.users.edit', $user) }}" type="button" class="btn btn-success">Редактировать</a>
+                        <a rel="{{ $user->id  }}" type="button" class="btn btn-danger delete" href="javascript:" >Удалить</a></td>
                     </tr>
                     @empty
                     <tr>
@@ -57,9 +57,9 @@
 
 @endsection
 @push('js')
-<script>    
+<script>
     let elements = document.querySelectorAll(".delete");
-    
+
         elements.forEach(function (element, key) {
             element.addEventListener('click', function() {
                 console.log('click');
