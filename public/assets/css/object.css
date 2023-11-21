@@ -269,7 +269,7 @@
     color: rgb(0 0 0 / 45%);
 }
 
-.favourities_img{
+.favourites_img{
     height: 20px;
     width: 20px;
     position: absolute;
@@ -278,4 +278,12 @@
 
 .properties{
     position: relative;
+}
+
+.img_opacity{
+    opacity: 0;
+}
+
+.properties:hover .favourites_img{
+    opacity: 1;
 }
