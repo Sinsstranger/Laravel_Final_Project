@@ -28,7 +28,7 @@
                            name="title"
                            class="form-control"
                            id="title"
-                           value="{{ $category->title ?? old('title') }}"
+                           value="{{ $category->title ?? old('title') }}">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-success">@if(empty($category)) Create
