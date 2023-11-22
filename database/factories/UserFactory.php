@@ -22,8 +22,11 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->unique()->numberBetween(81111111111, 89999999999),
+            'avatar' => 'https://loremflickr.com/320/240/cat/all',
             'email_verified_at' => now(),
             'password' => Hash::make('00000000'), // password
             'remember_token' => Str::random(10),

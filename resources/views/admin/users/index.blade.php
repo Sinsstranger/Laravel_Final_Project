@@ -12,7 +12,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Аватарка</th>
+                        <th>Юзернейм</th>
                         <th>Имя</th>
+                        <th>Фамилия</th>
                         <th>Почта</th>
                         <th>Права</th>
                         <th>Опции</th>
@@ -21,7 +24,10 @@
                 <tfoot>
                     <tr>
                         <th>#</th>
+                        <th>Аватарка</th>
+                        <th>Юзернейм</th>
                         <th>Имя</th>
+                        <th>Фамилия</th>
                         <th>Почта</th>
                         <th>Права</th>
                         <th>Опции</th>
@@ -31,7 +37,10 @@
                     @forelse($usersList as $user)
                     <tr id="{{ $user->id }}">
                         <td>{{ $user->id }}</td>
+                        <td><img src="{{ $user->avatar }}" alt="avatar" width="80px"></td>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->first_name }}</td>
+                        <td>{{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                     @if($user->is_admin)

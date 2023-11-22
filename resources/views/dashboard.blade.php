@@ -53,7 +53,7 @@
             </div>
         </div>
     </div> --}}
-    
+
     <div class="container">
         <div class="main-body">
               <div class="row gutters-sm">
@@ -61,9 +61,10 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                        <div class="mt-3">
-                          <h4>Иван Иванов</h4>
+{{--                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">--}}
+                            <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150">
+                          <div class="mt-3">
+                          <h4>{{ $user->first_name }}  {{ $user->last_name }}</h4>
                         </div>
                       </div>
                     </div>
@@ -86,7 +87,7 @@
                             <h6 class="mb-0">Имя</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                
+                                {{ $user->first_name }}
                             </div>
                         </div>
                       <hr style="border: 2px solid black;">
@@ -95,7 +96,7 @@
                             <h6 class="mb-0">Фамилия</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                
+                                {{ $user->last_name }}
                             </div>
                         </div>
                       <hr style="border: 2px solid black;">
