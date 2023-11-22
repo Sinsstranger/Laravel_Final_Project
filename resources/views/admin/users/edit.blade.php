@@ -8,7 +8,6 @@
             <i class="fas fa-table me-1"></i>
             {{ $user->name }}
         </div>
-        @dump(session()->all())
         <form  method="post" action="{{ route('admin.users.update',$user) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')

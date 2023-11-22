@@ -34,8 +34,10 @@
                 </div>
                 <div class="form-group">
                     <label for="photo">Фото</label>
-                    <img src="{{ $property->photo }}" width="100">
+                    @foreach($property->photo as $photo)
+                    <img src="{{ $photo }}" width="100">
                     <input type="file" name="photo" class="form-control" id="photo">
+                    @endforeach
                 </div>
                 <div class="form-group">
                     <label for="price_per_day">Цена за день</label>
