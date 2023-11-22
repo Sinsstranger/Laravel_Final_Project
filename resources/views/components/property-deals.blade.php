@@ -1,6 +1,6 @@
 
 
-    @if($property->deal)
+    <!-- @if($property->deal) -->
 
         <div class="sm:max-w-2xl" style="width: 100%; max-width: 50rem; margin: 0 0 0 10px;
             box-shadow: 0px 0px 14px 9px rgba(34, 60, 80, 0.2);">
@@ -63,18 +63,7 @@
                                         <td style="text-align: center!important">{{$item->guests}}</td>
                                         <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
                                         <td style="display: flex">
-                                            {{--<div class="formWrap">
-                                                <form style="margin: 0 15px;" method="POST" enctype="multipart/form-data"
-                                                      action="#">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <button class="btn btn-sm actionButton" style="color: cornflowerblue",
-                                                            type="submit">
-                                                       Завершить
-                                                    </button>
-                                                </form>
-                                            </div>--}}
-
+                                            
                                             <div class="formWrap">
                                                 <form style="display: flex; justify-content: center;" method="POST"
                                                       enctype="multipart/form-data"
@@ -91,12 +80,7 @@
                                         </td>
                                     </tr>
 
-                                @else
-                                    <tr>
-                                        <td colspan="6">
-                                            <span style="margin: 5px">Нет заявок</span>
-                                        </td>
-                                    </tr>
+                               
                                 @endif
                             @endforeach
 
@@ -136,18 +120,7 @@
                                 <td style="text-align: center!important">{{$item->guests}}</td>
                                 <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
                                 <td style="display: flex">
-                                    {{--<div class="formWrap">
-                                        <form style="margin: 0 15px;" method="POST" enctype="multipart/form-data"
-                                              action="#">
-                                            @csrf
-                                            @method('POST')
-                                            <button class="btn btn-sm actionButton", style="color: mediumseagreen",
-                                                    type="submit">
-                                                Подтвердить
-                                            </button>
-                                        </form>
-                                    </div>--}}
-
+                                    
                                     <div class="formWrap">
                                         <form method="POST" enctype="multipart/form-data"
                                               action="{{ route('user.deals.update', $item) }}">
@@ -172,30 +145,10 @@
                                                 Отклонить
                                             </button>
                                         </form>
-                                    </div>
-
-                                    {{--<div class="formWrap">
-                                        <form style="margin: 0 15px;" method="POST" enctype="multipart/form-data"
-                                              action="#" >
-                                            @csrf
-                                            @method('POST')
-                                            <button class="btn btn-sm actionButton", style="color: indianred;", type="submit">
-                                                Отклонить
-                                            </button>
-
-                                        </form>
-                                    </div>--}}
+                                    </div>                                    
                                 </td>
-                            </tr>
-                            @else
-
-                                <tr>
-                                    <td colspan="6">
-                                        <span style="margin: 5px">Нет заявок</span>
-                                    </td>
-                                </tr>
-
-                            @endif
+                            </tr>                           
+                            @endif                            
                         @endforeach
                         </tbody>
                     </table>
@@ -236,13 +189,7 @@
                                     <td style="text-align: center!important">{{$item->guests}}</td>
                                     <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
                                 </tr>
-                            @else
-
-                                <tr>
-                                    <td colspan="6">
-                                        <span style="margin: 5px">Нет заявок</span>
-                                    </td>
-                                </tr>
+                            
                             @endif
                         @endforeach
                         </tbody>
@@ -264,11 +211,11 @@
                 <h3>Сообщения</h3>
             </div>
         </div>
-    @else
+    <!-- @else
 
     <h1 class="notDealsText">У этого объекта пока нет заявок</h1>
 
-    @endif
+    @endif -->
 
 
 
