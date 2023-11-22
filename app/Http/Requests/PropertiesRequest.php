@@ -39,4 +39,20 @@ class PropertiesRequest extends FormRequest
             'flat_number' => 'nullable|integer',
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            'title' => 'Наименование',
+            'number_of_rooms' => 'Количество комнат',
+            'number_of_guests' => 'Количество возможных гостей',
+            'price_per_day' => 'Цена за сутки',
+            'description' => 'Описание',
+            'country' => 'Страна',
+            'place' => 'Город',
+            'street' => 'Улица',
+            'house_number' => 'Номер дома',
+            'flat_number' => 'Номер квартиры',
+        ];
+    }
 }

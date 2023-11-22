@@ -36,7 +36,7 @@
                     <span class="auth-nav-span"> {{ Auth::user()->name }} </span>
                 </a>
 
-                {{-- <div class="popUpCabinetEnter">
+                <div class="popUpCabinetEnter">
 
                     <p class="modal-text">{{Auth::user()->name}}</p>
 
@@ -83,7 +83,7 @@
                         </li>
 
                     </ul>
-                </div> --}}
+                </div>
 
                 {{--<div class="auth-nav-text">
 
