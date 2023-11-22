@@ -115,12 +115,12 @@
                                     </h2>
                                     @else
                                     <h2 class="text-lg font-medium text-gray-900">
-                                        Цена за месяц
+                                        Цена за 30 суток
                                     </h2>
                                 @endif
 
                                 <p class="mt-1 text-sm text-gray-600">
-                                    {{$property->price_per_day}}
+                                    {{$property->price_per_day}}₽
                                 </p>
                             </li>
 

@@ -199,7 +199,7 @@
 
             </section>
 
-            <!--Отзывыа-->
+            <!--Отзывы-->
             <section class="review-section container">
                 <div class="heading-section">
                     <h4>Отзывы</h4>
@@ -221,7 +221,7 @@
                     <hr>
                     @auth
                     <span class="subheading"><label for="review">Оставить отзыв</label></span>
-                    <form action="#" class="p-4 p-md-5 contact-form">
+                    <form action="#" class="contact-form">
 
                         <div class="form-group">
                             <textarea name="" id="review" cols="5" rows="5" class="form-control" placeholder="Ваш отзыв"></textarea>
@@ -233,123 +233,163 @@
                     @endauth
                 </div>
             </section>
+
+            <!--Доп блок-->
+            <section class="recommend-section container">
+                <div class="heading-section">
+                    <h4>Вас может заинтересовать</h4>
+                    <div class="recommend-catalog">
+
+                        @php
+                            $url = $_SERVER['REQUEST_URI'];
+                            $url = explode('/', $url);
+                            $url = intval($url[2]);
+
+                        @endphp
+                        @foreach($property as $prop)
+                            @if($loop->iteration > 3)
+                                @break
+                            @endif
+
+                                    <a href="{{ route('properties.show', $property) }}">
+                                        <div class="recommend-card">
+                                            @foreach($property->photo as $photo)
+                                                <img src="{{$photo}}" alt="property photo">
+                                            @endforeach
+                                            <div class="desc">
+                                                <div class="">
+                                                    <div class="desc-price">
+                                                        <h5 class="title">{{ $property->title }}</h5>
+                                                        <h6 class="price">{{ $property->price_per_day}}₽</h6>
+                                                    </div>
+                                                </div>
+                                                <p class="h-info"><span class="location">{{$property->address->country}}</span></p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                        @endforeach
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-    </div>
-    <div>
 
-    </div>
-@endsection
-@section('script')
-    @parent
-    <script>
-        const DateTime = easepick.DateTime;
-        books = [];
-        bookedDates = [];
-        @foreach($property->deal as $deal)
-            startat = new Date("{{$deal->rent_starts_at}}");
-            startat = startat.getFullYear() + "-" + (startat.getMonth() + 1).toString().padStart(2, "0") + "-" + startat.getDate().toString().padStart(2, "0");
+    @endsection
+    @section('script')
+        @parent
+        <script>
+            const a = location.pathname.substr(12);
+            console.log(a);
+            <!--Календарь-->
+            const DateTime = easepick.DateTime;
+            books = [];
+            bookedDates = [];
+            @foreach($property->deal as $deal)
+                startat = new Date("{{$deal->rent_starts_at}}");
+                startat = startat.getFullYear() + "-" + (startat.getMonth() + 1).toString().padStart(2, "0") + "-" + startat.getDate().toString().padStart(2, "0");
 
-            endat = new Date("{{$deal->rent_ends_at}}");
-            endat = endat.getFullYear() + "-" + (endat.getMonth() + 1).toString().padStart(2, "0") + "-" + endat.getDate().toString().padStart(2, "0");
-            booksmini = [startat,endat];
-            //console.log(booksmini);
-            books.push(booksmini);
-            //console.log(books);
-            bookedDates = books.map(d => {
-                if (d instanceof Array) {
-                    const startat = new DateTime(d[0], 'YYYY-MM-DD');
-                    const endat = new DateTime(d[1], 'YYYY-MM-DD');
+                endat = new Date("{{$deal->rent_ends_at}}");
+                endat = endat.getFullYear() + "-" + (endat.getMonth() + 1).toString().padStart(2, "0") + "-" + endat.getDate().toString().padStart(2, "0");
+                booksmini = [startat,endat];
+                //console.log(booksmini);
+                books.push(booksmini);
+                //console.log(books);
+                bookedDates = books.map(d => {
+                    if (d instanceof Array) {
+                        const startat = new DateTime(d[0], 'YYYY-MM-DD');
+                        const endat = new DateTime(d[1], 'YYYY-MM-DD');
 
-                    return [startat, endat];
-                }
-            });
-        @endforeach
-        //console.log(bookedDates);
-
-        const picker = new easepick.create({
-            element: document.getElementById('datepicker'),
-            css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',],
-            zIndex: 10,
-            lang: "ru-RU",
-            format: "YYYY-MM-DD",
-            reaonly: false,
-            setup (picker) {
-                picker.on('select', function (start, end) {
-                start = picker.getStartDate();
-                end = picker.getEndDate();
-                    let str = "";
-                      str += start ? start.format('DD.MM.YYYY') + ' по ' : '';
-                       str += end ? end.format('DD.MM.YYYY') : '...';
-                       str = 'Заявка на аренду {{$property->title}} с ' + str + '.'
-                        document.getElementById('result1').innerHTML = str;
-
-                    let ran = (end - start) / 86400000;
-                    let pr = document.getElementById('price-per-day').outerText;
-                    let res = ran * pr;
-
-                    @if ($property->daily_rent)
-                        res = 'Стоимость аренды за весь период: ' + res + '₽';
-                    @else
-                        res = 'Стоимость аренды за весь период: ' + Math.round(res/30) + '₽';
-                    @endif
-                    document.getElementById('result2').innerHTML = res;
-                })
-            },
-            @if($property->daily_rent)
-            calendars: 1,
-            @else
-            calendars: 2,
-            @endif
-
-            plugins: ["AmpPlugin",'RangePlugin', 'LockPlugin'],
-            AmpPlugin: {
-                dropdown: {
-                    months: true,
-                    years: true,
-                    minYear: 2023,
-                    maxYear: 2030
-                },
-                resetButton: true
-            },
-            RangePlugin: {
-                tooltipNumber(num) {
-                    return num - 1;
-                },
-                locale: {
-                    one: 'сутки',
-                    few: 'суток',
-                    many: 'суток',
-                    other: 'суток',
-                },
-                delimiter: " — "
-            },
-            LockPlugin: {
-                minDate: new Date(),
-                @if($property->daily_rent)
-                minDays: 2,
-                @else
-                minDays: 31,
-                @endif
-                inseparable: true,
-                filter(date, picked) {
-                    if (picked.length === 1) {
-                        const incl = date.isBefore(picked[0]) ? '[)' : '(]';
-                        return !picked[0].isSame(date, 'day') && date.inArray(bookedDates, incl);
+                        return [startat, endat];
                     }
-                    return date.inArray(bookedDates, '[)');
+                });
+            @endforeach
+            //console.log(bookedDates);
+
+            const picker = new easepick.create({
+                element: document.getElementById('datepicker'),
+                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',],
+                zIndex: 10,
+                lang: "ru-RU",
+                format: "YYYY-MM-DD",
+                reaonly: false,
+                setup (picker) {
+                    picker.on('select', function (start, end) {
+                    start = picker.getStartDate();
+                    end = picker.getEndDate();
+                        let str = "";
+                          str += start ? start.format('DD.MM.YYYY') + ' по ' : '';
+                           str += end ? end.format('DD.MM.YYYY') : '...';
+                           str = 'Заявка на аренду {{$property->title}} с ' + str + '.'
+                            document.getElementById('result1').innerHTML = str;
+
+                        let ran = (end - start) / 86400000;
+                        let pr = document.getElementById('price-per-day').outerText;
+                        let res = ran * pr;
+
+                        @if ($property->daily_rent)
+                            res = 'Стоимость аренды за весь период: ' + res + '₽';
+                        @else
+                            res = 'Стоимость аренды за весь период: ' + Math.round(res/30) + '₽';
+                        @endif
+                        document.getElementById('result2').innerHTML = res;
+                    })
                 },
-            },
-        });
+                @if($property->daily_rent)
+                calendars: 1,
+                @else
+                calendars: 2,
+                @endif
 
+                plugins: ["AmpPlugin",'RangePlugin', 'LockPlugin'],
+                AmpPlugin: {
+                    dropdown: {
+                        months: true,
+                        years: true,
+                        minYear: 2023,
+                        maxYear: 2030
+                    },
+                    resetButton: true
+                },
+                RangePlugin: {
+                    tooltipNumber(num) {
+                        return num - 1;
+                    },
+                    locale: {
+                        one: 'сутки',
+                        few: 'суток',
+                        many: 'суток',
+                        other: 'суток',
+                    },
+                    delimiter: " — "
+                },
+                LockPlugin: {
+                    minDate: new Date(),
+                    @if($property->daily_rent)
+                    minDays: 2,
+                    @else
+                    minDays: 31,
+                    @endif
+                    inseparable: true,
+                    filter(date, picked) {
+                        if (picked.length === 1) {
+                            const incl = date.isBefore(picked[0]) ? '[)' : '(]';
+                            return !picked[0].isSame(date, 'day') && date.inArray(bookedDates, incl);
+                        }
+                        return date.inArray(bookedDates, '[)');
+                    },
+                },
+            });
 
-        const form = document.getElementById('new-reservation');
-        form.noValidate = true;
+            <!--Валидация формы-->
+            const form = document.getElementById('new-reservation');
+            form.noValidate = true;
 
-        form.addEventListener('submit', function(event) {
-            if (!event.target.checkValidity()) {
-                event.preventDefault();
-                alert('Пожалуйста, заполните все пункты формы бронирования'); // error message
-            }
-        }, false);
-    </script>
-@endsection
+            form.addEventListener('submit', function(event) {
+                if (!event.target.checkValidity()) {
+                    event.preventDefault();
+                    alert('Пожалуйста, заполните все пункты формы бронирования'); // error message
+                }
+            }, false);
+        </script>
+    @endsection
