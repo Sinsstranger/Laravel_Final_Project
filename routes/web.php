@@ -35,7 +35,7 @@ Route::get('/properties', [HomeController::class, 'properties'])->name('properti
 Route::get('/properties/{property}', [HomeController::class, 'show'])->name('properties.show');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts');
-Route::post('/favorites/{property}/{action}', [FavouritesController::class, 'store'])->name('favorites');
+Route::post('/favourites/{property}/{action}', [FavouritesController::class, 'store'])->name('favourites');
 
 
 Route::get('/dashboard', function () {
@@ -53,6 +53,7 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function () {
     Route::resource('properties', PropertiesController::class);
     Route::resource('addresses', \App\Http\Controllers\AddressesController::class);
     Route::resource('deals', DealsController::class,);
+    Route::resource('favourites', FavouritesController::class, 'index');
 });
 
 //Админка

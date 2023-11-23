@@ -14,7 +14,7 @@
 <!-- @dump(session()->all()); -->
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
-                    Мои объявления</h1>
+                    Опубликованные объявления</h1>
                 <x-primary-button>
                     <a href="{{ route('user.properties.create') }}">
                         Добавить объявление</a>

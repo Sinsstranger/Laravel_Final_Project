@@ -15,7 +15,8 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-        //
+//        return \view('user/favourites/index', [
+//            'favouritesUser' => $favouritesUser]);
     }
 
     /**

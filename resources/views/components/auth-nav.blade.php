@@ -29,7 +29,9 @@
             <li class="nav-item" style="display: flex; position: relative">
                 @if(Auth::user()->avatar !== null)
 
-                    <a href="{{ route('dashboard') }}"><img id="#" alt="avatar" src="{{ Auth::user()->avatar }}" style="width:45px;"></a>
+                    <a href="{{ route('dashboard') }}"><img id="#" alt="avatar" src="{{ Auth::user()->avatar }}"
+                                                            style="width:45px; border-radius: 50%; overflow: hidden;
+                                                            margin: 0 5px 0 0"></a>
 
                 @endif
                 <a id="userName"  href="{{ route('dashboard') }}" class="mr-3 auth-nav-text">
