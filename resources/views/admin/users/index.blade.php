@@ -7,8 +7,9 @@
             <i class="fas fa-table me-1"></i>
             Пользователи
         </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
+        <div class="box">
+        <div class="table-scroll">
+            <table>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -18,15 +19,9 @@
                         <th>Опции</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Имя</th>
-                        <th>Почта</th>
-                        <th>Права</th>
-                        <th>Опции</th>
-                    </tr>
-                </tfoot>
+             </table>
+               <div class="table-scroll-body">
+            <table>
                 <tbody>
                     @forelse($usersList as $user)
                     <tr id="{{ $user->id }}">
@@ -51,6 +46,7 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
 </div>

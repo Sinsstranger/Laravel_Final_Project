@@ -34,12 +34,22 @@
                                 {{$property->title}}
                                 </p>
                             </li>
-                            @foreach($property->photo as $photo)
+                           
+                            @if(is_array($property->photo))
+                @foreach($property->photo as $photo)
                             <li class="dashboard-link">
                                 <img src="{{$photo}}" alt="property photo"
                                 style = "max-width:150px">
                             </li>
                             @endforeach
+            @else
+             
+             <li class="dashboard-link">
+                                <img src="{{$property->photo}}" alt="property photo"
+                                style = "max-width:150px">
+                            </li>
+           
+            @endif
                             <!-- <li class="dashboard-link">
                                 <h2 class="text-lg font-medium text-gray-900">
                                 Описание
