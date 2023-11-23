@@ -9,8 +9,6 @@
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
-                    <a href="#" type="button" class="btn btn-success" style="margin-bottom: 21px">Добавить</a>
-                    <br>
                     <thead>
                     <tr>
                         <th>#</th>
@@ -51,7 +49,7 @@
                             <td>{{ $deal->guests }}</td>
                             <td>{{ $deal->registration }}</td>
                             <td>{{ $deal->status_id }}</td>
-                            <td><a href="#" type="button" class="btn btn-success">Редактировать</a>
+                            <td><a href="{{ route('admin.deals.edit', $deal) }}" type="button" class="btn btn-success">Редактировать</a>
                                 <a rel="{{ $deal->id  }}" href="javascript:" type="button" class="btn btn-danger delete">Удалить</a></td>
                         </tr>
                     @empty
@@ -67,34 +65,34 @@
 
 @endsection
 
-{{--@push('js')--}}
-{{--    <script>--}}
-{{--        let elements = document.querySelectorAll(".delete");--}}
-{{--        elements.forEach(function (element, key) {--}}
-{{--            element.addEventListener('click', function() {--}}
-{{--                const id = this.getAttribute('rel');--}}
-{{--                if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {--}}
-{{--                    send(`/admin/addresses/${id}`).then( () => {--}}
-{{--                        document.getElementById(id).remove();--}}
-{{--                    });--}}
-{{--                } else {--}}
-{{--                    alert("Вы отменили удаление записи");--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
+@push('js')
+    <script>
+        let elements = document.querySelectorAll(".delete");
+        elements.forEach(function (element, key) {
+            element.addEventListener('click', function() {
+                const id = this.getAttribute('rel');
+                if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {
+                    send(`/admin/deals/${id}`).then( () => {
+                        document.getElementById(id).remove();
+                    });
+                } else {
+                    alert("Вы отменили удаление записи");
+                }
+            });
+        });
 
-{{--        async function send(url) {--}}
-{{--            let response = await fetch (url, {--}}
-{{--                method: 'DELETE',--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')--}}
-{{--                }--}}
-{{--            });--}}
-{{--            let result = await response.json();--}}
-{{--            return result.ok;--}}
-{{--        }--}}
-{{--    </script>--}}
-{{--@endpush--}}
+        async function send(url) {
+            let response = await fetch (url, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+            let result = await response.json();
+            return result.ok;
+        }
+    </script>
+@endpush
 
 
 

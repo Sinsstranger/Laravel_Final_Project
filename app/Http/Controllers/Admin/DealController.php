@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Deal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class DealController extends Controller
@@ -25,7 +26,7 @@ class DealController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -47,24 +48,47 @@ class DealController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Deal $deal): View
     {
-        //
+        return \view('admin.deals.edit',['deal' => $deal]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Deal $deal)
     {
-        //
+        $data = $request->only([
+            'property_id ',
+            'tenant_id',
+            'rent_starts_at',
+            'rent_ends_at',
+            'rent_costs',
+            'guests',
+            'registration',
+            'status_id'
+        ]);
+
+        $deal->fill($data);
+        if ($deal->save()) {
+            return redirect()->route('admin.deals.edit', $deal)->with('success', 'Объявление успешно изменено');
+        }
+        return back()->with('error', 'Объявление не удалось изменить');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Deal $deal)
     {
-        //
+        try{
+            $deal->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }
