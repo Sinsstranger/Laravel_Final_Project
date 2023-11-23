@@ -1,236 +1,234 @@
-
-
-<!-- @if($property->deal) -->
-
-<div class="sm:max-w-2xl" style="width: 100%; max-width: 50rem; margin: 0 0 0 10px;
+@if(isset($property->deal))
+    <div class="sm:max-w-2xl" style="width: 100%; max-width: 50rem; margin: 0 0 0 10px;
             box-shadow: 0px 0px 14px 9px rgba(34, 60, 80, 0.2);">
 
-    <div class="tab">
+        <div class="tab">
 
-        <button class="tablinks defaultOpen" onclick="openTab(event,
+            <button class="tablinks defaultOpen" onclick="openTab(event,
                                             'NewDeals{{$property->id}}', {{$property->id}})">
-            Новые заявки
-        </button>
+                Заявки
+            </button>
 
-        <button class="tablinks" onclick="openTab(event, 'DealsInProgress{{$property->id}}',
+            <button class="tablinks" onclick="openTab(event, 'DealsInProgress{{$property->id}}',
                                             {{$property->id}})">
-            Действующие заявки
-        </button>
+                Актуальное
+            </button>
 
-        <button class="tablinks" onclick="openTab(event, 'Archive{{$property->id}}',
+            <button class="tablinks" onclick="openTab(event, 'Archive{{$property->id}}',
                                             {{$property->id}})">
-            Архив
-        </button>
+                Архив
+            </button>
 
-        <button class="tablinks" onclick="openTab(event, 'dealsDates{{$property->id}}',
+            <button class="tablinks" onclick="openTab(event, 'dealsDates{{$property->id}}',
                                             {{$property->id}})">
-            Календарь
-        </button>
+                Календарь
+            </button>
 
-        <button class="tablinks" onclick="openTab(event, 'dealsMessages{{$property->id}}',
+            <button class="tablinks" onclick="openTab(event, 'dealsMessages{{$property->id}}',
                                             {{$property->id}})">
-            Сообщения
-        </button>
+                Сообщения
+            </button>
 
-    </div>
-
-    {{--ДЕЙСТВУЮЩИЕ ЗАЯВКИ--}}
-
-    <div id="DealsInProgress{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-        <h3>Действующие заявки</h3>
-
-        <div class="table-responsive">
-
-            <table class="table table-striped table-sm" style="min-width: 300px!important;">
-                <thead>
-                <tr>
-
-                    <th scope="col">Дата начала</th>
-                    <th scope="col">Дата окончания</th>
-                    <th scope="col">Количество гостей</th>
-                    <th scope="col">Контакты</th>
-                    <th scope="col">Действия</th>
-
-                </tr>
-                </thead>
-                <tbody>
-
-                @foreach($property->deal as $item)
-                    @if($item->status_id === 2)
-                        <tr style="text-align: center!important">
-                            <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                            <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                            <td style="text-align: center!important">{{$item->guests}}</td>
-                            <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
-                            <td style="display: flex">
-
-                                <div class="formWrap">
-                                    <form style="display: flex; justify-content: center;" method="POST"
-                                          enctype="multipart/form-data"
-                                          action="{{ route('user.deals.update', $item) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status_id" value="4">
-                                        <button class="btn btn-sm actionButton" style="color: cornflowerblue",
-                                                type="submit">
-                                            Завершить
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @else
-                        @if($loop->last)
-                            <tr>
-                                <td colspan="6">Нет заявок</td>
-                            </tr>
-                        @endif
-                    @endif
-                @endforeach
-
-                </tbody>
-            </table>
-            {{--<div style="padding-right: 65px">
-                {{ $categories->links() }}
-            </div>--}}
-        </div>
-    </div>
-
-    {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
-
-    <div id="NewDeals{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-        <h3>Новые заявки</h3>
-        <div class="table-responsive">
-
-            <table class="table table-striped table-sm" style="min-width: 300px!important;">
-                <thead>
-                <tr>
-
-                    <th scope="col">Дата начала</th>
-                    <th scope="col">Дата окончания</th>
-                    <th scope="col">Количество гостей</th>
-                    <th scope="col">Контакты</th>
-                    <th scope="col">Действия</th>
-
-                </tr>
-                </thead>
-                <tbody>
-
-                @foreach($property->deal as $item)
-                    @if($item->status_id === 1)
-                        <tr style="text-align: center!important">
-                            <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                            <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                            <td style="text-align: center!important">{{$item->guests}}</td>
-                            <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
-                            <td style="display: flex">
-
-                                <div class="formWrap">
-                                    <form method="POST" enctype="multipart/form-data"
-                                          action="{{ route('user.deals.update', $item) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status_id" value="2">
-                                        <button class="btn btn-sm actionButton" style="color: mediumseagreen",
-                                                type="submit">
-                                            Подтвердить
-                                        </button>
-                                    </form>
-                                </div>
-
-                                <div class="formWrap">
-                                    <form method="POST" enctype="multipart/form-data"
-                                          action="{{ route('user.deals.update', $item) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status_id" value="3">
-                                        <button class="btn btn-sm actionButton" style="color: indianred;",
-                                                type="submit">
-                                            Отклонить
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @else
-                        @if($loop->last)
-                            <tr>
-                                <td colspan="6">Нет заявок</td>
-                            </tr>
-                        @endif
-                    @endif
-                @endforeach
-                </tbody>
-            </table>
-            {{--<div style="padding-right: 65px">
-                {{ $categories->links() }}
-            </div>--}}
         </div>
 
-    </div>
+        {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
 
-    {{--АРХИВ ЗАЯВОК--}}
+        <div id="NewDeals{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
+            <h3>Заявки</h3>
+            <div class="table-responsive">
 
-    <div id="Archive{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-        <h3>Архив</h3>
 
-        <div class="table-responsive">
+                <table class="table table-striped table-sm" style="min-width: 300px!important;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Дата заезда</th>
+                        <th scope="col">Дата выезда</th>
+                        <th scope="col">Гости</th>
+                        <th scope="col">Регистрация</th>
+                        <th scope="col">Контакты</th>
+                        <th scope="col">Действия</th>
+                    </tr>
+                    </thead>
+                    @forelse($property->deal as $item)
+                        @if ($item->status_id === 1)
+                            <tbody>
+                            <tr style="text-align: center!important">
+                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
+                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
+                                <td style="text-align: center!important">{{$item->guests}}</td>
+                                @if($item->registration === 1)
+                                    <td style="text-align: center!important">Да</td>
+                                @else
+                                    <td style="text-align: center!important">Нет</td>
+                                @endif
+                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="display: flex; flex-direction: column;">
 
-            <table class="table table-striped table-sm" style="min-width: 300px!important;">
-                <thead>
-                <tr>
+                                    <div class="formWrap">
+                                        <form method="POST" enctype="multipart/form-data"
+                                              action="{{ route('user.deals.update', $item) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="2">
+                                            <button class="btn btn-sm actionButton" style="color: mediumseagreen",
+                                                    type="submit">
+                                                Подтвердить
+                                            </button>
+                                        </form>
+                                    </div>
 
-                    <th scope="col">Дата начала</th>
-                    <th scope="col">Дата окончания</th>
-                    <th scope="col">Количество гостей</th>
-                    <th scope="col">Контакты</th>
-                    {{--                            <th scope="col">Действия</th>--}}
-
-                </tr>
-                </thead>
-
-                <tbody>
-
-                @foreach($property->deal as $item)
-                    @if($item->status_id === 4 && 3)
-                        <tr style="text-align: center!important">
-                            <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                            <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                            <td style="text-align: center!important">{{$item->guests}}</td>
-                            <td style="text-align: center!important; padding:20px 5px">{{$item->tenant->phone}}</td>
-                        </tr>
-                    @else
-                        @if($loop->last)
-                            <tr>
-                                <td colspan="6">Нет заявок</td>
+                                    <div class="formWrap">
+                                        <form method="POST" enctype="multipart/form-data"
+                                              action="{{ route('user.deals.update', $item) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="3">
+                                            <button class="btn btn-sm actionButton" style="color: indianred;",
+                                                    type="submit">
+                                                Отклонить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
+                            </tbody>
                         @endif
-                    @endif
-                @endforeach
-                </tbody>
-            </table>
-            {{--<div style="padding-right: 65px">
-                {{ $categories->links() }}
-            </div>--}}
+
+                    @empty
+                        <td colspan="6">Нет заявок</td>
+                    @endforelse
+                </table>
+            </div>
+        </div>
+
+        {{--ДЕЙСТВУЮЩИЕ ЗАЯВКИ--}}
+
+        <div id="DealsInProgress{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
+            <h3>Актуальное</h3>
+
+            <div class="table-responsive">
+
+
+                <table class="table table-striped table-sm" style="min-width: 300px!important;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Дата заезда</th>
+                        <th scope="col">Дата выезда</th>
+                        <th scope="col">Гости</th>
+                        <th scope="col">Регистрация</th>
+                        <th scope="col">Контакты</th>
+                        <th scope="col">Действия</th>
+                    </tr>
+                    </thead>
+                    @forelse($property->deal as $item)
+                        @if ($item->status_id === 2)
+                            <tbody>
+                            <tr style="text-align: center!important">
+                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
+                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
+                                <td style="text-align: center!important">{{$item->guests}}</td>
+                                @if($item->registration === 1)
+                                    <td style="text-align: center!important">Да</td>
+                                @else
+                                    <td style="text-align: center!important">Нет</td>
+                                @endif
+                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="display: flex">
+
+                                    <div class="formWrap">
+                                        <form style="display: flex; justify-content: center;" method="POST"
+                                              enctype="multipart/form-data"
+                                              action="{{ route('user.deals.update', $item) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="4">
+                                            <button class="btn btn-sm actionButton" style="color: cornflowerblue",
+                                                    type="submit">
+                                                Завершить
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            </tbody>
+
+                        @endif
+                    @empty
+                        <td colspan="6">Нет заявок</td>
+                    @endforelse
+                </table>
+            </div>
+        </div>
+
+        {{--АРХИВ ЗАЯВОК--}}
+
+        <div id="Archive{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
+            <h3>Архив</h3>
+
+            <div class="table-responsive">
+
+
+                <table class="table table-striped table-sm" style="min-width: 300px!important;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Дата заезда</th>
+                        <th scope="col">Дата выезда</th>
+                        <th scope="col">Гости</th>
+                        <th scope="col">Регистрация</th>
+                        <th scope="col">Контакты</th>
+                        <th scope="col">Статус</th>
+                    </tr>
+                    </thead>
+                    @forelse($property->deal as $item)
+                        @if($item->status_id === 4 || $item->status_id === 3)
+                            <tbody>
+                            <tr style="text-align: center!important">
+                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
+                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
+                                <td style="text-align: center!important">{{$item->guests}}</td>
+                                @if($item->registration === 1)
+                                    <td style="text-align: center!important">Да</td>
+                                @else
+                                    <td style="text-align: center!important">Нет</td>
+                                @endif
+                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                @if($item->status_id === 4)
+                                    <td style="text-align: center!important">Завершена</td>
+                                @else
+                                    <td style="text-align: center!important; color: indianred">Отклонена</td>
+                                @endif
+                            </tr>
+
+
+
+                            </tbody>
+                        @endif
+                    @empty
+
+                        <td colspan="6">Нет заявок</td>
+                    @endforelse
+                </table>
+            </div>
+        </div>
+
+        {{--Календарь--}}
+        <div id="dealsDates{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
+            <h3>Календарь занятости</h3>
+            <p> Здесь отображаются актуальные и завершённые бронирования</p>
+            <input id="datepicker{{$property->id}}" hidden />
+        </div>
+
+        <div id="dealsMessages{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
+            <h3>Сообщения</h3>
         </div>
     </div>
-
-    {{--Календарь--}}
-    <div id="dealsDates{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-        <h3>Календарь занятости</h3>
-        <p> Здесь отображаются действующие и архивные бронирования</p>
-        <input id="datepicker{{$property->id}}" hidden />
-    </div>
-
-    <div id="dealsMessages{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-        <h3>Сообщения</h3>
-    </div>
-</div>
-<!-- @else
+@endif
+@if(empty($property->deal))
 
     <h1 class="notDealsText">У этого объекта пока нет заявок</h1>
 
-    @endif -->
+@endif
 
 
 
@@ -300,6 +298,7 @@
         css: [
             'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
             'https://easepick.com/css/demo_hotelcal.css',
+            href="{{ asset("assets/css/object.css") }}",
         ],
         plugins: ["AmpPlugin", 'LockPlugin', "KbdPlugin"],
         LockPlugin: {
