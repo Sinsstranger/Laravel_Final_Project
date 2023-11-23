@@ -2,6 +2,14 @@
     margin: 4px 0 0;
 }
 
+.dashboard-link img {
+    box-shadow: 0 0 14px 9px rgb(34 60 80 / 20%);
+    padding: 10px;
+    margin-bottom: 24px;
+    max-width: 150px;
+    object-fit: contain;
+}
+
 .avatar-block {
     height: 100px;
     width: 100px;
@@ -183,7 +191,7 @@
 }
 
 /*для календаря*/
-.container.inline {
+.container .inline {
     display: flex !important;
     justify-content: center;
     align-items: center;
