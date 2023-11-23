@@ -32,7 +32,7 @@
 
                     <div class="dropdown-content">
                         <a href="{{ route('user.properties.index') }}">Опубликованные</a>
-                        <a href="{{ route('user.properties.index') }}">Избранные</a>
+                        <a href="{{ route('user.favourites.index') }}">Избранные</a>
                     </div>
 
 
