@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
-class CategoryController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $categories = Category::all();
-        return \view('admin.categories.index', [
-            'categories' => $categories,
+        $addresses = Address::all();
+        return \view('admin.addresses.index', [
+            'addresses' => $addresses,
         ]);
     }
 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create(): View
     {
-        return \view('admin.categories.create');
+        return \view('admin.addresses.create');
     }
 
     /**
@@ -35,13 +35,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->only([
-            'title'
+            'country',
+            'place',
+            'street',
+            'house_number',
+            'flat_number'
         ]);
 
-        $category = new Category($data);
+        $address = new Address($data);
 
-        if($category->save()) {
-            return redirect()->route('admin.categories.index')
+        if($address->save()) {
+            return redirect()->route('admin.addresses.index')
                 ->with('success', 'Запись успешно сохранена');
         }
 
@@ -59,23 +63,27 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category): View
+    public function edit(Address $address): View
     {
-        return \view('admin.categories.create',['category' => $category]);
+        return \view('admin.addresses.create',['address' => $address]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Address $address)
     {
         $data = $request->only([
-            'title'
+            'country',
+            'place',
+            'street',
+            'house_number',
+            'flat_number'
         ]);
 
-        $category->fill($data);
-        if ($category->save()) {
-            return redirect()->route('admin.categories.edit', $category)->with('success', 'Объявление успешно изменено');
+        $address->fill($data);
+        if ($address->save()) {
+            return redirect()->route('admin.addresses.edit', $address)->with('success', 'Объявление успешно изменено');
         }
         return back()->with('error', 'Объявление не удалось изменить');
     }
@@ -83,10 +91,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Address $address)
     {
         try{
-            $category->delete();
+            $address->delete();
 
             return response()->json('ok');
 

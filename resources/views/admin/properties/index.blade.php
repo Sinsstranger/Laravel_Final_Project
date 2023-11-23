@@ -54,14 +54,11 @@
                         <td>{{ $property->number_of_rooms }}</td>
                         <td>{{ $property->number_of_guests }}</td>
                         <td>{{ $property->description }}</td>
-                        <td> 
-                                     @if(is_array($property->photo))
-                @foreach($property->photo as $photo) 
+                        <td>
+                            @foreach($property->photo as $photo)
                             <img src="{{ $photo }}" width="80px">
-            @endforeach
-            @else 
-                            <img src="{{ $property->photo }}" width="80px">
-            @endif
+                          @endforeach
+
                         </td>
                         <td>{{ $property->price_per_day}}</td>
                         <td>{{ $property->address_id}}</td>

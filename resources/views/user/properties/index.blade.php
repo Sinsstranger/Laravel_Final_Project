@@ -164,7 +164,9 @@
                             </li>
                         </ul>
 
+
                         <x-property-deals :property="$property"></x-property-deals>
+
 
                     </div>
             @empty
