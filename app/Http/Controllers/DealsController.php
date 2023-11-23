@@ -20,7 +20,7 @@ class DealsController extends Controller
     {
         $deals = $this->dealsServices->getDealsByUserId(Auth::user()->getAuthIdentifier());
 
-        return \view('user/deals', ['deals' => $deals]);
+        return \view('user/deals/deals', ['deals' => $deals]);
     }
 
     public function store(DealsRequest $request)

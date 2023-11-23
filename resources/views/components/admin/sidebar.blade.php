@@ -22,6 +22,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Статусы заявок
                 </a>
+                <a class="nav-link" href="{{ route('admin.deals.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Сделки
+                </a>
                 <a class="nav-link" href="{{ route('admin.addresses.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Адреса

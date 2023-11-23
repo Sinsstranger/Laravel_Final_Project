@@ -56,13 +56,14 @@
 
     </section>
     @auth
+
         <script>
             const elements = document.querySelectorAll('.favourites_img');
 
             elements.forEach(element => {
                 element.addEventListener("click", (event) => {
                     const dataset = event.target.dataset;
-                    send(`/favorites/${dataset.id}/${dataset.action}`, dataset).then((data) => {
+                    sendFavourites(`/favourites/${dataset.id}/${dataset.action}`).then((data) => {
                         if (data === 'add') {
                             element.classList.remove('img_opacity');
                             element.dataset.action = 'remove';
@@ -74,14 +75,13 @@
                 });
             });
 
-            async function send(url) {
+            async function sendFavourites(url) {
                 const response = await fetch(url, {
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     },
                     method: 'POST',
                 })
-
                 return response.json();
             }
         </script>

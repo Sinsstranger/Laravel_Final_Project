@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favourites;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,17 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-        //
+        $properties = Property::query()
+            ->join('favourites as f', function($join){
+                $join->on('f.fav_property_id', '=', 'properties.id')
+                    ->where('f.fav_user_id','=', Auth::user()->getAuthIdentifier());
+            })->paginate(9);
+
+
+        return \view('user/favourites/index', ['properties' => $properties]);
+
+//        return \view('user/favourites/index', [
+//            'favouritesUser' => $favouritesUser]);
     }
 
     /**
