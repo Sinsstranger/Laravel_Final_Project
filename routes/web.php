@@ -53,7 +53,7 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function () {
     Route::resource('properties', PropertiesController::class);
     Route::resource('addresses', \App\Http\Controllers\AddressesController::class);
     Route::resource('deals', DealsController::class,);
-    Route::resource('favourites', FavouritesController::class, 'index');
+    Route::resource('favourites', FavouritesController::class, (array)'index');
 });
 
 //Админка

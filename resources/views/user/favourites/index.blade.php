@@ -22,7 +22,7 @@
             </div>
 
 
-            @forelse($favouritesUser as $favourite)
+            @forelse($properties as $property)
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex justify-between">
                     {{--                       @dump($property->deal);--}}
                     <ul class="sm:max-w-md">
