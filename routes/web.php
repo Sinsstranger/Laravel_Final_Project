@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PropertyController as AdminPropertyController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DealStatusController as AdminDealStatusController;
 use App\Http\Controllers\Admin\AddressController as AdminAddressController;
+use App\Http\Controllers\Admin\DealController as AdminDealController;
 use App\Http\Controllers\DealsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -64,6 +65,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(
     Route::resource('categories',AdminCategoryController::class);
     Route::resource('dealStatuses',AdminDealStatusController::class);
     Route::resource('addresses', AdminAddressController::class);
+    Route::resource('deals', AdminDealController::class);
 });
 
 Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment');
