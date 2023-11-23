@@ -4,9 +4,19 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Имя')" />
+            <x-input-label for="name" :value="__('Юзернейм')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-label for="name" :value="__('Имя')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('first_name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-label for="name" :value="__('Фамилия')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('last_name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
