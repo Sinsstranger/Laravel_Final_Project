@@ -44,7 +44,6 @@
 
                 <p class="modal-text">{{Auth::user()->email}}</p>
 
-                    <p class="modal-text">{{Auth::user()->phone}}</p>
                     <hr class="hr-line">
                     <ul style="padding: 0">
                         <li style="list-style-type: none; margin: 0 0 10px 0">
