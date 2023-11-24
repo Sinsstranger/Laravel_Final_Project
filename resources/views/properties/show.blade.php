@@ -297,8 +297,8 @@
                 //console.log(books);
                 bookedDates = books.map(d => {
                     if (d instanceof Array) {
-                        const startat = new DateTime(d[0], 'YYYY-MM-DD');
-                        const endat = new DateTime(d[1], 'YYYY-MM-DD');
+                        const startat = new DateTime(d[0], 'DD—MM—YYYY');
+                        const endat = new DateTime(d[1], 'DD—MM—YYYY');
 
                         return [startat, endat];
                     }
@@ -308,7 +308,8 @@
 
             const picker = new easepick.create({
                 element: document.getElementById('datepicker'),
-                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',],
+                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
+                ],
                 zIndex: 10,
                 lang: "ru-RU",
                 format: "YYYY-MM-DD",

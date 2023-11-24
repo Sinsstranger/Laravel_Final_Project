@@ -64,7 +64,7 @@
 {{--                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">--}}
                             <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="150">
                           <div class="mt-3">
-                          <h4>{{ $user->first_name }}  {{ $user->last_name }}</h4>
+                          {{-- <h4>{{ $user->first_name }}  {{ $user->last_name }}</h4> --}}
                         </div>
                       </div>
                     </div>

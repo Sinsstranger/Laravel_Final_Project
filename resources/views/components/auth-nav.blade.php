@@ -8,7 +8,7 @@
 
                 @if (Route::has('login'))
                     <a href="{{ route('login') }}" class="mr-3 auth-nav-text">
-                         <span class="auth-nav-span">Войти</span>
+                        <span class="auth-nav-span">Войти</span>
                     </a>
 
                 @endif
@@ -63,10 +63,10 @@
                         </li>
 
                         @if(Auth::user()->is_admin)
-                        <li style="list-style-type: none; margin: 0 0 10px 0">
-                            <a class="modal-link-text"
-                               href="{{route('admin.index')}}">Админка</a>
-                        </li>
+                            <li style="list-style-type: none; margin: 0 0 10px 0">
+                                <a class="modal-link-text"
+                                   href="{{route('admin.index')}}">Админка</a>
+                            </li>
                         @endif
 
                         <hr class="hr-line">
