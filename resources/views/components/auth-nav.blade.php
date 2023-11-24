@@ -4,7 +4,7 @@
     <ul class="navbar-nav ms-auto">
         <!-- Authentication Links -->
         @guest
-            <li class="nav-item">
+            <li class="nav-item" style="display: flex">
 
                 @if (Route::has('login'))
                     <a href="{{ route('login') }}" class="mr-3 auth-nav-text">
@@ -30,7 +30,7 @@
                 @if(Auth::user()->avatar !== null)
 
                     <a href="{{ route('dashboard') }}"><img id="#" alt="avatar" src="{{ Auth::user()->avatar }}"
-                                                            style="width:45px; border-radius: 50%; overflow: hidden;
+                                                            style="width:45px; height: 45px;border-radius: 50%; overflow: hidden;
                                                             margin: 0 5px 0 0"></a>
 
                 @endif
