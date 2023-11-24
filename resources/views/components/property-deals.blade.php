@@ -1,6 +1,6 @@
 @if(isset($property->deal))
     <div class="sm:max-w-2xl" style="width: 100%; max-width: 50rem; margin: 0 0 0 10px;
-            box-shadow: 0px 0px 14px 9px rgba(34, 60, 80, 0.2);">
+            box-shadow: 0 0 14px 9px rgba(34, 60, 80, 0.2);">
 
         <div class="tab">
 
@@ -183,25 +183,22 @@
                     @forelse($property->deal as $item)
                         @if($item->status_id === 4 || $item->status_id === 3)
                             <tbody>
-                            <tr style="text-align: center!important">
-                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                                <td style="text-align: center!important">{{$item->guests}}</td>
-                                @if($item->registration === 1)
-                                    <td style="text-align: center!important">Да</td>
-                                @else
-                                    <td style="text-align: center!important">Нет</td>
-                                @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
-                                @if($item->status_id === 4)
-                                    <td style="text-align: center!important">Завершена</td>
-                                @else
-                                    <td style="text-align: center!important; color: indianred">Отклонена</td>
-                                @endif
-                            </tr>
-
-
-
+                                <tr style="text-align: center!important">
+                                    <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
+                                    <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
+                                    <td style="text-align: center!important">{{$item->guests}}</td>
+                                    @if($item->registration === 1)
+                                        <td style="text-align: center!important">Да</td>
+                                    @else
+                                        <td style="text-align: center!important">Нет</td>
+                                    @endif
+                                    <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                    @if($item->status_id === 4)
+                                        <td style="text-align: center!important">Завершена</td>
+                                    @else
+                                        <td style="text-align: center!important; color: indianred">Отклонена</td>
+                                    @endif
+                                </tr>
                             </tbody>
                         @endif
                     @empty
