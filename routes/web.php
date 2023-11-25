@@ -14,6 +14,7 @@ use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\FavouritesController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 
@@ -66,6 +67,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(
     Route::resource('dealStatuses',AdminDealStatusController::class);
     Route::resource('addresses', AdminAddressController::class);
     Route::resource('deals', AdminDealController::class);
+});
+
+// Отзывы
+Route::prefix('review')->name('review.')->group(function() {
+    Route::post('/', [ReviewController::class, 'create'])->name('create');
+    Route::post('store', [ReviewController::class, 'store'])->name('store');
 });
 
 Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment');

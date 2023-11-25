@@ -100,6 +100,11 @@
                                         </form>
                                     </div>
                                 @endif
+                                <form method="post" action="{{ route('review.create') }}">
+                                    @csrf
+                                    <input type="hidden" name="property_id" value="{{ $deal->property->id }}">
+                                    <input type="submit" class="btn btn-block btn-secondary" value="Оставить отзыв">
+                                </form>
 
                             </li>
                         </ul>
@@ -114,4 +119,3 @@
         </div>
   </div>
 @endsection
-
