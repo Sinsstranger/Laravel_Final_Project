@@ -72,6 +72,6 @@
                 @yield('content')
             </main>
         </div>
-
+        @section('script')@show
     </body>
 </html>

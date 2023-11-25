@@ -1,55 +1,23 @@
-@if(isset($property->deal))
-    <div class="sm:max-w-2xl" style="width: 100%; max-width: 50rem; margin: 0 0 0 10px;
-            box-shadow: 0px 0px 14px 9px rgba(34, 60, 80, 0.2);">
+<div >
 
-        <div class="tab">
+    {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
+    <button class="accordion">Заявки</button>
+    <div class="panel">
+        <div class="table-responsive">
 
-            <button class="tablinks defaultOpen" onclick="openTab(event,
-                                            'NewDeals{{$property->id}}', {{$property->id}})">
-                Заявки
-            </button>
-
-            <button class="tablinks" onclick="openTab(event, 'DealsInProgress{{$property->id}}',
-                                            {{$property->id}})">
-                Актуальное
-            </button>
-
-            <button class="tablinks" onclick="openTab(event, 'Archive{{$property->id}}',
-                                            {{$property->id}})">
-                Архив
-            </button>
-
-            <button class="tablinks" onclick="openTab(event, 'dealsDates{{$property->id}}',
-                                            {{$property->id}})">
-                Календарь
-            </button>
-
-            <button class="tablinks" onclick="openTab(event, 'dealsMessages{{$property->id}}',
-                                            {{$property->id}})">
-                Сообщения
-            </button>
-
-        </div>
-
-        {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
-
-        <div id="NewDeals{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-            <h3>Заявки</h3>
-            <div class="table-responsive">
-
-
-                <table class="table table-striped table-sm" style="min-width: 300px!important;">
-                    <thead>
-                    <tr>
-                        <th scope="col">Дата заезда</th>
-                        <th scope="col">Дата выезда</th>
-                        <th scope="col">Гости</th>
-                        <th scope="col">Регистрация</th>
-                        <th scope="col">Контакты</th>
-                        <th scope="col">Действия</th>
-                    </tr>
-                    </thead>
-                    @forelse($property->deal as $item)
+            <table class="table table-striped table-sm" style="min-width: 300px!important;">
+                <thead>
+                <tr>
+                    <th scope="col">Дата заезда</th>
+                    <th scope="col">Дата выезда</th>
+                    <th scope="col">Гости</th>
+                    <th scope="col">Регистрация</th>
+                    <th scope="col">Контакты</th>
+                    <th scope="col">Действия</th>
+                </tr>
+                </thead>
+                @if ($property->deal->contains('status_id', 1))
+                    @foreach($property->deal as $item)
                         @if ($item->status_id === 1)
                             <tbody>
                             <tr style="text-align: center!important">
@@ -61,8 +29,8 @@
                                 @else
                                     <td style="text-align: center!important">Нет</td>
                                 @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
-                                <td style="display: flex; flex-direction: column;">
+                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="display: flex">
 
                                     <div class="formWrap">
                                         <form method="POST" enctype="multipart/form-data"
@@ -93,21 +61,20 @@
                             </tr>
                             </tbody>
                         @endif
-
-                    @empty
-                        <td colspan="6">Нет заявок</td>
-                    @endforelse
-                </table>
-            </div>
+                    @endforeach
+                @else
+                    <td colspan="6">Нет заявок на аренду</td>
+               @endif
+            </table>
         </div>
+    </div>
 
         {{--ДЕЙСТВУЮЩИЕ ЗАЯВКИ--}}
 
-        <div id="DealsInProgress{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-            <h3>Актуальное</h3>
+    <button class="accordion">Актуальное</button>
+    <div class="panel">
 
             <div class="table-responsive">
-
 
                 <table class="table table-striped table-sm" style="min-width: 300px!important;">
                     <thead>
@@ -120,8 +87,9 @@
                         <th scope="col">Действия</th>
                     </tr>
                     </thead>
-                    @forelse($property->deal as $item)
-                        @if ($item->status_id === 2)
+                    @if ($property->deal->contains('status_id', 2))
+                        @foreach($property->deal as $item)
+                            @if ($item->status_id === 2)
                             <tbody>
                             <tr style="text-align: center!important">
                                 <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
@@ -132,7 +100,7 @@
                                 @else
                                     <td style="text-align: center!important">Нет</td>
                                 @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
                                 <td style="display: flex">
 
                                     <div class="formWrap">
@@ -152,22 +120,21 @@
                                 </td>
                             </tr>
                             </tbody>
-
-                        @endif
-                    @empty
-                        <td colspan="6">Нет заявок</td>
-                    @endforelse
+                            @endif
+                        @endforeach
+                    @else
+                        <td colspan="6">Нет подтверждённых заявок или действующей аренды</td>
+                    @endif
                 </table>
             </div>
-        </div>
+    </div>
 
         {{--АРХИВ ЗАЯВОК--}}
 
-        <div id="Archive{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-            <h3>Архив</h3>
+    <button class="accordion">Архив</button>
+    <div class="panel">
 
             <div class="table-responsive">
-
 
                 <table class="table table-striped table-sm" style="min-width: 300px!important;">
                     <thead>
@@ -180,8 +147,9 @@
                         <th scope="col">Статус</th>
                     </tr>
                     </thead>
-                    @forelse($property->deal as $item)
-                        @if($item->status_id === 4 || $item->status_id === 3)
+                    @if ($property->deal->contains('status_id', 3) || $property->deal->contains('status_id', 4))
+                        @foreach($property->deal as $item)
+                            @if ($item->status_id === 3 && 4)
                             <tbody>
                             <tr style="text-align: center!important">
                                 <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
@@ -192,7 +160,7 @@
                                 @else
                                     <td style="text-align: center!important">Нет</td>
                                 @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
                                 @if($item->status_id === 4)
                                     <td style="text-align: center!important">Завершена</td>
                                 @else
@@ -203,36 +171,32 @@
 
 
                             </tbody>
-                        @endif
-                    @empty
-
-                        <td colspan="6">Нет заявок</td>
-                    @endforelse
+                            @endif
+                        @endforeach
+                    @else
+                        <td colspan="6">Нет отклонённых или завершённых бронирвоаний</td>
+                    @endif
                 </table>
             </div>
-        </div>
+    </div>
 
         {{--Календарь--}}
-        <div id="dealsDates{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-            <h3>Календарь занятости</h3>
+    <button class="accordion">Календарь занятости</button>
+    <div class="panel">
             <p> Здесь отображаются актуальные и завершённые бронирования</p>
             <input id="datepicker{{$property->id}}" hidden />
         </div>
 
-        <div id="dealsMessages{{$property->id}}" class="tabcontent tabcontent{{$property->id}}">
-            <h3>Сообщения</h3>
-        </div>
+    <button class="accordion">Отзывы</button>
+    <div class="panel">
+        <p>Здесь будут отзывы на аренду со статусом 4-Завершен</p>
     </div>
-@endif
-@if(empty($property->deal))
+    </div>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Наверх</button>
 
-    <h1 class="notDealsText">У этого объекта пока нет заявок</h1>
-
-@endif
-
-
-
-
+@section('script')
+    @parent
+    <script src="{{ asset("assets/js/cabinet.js") }}"></script>
 <script>
 
     function openTab(evt, tabName, propertyId) {
@@ -346,3 +310,5 @@
      })*/
 
 </script>
+@endsection
+

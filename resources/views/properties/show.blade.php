@@ -146,7 +146,7 @@
                         {{$property->address->house_number}} -
                         {{$property->address->flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">{{$property->user->name}}</p>
+                    <p class="info">{{$property->user->first_name}}&nbsp;{{$property->user->last_name}}</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
