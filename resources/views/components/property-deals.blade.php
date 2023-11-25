@@ -167,9 +167,6 @@
                                     <td style="text-align: center!important; color: indianred">Отклонена</td>
                                 @endif
                             </tr>
-
-
-
                             </tbody>
                             @endif
                         @endforeach

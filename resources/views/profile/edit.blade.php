@@ -45,11 +45,17 @@
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Фото профиля</div>
                     <div class="card-body text-center">
-{{--                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">--}}
                         <img src="{{ $user->avatar }}" alt="avatar">
                         <div class="small font-italic text-muted mb-4">JPG или PNG не больше 5 MB</div>
-                        <input type="file">
-                        <button class="btn btn-primary" style="margin-top: 15px;" type="button" type="file">Сохранить</button><br>
+                        <form action="{{ route('profile.edit', ['user' => $user->id]) }}" method="GET" 
+                            {{-- здесь ещё надо будет доделать форму обновления фото в БД  --}}
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                
+                            <input type="file" name="avatar" accept="image/*">
+                            <button class="btn btn-primary" style="margin-top: 15px;" type="submit">Сохранить</button><br>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -65,11 +71,11 @@
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">Имя</label>
-                                    <input class="form-control" style="border-radius: 10px;" id="inputFirstName" type="text" placeholder="Введите ваше имя" value="Иван">
+                                    <input class="form-control" style="border-radius: 10px;" id="inputFirstName" type="text" placeholder="Введите ваше имя" value="{{ $user->first_name }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName">Фамимлия</label>
-                                    <input class="form-control"  style="border-radius: 10px;"id="inputLastName" type="text" placeholder="Введите вашу фамилию" value="Иванов">
+                                    <input class="form-control"  style="border-radius: 10px;"id="inputLastName" type="text" placeholder="Введите вашу фамилию" value="{{ $user->last_name }}">
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -79,7 +85,9 @@
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone">Номер телефона</label>
-                                    <input class="form-control"  style="border-radius: 10px;" id="inputPhone" type="tel" placeholder="Введите ваш номер телефона" value="{{$user->phone}}"><br> @include('profile.partials.update-password-form')
+                                    <input class="form-control"  style="border-radius: 10px;" id="inputPhone" type="tel" placeholder="Введите ваш номер телефона" value="{{$user->phone}}">
+                                    <br> 
+                                    @include('profile.partials.update-password-form')
                                 </div>
                             </div>
                         </form>

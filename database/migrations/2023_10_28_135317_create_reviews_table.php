@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('property_id')
                 ->constrained('properties');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

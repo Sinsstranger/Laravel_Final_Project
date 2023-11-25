@@ -25,16 +25,16 @@
                         Оплата
                     </x-nav-link>
 
-                    <x-nav-link :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"
-                                id="dropdown">
-                       Мои объявления <i class="fa fa-caret-down downArrow "></i>
-                    </x-nav-link>
-
-                    <div class="dropdown-content">
-                        <a href="{{ route('user.properties.index') }}">Опубликованные</a>
-                        <a href="{{ route('user.favourites.index') }}">Избранные</a>
-                    </div>
-
+                        <x-nav-link-2
+{{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}}
+                                    id="dropdown">
+                            Мои объявления
+                            <i class="fa fa-caret-down downArrow "></i>
+                            <div class="dropdown-content">
+                                <a href="{{ route('user.properties.index') }}">Опубликованные</a>
+                                <a href="{{ route('user.favourites.index') }}">Избранные</a>
+                            </div>
+                        </x-nav-link-2>
 
                     <x-nav-link href="{{ route('user.deals.index') }}" :active="request()->routeIs('user.deals.index')">
                        Мои бронирования
@@ -111,9 +111,33 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Главная') }}
             </x-responsive-nav-link>
-
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                {{ __('Редактировать') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
+                {{ __('Оплата') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="{{ route('user.deals.index') }}" :active="request()->routeIs('user.deals.index')">
+                {{ __('Мои бронирования') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                {{ __('Админка') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                {{ __('Выйти на главную') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -124,7 +148,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('dashboard')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
@@ -152,9 +176,17 @@
         dropContent[0].style.display="block";
     }
 
-   /* dropContent[0].onmouseout = function (){
+    dropContent[0].onmouseover = function (){
+        dropContent[0].style.display="block";
+    }
+
+    dropDownNav.onmouseout = function (){
         dropContent[0].style.display = "none";
-    }*/
+    }
+
+    dropContent[0].onmouseout = function (){
+        dropContent[0].style.display = "none";
+    }
 
     window.onclick = function(event) {
         if (event.target !== dropContent[0]) {

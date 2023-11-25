@@ -77,7 +77,16 @@
                                             {{$deal->property->address->flat_number}},
                                         </p>
                                     </li>
-
+                            <li class="dashboard-link flex justify-between">
+                                <div class="flex items-center gap-4 cabinet-index-btn">
+                                    <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-primary-button :type="'submit'" class="index-del-btn">
+                                            <span class="index-btn-span">Удалить заявку</span>
+                                        </x-primary-button>
+                                    </form>
+                                </div>
                                 </ul>
                             </div>
                                @endif
@@ -291,4 +300,3 @@
     @parent
     <script src="{{ asset("assets/js/cabinet.js") }}"></script>
 @endsection
-
