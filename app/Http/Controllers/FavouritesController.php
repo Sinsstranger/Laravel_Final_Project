@@ -24,9 +24,6 @@ class FavouritesController extends Controller
 
 
         return \view('user/favourites/index', ['properties' => $properties]);
-
-//        return \view('user/favourites/index', [
-//            'favouritesUser' => $favouritesUser]);
     }
 
     /**

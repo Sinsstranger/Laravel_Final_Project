@@ -23,6 +23,7 @@
 
 
             @forelse($properties as $property)
+
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex justify-between">
                     {{--                       @dump($property->deal);--}}
                     <ul class="sm:max-w-md">
@@ -144,31 +145,35 @@
 
                         </li>
 
-                        {{--<li class="dashboard-link flex justify-between flex-md-wrap">
-                            <div class="flex items-center gap-4 cabinet-index-btn">
+                        <li class="dashboard-link flex justify-between flex-md-wrap">
+                            {{--<div class="flex items-center gap-4 cabinet-index-btn">
                                 <x-primary-button>
                                     <a href="{{ route('user.properties.edit', $property) }}">
                                         Редактировать объявление
                                     </a>
                                 </x-primary-button>
-                            </div>
+                            </div>--}}
                             <div class="flex items-center gap-4 cabinet-index-btn">
-                                <form method="post" action="{{ route('user.properties.destroy', $property) }}">
+                                <form method="post"
+{{--                                      action="{{ route('user.favourites.destroy', $property) }}"--}}
+                                >
                                     @csrf
                                     @method('DELETE')
                                     <x-primary-button :type="'submit'" class="index-del-btn">
-                                        <span class="index-btn-span">Удалить объявление</span>
+                                        <span class="index-btn-span">Удалить из избранного</span>
                                     </x-primary-button>
                                 </form>
                             </div>
-                        </li>--}}
+                        </li>
                     </ul>
 
 
-{{--                    <x-property-deals :property="$property"></x-property-deals>--}}
+
 
 
                 </div>
+
+
             @empty
                 <h1>У Вас пока нет избранных объявлений</h1>
             @endforelse
