@@ -11,7 +11,8 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             @include('inc.message')
-<!-- @dump(session()->all()); -->
+
+
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
                     Опубликованные объявления</h1>

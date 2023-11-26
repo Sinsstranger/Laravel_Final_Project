@@ -52,6 +52,11 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function property(): HasMany
     {
         // return $this->hasMany(Property::class, 'user_id', 'id');

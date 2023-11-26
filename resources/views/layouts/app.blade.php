@@ -42,9 +42,9 @@
                 'resources/js/jquery.animateNumber.min.js',
                 'resources/js/scrollax.min.js',
                 'resources/js/main.js',
-                'resources/js/app.js'
+                'resources/js/app.js',
+                'resources/js/vue.js',
                 ])
-
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -70,6 +70,7 @@
                 @endif
 
                 @yield('content')
+
             </main>
         </div>
 
