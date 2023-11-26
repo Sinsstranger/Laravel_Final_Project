@@ -54,7 +54,7 @@
 } */
 
 .avatar-block {
-    width:35px;
+    width: 35px;
     height: 35px;
     border: none;
     border-radius: 50%;
@@ -128,8 +128,7 @@
     list-style-type: none;
 }
 
-.nav-item-user:hover
-.popUpCabinetEnter {
+.nav-item-user:hover .popUpCabinetEnter {
     visibility: visible;
     opacity: 1;
 }
@@ -304,6 +303,29 @@
     margin-left: 5px;
 }
 
+.btn-content {
+    display: flex;
+    position: relative;
+}
+
+.btn-with-counter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #bd4bbd;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 0 5px;
+    right: -20px;
+}
+
 .active:after {
     content: "\2796";
 }
@@ -325,7 +347,8 @@
 }
 
 #myBtn:hover {
-    background-color: #e88941; /* Add a dark-grey background on hover */
+    background-color: #e88941;
+    /* Add a dark-grey background on hover */
 }
 
 /*.dropdown-content a:hover {background-color: #ddd;}*/

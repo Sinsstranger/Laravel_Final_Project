@@ -1,7 +1,16 @@
 <div >
 
     {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
-    <button class="accordion">Заявки</button>
+    <button class="accordion btn-with-counter">
+        <div class="btn-content">
+            <span>На рассмотрении</span>
+            @if ($property->deal->contains('status_id', 1))
+                <div class = "counter">            
+                    {{$property->deal->countBy('status_id',1)->first()}}            
+                </div> 
+            @endif           
+        </div>
+    </button>
     <div class="panel">
         <div class="table-responsive">
 
@@ -70,8 +79,17 @@
     </div>
 
         {{--ДЕЙСТВУЮЩИЕ ЗАЯВКИ--}}
-
-    <button class="accordion">Актуальное</button>
+       
+    <button class="accordion btn-with-counter">
+        <div class="btn-content">
+            <span>Актуальное</span>
+            @if ($property->deal->contains('status_id', 2))
+                <div class = "counter">            
+                    {{$property->deal->countBy('status_id',2)->first()}}            
+                </div> 
+            @endif           
+        </div>
+    </button>
     <div class="panel">
 
             <div class="table-responsive">
@@ -87,38 +105,40 @@
                         <th scope="col">Действия</th>
                     </tr>
                     </thead>
+                    
                     @if ($property->deal->contains('status_id', 2))
-                        @foreach($property->deal as $item)
+                    
+                        @foreach($property->deal as $item)                       
                             @if ($item->status_id === 2)
                             <tbody>
-                            <tr style="text-align: center!important">
-                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                                <td style="text-align: center!important">{{$item->guests}}</td>
-                                @if($item->registration === 1)
-                                    <td style="text-align: center!important">Да</td>
-                                @else
-                                    <td style="text-align: center!important">Нет</td>
-                                @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
-                                <td style="display: flex">
+                                <tr style="text-align: center!important">
+                                    <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
+                                    <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
+                                    <td style="text-align: center!important">{{$item->guests}}</td>
+                                    @if($item->registration === 1)
+                                        <td style="text-align: center!important">Да</td>
+                                    @else
+                                        <td style="text-align: center!important">Нет</td>
+                                    @endif
+                                    <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                    <td style="display: flex">
 
-                                    <div class="formWrap">
-                                        <form style="display: flex; justify-content: center;" method="POST"
-                                              enctype="multipart/form-data"
-                                              action="{{ route('user.deals.update', $item) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="status_id" value="4">
-                                            <button class="btn btn-sm actionButton" style="color: cornflowerblue",
-                                                    type="submit">
-                                                Завершить
-                                            </button>
-                                        </form>
-                                    </div>
+                                        <div class="formWrap">
+                                            <form style="display: flex; justify-content: center;" method="POST"
+                                                enctype="multipart/form-data"
+                                                action="{{ route('user.deals.update', $item) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="status_id" value="4">
+                                                <button class="btn btn-sm actionButton" style="color: cornflowerblue",
+                                                        type="submit">
+                                                    Завершить
+                                                </button>
+                                            </form>
+                                        </div>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             </tbody>
                             @endif
                         @endforeach
@@ -131,7 +151,9 @@
 
         {{--АРХИВ ЗАЯВОК--}}
 
-    <button class="accordion">Архив</button>
+    <button class="accordion">
+        Архив
+    </button>
     <div class="panel">
 
             <div class="table-responsive">
@@ -171,7 +193,7 @@
                             @endif
                         @endforeach
                     @else
-                        <td colspan="6">Нет отклонённых или завершённых бронирвоаний</td>
+                        <td colspan="6">Нет отклонённых или завершённых бронирований</td>
                     @endif
                 </table>
             </div>
@@ -189,12 +211,12 @@
         <p>Здесь будут отзывы на аренду со статусом 4-Завершен</p>
     </div>
     </div>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Наверх</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Наверх</button>
 
 @section('script')
     @parent
     <script src="{{ asset("assets/js/cabinet.js") }}"></script>
-<script>
+<script>    
 
     function openTab(evt, tabName, propertyId) {
 
