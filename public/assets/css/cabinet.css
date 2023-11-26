@@ -52,7 +52,7 @@
 } */
 
 .avatar-block {
-    width:35px;
+    width: 35px;
     height: 35px;
     border: none;
     border-radius: 50%;
@@ -299,6 +299,29 @@
     color: #777;
     float: right;
     margin-left: 5px;
+}
+
+.btn-content {
+    display: flex;
+    position: relative;
+}
+
+.btn-with-counter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #bd4bbd;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 0 5px;
+    right: -20px;
 }
 
 .active:after {
