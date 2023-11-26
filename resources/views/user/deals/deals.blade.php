@@ -96,7 +96,7 @@
                     <div class="panel">
                         @if ($deals->contains('status_id', 3) || $deals->contains('status_id', 4))
                             @foreach($deals as $deal)
-                                @if($deal->status_id === 3 && 4)
+                                @if($deal->status_id === 3 || $deal->status_id === 4)
                                     <div class="rent-section shadow">
 
                                         <x-deals-card :deal="$deal"></x-deals-card>
