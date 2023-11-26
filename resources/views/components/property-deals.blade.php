@@ -209,7 +209,13 @@
 
     <button class="accordion">Отзывы</button>
     <div class="panel">
-        <p>Здесь будут отзывы на аренду со статусом 4-Завершен</p>
+        @foreach($property->reviews as $review)
+            <div>
+                <p>{{ $review->rating }}</p>
+                <p>{{ $review->description }}</p>
+                <p>{{ $review->user->name }}</p>
+            </div>
+        @endforeach
     </div>
     </div>
 
@@ -280,4 +286,3 @@
         })
     </script>
 @endsection
-
