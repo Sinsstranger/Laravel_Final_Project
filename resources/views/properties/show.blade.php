@@ -146,7 +146,7 @@
                         {{$property->address->house_number}} -
                         {{$property->address->flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">{{$property->user->name}}</p>
+                    <p class="info">{{$property->user->first_name}}&nbsp;{{$property->user->last_name}}</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
@@ -204,21 +204,17 @@
                 <div class="heading-section">
                     <h4>Отзывы</h4>
                     <hr>
-                    <!--Запустить через foreach-->
                     <div class="review-body">
-                        <h5>Violet Blue</h5>
+                        @foreach($property->reviews as $review)
+                        <h5>{{ $review->user->name }}</h5>
+                        <!-- TODO Добавить рассчет рейтинга -->
                         <!--<p>Рейтинг</p>-->
-                        <p class="date">15 июля 2023</p>
-                        <p>Pellentesque vehicula lectus non elit consequat, tempor porta tortor condimentum. Mauris sagittis aliquet nulla, id pellentesque magna congue ut. In tristique orci a mollis semper. Morbi varius nibh in elit aliquam convallis at eget magna. Cras ex nunc, egestas ac ex ut, fermentum dignissim tortor. In lectus nibh, laoreet vitae fermentum ut, efficitur eu ligula. Praesent iaculis viverra ligula, vitae laoreet eros volutpat eu. Aliquam nec risus commodo, finibus nisl vel, pulvinar massa. Sed a erat dictum, luctus enim ac, iaculis enim.</p>
+                        <p class="date">{{ $review->updated_at ?? $review->created_at  }}</p>
+                        <p>{{ $review->description }}</p>
+                        @endforeach
                     </div>
                     <hr>
-                    <div class="review-body">
-                        <h5>Gomer Sinpson</h5>
-                        <!--<p>Рейтинг</p>-->
-                        <p class="date">25 мая 2023</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas sollicitudin quam a commodo. Vestibulum non erat mi. Etiam molestie efficitur quam, nec eleifend risus pretium sed. Duis sodales orci id semper luctus. Pellentesque sit amet elit odio. Quisque viverra nunc ac sodales lobortis. Donec vehicula, ante vel ultricies blandit, nunc nulla auctor lectus, ut dictum ex urna id neque. Sed pretium metus non maximus scelerisque. Sed viverra, libero a luctus pulvinar, mauris purus volutpat orci, auctor iaculis massa nulla ut eros. Aliquam non lorem et eros sagittis auctor eu sit amet libero. Nulla consequat lectus quis auctor porttitor. Ut ut rhoncus justo. Nulla in sem sed ante imperdiet eleifend eget vitae mauris.</p>
-                    </div>
-                    <hr>
+                    <!--
                     @auth
                     <span class="subheading"><label for="review">Оставить отзыв</label></span>
                     <form action="#" class="contact-form">
@@ -231,6 +227,7 @@
                         </div>
                     </form>
                     @endauth
+                    -->
                 </div>
             </section>
 
