@@ -95,7 +95,7 @@
                                 <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
                                 <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
                                 <td style="text-align: center!important">{{$item->guests}}</td>
-                                @if($item->registration === 1)
+                                @if($item->registration > 0)
                                     <td style="text-align: center!important">Да</td>
                                 @else
                                     <td style="text-align: center!important">Нет</td>
@@ -189,41 +189,13 @@
         <p>Здесь будут отзывы на аренду со статусом 4-Завершен</p>
     </div>
     </div>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Наверх</button>
 
+<x-scroll-to-top-button></x-scroll-to-top-button>
 @section('script')
     @parent
     <script src="{{ asset("assets/js/cabinet.js") }}"></script>
 <script>
-
-    function openTab(evt, tabName, propertyId) {
-
-        let i, tabcontent, tablinks, defaultOpen;
-
-        tabcontent = document.getElementsByClassName(`tabcontent${propertyId}`);
-        console.log(tabcontent);
-
-        for(i = 0; i < tabcontent.length; i++){
-            tabcontent[i].style.display = "none";
-        }
-
-        document.getElementById(tabName).style.display = "block";
-
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        evt.currentTarget.className += " active";
-    }
-
-    defaultOpen=document.getElementsByClassName("defaultOpen");
-
-    for (let i = 0; i < defaultOpen.length; i++) {
-        defaultOpen[i].click();
-    }
-
-    {{--Скрипт календаря--}}
+    <!--Скрипт календаря-->
     const DateTime{{$property->id}} = easepick.DateTime;
     books{{$property->id}} = [];
     bookedDates{{$property->id}} = [];
@@ -283,29 +255,6 @@
             }
         }
     })
-
-    /* let dealPopUP = document.querySelectorAll(".dealModalWindow");
-
-     const dealLinkPopUP = document.querySelectorAll('.showDeals');
-
-     document.addEventListener('DOMContentLoaded', () => {
-         dealPopUP.forEach((popUp) => {
-          popUp.style.display = 'none';
-         });
-     });
-
-     dealLinkPopUP.forEach((link) => {
-         link.addEventListener('click', () => {
-             let id = link.dataset.deal;
-             let dealPopUPClass = document.querySelector(`.dealModalElement${id}`);
-             if(dealPopUPClass.style.display == "block") {
-                 dealPopUPClass.style.display="none";
-             } else {
-                 dealPopUPClass.style.display="block";
-             }
-         })
-     })*/
-
 </script>
 @endsection
 
