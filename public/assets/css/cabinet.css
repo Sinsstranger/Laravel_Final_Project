@@ -3,10 +3,8 @@
 }
 
 .dashboard-link img {
-    box-shadow: 0 0 14px 9px rgb(34 60 80 / 20%);
-    padding: 10px;
+    padding: 10px 10px 10px 0;
     margin-bottom: 24px;
-    max-width: 150px;
     object-fit: contain;
 }
 
@@ -98,7 +96,7 @@
     margin: 0 5px 0 0;
 } */
 
-.tab button {
+/*.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -121,7 +119,7 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-}
+}*/
 
 .nav-item-user {
     margin-bottom: 0;
@@ -286,6 +284,7 @@
 }
 
 .accordion {
+    font-weight: 600;
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -297,7 +296,6 @@
     font-size: 15px;
     transition: 0.4s;
 }
-
 
 .accordion:hover {
     background-color: #4b69bd;
@@ -317,6 +315,29 @@
     color: #777;
     float: right;
     margin-left: 5px;
+}
+
+.btn-content {
+    display: flex;
+    position: relative;
+}
+
+.btn-with-counter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #bd4bbd;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 0 5px;
+    right: -20px;
 }
 
 .active:after {
@@ -341,7 +362,51 @@
 
 #myBtn:hover {
     background-color: #e88941;
-    /* Add a dark-grey background on hover */
+
+}
+
+/*бронирование**/
+.rent-section,
+.deal-section {
+    display: grid;
+    grid-gap: 10px;
+
+}
+
+.rent-section {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 36px;
+    padding: 24px;
+}
+
+.deal-section {
+    grid-template-columns: 0.65fr 2fr 1fr;
+}
+
+.deal-section-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.deal-section-btn {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rent-section-left h1 {
+    color: #4b69bd;
+}
+
+.rent-dates {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+/*объявления*/
+.properties_flex {
+    display: flex;
+    flex-direction: column;
 }
 
 /*.dropdown-content a:hover {background-color: #ddd;}*/

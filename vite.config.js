@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import vue from '@vitejs/plugin-vue'
 //import laravel from 'vite-plugin-externalize-dependencies';
 
 export default defineConfig({
     plugins: [
+        vue(),
         laravel({
             input: [
                 'resources/css/bootstrap.min.css',
@@ -32,7 +34,8 @@ export default defineConfig({
                 'resources/js/jquery.animateNumber.min.js',
                 'resources/js/scrollax.min.js',
                 'resources/js/main.js',
-                'resources/js/app.js'
+                'resources/js/app.js',
+                'resources/js/vue.js'
             ],
             refresh: true,
         }),

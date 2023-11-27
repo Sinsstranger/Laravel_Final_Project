@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Личный кабинет | Сайт аренды недвижимости «Золотой ключик»</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -42,9 +42,9 @@
                 'resources/js/jquery.animateNumber.min.js',
                 'resources/js/scrollax.min.js',
                 'resources/js/main.js',
-                'resources/js/app.js'
+                'resources/js/app.js',
+                'resources/js/vue.js',
                 ])
-
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -70,6 +70,7 @@
                 @endif
 
                 @yield('content')
+
             </main>
         </div>
         @section('script')@show

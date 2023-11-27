@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DealStatusController as AdminDealStatusController;
 use App\Http\Controllers\Admin\AddressController as AdminAddressController;
 use App\Http\Controllers\Admin\DealController as AdminDealController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DealsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,15 @@ use App\Http\Controllers\PaymentController;
 
 //Route::get('/', function () {
 //    return view('welcome');
+//});
+Route::controller(ChatController::class)->middleware('auth')->group(function () {
+    Route::get('/chat', 'index');
+    Route::get('/messages', 'messages');
+    Route::post('/send', 'send');
+});
+
+//Route::middleware('auth')->get('/vue', function () {
+//    return view('chat');
 //});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
