@@ -54,7 +54,7 @@
 } */
 
 .avatar-block {
-    width:35px;
+    width: 35px;
     height: 35px;
     border: none;
     border-radius: 50%;
@@ -128,8 +128,7 @@
     list-style-type: none;
 }
 
-.nav-item-user:hover
-.popUpCabinetEnter {
+.nav-item-user:hover .popUpCabinetEnter {
     visibility: visible;
     opacity: 1;
 }
@@ -141,8 +140,8 @@
     position: absolute;
     /*position: fixed;*/
     z-index: 5;
-    left: 0;
-    top: 24px;
+    left: -40px;
+    top: 30px;
     margin-top: 10px;
     max-width: fit-content;
     max-height: 350px;
@@ -150,13 +149,29 @@
     padding: 10px;
     box-sizing: border-box;
     /*border: 1px solid #000000;*/
-    background-color: #ccc;
+    /* background-color: #ccc; */
     /* opacity: .81; */
+    background: #ccc;
+    box-shadow: 0 -150px 70px -120px #888,
+        0 -220px 70px -120px #aaa,
+        0 -280px 70px -120px #ddd;
+    border-radius: 30px;
+    border: 10px solid white;
+    animation: background 4s infinite alternate;
+}
+
+@keyframes background {
+    50% {
+        background: #eee;
+        box-shadow: 0 -140px 70px -120px #ddd,
+            0 -210px 70px -120px #aaa,
+            0 -280px 70px -120px #888;
+    }
 }
 
 .modal-text {
     box-sizing: border-box;
-    /*padding: 2px;*/
+    padding: 5px 20px;
     text-align: center;
     font-weight: 900;
     font-size: 14px;
@@ -167,7 +182,7 @@
 
 .modal-link-text {
     box-sizing: border-box;
-    /*padding: 2px;*/
+    padding: 5px;
     text-align: center;
     font-weight: 900;
     font-size: 14px;
@@ -325,7 +340,8 @@
 }
 
 #myBtn:hover {
-    background-color: #e88941; /* Add a dark-grey background on hover */
+    background-color: #e88941;
+    /* Add a dark-grey background on hover */
 }
 
 /*.dropdown-content a:hover {background-color: #ddd;}*/
