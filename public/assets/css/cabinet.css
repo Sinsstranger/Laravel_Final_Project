@@ -17,7 +17,7 @@
 
 .cabinet-title {
     font-size: 1.5rem;
-    font-weight: lighter;
+    font-weight: bolder;
     color: black;
 }
 
@@ -249,6 +249,7 @@
 
 #dropdown:hover {
     cursor: pointer;
+    color: #000;
 }
 
 .dropdown-content {
@@ -320,6 +321,7 @@
 
 .btn-content {
     display: flex;
+    align-items: center;
     position: relative;
 }
 
@@ -337,6 +339,7 @@
     font-size: 12px;
     color: #FFFFFF;
     text-align: center;
+    line-height: normal;
     margin: 0 0 0 5px;
     right: -20px;
 }
@@ -417,6 +420,7 @@
     justify-content: space-between;
     align-items: baseline;
 }
+
 .review-body .dates {
     font-size: 13px;
 
@@ -427,7 +431,7 @@
     margin: 0.25rem 0;
 }
 
-.review-body hr{
+.review-body hr {
     border-top: 1px solid rgba(0, 0, 0, 0.75);
 }
 
