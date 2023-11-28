@@ -26,8 +26,8 @@
             </div>
 
             @forelse($propertiesUser as $property)
-                    <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg justify-between properties_flex">
-{{--                       @dump($property->deal);--}}
+
+                    <div id="{{ $property->id }}" class="p-4 sm:p-8 bg-white shadow sm:rounded-lg justify-between     properties_flex">
 
                         <div class="deal-section">
 
@@ -77,7 +77,6 @@
                                             Посмотреть объявление в каталоге >
                                         </a>
                                     </li>
-
                                 </ul>
 
                                 <div class="deal-section-btn">
@@ -89,7 +88,8 @@
                                         </x-primary-button>
                                     </div>
 
-                                    <div class="items-center gap-4 cabinet-index-btn">
+
+                                    <div class="flex items-center gap-4 cabinet-index-btn">
                                         <form method="post" action="{{ route('user.properties.destroy', $property) }}">
                                             @csrf
                                             @method('DELETE')
@@ -97,10 +97,13 @@
                                                 <span class="index-btn-span">Удалить объявление</span>
                                             </x-primary-button>
                                         </form>
+
+<!--                                        <a rel="{{$property->id}}" href="javascript:" class="index-btn-span delete">
+                                            Удалить объявление
+                                        </a>-->
                                     </div>
                                 </div>
                             </div>
-
                             <div class="deal-section-left">
                                 <div>&nbsp;</div>
 
@@ -168,7 +171,6 @@
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
 
                         <x-property-deals :property="$property"></x-property-deals>
@@ -181,3 +183,45 @@
     </div>
 
 @endsection
+
+
+@push('js')
+<script>
+
+    let elements = document.querySelectorAll(".delete");
+    elements.forEach((element, key) => {
+        element.addEventListener('click', function (){
+            const id = this.getAttribute('rel');
+            if(confirm(`Подтвердите удаление объявления #${id}`)) {
+                send(`/user/properties/${id}`).then( () => {
+                    document.getElementById(id).remove();
+                    console.log(send(`/user/properties/${id}`));
+                });
+            } else {
+                alert("Вы отменили удаление объявления")
+            }
+        });
+    });
+
+    async function send(url) {
+        console.log(url);
+        let response = await fetch (url, {
+            method:'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
+        let result = await response.json();
+        return result.ok;
+    }
+</script>
+@endpush
+
+
+
+
+
+
+
+
+
