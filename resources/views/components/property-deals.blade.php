@@ -1,4 +1,4 @@
-<div >
+<div>
 
     {{--НЕПОДТВЕРЖДЕННЫЕ/НОВЫЕ ЗАЯВКИ--}}
     <button class="accordion btn-with-counter">
@@ -209,22 +209,60 @@
 
     <button class="accordion">Отзывы</button>
     <div class="panel">
-        @foreach($property->reviews as $review)
-            <div>
-                <p>{{ $review->rating }}</p>
-                <p>{{ $review->description }}</p>
-                <p>{{ $review->user->name }}</p>
-            </div>
-        @endforeach
+        <div class="review-body">
+            @if(($property->reviews)->isNotEmpty())
+                @foreach($property->reviews as $review)
+                    <div class="review-header">
+                        <div class="review-data">
+                            <h6>{{ $review->user->name }}</h6>
+                        </div>
+                        <p class="dates">{{ $review->updated_at ?? $review->created_at  }}</p>
+                    </div>
+                    <div class="review-data">
+
+                        <div class="stars">
+                            <i id="{{ $property->id }}star1{{ $loop->index }}" class="fas fa-star"></i>
+                            <i id="{{ $property->id }}star2{{ $loop->index }}" class="fas fa-star"></i>
+                            <i id="{{ $property->id }}star3{{ $loop->index }}" class="fas fa-star"></i>
+                            <i id="{{ $property->id }}star4{{ $loop->index }}" class="fas fa-star"></i>
+                            <i id="{{ $property->id }}star5{{ $loop->index }}" class="fas fa-star"></i>
+                        </div>
+
+                        <p class="dates"> Даты проживания:<!--дата заезда--> 2023-08-09 – 2023-09-15<!--дата выезда--></p>
+                    </div>
+                    <p>{{ $review->description }}</p>
+                    <hr>
+                @endforeach
+            @else
+                <p>У этого объекта недвижимости пока нет отзывов.</p>
+            @endif
+        </div>
+
     </div>
-    </div>
+</div>
 
 <x-scroll-to-top-button></x-scroll-to-top-button>
 @section('script')
     @parent
     <script src="{{ asset("assets/js/cabinet.js") }}"></script>
-    <!--Скрипт календаря-->
     <script>
+        //Звёзды рейтинга
+
+    @foreach($property->reviews as $review)
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const rs = document.querySelectorAll('i');
+            rs.forEach(() => {
+                let rate{{ $loop->index }} = {{$review->rating}};
+                for (let s = 1; s <= rate{{ $loop->index }}; s++) {
+                    let $star = document.getElementById(`{{ $property->id }}star${s}{{ $loop->index }}`);
+                    $star.classList.add('golden');
+                }
+            });
+        });
+    @endforeach
+    <!--Скрипт календаря-->
+
         const DateTime{{$property->id}} = easepick.DateTime;
         books{{$property->id}} = [];
         bookedDates{{$property->id}} = [];

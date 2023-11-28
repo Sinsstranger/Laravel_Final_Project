@@ -43,7 +43,30 @@
 
 <div class="rent-section-right">
     <ul class="max-w-xl">
-        <div>&nbsp;</div>
+        <div>@if(($deal->rent_ends_at <= now() && $deal->status_id == 4) || $deal->status_id == 4 || $deal->status_id == 3)
+                <div class="flex items-center gap-4 cabinet-index-btn">
+                    <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
+                        @csrf
+                        @method('DELETE')
+                        <x-primary-button :type="'submit'" class="index-del-btn">
+                            <span class="index-btn-span">Удалить бронирование</span>
+                        </x-primary-button>
+                    </form>
+                </div>
+            @endif
+
+            @if($deal->rent_ends_at > now() && $deal->status_id != 4 && $deal->status_id > 1)
+                <div class="flex items-center gap-4 cabinet-index-btn">
+                    <form method="post" action="{{ route('user.deals.update', $deal) }}">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="status_id" value="4">
+                        <x-primary-button :type="'submit'" class="index-del-btn">
+                            <span class="index-btn-span">Завершить досрочно</span>
+                        </x-primary-button>
+                    </form>
+                </div>
+            @endif</div>
 
         <div class="rent-dates">
             <li class="dashboard-link">

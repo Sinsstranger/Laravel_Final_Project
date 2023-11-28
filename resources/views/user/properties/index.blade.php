@@ -1,7 +1,12 @@
 @extends('layouts/app')
 
 @section('style')
-    @parent<link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+    @parent
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
 @endsection
 
 @section('content')
@@ -10,7 +15,6 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             @include('inc.message')
-
 
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
@@ -21,13 +25,9 @@
                 </x-primary-button>
             </div>
 
-
             @forelse($propertiesUser as $property)
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg justify-between properties_flex">
 {{--                       @dump($property->deal);--}}
-
-
-
 
                         <div class="deal-section">
 
@@ -181,11 +181,3 @@
     </div>
 
 @endsection
-
-
-
-
-
-
-
-

@@ -1,8 +1,11 @@
 @extends('layouts/app')
 
 @section('style')
-    @parent<link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
-
+    @parent
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
 @endsection
 
 @section('content')
@@ -53,36 +56,23 @@
 
                                         <x-deals-card :deal="$deal"></x-deals-card>
 
-                                        @if(($deal->rent_ends_at <= now() && $deal->status_id == 4) || $deal->status_id == 4 || $deal->status_id == 3)
-                                            <div class="flex items-center gap-4 cabinet-index-btn">
-                                                <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <x-primary-button :type="'submit'" class="index-del-btn">
-                                                        <span class="index-btn-span">Удалить бронирование</span>
-                                                    </x-primary-button>
-                                                </form>
-                                            </div>
-                                        @endif
-
-                                        @if($deal->rent_ends_at > now() && $deal->status_id != 4)
-                                            <div class="flex items-center gap-4 cabinet-index-btn">
-                                                <form method="post" action="{{ route('user.deals.update', $deal) }}">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="status_id" value="4">
-                                                    <x-primary-button :type="'submit'" class="index-del-btn">
-                                                        <span class="index-btn-span">Завершить досрочно</span>
-                                                    </x-primary-button>
-                                                </form>
-                                            </div>
-                                        @endif
+                                        <div class="flex items-center gap-4 cabinet-index-btn">
+                                            <form method="post" action="{{ route('review.create') }}">
+                                                @csrf
+                                                <input type="hidden" name="property_id" value="{{ $deal->property->id }}">
+                                                <x-primary-button :type="'submit'" class="index-rev-btn"><span class="index-btn-span">Оставить отзыв</span>
+                                                </x-primary-button>
+                                            </form>
+                                        </div>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
                                             <x-primary-button>
                                                 <a href="{{ route('properties.show', $deal->property) }}">Забронировать повторно</a>
                                             </x-primary-button>
+
                                         </div>
+
+
 
                                     </div>
                                @endif
@@ -92,8 +82,8 @@
                         @endif
                     </div>
 
-                    <button class="accordion">Архив</button>
-                    <div class="panel">
+                <button class="accordion">Архив</button>
+                <div class="panel">
                         @if ($deals->contains('status_id', 3) || $deals->contains('status_id', 4))
                             @foreach($deals as $deal)
                                 @if($deal->status_id === 3 || $deal->status_id === 4)
@@ -101,17 +91,14 @@
 
                                         <x-deals-card :deal="$deal"></x-deals-card>
 
-                                        @if(($deal->rent_ends_at <= now() && $deal->status_id == 4) || $deal->status_id == 4 || $deal->status_id == 3)
-                                            <div class="flex items-center gap-4 cabinet-index-btn">
-                                                <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <x-primary-button :type="'submit'" class="index-del-btn">
-                                                        <span class="index-btn-span">Удалить бронирование</span>
-                                                    </x-primary-button>
-                                                </form>
-                                            </div>
-                                        @endif
+                                        <div class="flex items-center gap-4 cabinet-index-btn">
+                                            <form method="post" action="{{ route('review.create') }}">
+                                                @csrf
+                                                <input type="hidden" name="property_id" value="{{ $deal->property->id }}">
+                                                <x-primary-button :type="'submit'" class="index-rev-btn"><span class="index-btn-span">Оставить отзыв</span>
+                                                </x-primary-button>
+                                            </form>
+                                        </div>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
                                             <x-primary-button>
@@ -126,13 +113,40 @@
                         @endif
                     </div>
 
-                    <button class="accordion">Отзывы</button>
-                    <div class="panel">
-                        <p>Здесь будут отзывы на бронирования со статусом 4-Завершен</p>
-                    </div>
+                <button class="accordion">Отзывы</button>
+                <div class="panel">
+                    <p>Вы пока не оставляли отзывы.</p>
+                    <!--
+                    <div class="review-body">
+
+                        <div class="review-header">
+                            <div class="review-data">
+                                <h6>Название, адрес
+                                </h6>
+                            </div>
+                            <p class="dates">дата размещения/обновления</p>
+                        </div>
+
+                        <div class="review-data">
+                            <p class="dates"> Даты проживания:дата заезда – дата выезда</p>
+                            <div class="stars">
+                                <i id="star1" class="fas fa-star"></i>
+                                <i id="star2" class="fas fa-star"></i>
+                                <i id="star3" class="fas fa-star"></i>
+                                <i id="star4" class="fas fa-star"></i>
+                                <i id="star5" class="fas fa-star"></i>
+                            </div>
+                        </div>
+
+                        <p>Описание</p>
+                        <hr>
+
+                    </div>-->
 
                 </div>
 
+                </div>
+            </div>
         </div>
         <x-scroll-to-top-button></x-scroll-to-top-button>
   </div>

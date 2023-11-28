@@ -324,7 +324,7 @@
     right: -20px;
 }
 
-.active:after {
+.active-acc:after {
     content: "\2796";
 }
 
@@ -388,6 +388,39 @@
 .properties_flex {
     display: flex;
     flex-direction: column;
+}
+
+.review-header,
+.review-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.review-body .dates {
+    font-size: 13px;
+
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.review-body p {
+    margin: 0.25rem 0;
+}
+
+.review-body hr{
+    border-top: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.review-body i {
+    font-size: 15px;
+}
+
+.review-body .golden {
+    color: gold;
+}
+
+.index-rev-btn {
+    background-color: #4b69bd !important;
 }
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
