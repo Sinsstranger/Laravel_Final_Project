@@ -138,8 +138,8 @@
     position: absolute;
     /*position: fixed;*/
     z-index: 5;
-    left: 0;
-    top: 24px;
+    left: -40px;
+    top: 30px;
     margin-top: 10px;
     max-width: fit-content;
     max-height: 350px;
@@ -147,13 +147,29 @@
     padding: 10px;
     box-sizing: border-box;
     /*border: 1px solid #000000;*/
-    background-color: #ccc;
+    /* background-color: #ccc; */
     /* opacity: .81; */
+    background: #ccc;
+    box-shadow: 0 -150px 70px -120px #888,
+        0 -220px 70px -120px #aaa,
+        0 -280px 70px -120px #ddd;
+    border-radius: 30px;
+    border: 10px solid white;
+    animation: background 4s infinite alternate;
+}
+
+@keyframes background {
+    50% {
+        background: #eee;
+        box-shadow: 0 -140px 70px -120px #ddd,
+            0 -210px 70px -120px #aaa,
+            0 -280px 70px -120px #888;
+    }
 }
 
 .modal-text {
     box-sizing: border-box;
-    /*padding: 2px;*/
+    padding: 5px 20px;
     text-align: center;
     font-weight: 900;
     font-size: 14px;
@@ -164,7 +180,7 @@
 
 .modal-link-text {
     box-sizing: border-box;
-    /*padding: 2px;*/
+    padding: 5px;
     text-align: center;
     font-weight: 900;
     font-size: 14px;
@@ -346,6 +362,7 @@
 
 #myBtn:hover {
     background-color: #e88941;
+
 }
 
 /*бронирование**/
@@ -355,6 +372,7 @@
     grid-gap: 10px;
 
 }
+
 .rent-section {
     grid-template-columns: 1fr 1fr;
     margin-bottom: 36px;
@@ -376,9 +394,10 @@
     justify-content: flex-start;
 }
 
-.rent-section-left h1{
+.rent-section-left h1 {
     color: #4b69bd;
 }
+
 .rent-dates {
     display: grid;
     grid-template-columns: 150px 1fr;
@@ -422,6 +441,7 @@
 .index-rev-btn {
     background-color: #4b69bd !important;
 }
+
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
 /*.dropdown:hover .dropdown-content {display: block;}*/

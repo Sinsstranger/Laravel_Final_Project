@@ -13038,7 +13038,7 @@ h5,
 .table {
     min-width: 1000px !important;
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .table th {
