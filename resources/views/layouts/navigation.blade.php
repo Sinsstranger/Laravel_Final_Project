@@ -23,6 +23,11 @@
                     <x-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
                         Оплата
                     </x-nav-link>
+                    {{-- @if(Auth::user()->is_admin)
+                        <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                            Чат
+                        </x-nav-link>
+                    @endif --}}
 
                     <x-nav-link-2 {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}} id="dropdown">
                         Мои объявления
@@ -38,9 +43,9 @@
                     </x-nav-link>
 
                     @if(Auth::user()->is_admin)
-                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
-                        {{ __('Админка') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                            {{ __('Админка') }}
+                        </x-nav-link>
                     @endif
 
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
@@ -111,6 +116,15 @@
             <x-responsive-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
                 {{ __('Оплата') }}
             </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')" id="dropdown">
+                {{ __('Мои объявления') }}
+            </x-responsive-nav-link>
+                <div>
+                    <a href="{{ route('user.properties.index') }}">Опубликованные</a>
+                    <a href="{{ route('user.favourites.index') }}">Избранные</a>
+                </div>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('user.deals.index') }}" :active="request()->routeIs('user.deals.index')">

@@ -45,11 +45,10 @@
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Фото профиля</div>
                     <div class="card-body text-center">
-                        <img src="{{ $user->avatar }}" alt="avatar">
+                        <img src="{{ $user->avatar }}" alt="avatar" style="align-items: center">
+                        {{-- Доделать форму обновления инфы в БД --}}
                         <div class="small font-italic text-muted mb-4">JPG или PNG не больше 5 MB</div>
-                        <form action="{{ route('profile.edit', ['user' => $user->id]) }}" method="GET" 
-                            {{-- здесь ещё надо будет доделать форму обновления фото в БД  --}}
-                            enctype="multipart/form-data">
+                        <form action="{{ route('profile.edit', ['user' => $user->avatar]) }}" method="PUT" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                 
@@ -87,7 +86,9 @@
                                     <label class="small mb-1" for="inputPhone">Номер телефона</label>
                                     <input class="form-control"  style="border-radius: 10px;" id="inputPhone" type="tel" placeholder="Введите ваш номер телефона" value="{{$user->phone}}">
                                     <br> 
-                                    @include('profile.partials.update-password-form')
+                                    <div style="border: 1px solid rgb(30, 29, 29); padding: 10px; border-radius: 7px;">
+                                        @include('profile.partials.update-password-form')
+                                    </div>
                                 </div>
                             </div>
                         </form>

@@ -14,7 +14,7 @@ class ChatController extends Controller
     public function index(): View
     {
 //        auth()->loginUsingId(1);
-        return view('chat');
+        return \view('chat');
     }
 
     public function messages(): Collection|array
