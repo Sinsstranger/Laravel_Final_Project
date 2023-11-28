@@ -1,4 +1,12 @@
 @extends('layouts/app')
+
+@section('style')
+    @parent
+
+    <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+
+@endsection
+
 @section('content')
 
     <div class="py-12">
