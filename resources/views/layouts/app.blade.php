@@ -73,6 +73,8 @@
 
             </main>
         </div>
+        @stack('js')
         @section('script')@show
+
     </body>
 </html>

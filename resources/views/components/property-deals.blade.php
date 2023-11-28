@@ -85,7 +85,7 @@
             <span>Актуальное</span>
             @if ($property->deal->contains('status_id', 2))
                 <div class = "counter">
-                    {{$property->deal->countBy('status_id',2)->first()}}
+                    {{$property->deal->countBy('status_id')[2]}}
                 </div>
             @endif
         </div>

@@ -9,6 +9,7 @@ use App\Services\PropertiesServices;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class PropertiesController extends Controller
 {
@@ -57,7 +58,7 @@ class PropertiesController extends Controller
     }
     public function update(PropertiesRequest $request, Property $property): RedirectResponse
     {
-        
+
          $saveProperty = $this->propertyServices->updateProperty($request, $property);
          if ($saveProperty) {
              return redirect()->route('user.properties.index')->with('success', 'Объявление успешно отредактировано');
@@ -72,5 +73,19 @@ class PropertiesController extends Controller
             return redirect()->route('user.properties.index')->with('success', 'Объявление удалено');
         }
         return back()->with('error', 'Объявление не удалено');
+
+
+            // try {
+                
+            //     $property->delete();
+
+
+            //     return response()->json('ok');
+
+            // } catch (\Exception $e) {
+            //     Log::error($e->getMessage(), $e->getTrace());
+            //     return response()->json('error', 400);
+            // }
     }
+
 }

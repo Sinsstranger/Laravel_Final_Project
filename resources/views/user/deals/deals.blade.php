@@ -20,7 +20,16 @@
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg ">
 
-                <button class="accordion">Заявки</button>
+                <button class="accordion btn-with-counter">
+                    <div class="btn-content">
+                        <span>Заявки</span>
+                        @if ($deals->contains('status_id', 1))
+                            <div class = "counter">
+                                {{$deals->countBy('status_id')->first()}}
+                            </div>
+                        @endif
+                    </div>
+                </button>
                 <div class="panel">
                     @if ($deals->contains('status_id', 1))
                         @foreach($deals as $deal)
@@ -47,9 +56,19 @@
                     @endif
                 </div>
 
-                <button class="accordion">Актуальное</button>
+                <button class="accordion btn-with-counter">
+                    <div class="btn-content">
+                        <span>Актуальное</span>
+                        @if ($deals->contains('status_id', 2))
+                            <div class = "counter">
+                                {{$deals->countBy('status_id')[2]}}
+                            </div>
+                        @endif
+                    </div>
+                </button>
                     <div class="panel">
                         @if ($deals->contains('status_id', 2))
+
                             @foreach($deals as $deal)
                                 @if ($deal->status_id === 2)
                                     <div class="rent-section shadow">
