@@ -17,7 +17,7 @@
 
 .cabinet-title {
     font-size: 1.5rem;
-    font-weight: bolder;
+    font-weight: lighter;
     color: black;
 }
 
@@ -243,9 +243,6 @@
     box-shadow: none !important;
 }
 
-/*.dropdown {*/
-/*    position: relative;*/
-/*}*/
 
 #dropdown:hover {
     cursor: pointer;

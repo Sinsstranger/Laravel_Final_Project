@@ -102,7 +102,8 @@
                         <th scope="col">Гости</th>
                         <th scope="col">Регистрация</th>
                         <th scope="col">Контакты</th>
-                        <th scope="col">Действия</th>
+                        <th scope="col" style="text-align: center;">
+                            Действия</th>
                     </tr>
                     </thead>
 
