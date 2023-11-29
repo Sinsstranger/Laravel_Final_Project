@@ -14,7 +14,7 @@
 <!-- @dump(session()->all()); -->
             <div class="flex justify-between items-center gap-4">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
-                    Мои объявления</h1>
+                    Опубликованные объявления</h1>
                 <x-primary-button>
                     <a href="{{ route('user.properties.create') }}">
                         Добавить объявление</a>
@@ -125,12 +125,12 @@
                                     </h2>
                                     @else
                                     <h2 class="text-lg font-medium text-gray-900">
-                                        Цена за месяц
+                                        Цена за 30 суток
                                     </h2>
                                 @endif
 
                                 <p class="mt-1 text-sm text-gray-600">
-                                    {{$property->price_per_day}}
+                                    {{$property->price_per_day}}₽
                                 </p>
                             </li>
 
@@ -174,7 +174,9 @@
                             </li>
                         </ul>
 
+
                         <x-property-deals :property="$property"></x-property-deals>
+
 
                     </div>
             @empty

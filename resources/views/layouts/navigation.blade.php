@@ -25,9 +25,16 @@
                         Оплата
                     </x-nav-link>
 
-                    <x-nav-link :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')">
-                       Мои объявления
+                    <x-nav-link :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"
+                                id="dropdown">
+                       Мои объявления <i class="fa fa-caret-down downArrow "></i>
                     </x-nav-link>
+
+                    <div class="dropdown-content">
+                        <a href="{{ route('user.properties.index') }}">Опубликованные</a>
+                        <a href="{{ route('user.properties.index') }}">Избранные</a>
+                    </div>
+
 
                     <x-nav-link href="{{ route('user.deals.index') }}" :active="request()->routeIs('user.deals.index')">
                        Мои бронирования
@@ -135,5 +142,26 @@
         </div>
     </div>
 </nav>
+
+<script>
+
+    let dropDownNav = document.getElementById("dropdown");
+    let dropContent = document.getElementsByClassName("dropdown-content");
+
+    dropDownNav.onmouseover = function (){
+        dropContent[0].style.display="block";
+    }
+
+   /* dropContent[0].onmouseout = function (){
+        dropContent[0].style.display = "none";
+    }*/
+
+    window.onclick = function(event) {
+        if (event.target !== dropContent[0]) {
+            dropContent[0].style.display = "none";
+        }
+    }
+
+</script>
 
 

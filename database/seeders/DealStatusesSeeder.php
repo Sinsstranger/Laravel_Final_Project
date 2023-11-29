@@ -19,6 +19,7 @@ class DealStatusesSeeder extends Seeder
             ['name' => 'подтверждена'],
             ['name' => 'отклонена'],
             ['name' => 'завершена'],
+            ['name' => 'назначен показ'],
         ]);
     }
 }

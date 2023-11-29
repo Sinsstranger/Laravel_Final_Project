@@ -55,6 +55,7 @@
                                 <td>{{ $property->is_temporary_registration_possible}}</td>
                                 <td>{{ $property->daily_rent}}</td>
                                 <td>
+
                                 @if($property->is_admin)
                                     Админ
                                 @else

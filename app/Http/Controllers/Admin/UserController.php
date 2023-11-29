@@ -6,14 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UserEditRequest;
 use App\Models\Property;
 use App\Models\User;
+use App\Services\PropertiesServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use function back;
 use function redirect;
 use function view;
 
 class UserController extends Controller
 {
+    public function __construct(protected PropertiesServices $propertiesServices)
+    {
+
+    }
      /**
      * Display a listing of the resource.
      */
@@ -66,13 +72,15 @@ class UserController extends Controller
      */
     public function update(UserEditRequest $request, User $user)
     {
-        $data = $request->only(['name','email']);
-        $user->fill($data);
-        if($request->is_admin === 'true'){
-            $user->is_admin = 1;
-        }else{
-            $user->is_admin = 0;
+
+        $data = $request->all();
+
+        if ($request->file('avatar')) {
+            $images = $this->propertiesServices->urlImage($request->file('avatar'));
+            $data['avatar'] = $images;
         }
+        $user->fill($data);
+
         if ($user->save()) {
             return redirect()->route('admin.users.edit',$user)->with('success', 'Пользователь успешно изменен');
         }
@@ -86,9 +94,7 @@ class UserController extends Controller
     {
         //dd($user);
         try{
-          
            $user->delete();
-            
            return response()->json('ok');
        } catch (Exception $ex) {
            Log::error($ex->getMessage(), $ex->getTrace());

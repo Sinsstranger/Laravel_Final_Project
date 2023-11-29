@@ -42,7 +42,7 @@
                                 Общая сумма бронирования
                                 </h2>
                                 <p class="mt-1 text-sm text-gray-600">
-                                {{$deal->rent_costs}}
+                                {{$deal->rent_costs}}₽
                                 </p>
                             </li>
 

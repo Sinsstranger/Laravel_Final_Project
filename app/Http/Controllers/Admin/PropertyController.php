@@ -15,8 +15,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::query()//извлечение всех пользователей кроме авторизованного(себя)
-        ->where('id', '!=', Auth::id())
+        //извлечение всех пользователей кроме авторизованного(себя)
+        $properties = Property::query()
+            ->where('id', '!=', Auth::id())
             ->get();
         return view('admin.properties.index', ['propertiesList' => $properties]);
     }
