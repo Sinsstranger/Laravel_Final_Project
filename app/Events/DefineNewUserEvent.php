@@ -1,5 +1,5 @@
 <?php
-
+//Создать событие php artisan make:event DefineNewUserEvent
 namespace App\Events;
 
 use App\Models\User;
@@ -15,7 +15,7 @@ class DefineNewUserEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public User $user;
+    public User $user; // чтобы можно было задействовать user нужно создать поле и передать его в конструкторе
     /**
      * Create a new event instance.
      */
@@ -23,7 +23,7 @@ class DefineNewUserEvent
     {
         $this->user = $user;
     }
-
+    //как задействовать этот класс? Логика происходит в Http/Controllers/Auth/RegisteredUserController.php 
     /**
      * Get the channels the event should broadcast on.
      *

@@ -22,7 +22,7 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        DefineNewUserEvent::class => [
+        DefineNewUserEvent::class => [ //связать событие DefineNewUserEvent со слушателем LastAddUserListener в провайдоре Providers/EventServiceProvider
             LastAddUserListener::class,
         ],
         DefineNewPropertyEvent::class => [

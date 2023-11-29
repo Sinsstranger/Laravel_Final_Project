@@ -1,0 +1,24 @@
+Как создать слушателя на события?
+
+
+1.Выбрать событие. например создание нового пользователя 
+2.Создать событие php artisan make:event DefineNewUserEvent 
+3.В классе app/Events/DefineNewUserEvent чтобы можно было задействовать user нужно создать поле и передать его в конструкторе
+    
+    public User $user; // чтобы можно было задействовать user нужно создать поле и передать его в конструкторе
+    /**
+     * Create a new event instance.
+     */
+    public function __construct(User $user)
+
+4.Как задействовать этот класс? Логика происходит в Http/Controllers/Auth/RegisteredUserController.php 
+в методе store  добавить event и передать user (event(new \App\Events\DefineNewUserEvent($user));)
+
+5.Добавить слушателя php artisan make:listener LastAddUserListener
+6.В методе handle прописать всю логику что делать с событием
+7.связать событие DefineNewUserEvent со слушателем LastAddUserListener в провайдоре Providers/EventServiceProvider
+
+Всё! Когда будет срабатывать метод store 
+     будет срабатывать событие event(new \App\Events\DefineNewUserEvent($user)); в него будет передавться user
+     это событие будет перехватывать слушатель LastAddUserListener и принимать объект DefineNewUserEvent($user)
+     а дальше делаем с объектом что хотим.
