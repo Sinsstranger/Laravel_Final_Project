@@ -17,6 +17,7 @@ class PropertyController extends Controller
     {
         //извлечение всех пользователей кроме авторизованного(себя)
         $properties = Property::query()
+            ->category()
             ->where('id', '!=', Auth::id())
             ->get();
         return view('admin.properties.index', ['propertiesList' => $properties]);

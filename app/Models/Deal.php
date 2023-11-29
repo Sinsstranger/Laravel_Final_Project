@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -61,5 +62,12 @@ class Deal extends Model
     public function getDealsByUserId(int $user_id): Collection
     {
         return $this->query()->where('tenant_id', '=', $user_id)->get();
+    }
+
+    public function scopeStatus(Builder $query): void
+    {
+        if (request()->has('f')) {
+            $query->where('status_id', request()->query('f', 'Выбрать статус'));
+        }
     }
 }

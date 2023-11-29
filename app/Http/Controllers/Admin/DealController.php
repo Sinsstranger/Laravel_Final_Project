@@ -15,7 +15,9 @@ class DealController extends Controller
      */
     public function index(): View
     {
-        $deals = Deal::all();
+        $deals = Deal::query()
+            ->status()
+            ->get();
         return \view('admin.deals.index', [
             'deals' => $deals,
         ]);
