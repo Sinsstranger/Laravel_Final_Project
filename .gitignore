@@ -20,3 +20,7 @@ yarn-error.log
 /.vscode
 composer.phar
 nbproject/   
+package-lock.json
+.gitignore
+package.json
+yarn.lock

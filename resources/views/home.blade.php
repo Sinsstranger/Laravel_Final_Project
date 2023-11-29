@@ -205,7 +205,7 @@
             <div class="col-md-5 d-flex">
                 <div class="row d-flex contact-info mb-5">
                     <div class="col-md-12 ftco-animate">
-                        <div class="box p-2 px-3 bg-light d-flex">
+                        <div class="box p-2 px-3 bg-light">
                             <div class="icon mr-3">
                                 <span class="icon-map-signs"></span>
                             </div>
@@ -215,8 +215,9 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="col-md-12 ftco-animate">
-                        <div class="box p-2 px-3 bg-light d-flex">
+                        <div class="box p-2 px-3 bg-light">
                             <div class="icon mr-3">
                                 <span class="icon-phone2"></span>
                             </div>
@@ -226,8 +227,9 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="col-md-12 ftco-animate">
-                        <div class="box p-2 px-3 bg-light d-flex">
+                        <div class="box p-2 px-3 bg-light">
                             <div class="icon mr-3">
                                 <span class="icon-paper-plane"></span>
                             </div>
@@ -237,8 +239,9 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="col-md-12 ftco-animate">
-                        <div class="box p-2 px-3 bg-light d-flex">
+                        <div class="box p-2 px-3 bg-light">
                             <div class="icon mr-3">
                                 <span class="icon-globe"></span>
                             </div>

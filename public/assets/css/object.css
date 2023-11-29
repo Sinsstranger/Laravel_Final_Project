@@ -243,11 +243,33 @@
     object-fit: cover;
 }
 
-.review-body .date {
-    text-transform: uppercase;
+.review-header,
+.review-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.review-body .dates {
     font-size: 13px;
-    letter-spacing: .1em;
-    color: #ccc;
+
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.review-body p {
+    margin: 0.25rem 0;
+}
+
+.review-body hr{
+    border-top: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.review-body i {
+    font-size: 15px;
+}
+
+.review-body .golden {
+    color: gold;
 }
 
 .d-grid {

@@ -145,6 +145,7 @@
 
     @yield('content')
 
+    <x-scroll-to-top-button></x-scroll-to-top-button>
     <footer class="ftco-footer ftco-section">
         <div class="container-fluid px-md-5">
             <div class="row mb-5">

@@ -1,4 +1,12 @@
 @extends('layouts/app')
+
+@section('style')
+    @parent
+
+    <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+
+@endsection
+
 @section('content')
 
     <div class="py-12">
@@ -83,7 +91,7 @@
                             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                                 <label for="number_of_guests" class="text-lg font-medium text-gray-900">
                                     Количество возможных гостей</label>
-                                <input name="number_of_guests" type="text" id="number_of_guests"
+                                <input name="number_of_guests" type="number" id="number_of_guests"
                                        value = "{{$property->number_of_guests ?? old('number_of_guests')}}"
                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md
                                        shadow-sm mt-1 block w-full
@@ -205,19 +213,19 @@
                         </li>
                         <li class="list-group-item">
                                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                                    <label for="is_temporary_registration_possible" class="text-lg font-medium text-gray-900">
-                                        Временная регистрация</label>
                                     <input name="is_temporary_registration_possible" type="checkbox" value="1"
                                            id="is_temporary_registration_possible"
                                            @if(!empty($property->is_temporary_registration_possible)) checked @endif>
+                                           <label for="is_temporary_registration_possible" class="text-lg font-medium text-gray-900">
+                                        Временная регистрация</label>                                    
                                 </div>
                         </li>
 
                         <li class="list-group-item">
                                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                                    <label for="daily_rent" class="text-lg font-medium text-gray-900">Посуточная аренда</label>
                                     <input name="daily_rent" type="checkbox" value="1" id="daily_rent"
                                            @if(!empty($property->daily_rent)) checked @endif >
+                                           <label for="daily_rent" class="text-lg font-medium text-gray-900">Посуточная аренда</label>                                    
                                 </div>
                         </li>
 
@@ -229,7 +237,7 @@
                                             <img src="{{ $photo }}" width="100">
                                         @endforeach
                                     @endif
-                                    <input name="photo[]" multiple  class="form-control form-control-sm" id="photo" type="file">
+                                    <input name="photo[]" multiple  class="form-control form-control-sm" id="photo" type="file" style="padding: 20px 0">
                                 </div>
                         </li>
                     </ul>

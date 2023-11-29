@@ -5,6 +5,9 @@
 @section('style')
     @parent<link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
     <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
 @endsection
 @section('content')
     <br>
@@ -25,10 +28,10 @@
             </div>
         </div>
     </section>
-    <!--Блок с основным фото и описанием
-    location, price
-    description-->
+
     <div class="object-content container">
+
+        <!--Блок с основным фото и описанием-->
         <section class="description-section container">
             <div class="description-content">
                 @foreach($property->photo as $photo)
@@ -115,17 +118,18 @@
             @endguest
         </aside>
 
-        <!--Блок подробности-->
         <div class="object-content-details">
+
+            <!--Блок подробности-->
             <section class="details-section-1 container">
 
                 <div class="details-content">
                     <p>Тип жилья</p>
-                    <p class="info">{{$property->category->title}}</p>
+                    <p class="info">{{ $property->category->title }}</p>
                     <p>Количество комнат</p>
-                    <p class="info">{{$property->number_of_rooms}}</p>
+                    <p class="info">{{ $property->number_of_rooms }}</p>
                     <p>Количество гостей</p>
-                    <p class="info">{{$property->number_of_guests}}</p>
+                    <p class="info">{{ $property->number_of_guests }}</p>
                     <p>Срок аренды</p>
                     @if($property->daily_rent)
                         <p class="info">Посуточная аренда</p>
@@ -140,25 +144,18 @@
                     @endif
                     <address>Адрес</address>
                     <p class="info">
-                        {{$property->address->country}},
-                        {{$property->address->place}},
-                        {{$property->address->street}},
-                        {{$property->address->house_number}} -
-                        {{$property->address->flat_number}}</p>
+                        {{ $property->address->country }},
+                        {{ $property->address->place }},
+                        {{ $property->address->street }},
+                        {{ $property->address->house_number }} -
+                        {{ $property->address->flat_number }}</p>
                     <p>Имя владельца</p>
-                    <p class="info">{{$property->user->name}}</p>
+                    <p class="info">{{ $property->user->first_name }}&nbsp;{{ $property->user->last_name }}</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
             </section>
-            <!--Локация (текст или карта?)-->
-            <!--<section>
-                <div class="container">
-                    <div class="heading-section">
-                        <h4>Карта</h4>
-                    </div>
-                </div>
-            </section>-->
+
             <!--Фотографии-->
             <section class="photo-section container">
                 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -204,33 +201,34 @@
                 <div class="heading-section">
                     <h4>Отзывы</h4>
                     <hr>
-                    <!--Запустить через foreach-->
                     <div class="review-body">
-                        <h5>Violet Blue</h5>
-                        <!--<p>Рейтинг</p>-->
-                        <p class="date">15 июля 2023</p>
-                        <p>Pellentesque vehicula lectus non elit consequat, tempor porta tortor condimentum. Mauris sagittis aliquet nulla, id pellentesque magna congue ut. In tristique orci a mollis semper. Morbi varius nibh in elit aliquam convallis at eget magna. Cras ex nunc, egestas ac ex ut, fermentum dignissim tortor. In lectus nibh, laoreet vitae fermentum ut, efficitur eu ligula. Praesent iaculis viverra ligula, vitae laoreet eros volutpat eu. Aliquam nec risus commodo, finibus nisl vel, pulvinar massa. Sed a erat dictum, luctus enim ac, iaculis enim.</p>
-                    </div>
-                    <hr>
-                    <div class="review-body">
-                        <h5>Gomer Sinpson</h5>
-                        <!--<p>Рейтинг</p>-->
-                        <p class="date">25 мая 2023</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas sollicitudin quam a commodo. Vestibulum non erat mi. Etiam molestie efficitur quam, nec eleifend risus pretium sed. Duis sodales orci id semper luctus. Pellentesque sit amet elit odio. Quisque viverra nunc ac sodales lobortis. Donec vehicula, ante vel ultricies blandit, nunc nulla auctor lectus, ut dictum ex urna id neque. Sed pretium metus non maximus scelerisque. Sed viverra, libero a luctus pulvinar, mauris purus volutpat orci, auctor iaculis massa nulla ut eros. Aliquam non lorem et eros sagittis auctor eu sit amet libero. Nulla consequat lectus quis auctor porttitor. Ut ut rhoncus justo. Nulla in sem sed ante imperdiet eleifend eget vitae mauris.</p>
-                    </div>
-                    <hr>
-                    @auth
-                    <span class="subheading"><label for="review">Оставить отзыв</label></span>
-                    <form action="#" class="contact-form">
+                        @foreach($property->reviews as $review)
+                        <div class="review-header">
+                            <div class="review-data">
+                                <img src="{{ $review->user->avatar }}" class="avatar-block" alt="avatar user">
+                                <h6>{{ $review->user->name }}</h6>
+                            </div>
+                        <p class="dates">{{ $review->updated_at ?? $review->created_at  }}</p>
+                        </div>
+                            <div class="review-data">
 
-                        <div class="form-group">
-                            <textarea name="" id="review" cols="5" rows="5" class="form-control" placeholder="Ваш отзыв"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Отправить отзыв" class="btn btn-primary py-3 px-5">
-                        </div>
-                    </form>
-                    @endauth
+                                <!-- TODO Добавить рассчет рейтинга -->
+
+                                <div class="stars">
+                                <i id="star1{{ $loop->index }}" class="fas fa-star"></i>
+                                <i id="star2{{ $loop->index }}" class="fas fa-star"></i>
+                                <i id="star3{{ $loop->index }}" class="fas fa-star"></i>
+                                <i id="star4{{ $loop->index }}" class="fas fa-star"></i>
+                                <i id="star5{{ $loop->index }}" class="fas fa-star"></i>
+                                </div>
+
+                                <p class="dates"> Даты проживания:<!--дата заезда--> 2023-08-09 – 2023-09-15<!--дата выезда--></p>
+                            </div>
+                            <p>{{ $review->description }}</p>
+                            <hr>
+                        @endforeach
+                    </div>
+
                 </div>
             </section>
 
@@ -244,7 +242,6 @@
                             $url = $_SERVER['REQUEST_URI'];
                             $url = explode('/', $url);
                             $url = intval($url[2]);
-
                         @endphp
                         @foreach($property as $prop)
                             @if($loop->iteration > 3)
@@ -274,14 +271,28 @@
                 </section>
             </div>
         </div>
-
     @endsection
+
     @section('script')
         @parent
         <script>
-            const a = location.pathname.substr(12);
-            console.log(a);
-            <!--Календарь-->
+            //Звёзды рейтинга
+
+            @foreach($property->reviews as $review)
+                document.addEventListener('DOMContentLoaded', () => {
+                    const rs = document.querySelectorAll('i');
+
+                    rs.forEach(() => {
+                        let rate{{ $loop->index }} = {{$review->rating}};
+                        for (let s = 1; s <= rate{{ $loop->index }}; s++) {
+                            let $star = document.getElementById(`star${s}{{ $loop->index }}`);
+                            $star.classList.add('golden');
+                        }
+                    });
+                });
+            @endforeach
+
+            //Календарь
             const DateTime = easepick.DateTime;
             books = [];
             bookedDates = [];
@@ -297,8 +308,8 @@
                 //console.log(books);
                 bookedDates = books.map(d => {
                     if (d instanceof Array) {
-                        const startat = new DateTime(d[0], 'YYYY-MM-DD');
-                        const endat = new DateTime(d[1], 'YYYY-MM-DD');
+                        const startat = new DateTime(d[0], 'DD—MM—YYYY');
+                        const endat = new DateTime(d[1], 'DD—MM—YYYY');
 
                         return [startat, endat];
                     }
@@ -308,7 +319,8 @@
 
             const picker = new easepick.create({
                 element: document.getElementById('datepicker'),
-                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',],
+                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
+                ],
                 zIndex: 10,
                 lang: "ru-RU",
                 format: "YYYY-MM-DD",
@@ -381,7 +393,7 @@
                 },
             });
 
-            <!--Валидация формы-->
+            //Валидация формы
             const form = document.getElementById('new-reservation');
             form.noValidate = true;
 

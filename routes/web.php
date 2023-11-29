@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DealStatusController as AdminDealStatusController;
 use App\Http\Controllers\Admin\AddressController as AdminAddressController;
 use App\Http\Controllers\Admin\DealController as AdminDealController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DealsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\FavouritesController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 
@@ -30,6 +32,15 @@ use App\Http\Controllers\PaymentController;
 
 //Route::get('/', function () {
 //    return view('welcome');
+//});
+Route::controller(ChatController::class)->middleware('auth')->group(function () {
+    Route::get('/chat', 'index');
+    Route::get('/messages', 'messages');
+    Route::post('/send', 'send');
+});
+
+//Route::middleware('auth')->get('/vue', function () {
+//    return view('chat');
 //});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
@@ -66,6 +77,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'is.admin'])->group(
     Route::resource('dealStatuses',AdminDealStatusController::class);
     Route::resource('addresses', AdminAddressController::class);
     Route::resource('deals', AdminDealController::class);
+});
+
+// Отзывы
+Route::prefix('review')->name('review.')->group(function() {
+    Route::post('/', [ReviewController::class, 'create'])->name('create');
+    Route::post('store', [ReviewController::class, 'store'])->name('store');
 });
 
 Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment');

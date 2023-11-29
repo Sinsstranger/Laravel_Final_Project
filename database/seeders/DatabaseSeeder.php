@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PropertiesSeeder::class,
             DealStatusesSeeder::class,
             DealsSeeder::class,
+            ReviewsSeeder::class,
         ]);
     }
 }
