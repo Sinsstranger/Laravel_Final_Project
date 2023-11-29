@@ -8,8 +8,9 @@
                 <i class="fas fa-table me-1"></i>
                 Статусы сделок
             </div>
-            <div class="card-body">
-                <table id="datatablesSimple">
+             <div class="box">
+    <div class="table-scroll">
+        <table>
                     <a href="{{ route('admin.dealStatuses.create') }}" type="button" class="btn btn-success" style="margin-bottom: 21px">Добавить</a>
                     <br>
                     <thead>
@@ -19,13 +20,9 @@
                         <th>Опции</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Название</th>
-                        <th>Опции</th>
-                    </tr>
-                    </tfoot>
+                     </table>
+        <div class="table-scroll-body">
+            <table>
                     <tbody>
                     @forelse($dealStatuses as $dealStatus)
                         <tr id="{{ $dealStatus->id }}">
@@ -51,6 +48,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 

@@ -16,8 +16,9 @@
                 <i class="fas fa-table me-1"></i>
                 Сделки
             </div>
-            <div class="card-body">
-                <table id="datatablesSimple">
+            <div class="box">
+    <div class="table-scroll">
+        <table>
                     <thead>
                     <tr>
                         <th>#</th>
@@ -32,20 +33,9 @@
                         <th>Опции</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>ID объявления</th>
-                        <th>ID арендатора</th>
-                        <th>Начало аренды</th>
-                        <th>Конец аренды</th>
-                        <th>Стоимость</th>
-                        <th>Гости</th>
-                        <th>Регистрация</th>
-                        <th>Статус заявки</th>
-                        <th>Опции</th>
-                    </tr>
-                    </tfoot>
+                     </table>
+        <div class="table-scroll-body">
+            <table>
                     <tbody>
                     @forelse($deals as $deal)
                         <tr id="{{ $deal->id }}">
@@ -69,6 +59,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 
