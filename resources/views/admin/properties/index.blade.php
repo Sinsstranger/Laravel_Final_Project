@@ -2,6 +2,18 @@
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Объявления</h1>
+    <select id="filter" style="margin-bottom: 21px">
+        <option>Выбрать категорию</option>
+        <option>квартира</option>
+        <option>дом</option>
+        <option>коттедж</option>
+        <option>комната</option>
+        <option>гостиница</option>
+        <option>кемпинг</option>
+        <option>база отдыха</option>
+        <option>хостел</option>
+    </select>
+    <a href="{{ route('admin.properties.index') }}" type="button" class="btn btn-success">Все категории</a>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -78,3 +90,13 @@
     </div>
 
 @endsection
+@push('js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let filter = document.getElementById("filter");
+            filter.addEventListener("change", function (event) {
+                location.href = "?f=" + this.value;
+            });
+        });
+    </script>
+@endpush

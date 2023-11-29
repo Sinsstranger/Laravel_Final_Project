@@ -97,5 +97,12 @@ class Property extends Model
         return $property->delete();
     }
 
+    public function scopeCategory(Builder $query): void
+    {
+        if (request()->has('f')) {
+            $query->where('title', request()->query('f', 'Выбрать категорию'));
+        }
+    }
+
 
 }
