@@ -56,10 +56,11 @@
                                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
                                 </div>
                                 <div class="media-body">
-                                    <small class="list-group-item-heading">Максим Максимов</small>
+                                    <small class="list-group-item-heading" style="font-weight: bold; padding-left: 15px;">Максим Максимов</small>
                                     <br>
-                                    <small class="list-group-item-text c-gray">
-                                        <chat-messages :user="{{ auth()->user() }}"></chat-messages>
+                                    <small style="display: flex; padding-left: 15px; opacity: 0.5;">
+                                        {{-- <chat-messages :user="{{ auth()->user() }}"></chat-messages> --}}
+                                        Пример последнего сообщения от юзера
                                     </small>
                                 </div>
                             </a>
@@ -154,11 +155,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="msb-reply">
-                            {{-- <textarea placeholder="Напишите сообщение"></textarea>
-                            <button><i class="fa fa-paper-plane-o"></i></button> --}}
-                            <chat-form ></chat-form>
-                        </div>
+                        <chat-form ></chat-form>                       
                     </div>
                 </div>
             </div>
