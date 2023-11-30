@@ -442,7 +442,8 @@ table .formWrap {
 
 .review-address {
     color: #4b69bd !important;
-    font-size: 22px !important;;
+    font-size: 22px !important;
+    ;
 }
 
 .review-textarea {

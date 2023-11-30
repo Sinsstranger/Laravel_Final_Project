@@ -40,7 +40,7 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3" style="background-color: black; border-radius: 5px">
+            <x-primary-button class="ml-3 button-login">
                 <p style="color: aliceblue; padding: 3px">{{ __('Войти')}}</p>
             </x-primary-button>
         </div>
