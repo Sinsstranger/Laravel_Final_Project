@@ -17,12 +17,12 @@
             <table class="table table-striped table-sm" style="min-width: 300px!important;">
                 <thead>
                 <tr>
-                    <th scope="col">Дата заезда</th>
-                    <th scope="col">Дата выезда</th>
-                    <th scope="col">Гости</th>
-                    <th scope="col">Регистрация</th>
-                    <th scope="col">Контакты</th>
-                    <th scope="col">Действия</th>
+                    <th scope="col" class="col-center">Дата заезда</th>
+                    <th scope="col" class="col-center">Дата выезда</th>
+                    <th scope="col" class="col-center">Гости</th>
+                    <th scope="col" class="col-center">Регистрация</th>
+                    <th scope="col" class="col-center">Контакты</th>
+                    <th scope="col" class="col-center">Действия</th>
                 </tr>
                 </thead>
                 @if ($property->deal->contains('status_id', 1))
@@ -97,12 +97,12 @@
                 <table class="table table-striped table-sm" style="min-width: 300px!important;">
                     <thead>
                     <tr>
-                        <th scope="col">Дата заезда</th>
-                        <th scope="col">Дата выезда</th>
-                        <th scope="col">Гости</th>
-                        <th scope="col">Регистрация</th>
-                        <th scope="col">Контакты</th>
-                        <th scope="col">Действия</th>
+                        <th scope="col" class="col-center">Дата заезда</th>
+                        <th scope="col" class="col-center">Дата выезда</th>
+                        <th scope="col" class="col-center">Гости</th>
+                        <th scope="col" class="col-center">Регистрация</th>
+                        <th scope="col" class="col-center">Контакты</th>
+                        <th scope="col" class="col-center">Действия</th>
                     </tr>
                     </thead>
 
@@ -124,6 +124,19 @@
                                 <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
                                 <td style="display: flex">
 
+                                    <div class="formWrap">
+                                        <form style="display: flex; justify-content: center;" method="POST"
+                                              enctype="multipart/form-data"
+                                              action="#">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="#" value="#">
+                                            <button class="btn btn-sm actionButton" style="color: #4b69bd",
+                                                    type="submit">
+                                                Написать<br>сообщение
+                                            </button>
+                                        </form>
+                                    </div>
                                         <div class="formWrap">
                                             <form style="display: flex; justify-content: center;" method="POST"
                                                 enctype="multipart/form-data"
@@ -131,9 +144,9 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <input type="hidden" name="status_id" value="4">
-                                                <button class="btn btn-sm actionButton" style="color: cornflowerblue",
+                                                <button class="btn btn-sm actionButton" style="color: #e88941",
                                                         type="submit">
-                                                    Завершить
+                                                    Завершить<br>досрочно
                                                 </button>
                                             </form>
                                         </div>
@@ -157,22 +170,22 @@
     </button>
     <div class="panel">
 
-            <div class="table-responsive">
+        <div class="table-responsive">
 
-                <table class="table table-striped table-sm" style="min-width: 300px!important;">
-                    <thead>
-                    <tr>
-                        <th scope="col">Дата заезда</th>
-                        <th scope="col">Дата выезда</th>
-                        <th scope="col">Гости</th>
-                        <th scope="col">Регистрация</th>
-                        <th scope="col">Контакты</th>
-                        <th scope="col">Статус</th>
-                    </tr>
-                    </thead>
-                    @if ($property->deal->contains('status_id', 3) || $property->deal->contains('status_id', 4))
-                        @foreach($property->deal as $item)
-                            @if ($item->status_id === 3 && 4)
+            <table class="table table-striped table-sm" style="min-width: 300px!important;">
+                <thead>
+                <tr>
+                    <th scope="col" class="col-center">Дата заезда</th>
+                    <th scope="col" class="col-center">Дата выезда</th>
+                    <th scope="col" class="col-center">Гости</th>
+                    <th scope="col" class="col-center">Регистрация</th>
+                    <th scope="col" class="col-center">Контакты</th>
+                    <th scope="col" class="col-center">Статус</th>
+                </tr>
+                </thead>
+                @if ($property->deal->contains('status_id', 3) || $property->deal->contains('status_id', 4))
+                    @foreach($property->deal as $item)
+                        @if ($item->status_id === 3 || $item->status_id === 4)
                             <tbody>
                             <tr style="text-align: center!important">
                                 <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
@@ -191,13 +204,13 @@
                                 @endif
                             </tr>
                             </tbody>
-                            @endif
-                        @endforeach
-                    @else
-                        <td colspan="6">Нет отклонённых или завершённых бронирований</td>
-                    @endif
-                </table>
-            </div>
+                        @endif
+                    @endforeach
+                @else
+                    <td colspan="6">Нет отклонённых или завершённых бронирований</td>
+                @endif
+            </table>
+        </div>
     </div>
 
         {{--Календарь--}}

@@ -3,7 +3,9 @@
     @parent{{ $property->title }}
 @endsection
 @section('style')
-    @parent<link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
+    @parent
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
+    <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
     <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
@@ -28,10 +30,10 @@
             </div>
         </div>
     </section>
-
+    <!--Блок с основным фото и описанием
+    location, price
+    description-->
     <div class="object-content container">
-
-        <!--Блок с основным фото и описанием-->
         <section class="description-section container">
             <div class="description-content">
                 @foreach($property->photo as $photo)
@@ -118,18 +120,17 @@
             @endguest
         </aside>
 
+        <!--Блок подробности-->
         <div class="object-content-details">
-
-            <!--Блок подробности-->
             <section class="details-section-1 container">
 
                 <div class="details-content">
                     <p>Тип жилья</p>
-                    <p class="info">{{ $property->category->title }}</p>
+                    <p class="info">{{$property->category->title}}</p>
                     <p>Количество комнат</p>
-                    <p class="info">{{ $property->number_of_rooms }}</p>
+                    <p class="info">{{$property->number_of_rooms}}</p>
                     <p>Количество гостей</p>
-                    <p class="info">{{ $property->number_of_guests }}</p>
+                    <p class="info">{{$property->number_of_guests}}</p>
                     <p>Срок аренды</p>
                     @if($property->daily_rent)
                         <p class="info">Посуточная аренда</p>
@@ -144,18 +145,25 @@
                     @endif
                     <address>Адрес</address>
                     <p class="info">
-                        {{ $property->address->country }},
-                        {{ $property->address->place }},
-                        {{ $property->address->street }},
-                        {{ $property->address->house_number }} -
-                        {{ $property->address->flat_number }}</p>
+                        {{$property->address->country}},
+                        {{$property->address->place}},
+                        {{$property->address->street}},
+                        {{$property->address->house_number}} -
+                        {{$property->address->flat_number}}</p>
                     <p>Имя владельца</p>
-                    <p class="info">{{ $property->user->first_name }}&nbsp;{{ $property->user->last_name }}</p>
+                    <p class="info">{{$property->user->name}}</p>
                     <!--<p>Телефон владельца</p>
                     <p class="info">Какой-то номер</p>-->
                 </div>
             </section>
-
+            <!--Локация (текст или карта?)-->
+            <!--<section>
+                <div class="container">
+                    <div class="heading-section">
+                        <h4>Карта</h4>
+                    </div>
+                </div>
+            </section>-->
             <!--Фотографии-->
             <section class="photo-section container">
                 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -203,23 +211,23 @@
                     <hr>
                     <div class="review-body">
                         @foreach($property->reviews as $review)
-                        <div class="review-header">
-                            <div class="review-data">
-                                <img src="{{ $review->user->avatar }}" class="avatar-block" alt="avatar user">
-                                <h6>{{ $review->user->name }}</h6>
+                            <div class="review-header">
+                                <div class="review-data">
+                                    <img src="{{ $review->user->avatar }}" class="avatar-block" alt="avatar user">
+                                    <h6>{{ $review->user->name }}</h6>
+                                </div>
+                                <p class="dates">{{ $review->updated_at ?? $review->created_at  }}</p>
                             </div>
-                        <p class="dates">{{ $review->updated_at ?? $review->created_at  }}</p>
-                        </div>
                             <div class="review-data">
 
                                 <!-- TODO Добавить рассчет рейтинга -->
 
                                 <div class="stars">
-                                <i id="star1{{ $loop->index }}" class="fas fa-star"></i>
-                                <i id="star2{{ $loop->index }}" class="fas fa-star"></i>
-                                <i id="star3{{ $loop->index }}" class="fas fa-star"></i>
-                                <i id="star4{{ $loop->index }}" class="fas fa-star"></i>
-                                <i id="star5{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="star1{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="star2{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="star3{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="star4{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="star5{{ $loop->index }}" class="fas fa-star"></i>
                                 </div>
 
                                 <p class="dates"> Даты проживания:<!--дата заезда--> 2023-08-09 – 2023-09-15<!--дата выезда--></p>
@@ -242,6 +250,7 @@
                             $url = $_SERVER['REQUEST_URI'];
                             $url = explode('/', $url);
                             $url = intval($url[2]);
+
                         @endphp
                         @foreach($property as $prop)
                             @if($loop->iteration > 3)
@@ -271,28 +280,28 @@
                 </section>
             </div>
         </div>
-    @endsection
 
+    @endsection
     @section('script')
         @parent
         <script>
             //Звёзды рейтинга
 
             @foreach($property->reviews as $review)
-                document.addEventListener('DOMContentLoaded', () => {
-                    const rs = document.querySelectorAll('i');
+            document.addEventListener('DOMContentLoaded', () => {
+                const rs = document.querySelectorAll('i');
 
-                    rs.forEach(() => {
-                        let rate{{ $loop->index }} = {{$review->rating}};
-                        for (let s = 1; s <= rate{{ $loop->index }}; s++) {
-                            let $star = document.getElementById(`star${s}{{ $loop->index }}`);
-                            $star.classList.add('golden');
-                        }
-                    });
+                rs.forEach(() => {
+                    let rate{{ $loop->index }} = {{$review->rating}};
+                    for (let s = 1; s <= rate{{ $loop->index }}; s++) {
+                        let $star = document.getElementById(`star${s}{{ $loop->index }}`);
+                        $star.classList.add('golden');
+                    }
                 });
+            });
             @endforeach
 
-            //Календарь
+            <!--Календарь-->
             const DateTime = easepick.DateTime;
             books = [];
             bookedDates = [];
@@ -308,8 +317,8 @@
                 //console.log(books);
                 bookedDates = books.map(d => {
                     if (d instanceof Array) {
-                        const startat = new DateTime(d[0], 'DD—MM—YYYY');
-                        const endat = new DateTime(d[1], 'DD—MM—YYYY');
+                        const startat = new DateTime(d[0], 'YYYY-MM-DD');
+                        const endat = new DateTime(d[1], 'YYYY-MM-DD');
 
                         return [startat, endat];
                     }
@@ -319,8 +328,7 @@
 
             const picker = new easepick.create({
                 element: document.getElementById('datepicker'),
-                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
-                ],
+                css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',],
                 zIndex: 10,
                 lang: "ru-RU",
                 format: "YYYY-MM-DD",
@@ -393,7 +401,7 @@
                 },
             });
 
-            //Валидация формы
+            <!--Валидация формы-->
             const form = document.getElementById('new-reservation');
             form.noValidate = true;
 

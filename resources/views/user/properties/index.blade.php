@@ -2,9 +2,11 @@
 
 @section('style')
     @parent
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous" />
+
     <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
 @endsection
@@ -28,7 +30,7 @@
             @forelse($propertiesUser as $property)
 
 
-                    <div id="{{ $property->id }}" class="p-4 sm:p-8 bg-white shadow sm:rounded-lg justify-between     properties_flex">
+                    <div id="{{ $property->id }}" class="p-4 sm:p-8 bg-white shadow sm:rounded-lg justify-between properties_flex">
 
                         <div class="deal-section">
 
@@ -84,7 +86,7 @@
                                     <div class="items-center gap-4 cabinet-index-btn">
                                         <x-primary-button>
                                             <a href="{{ route('user.properties.edit', $property) }}">
-                                                Редактировать объявление
+                                                Редактировать
                                             </a>
                                         </x-primary-button>
                                     </div>
@@ -94,9 +96,9 @@
                                         <form method="post" action="{{ route('user.properties.destroy', $property) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button :type="'submit'" class="index-del-btn">
-                                                <span class="index-btn-span">Удалить объявление</span>
-                                            </x-primary-button>
+                                            <x-secondary-button :type="'submit'" class="index-del-btn">
+                                                <span class="index-btn-span">Удалить</span>
+                                            </x-secondary-button>
                                         </form>
 
 <!--                                        <a rel="{{$property->id}}" href="javascript:" class="index-btn-span delete">
