@@ -44,7 +44,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-        event(new \App\Events\DefineNewUserEvent($user));
+        event(new \App\Events\DefineNewUserEvent($user));//связать со слушателем LastAddUserListener 
+        //в провайдоре Providers/EventServiceProvider
 
         Auth::login($user);
 

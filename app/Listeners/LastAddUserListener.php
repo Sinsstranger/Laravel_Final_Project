@@ -1,5 +1,5 @@
 <?php
-
+// php artisan make:listener LastAddUserListener
 namespace App\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;

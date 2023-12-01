@@ -123,7 +123,7 @@
                                 <th class="border-gray-200" scope="col">Статус</th>
                             </tr>
                         </thead>
-                        <tbody style="">
+                        <tbody class="t-body">
                             <tr>
                                 <td>#39201</td>
                                 <td>06/15/2021</td>

@@ -1,5 +1,6 @@
 @extends('layouts/admin')
 @section('content')
+
     <div class="container-fluid px-4">
         <h1 class="mt-4">Категории</h1>
         <div class="card mb-4">
@@ -7,8 +8,9 @@
                 <i class="fas fa-table me-1"></i>
                 Категории
             </div>
-            <div class="card-body">
-                <table id="datatablesSimple">
+            <div class="box">
+            <div class="table-scroll">
+                <table>
                     <a href="{{ route('admin.categories.create') }}" type="button" class="btn btn-success" style="margin-bottom: 21px">Добавить</a>
                     <br>
                     <thead>
@@ -18,13 +20,9 @@
                         <th>Опции</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Название</th>
-                        <th>Опции</th>
-                    </tr>
-                    </tfoot>
+                   </table>
+        <div class="table-scroll-body">
+            <table>
                     <tbody>
                     @forelse($categories as $category)
                         <tr id="{{ $category->id }}">
@@ -34,12 +32,13 @@
                                 <a rel="{{ $category->id  }}" href="javascript:" type="button" class="btn btn-danger delete">Удалить</a></td>
                         </tr>
                     @empty
-                        <tr>
-                            <td colspan='4'>Записей нет</td>
-                        </tr>
+                            <tr>
+                                <td colspan='4'>Записей нет</td>
+                            </tr>
                     @endforelse
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

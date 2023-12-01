@@ -18,7 +18,7 @@
     position: relative;
 }
 
-.header-object .breadcrumb{
+.header-object .breadcrumb {
     font-size: 12px;
     background-color: unset;
     padding: 0;
@@ -27,8 +27,8 @@
 .object-content {
     display: grid;
     grid-template-areas:
-"description-section rent-section"
-"object-content-details rent-section";
+        "description-section rent-section"
+        "object-content-details rent-section";
     grid-template-columns: 3fr 1fr;
     grid-template-rows: auto;
     grid-column-gap: 2%;
@@ -54,7 +54,7 @@
 }
 
 .description-content-left img,
-.recommend-card img{
+.recommend-card img {
     width: 100%;
     object-fit: contain;
 }
@@ -109,7 +109,7 @@
 }
 
 .details-section-1 p,
-.details-section-1 address{
+.details-section-1 address {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -166,7 +166,8 @@
 }
 
 .rent-section input[type='text'] {
-    height: unset !important;;
+    height: unset !important;
+    ;
     font-size: 14px;
 }
 
@@ -250,6 +251,7 @@
     justify-content: space-between;
     align-items: baseline;
 }
+
 .review-body .dates {
     font-size: 13px;
 
@@ -260,7 +262,7 @@
     margin: 0.25rem 0;
 }
 
-.review-body hr{
+.review-body hr {
     border-top: 1px solid rgba(0, 0, 0, 0.75);
 }
 
@@ -299,26 +301,61 @@
     color: rgb(0 0 0 / 45%);
 }
 
-.favourites_img{
+.favourites_img {
     height: 40px;
     width: 40px;
     position: absolute;
     z-index: 2 !important;
 }
 
-.properties{
+.properties {
     position: relative;
 }
 
-.img_opacity{
+.img_opacity {
     opacity: 0;
 }
 
-.properties:hover .favourites_img{
+.properties:hover .favourites_img {
     opacity: 1;
 }
 
-.recommend-catalog{
+.estimation ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+.estimation ul li {
+    text-align: center;
+    padding-right: 40px;
+}
+
+.stars {
+    display: flex;
+}
+
+.estimation ul li svg,
+p {
+    padding-right: 5px;
+    color: rgb(0 0 0 / 55%);
+    margin-bottom: 1rem;
+}
+
+.feedback {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.recommend-catalog {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 24px;
@@ -330,7 +367,7 @@
     padding: 10px;
 }
 
-.recommend-catalog .desc-price{
+.recommend-catalog .desc-price {
     display: flex;
     justify-content: space-between;
     align-items: baseline;

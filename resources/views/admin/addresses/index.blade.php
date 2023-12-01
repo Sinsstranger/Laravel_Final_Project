@@ -7,8 +7,9 @@
                 <i class="fas fa-table me-1"></i>
                 Адреса
             </div>
-            <div class="card-body">
-                <table id="datatablesSimple">
+            <div class="box">
+    <div class="table-scroll">
+        <table>
                     <a href="{{ route('admin.addresses.create') }}" type="button" class="btn btn-success" style="margin-bottom: 21px">Добавить</a>
                     <br>
                     <thead>
@@ -22,17 +23,9 @@
                         <th>Опции</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Страна</th>
-                        <th>Населенный пункт</th>
-                        <th>Улица</th>
-                        <th>Номер дома</th>
-                        <th>Номер квартиры</th>
-                        <th>Опции</th>
-                    </tr>
-                    </tfoot>
+                   </table>
+        <div class="table-scroll-body">
+            <table>
                     <tbody>
                     @forelse($addresses as $address)
                         <tr id="{{ $address->id }}">
@@ -53,6 +46,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 

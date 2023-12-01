@@ -35,7 +35,8 @@ export default defineConfig({
                 'resources/js/scrollax.min.js',
                 'resources/js/main.js',
                 'resources/js/app.js',
-                'resources/js/vue.js'
+                'resources/js/vue.js',
+                'resources/css/table.css'
             ],
             refresh: true,
         }),

@@ -38,13 +38,14 @@
 
                                     <x-deals-card :deal="$deal"></x-deals-card>
 
-                                    <div class="flex items-center gap-4 cabinet-index-btn">
+                                    <div></div>
+                                    <div class="flex flex-end items-center gap-4 cabinet-index-btn">
                                         <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button :type="'submit'" class="index-del-btn">
+                                            <x-secondary-button :type="'submit'" >
                                                 <span class="index-btn-span">Удалить заявку</span>
-                                            </x-primary-button>
+                                            </x-secondary-button>
                                         </form>
                                     </div>
 
@@ -76,6 +77,11 @@
                                         <x-deals-card :deal="$deal"></x-deals-card>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
+
+                                            <x-secondary-button>
+                                                <a href="#">Написать cсообщение</a>
+                                            </x-secondary-button>
+
                                             <form method="post" action="{{ route('review.create') }}">
                                                 @csrf
                                                 <input type="hidden" name="property_id" value="{{ $deal->property->id }}">
@@ -85,13 +91,31 @@
                                         </div>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
-                                            <x-primary-button>
-                                                <a href="{{ route('properties.show', $deal->property) }}">Забронировать повторно</a>
-                                            </x-primary-button>
+                                            @if(($deal->rent_ends_at <= now() && $deal->status_id == 4) || $deal->status_id == 4 || $deal->status_id == 3)
+                                                <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <x-secondary-button :type="'submit'" >
+                                                            <span class="index-btn-span">Удалить бронирование</span>
+                                                        </x-secondary-button>
+                                                </form>
+                                            @endif
 
+                                            @if($deal->rent_ends_at > now() && $deal->status_id != 4 && $deal->status_id > 1)
+                                                <form method="post" action="{{ route('user.deals.update', $deal) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                        <input type="hidden" name="status_id" value="4">
+                                                            <x-secondary-button :type="'submit'" >
+                                                                <span class="index-btn-span">Завершить досрочно</span>
+                                                            </x-secondary-button>
+                                                </form>
+                                            @endif
+
+                                                <x-primary-button>
+                                                    <a href="{{ route('properties.show', $deal->property) }}">Забронировать повторно</a>
+                                                </x-primary-button>
                                         </div>
-
-
 
                                     </div>
                                @endif
@@ -111,6 +135,10 @@
                                         <x-deals-card :deal="$deal"></x-deals-card>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
+                                            <x-secondary-button>
+                                                <a href="#">Написать cсообщение</a>
+                                            </x-secondary-button>
+
                                             <form method="post" action="{{ route('review.create') }}">
                                                 @csrf
                                                 <input type="hidden" name="property_id" value="{{ $deal->property->id }}">
@@ -120,6 +148,14 @@
                                         </div>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
+                                            <form method="post" action="{{ route('user.deals.destroy', $deal) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <x-secondary-button :type="'submit'" >
+                                                    <span class="index-btn-span">Удалить бронирование</span>
+                                                </x-secondary-button>
+                                            </form>
+
                                             <x-primary-button>
                                                 <a href="{{ route('properties.show', $deal->property) }}">Забронировать повторно</a>
                                             </x-primary-button>

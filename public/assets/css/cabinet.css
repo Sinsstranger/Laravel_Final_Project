@@ -17,7 +17,7 @@
 
 .cabinet-title {
     font-size: 1.5rem;
-    font-weight: bolder;
+    font-weight: lighter;
     color: black;
 }
 
@@ -71,18 +71,6 @@
 .show-catalog-item-link:active {
     transform: translate(30px);
     transition: 0.4s ease-in;
-}
-
-.index-del-btn {
-    background-color: #df1919 !important;
-}
-
-.index-del-btn:hover {
-    background-color: #931717 !important;
-}
-
-.index-btn-span:hover {
-    color: #e79f15;
 }
 
 .tab {
@@ -243,9 +231,6 @@
     box-shadow: none !important;
 }
 
-/*.dropdown {*/
-/*    position: relative;*/
-/*}*/
 
 #dropdown:hover {
     cursor: pointer;
@@ -279,7 +264,6 @@
     transform: translateX(2px);
     transition: 0.2s ease;
 }
-
 
 .downArrow {
     margin: 2px 0 0 6px;
@@ -413,6 +397,15 @@
     flex-direction: column;
 }
 
+table tr .col-center {
+    text-align: center !important;
+}
+
+table .formWrap {
+    text-align: center;
+}
+
+/*отзывы*/
 .review-header,
 .review-data {
     display: flex;
@@ -446,6 +439,126 @@
 .index-rev-btn {
     background-color: #4b69bd !important;
 }
+
+.review-address {
+    color: #4b69bd !important;
+    font-size: 22px !important;
+    ;
+}
+
+.review-textarea {
+    width: 50%;
+    height: 300px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px;
+    transition: width 0.4s ease-in-out;
+    resize: none;
+}
+
+.review-textarea:focus {
+    width: 100%;
+    border: 1px solid #4b69bd;
+}
+
+.review-textarea::placeholder {
+    font-size: 14px;
+    color: #999999;
+}
+
+.review-textarea:focus::placeholder {
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.btn {
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 24px 36px -11px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0 24px 36px -11px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 24px 36px -11px rgba(0, 0, 0, 0.09);
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+    outline: none;
+}
+
+.btn.btn-primary {
+    background: #4b69bd;
+    border: 1px solid #4b69bd !important;
+    color: #fff;
+}
+
+.btn.btn-primary:hover {
+    border: 1px solid #4b69bd !important;
+    background: #fff !important;
+    color: #4b69bd !important;
+}
+
+.btn.btn-secondary {
+    background: #e88941 !important;
+    border: 1px solid #e88941 !important;
+    color: #fff !important;
+}
+
+.btn.btn-secondary:hover {
+    border: 1px solid #e88941 !important;
+    background: transparent !important;
+    color: #e88941 !important;
+}
+
+.btn.btn-secondary a:hover {
+    color: #e88941 !important;
+}
+
+.rating {
+    font-size: 0;
+}
+
+.rating-wrap {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.rating-wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.rating-ico {
+    float: right;
+    padding-left: 2px;
+    cursor: pointer;
+    color: gold;
+}
+
+.rating-ico:last-child {
+    padding-left: 0;
+}
+
+.rating-input {
+    display: none !important;
+}
+
+.rating-ico:hover:before,
+.rating-ico:hover~.rating-ico:before,
+.rating-input:checked~.rating-ico:before {
+    content: "\f005";
+}
+
 
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 

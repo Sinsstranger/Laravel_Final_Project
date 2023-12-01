@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Services\Interfaces\StoreImage;
+
 
 class ProfileController extends Controller
 {
+
     /**
      * Display the user's profile information.
      */
@@ -34,7 +37,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request, StoreImage $storeImageService): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
@@ -42,9 +45,17 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        $requestField = 'avatar';
+
+        if($request->hasFile($requestField)) {
+            $user = ($request->user());
+            $request->user()['avatar'] = $storeImageService->storeImage($request, $user, $requestField);
+        }
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')
+            ->with('status', 'profile-updated')
+            ->with('success', 'Объявление успешно отредактировано');;
     }
 
     /**

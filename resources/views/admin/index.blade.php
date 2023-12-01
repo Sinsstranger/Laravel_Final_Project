@@ -7,8 +7,9 @@
             <i class="fas fa-table me-1"></i>
             Последние события
         </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
+        <div class="box">
+    <div class="table-scroll">
+        <table>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -17,14 +18,9 @@
                         <th>Опции</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Название</th>
-                        <th>Дата</th>
-                        <th>Опции</th>
-                    </tr>
-                </tfoot>
+               </table>
+        <div class="table-scroll-body">
+            <table>
                 <tbody>
                     @forelse($eventsList as $event)
                     <tr id="{{ $event->id }}">
@@ -43,5 +39,6 @@
             </table>
         </div>
     </div>
+        </div>
 </div>
 @endsection
