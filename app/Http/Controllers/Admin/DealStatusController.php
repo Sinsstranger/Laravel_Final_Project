@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\DealStatus\EditRequest;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Models\DealStatus;
@@ -29,7 +30,7 @@ class DealStatusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EditRequest $request)
     {
         $request->flash();
         $data = $request->only('name');
@@ -61,7 +62,7 @@ class DealStatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DealStatus $dealStatus)
+    public function update(EditRequest $request, DealStatus $dealStatus)
     {
         $data = $request->only('name');
         $dealStatus->fill($data);
