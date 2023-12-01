@@ -5,6 +5,9 @@
 @section('style')
     @parent
     <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
 @endsection
 @section('content')
 
@@ -87,5 +90,57 @@
         </script>
 
     @endauth
+@endsection
+@section('script')
+    @parent
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+                @foreach($properties as $property)
+                    let ratarr{{ $property->id }} = [];
+
+                    @foreach($property->reviews as $review)
+                        ratarr{{ $property->id }}.push({{ $review->rating }});
+                    @endforeach
+
+                    if(ratarr{{ $property->id }}.length !== 0) {
+                        const average{{ $property->id }} = getAverage(ratarr{{ $property->id }});
+
+                        let star{{ $property->id }} = document.getElementById(`star{{ $property->id }}`);
+                        star{{ $property->id }}.innerText = average{{ $property->id }}.toFixed(1);
+
+                        let num{{ $property->id }} = document.getElementById(`numfeed{{ $property->id }}`);
+                        num{{ $property->id }}.innerText = countFeedback(ratarr{{ $property->id }});
+
+                    }
+                    else {
+                        let $star{{ $property->id }} = document.getElementById('star{{ $property->id }}');
+                        $star{{ $property->id }}.setAttribute('style', "display:none;");
+
+                        let num{{ $property->id }} = document.getElementById(`num{{ $property->id }}`);
+                        num{{ $property->id }}.setAttribute('style', "display:none;");
+
+                    }
+            @endforeach
+        })
+
+        function getAverage(nums) {
+            return nums.reduce((a, b) => (a + b)) / nums.length;
+        }
+
+        function countFeedback(nums) {
+            if (nums.length === 1 || nums.length % 10 === 1) {
+                return nums.length + ' отзыв';
+            }
+            else if ((nums.length > 1 && nums.length < 5) || (nums.length % 10 > 1 && nums.length % 10 < 5)) {
+                return nums.length + ' отзыва';
+            }
+            else {
+                return nums.length + ' отзывов';
+                }
+        }
+
+
+    </script>
 @endsection
 
