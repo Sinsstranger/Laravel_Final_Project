@@ -31,7 +31,7 @@ class ProfileUpdateRequest extends FormRequest
             'first_name' =>['required','string', 'max:150'],
             'last_name'=>['required','string', 'max:150'],
             'phone' =>['required', 'string', 'max:20'],
-            'avatar' =>['nullable', 'mimes:jpeg,png,jpg', 'max:5000'],
+
         ];
     }
 

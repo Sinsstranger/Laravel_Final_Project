@@ -50,20 +50,22 @@
                     <div class="card-body text-center">
                         <img src="{{ $user->avatar }}" alt="avatar" style="align-items: center">
                         {{-- Доделать форму обновления инфы в БД --}}
-                        <div class="small font-italic text-muted mb-4">JPG или PNG не больше 5 MB</div>
+                        <div class="small font-italic text-muted mb-4">JPG, JPEG или PNG не больше 5 MB</div>
 
 {{--                        <form action="{{ route('profile.edit', ['user' => $user->avatar]) }}" method="PUT" enctype="multipart/form-data">--}}
 
-                        <form action="{{ route('profile.edit', ['user' => $user->id]) }}" method="GET"
-                            {{-- здесь ещё надо будет доделать форму обновления фото в БД  --}}
-                           enctype="multipart/form-data">
+<!--                        <form method="post"
+                              enctype="multipart/form-data"
+                              action="{{ route('profile.update', $user) }}">
 
                             @csrf
+                            @method('PATCH')
 
-
-                            <input type="file" name="avatar" accept="image/*">
+                            <input type="file" name="avatar" id="avatar"
+                                   accept="image/*"
+                            >
                             <button class="btn btn-primary" style="margin-top: 15px;" type="submit">Сохранить</button><br>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </div>
@@ -125,7 +127,7 @@
 
                             <div class="mb-3">
                                 <label class="small mb-1" for="email">Адрес электронной почты</label>
-                                <input name="email"  class="form-control"  style="border-radius: 10px;" id="email"
+                                <input name="email" style="border-radius: 10px;" id="email"
                                        type="email"
                                        placeholder="Введите вашу почту" value="{{$user->email ?? old('email')}}"
                                        class="form-control @error('email') is-invalid @enderror">
@@ -149,6 +151,15 @@
                                     </div>
                                     @enderror
                                     <br>
+                                </div>
+                            </div>
+
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="avatar">
+                                        Изменить аватар (JPG, JPEG или PNG не больше 5 MB)</label>
+                                    <input type="file" name="avatar" id="avatar">
+
                                 </div>
                             </div>
                             <x-primary-button style="margin-top: 15px">Сохранить</x-primary-button>
