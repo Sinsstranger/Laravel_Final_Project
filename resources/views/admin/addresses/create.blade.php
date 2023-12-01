@@ -2,6 +2,13 @@
 @section('content')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Адрес</h1>
+
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <x-alert :message="$error" type="danger"></x-alert>
+            @endforeach
+        @endif
+
         @include('inc.message')
         <div class="card mb-4">
             <div class="card-header">

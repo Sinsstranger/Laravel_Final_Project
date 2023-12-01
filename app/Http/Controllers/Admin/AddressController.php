@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Address\CreateRequest;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -32,8 +33,9 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
+
         $data = $request->only([
             'country',
             'place',
@@ -71,7 +73,7 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Address $address)
+    public function update(CreateRequest $request, Address $address)
     {
         $data = $request->only([
             'country',

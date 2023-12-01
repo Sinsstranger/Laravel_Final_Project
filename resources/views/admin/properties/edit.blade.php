@@ -2,6 +2,13 @@
 @section('content')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Редактор объявления</h1>
+
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <x-alert :message="$error" type="danger"></x-alert>
+            @endforeach
+        @endif
+
         @include('inc.message')
         <div class="card mb-4">
             <div class="card-header">
@@ -34,10 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label for="photo">Фото</label>
-                    @foreach($property->photo as $photo)
-                    <img src="{{ $photo }}" width="100">
-                    <input type="file" name="photo" class="form-control" id="photo">
-                    @endforeach
+                    <input type="file" class="form-control" name="photo" id="photo">
                 </div>
                 <div class="form-group">
                     <label for="price_per_day">Цена за день</label>
