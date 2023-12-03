@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
+        <title>@section('title')Админка | @show</title>
         <meta charset="utf-8" />
         <meta name="csrf-token" content="{{ csrf_token() }}"><!--для работы скрипта на удаление-->
         <title>Dashboard Admin</title>
@@ -22,7 +23,7 @@
         </div>
     </div>
     @stack('js')
-    
+
     <!--подставляет скрипт из @-push('js') для работы скрипта на удаление-->
 
 </body>

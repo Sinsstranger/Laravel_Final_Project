@@ -1,8 +1,12 @@
 @extends('layouts/admin')
+@section('title')
+    @parent @if(empty($category)) Создатель категорий
+    @else Редактор категорий @endif
+@endsection
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Категория</h1>
-
+        @if(empty($category)) <h1 class="mt-4">Создатель категорий</h1>
+        @else <h1 class="mt-4">Редактор категорий</h1> @endif
         @if($errors->any())
             @foreach($errors->all() as $error)
                 <x-alert :message="$error" type="danger"></x-alert>

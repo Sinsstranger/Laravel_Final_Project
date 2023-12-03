@@ -1,4 +1,7 @@
 @extends('layouts/admin')
+@section('title')
+    @parent Редактор объявления
+@endsection
 @section('content')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Редактор объявления</h1>

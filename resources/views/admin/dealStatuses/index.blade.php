@@ -1,4 +1,7 @@
 @extends('layouts/admin')
+@section('title')
+    @parent Статусы сделок
+@endsection
 @section('content')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Статусы сделок</h1>

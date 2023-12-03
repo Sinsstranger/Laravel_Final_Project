@@ -1,4 +1,7 @@
 @extends('layouts/admin')
+@section('title')
+    @parent Объявления
+@endsection
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Объявления</h1>
@@ -42,7 +45,7 @@
                     </thead>
                 </table>
                 <div class="table-scroll-body">
-                    <table> 
+                    <table>
                         <tbody>
                     @forelse($propertiesList as $property)
                             <tr id="{{ $property->id }}">
@@ -52,12 +55,12 @@
                                 <td>{{ $property->number_of_rooms }}</td>
                                 <td>{{ $property->number_of_guests }}</td>
                                 <td>{{ $property->description }}</td>
-                                <td> 
+                                <td>
                                      @if(is_array($property->photo))
-                @foreach($property->photo as $photo) 
+                @foreach($property->photo as $photo)
                                     <img src="{{ $photo }}" width="80px">
             @endforeach
-            @else 
+            @else
                                     <img src="{{ $property->photo }}" width="80px">
             @endif
                                 </td>
