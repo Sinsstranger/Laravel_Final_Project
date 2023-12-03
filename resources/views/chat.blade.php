@@ -132,15 +132,15 @@
                                     <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:00</small>
                                 </div>
                             </div>                        
-                            <div class="message-feed right">
+                            <div class="message-feed right" v-cloak>
                                 <div class="pull-right">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+                                    <img src="{{ auth()->user()->avatar }}"class="img-avatar">
                                 </div>
                                 <div class="media-body">
                                     <div class="mf-content">
                                         <chat-messages :user="{{ auth()->user() }}"></chat-messages>
                                     </div>
-                                    <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:30</small>
+                                    <small class="mf-date">5<i class="fa fa-clock-o"></i></small>
                                 </div>
                             </div>                        
                             <div class="message-feed media">

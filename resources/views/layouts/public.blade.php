@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/feedbackForm.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
     @section('style')@show
 </head>
 

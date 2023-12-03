@@ -220,3 +220,7 @@ body {
 .h1_user_field {
     font-size: large;
 }
+
+[v-cloak] {
+    display: none;
+}
