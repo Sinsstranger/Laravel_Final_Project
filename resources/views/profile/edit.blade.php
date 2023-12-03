@@ -41,31 +41,18 @@
     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
 
         <hr class="mt-0 mb-4">
-        <div class="row">
+        <div class="row">            
 
 {{--            ФОРМА С АВАТАРОМ--}}
             <div class="col-xl-4">
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Фото профиля</div>
                     <div class="card-body text-center">
-                        <img src="{{ $user->avatar }}" alt="avatar" style="align-items: center">
-                        {{-- Доделать форму обновления инфы в БД --}}
-                        <div class="small font-italic text-muted mb-4">JPG, JPEG или PNG не больше 5 MB</div>
-
-{{--                        <form action="{{ route('profile.edit', ['user' => $user->avatar]) }}" method="PUT" enctype="multipart/form-data">--}}
-
-<!--                        <form method="post"
-                              enctype="multipart/form-data"
-                              action="{{ route('profile.update', $user) }}">
-
-                            @csrf
-                            @method('PATCH')
-
-                            <input type="file" name="avatar" id="avatar"
-                                   accept="image/*"
-                            >
-                            <button class="btn btn-primary" style="margin-top: 15px;" type="submit">Сохранить</button><br>
-                        </form>-->
+                        <img src="{{ $user->avatar }}" alt="avatar" 
+                        style="margin:0 auto;">                        
+                        <div class="small font-italic text-muted mb-4">
+                            JPG, JPEG или PNG не больше 5 MB
+                        </div>                        
                     </div>
                 </div>
             </div>
