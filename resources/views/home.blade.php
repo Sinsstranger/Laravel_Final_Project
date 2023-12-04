@@ -346,72 +346,7 @@
             <button id="rateSiteBtn">Оценить сайт</button>
         </div>
     </section>
-    <section style="display: flex; justify-content: center;">
-        <style>
-            #feedback-form { /* вся форма */
-            max-width: 550px;
-            padding: 2%;
-            border-radius: 3px;
-            background: #f1f1f1;
-            align-items: center;
-            display: none;
-            margin: 20px;
-            border-radius: 10px;
-            }
-            #feedback-form label { /* наименование полей */
-            float: left;
-            display: block;
-            clear: right;
-            }
-            #feedback-form .w100 { /* поля */
-            float: right;
-            max-width: 400px;
-            width: 97%;
-            margin-bottom: 1em;
-            padding: 1.5%;
-            }
-            #feedback-form .border { /* граница полей */
-            border-radius: 1px;
-            border-width: 1px;
-            border-style: solid;
-            border-color: #C0C0C0 #D9D9D9 #D9D9D9;
-            box-shadow: 0 1px 1px rgba(255,255,255,.5), 0 1px 1px rgba(0,0,0,.1) inset;
-            }
-            #feedback-form .border:focus {
-            outline: none;
-            border-color: #abd9f1 #bfe3f7 #bfe3f7;
-            }
-            #feedback-form .border:hover {
-            border-color: rgb(46, 118, 189);
-            }
-            #feedback-form .border:focus::-moz-placeholder { /* убрать при фокусе первоначальный текст поля */
-            color: transparent;
-            }
-            #feedback-form .border:focus::-webkit-input-placeholder {
-            color: transparent;
-            }
-            #feedback-form .border:not(:focus):not(:hover):valid { /* правильно заполненные поля */
-            opacity: .8;
-            }
-            #submitFF { /* кнопка "Отправить" */
-            padding: 2%;
-            border: none;
-            border-radius: 3px;
-            box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
-            background: rgb(46, 86, 208);
-            color: #fff;
-            }
-            #feedback-form br {
-            height: 0;
-            clear: both;
-            }
-            #submitFF:hover {
-            background: #2075c4;
-            }
-            #submitFF:focus {
-            box-shadow: 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
-            }
-        </style>
+    <section class="site-review-form">
 
         <form enctype="multipart/form-data" method="post" id="feedback-form">
             <label for="nameFF">Имя:</label>
@@ -428,7 +363,11 @@
                 <button id="close-button" style="border-radius: 10px">Закрыть</button>
             </div>
         </form>
+    </section>
+@endsection
 
+        @section('script')
+            @parent
         <script>
             document.getElementById('feedback-form').addEventListener('submit', function(evt){
             var http = new XMLHttpRequest(), f = this;
@@ -448,14 +387,12 @@
             }
             http.send(new FormData(f));
             }, false);
-        </script>
-        <script>
+
             document.getElementById('rateSiteBtn').addEventListener('click', function() {
               var feedbackForm = document.getElementById('feedback-form');
               feedbackForm.style.display = "block";
             });
-        </script>
-        <script>
+
             var closeButton = document.getElementById('close-button');
             var feedbackForm = document.getElementById('feedback-form');
 
@@ -463,5 +400,6 @@
                 feedbackForm.style.display = 'none';
             });
         </script>
-    </section>
-@endsection
+    @endsection
+
+
