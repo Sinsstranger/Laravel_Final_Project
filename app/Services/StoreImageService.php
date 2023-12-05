@@ -26,11 +26,9 @@ class StoreImageService implements StoreImage
 
     public function storeImage(Request $request, $user, string $requestField): string
     {
-        $request->validate([
-            'avatar' => ['sometimes', 'image', 'mimes:jpeg,png,jpg', 'max:5000'],
-        ]);
+       
+        if ($request->hasFile('avatar')) {            
 
-        if ($request->hasFile('avatar')) {
             $oldPath = str_replace('storage', 'public', $user->avatar);
             Storage::delete($oldPath);
 

@@ -60,6 +60,26 @@
     margin: 0 5px 0 0
 }
 
+.no-avatar-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border: none;
+    margin: 0 5px 0 0;
+    border-radius: 50%;
+    background: #6c4690;
+}
+
+.no-avatar-block-content {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: inherit;
+}
+
 .cabinet-index-btn {
     margin: 0 10px 0 0;
 }
@@ -234,13 +254,13 @@
 
 #dropdown:hover {
     cursor: pointer;
-    color: #000;
+    color: rgb(55 65 81);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #fff;
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -261,8 +281,18 @@
 
 .dropdown-content a:hover {
     color: #2c4763;
-    transform: translateX(2px);
-    transition: 0.2s ease;
+    background-color: rgb(243 244 246);
+    transform: translateY(1px);
+    transition: 0.2s ease-in;
+}
+
+.dropdown-content a:active {
+    transform: translateY(5px);
+    transition: 0.2s ease-in;
+}
+
+.dropdown-content #dropdown {
+    display: none;
 }
 
 .downArrow {
@@ -561,7 +591,114 @@ table .formWrap {
 }
 
 
+/*отображение аватара на странице редактирования профиля*/
+.avatar-edit-page {
+    margin:0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    max-height: 300px;
+    max-width: 300px;
 
+}
+
+/*инпут для загрузки аватара*/
+
+.input-file {
+    position: relative;
+    display: block;
+}
+
+.input-file-title {
+    margin: 0 0 5px;
+    display: block;
+}
+
+.input-file-btn {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    vertical-align: middle;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 4px;
+    background-color: #694893;
+    line-height: 22px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
+}
+.input-file-text {
+    /*padding: 0 10px;*/
+    line-height: 40px;
+    display: block;
+}
+.input-file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+/* Focus */
+.input-file input[type=file]:focus + .input-file-btn {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Hover/active */
+.input-file:hover .input-file-btn {
+    background-color: #8661c5;
+}
+.input-file:active .input-file-btn {
+    background-color: #4b287c;
+}
+
+/* Disabled */
+.input-file input[type=file]:disabled + .input-file-btn {
+    background-color: #eee;
+}
+
+.name-first-letters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    background: #be0a9a;
+}
+
+.name-first-letters-content {
+    text-transform: uppercase;
+    font-size: 84px;
+    font-weight: 900;
+    color: #ffffff;
+
+}
+
+.name-first-letters-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: #be0a9a;
+    border-radius: 50%;
+}
+
+.name-first-letters-dashboard-content {
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+
+}
 
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
