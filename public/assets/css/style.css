@@ -723,7 +723,65 @@ pre code {
     grid-gap: 20px 30px;
     margin-bottom: 40px;
 }
+@media (max-width: 768px){
+    .properties_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .col-md-3{
+        display: none;
+    }
+    .row{
+        justify-content: center;
+    }
+}
+@media (max-width: 425px){
+    .properties_grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 
+.float_button{
+    position: sticky;
+    top: 50%;
+z-index: 10}
+
+.button_filter{
+    height: 50px;
+
+}
+.mobile_filter{
+
+
+}
+
+@media (min-width: 769px) {
+    .modal_block{
+        display: none;
+    }
+    .float_button{
+        display: none;
+    }
+}
+.modal_block{
+    position: absolute;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+width: 100%;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+.close_button{
+    align-self: end;
+}
+
+.hide_modal{
+    display: none;
+}
 /*- Васенин С.А. 2023-11-04*/
 .col {
     -ms-flex-preferred-size: 0;
@@ -732,6 +790,7 @@ pre code {
     -ms-flex-positive: 1;
     flex-grow: 1;
     max-width: 100%;
+
 }
 
 .col-auto {
