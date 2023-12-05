@@ -452,11 +452,12 @@ table .formWrap {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: white;
     padding: 12px;
     transition: width 0.4s ease-in-out;
     resize: none;
+    color: #444;
 }
 
 .review-textarea:focus {
