@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -18,7 +16,7 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array<string>
      */
     protected $fillable = [
         'name',
@@ -34,7 +32,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array<string>
      */
     protected $hidden = [
         'password',
@@ -57,19 +55,21 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function property(): HasMany
+    public function properties(): HasMany
     {
-        // return $this->hasMany(Property::class, 'user_id', 'id');
-        return $this->hasMany(Property::class);
+        // Уточни внешний ключ, чтобы избежать его автоматического определения
+        return $this->hasMany(Property::class, 'user_id');
     }
 
-    public function review(): HasMany
+    public function reviews(): HasMany
     {
-        return $this->hasMany(Review::class, 'author_id', 'id');
+        // Уточни внешний ключ и ключ связи, чтобы избежать автоматического определения
+        return $this->hasMany(Review::class, 'author_id');
     }
 
     public function getUserModel(int $user_id): User
     {
-        return $this->find($user_id);
+        // Используй метод findOrFail для получения пользователя или вызовет исключение, если он не найден
+        return $this->findOrFail($user_id);
     }
 }

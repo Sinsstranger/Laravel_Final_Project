@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DealStatus extends Model
 {
-    use HasFactory, softDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'deal_statuses';
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
-    public function deal(): HasMany
+    public function deals(): HasMany
     {
-        return $this->hasMany(Deal::class, 'status_id', 'id');
+        // Используй короткий синтаксис для указания внешнего ключа и ключа связи
+        return $this->hasMany(Deal::class);
     }
 }

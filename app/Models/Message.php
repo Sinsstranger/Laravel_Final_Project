@@ -9,13 +9,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Message extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-      'user_id',
-      'message'
+        'user_id',
+        'message',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        // Уточни внешний ключ, чтобы избежать его автоматического определения
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

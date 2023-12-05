@@ -1,9 +1,15 @@
 <?php
-
+/**
+ * Правки:
+ * 1. Заменен Auth::user()->getAuthIdentifier() на Auth::id().
+ * 2. Использован метод compact для более краткого и читаемого кода.
+ * 3. Упрощена логика в методе update и destroy.
+ * 4. Используется метод update для массового обновления данных вместо fill и save.
+ * 5. Улучшена логика в методе store с использованием тернарного оператора.
+ */
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DealsRequest;
-use App\Http\Requests\PropertiesRequest;
 use App\Services\DealsServices;
 use App\Services\PropertiesServices;
 use Illuminate\Http\Request;
@@ -18,43 +24,35 @@ class DealsController extends Controller
 
     public function index(): View
     {
-        $deals = $this->dealsServices->getDealsByUserId(Auth::user()->getAuthIdentifier());
+        $deals = $this->dealsServices->getDealsByUserId(Auth::id());
 
-        return \view('user/deals/deals', ['deals' => $deals]);
+        return view('user/deals/deals', compact('deals'));
     }
 
     public function store(DealsRequest $request)
     {
-
         $save = $this->dealsServices->createDeal($request);
-        if ($save) {
-            return redirect()->route('user.deals.index');
-        }
-        return back()->with('error', 'Не удалось забронировать');
+
+        return $save
+            ? redirect()->route('user.deals.index')->with('success', 'Бронирование успешно создано')
+            : back()->with('error', 'Не удалось создать бронирование');
     }
 
     public function update(Request $request, Deal $deal)
     {
         $request->validate([
-            'status_id' => ['required', 'integer', 'exists:deal_statuses,id']
-        ]);
-        $data = $request->only([
-            'status_id'
+            'status_id' => ['required', 'integer', 'exists:deal_statuses,id'],
         ]);
 
-        $deal->fill($data);
+        $deal->update($request->only('status_id'));
 
-        if ($deal->save()) {
-            return back()->with('success', 'Информация отправлена');
-        }
-        return back()->with('error', 'Не получилось отправить');
+        return back()->with($deal->wasChanged() ? 'success' : 'error', $deal->wasChanged() ? 'Информация обновлена' : 'Не удалось обновить информацию');
     }
 
-    public function destroy(Deal $deal) {
-        if ($deal->delete()) {
-            return redirect()->route('user.deals.index')->with('success', 'Заявка на бронирование успешно удалена');
-        }
-        return redirect()->route('user.deals.index')->with('error', 'Не удалось удалить заявка на бронирование');
+    public function destroy(Deal $deal)
+    {
+        return $deal->delete()
+            ? redirect()->route('user.deals.index')->with('success', 'Заявка на бронирование успешно удалена')
+            : redirect()->route('user.deals.index')->with('error', 'Не удалось удалить заявку на бронирование');
     }
-
 }

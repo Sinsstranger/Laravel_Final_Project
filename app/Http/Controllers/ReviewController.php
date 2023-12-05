@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Правки:
+ * 1. Использован Auth::user() вместо User::find(Auth::id()) для получения текущего пользователя.
+ * 2. Использован $request->input('property_id') вместо $request->only('property_id').
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -11,22 +15,15 @@ use App\Models\Review;
 class ReviewController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
-        $user = User::find(Auth::id());
-        $property_id = $request->only('property_id');
+        $user = Auth::user();
+        $property_id = $request->input('property_id');
         $property = Property::find($property_id);
-        return view('reviews.create')->with(['property' => $property[0]]);
+
+        return view('reviews.create', ['property' => $property]);
     }
 
     /**
@@ -34,49 +31,14 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(
-            'rating',
-            'description',
-            'property_id'
-        );
-
+        $data = $request->only(['rating', 'description', 'property_id']);
         $data['author_id'] = Auth::id();
+
         $review = new Review($data);
-        if($review->save()) {
+        if ($review->save()) {
             return redirect()->route('user.deals.index')->with('success', 'Отзыв успешно добавлен');
         }
+
         return back()->with('error', 'Не удалось сохранить отзыв');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
