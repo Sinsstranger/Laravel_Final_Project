@@ -29,7 +29,7 @@
                 <a href="{{ route('dashboard') }}"><img id="#" alt="avatar" src="{{ Auth::user()->avatar }}"
                                                         class="avatar-block">
                 </a>
-            @else
+            @elseif(!Auth::user()->avatar)
                 <div class="no-avatar-block">
                     <p class="no-avatar-block-content"></p>
                 </div>
@@ -118,14 +118,17 @@
 
 </div>
 
-@push('child-scripts')
+@if(Auth::user())
+    <script>
+        const firstName = `{{Auth::user()->first_name}}`;
+        const lastName = `{{Auth::user()->last_name}}`;
+        document.querySelector('.no-avatar-block-content').innerText = `${firstName[0]}${lastName[0]}`;
+    </script>
+@endif
+
+
 
  <script>
-
-     const firstName = `{{Auth::user()->first_name}}`;
-     const lastName = `{{Auth::user()->last_name}}`;
-     document.querySelector('.no-avatar-block-content').innerHTML = `${firstName[0]}${lastName[0]}`;
-
 
     /*let popUP = document.getElementsByClassName("popUpCabinetEnter");
     let enterLink = document.getElementById("userName");
@@ -145,4 +148,4 @@
     }*/
 </script>
 
-@endpush
+
