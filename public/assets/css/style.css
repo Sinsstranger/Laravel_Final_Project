@@ -723,65 +723,79 @@ pre code {
     grid-gap: 20px 30px;
     margin-bottom: 40px;
 }
-@media (max-width: 768px){
+
+@media (max-width: 768px) {
     .properties_grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .col-md-3{
+
+    .col-md-3 {
         display: none;
     }
-    .row{
+
+    .row {
         justify-content: center;
     }
 }
-@media (max-width: 425px){
+
+@media (max-width: 425px) {
     .properties_grid {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-.float_button{
+.float_button {
     position: sticky;
     top: 50%;
-z-index: 10}
+    z-index: 10
+}
 
-.button_filter{
+.button_filter {
     height: 50px;
 
 }
-.mobile_filter{
+
+.mobile_filter {
 
 
 }
 
 @media (min-width: 769px) {
-    .modal_block{
+    .modal_block {
         display: none;
     }
-    .float_button{
+
+    .float_button {
         display: none;
     }
 }
-.modal_block{
+
+.modal_block {
     position: absolute;
     z-index: 99;
     display: flex;
-    justify-content: center;
-    align-content: space-around;
-width: 100%;
+    width: 100%;
     align-items: center;
     flex-direction: column;
-
-
+    background-image: url('/assets/images/bg-filter.png');;
 }
 
-.close_button{
+.clear {
+    clear: both;
+}
+
+.close_button {
     align-self: end;
 }
 
-.hide_modal{
+.hide_modal {
     display: none;
 }
+
+.mobile_filter {
+    height: 350vh;
+}
+
 /*- Васенин С.А. 2023-11-04*/
 .col {
     -ms-flex-preferred-size: 0;
