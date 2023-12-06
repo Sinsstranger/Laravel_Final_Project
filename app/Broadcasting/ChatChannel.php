@@ -2,7 +2,9 @@
 
 namespace App\Broadcasting;
 
+use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class ChatChannel
 {
@@ -17,8 +19,13 @@ class ChatChannel
     /**
      * Authenticate the user's access to the channel.
      */
-    public function join(User $user): array|bool
+    public function join(User $user, string $chatId): bool
     {
-        return \auth()->check();
+        $message = Message::find($chatId);
+        auth()->check();
+        if ($user->id == $message->user_id_one || $user->id == $message->user_id_two) {
+            return true;
+        }
+        return false;
     }
 }

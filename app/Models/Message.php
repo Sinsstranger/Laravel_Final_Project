@@ -6,16 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+
 class Message extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'user_id',
-      'message'
+        'user_id_one',
+        'user_id_two',
+        'text',
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $casts = [
+        'text' => 'array',
+    ];
+
+
 }

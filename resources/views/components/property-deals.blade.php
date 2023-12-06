@@ -131,10 +131,10 @@
                                             @csrf
                                             @method('PUT')
                                             <input type="hidden" name="#" value="#">
-                                            <button class="btn btn-sm actionButton" style="color: #4b69bd",
+                                            <a href="{{ route('chat.create', $item->tenant) }}" class="btn btn-sm actionButton" style="color: #4b69bd",
                                                     type="submit">
                                                 Написать<br>сообщение
-                                            </button>
+                                            </a>
                                         </form>
                                     </div>
                                         <div class="formWrap">

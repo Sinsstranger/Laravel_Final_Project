@@ -30,18 +30,15 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
 Route::controller(ChatController::class)->middleware('auth')->group(function () {
-    Route::get('/chat', 'index');
+    Route::get('/getChat{message}', 'getChat')->name('getChat');
     Route::get('/messages', 'messages');
+    Route::get('/chat/create{user}', 'create')->name('chat.create');
     Route::post('/send', 'send');
+
 });
 
-//Route::middleware('auth')->get('/vue', function () {
-//    return view('chat');
-//});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
 Route::get('/properties/{property}', [HomeController::class, 'show'])->name('properties.show');
