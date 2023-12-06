@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/feedbackForm.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/object.css") }}">
     @section('style')@show
 </head>
 
@@ -143,7 +145,53 @@
         </div>
     </nav>
 
+
     @yield('content')
+
+    <!--Форма Вопрос по сайту-->
+    <div id="myQue" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeQue()">&times;</a>
+        <div class="overlay-content">
+            <div class="connection-form">
+                <h2>Вопросы по работе сайта</h2>
+                <form action="#">
+
+                    <p><label for="fname">Представьтесь, пожалуйста</label></p>
+                    <input type="text" id="fname" name="firstname" placeholder="Ваше имя" required>
+
+                    <label for="lname" hidden>Фамилия</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Ваша фамилия">
+
+                    <label for="email" hidden>Ваш Email</label>
+                    <input type="email" placeholder="Ваш Email" name="email" id="email"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+                    <label for="subject">Напишите, чем мы могли бы вам помочь? </label>
+                    <textarea id="subject" name="subject" placeholder="Опишите ваши затруднения (не более 500 знаков)"
+                              maxlength="500" required></textarea>
+
+                    <div>
+                        <p><input type="checkbox" id="myCheck" onclick="checkContact()" style="margin-right: 5px;">Заказать обратный звонок 
+                        </p>
+
+                        <div style="display:none" id="phone">
+                            <label for="phone">Ваш номер телефона</label>
+                            <input type="tel" name="phone" placeholder="+7 (999) 123-45-67" data-phone-pattern />
+                        </div>
+                        <p id="textContact" style="display:none">Мы позвоним вам, как только прочитаем это
+                            сообщение.</p>
+
+                    </div>
+
+                    <x-primary-button :type="'submit'" >Отправить
+                    </x-primary-button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="question" onclick="openQue()"><span class="tooltiptext">Есть вопросы?</span></div>
 
     <x-scroll-to-top-button></x-scroll-to-top-button>
     <footer class="ftco-footer ftco-section">

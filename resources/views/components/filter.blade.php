@@ -133,6 +133,22 @@
             </div>
         </div>
     </article>
+    <!-- Высокий рейтинг -->
+    <article class="filter-group">
+        <header class="card-header">
+            <i class="icon-control fa fa-chevron-down"></i>
+            <h6 class="title">Высокий рейтинг</h6>
+        </header>
+        <div class="filter-content collapse show chkbox-rating" id="collapse_4">           
+            <label class="toggler-wrapper style-6">
+                <input type="checkbox" name="high-rating">
+                <div class="toggler-slider">
+                    <div class="toggler-knob"></div>
+                </div>
+            </label>                    
+            <span class="chkbox-rating-txt">Рейтинг от 4 звёзд</span>            
+        </div>
+    </article>
     <!-- Блок дополнительных фильтров (раскрывается нажатием кнопки) -->
     <div id="extraFilters">
         <!-- Город -->

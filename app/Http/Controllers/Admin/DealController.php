@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Deal\EditRequest;
 use App\Models\Deal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -58,7 +59,7 @@ class DealController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Deal $deal)
+    public function update(EditRequest $request, Deal $deal)
     {
         $data = $request->only([
             'property_id ',

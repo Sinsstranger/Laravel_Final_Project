@@ -1,7 +1,11 @@
 <?php
-
+/**
+ * Правки:
+ * 1. Добавлена проверка наличия файла перед его обработкой, чтобы избежать ошибок, если файл не загружен.
+ * 2. В случае, если файл не был загружен, возвращается текущий URL аватара пользователя.
+ * 3. Использован более явный и краткий синтаксис для проверки наличия файла ($request->hasFile('avatar')).
+ */
 namespace App\Services;
-
 
 use App\Services\Interfaces\StoreImage;
 use Illuminate\Http\Request;
@@ -20,23 +24,22 @@ class StoreImageService implements StoreImage
         return $fileName;
     }
 
-    public function StoreImage(Request $request, $user, string $requestField): string
+    public function storeImage(Request $request, $user, string $requestField): string
     {
-
-
-            $request->validate([
-                'avatar' => ['sometimes', 'image', 'mimes:jpeg,png,jpg', 'max:5000'],
-            ]);
+       
+        if ($request->hasFile('avatar')) {            
 
             $oldPath = str_replace('storage', 'public', $user->avatar);
             Storage::delete($oldPath);
-
 
             $path = Storage::putFileAs('public/images/user_profile', $request->file('avatar'),
                 $this->getUploadedFileName($request, $requestField));
             $url = Storage::url($path);
 
-        return $url;
+            return $url;
+        }
+
+        return $user->avatar; // If no new image uploaded, return the existing avatar URL
     }
 
 }

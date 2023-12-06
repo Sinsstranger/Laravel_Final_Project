@@ -25,7 +25,7 @@
                         <span>Заявки</span>
                         @if ($deals->contains('status_id', 1))
                             <div class = "counter">
-                                {{$deals->countBy('status_id')->first()}}
+                                {{$deals->countBy('status_id')[1]}}
                             </div>
                         @endif
                     </div>

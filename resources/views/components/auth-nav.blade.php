@@ -24,10 +24,15 @@
         </li>
         <li class="nav-item nav-item-user" style="display: flex; position: relative">
 
-            @if(Auth::user()->avatar !== null)
+            @if(Auth::user()->avatar)
 
-            <a href="{{ route('dashboard') }}"><img id="#" alt="avatar" src="{{ Auth::user()->avatar }}" class="avatar-block">
-            </a>
+                <a href="{{ route('dashboard') }}"><img id="#" alt="avatar" src="{{ Auth::user()->avatar }}"
+                                                        class="avatar-block">
+                </a>
+            @else
+                <div class="no-avatar-block">
+                    <p class="no-avatar-block-content"></p>
+                </div>
 
             @endif
             <a id="userName" href="{{ route('dashboard') }}" class="mr-3 auth-nav-text">
@@ -115,8 +120,14 @@
 
 @push('child-scripts')
 
-<!-- <script>
-    let popUP = document.getElementsByClassName("popUpCabinetEnter");
+ <script>
+
+     const firstName = `{{Auth::user()->first_name}}`;
+     const lastName = `{{Auth::user()->last_name}}`;
+     document.querySelector('.no-avatar-block-content').innerHTML = `${firstName[0]}${lastName[0]}`;
+
+
+    /*let popUP = document.getElementsByClassName("popUpCabinetEnter");
     let enterLink = document.getElementById("userName");
 
     enterLink.onmouseover = function() {
@@ -131,7 +142,7 @@
         if (event.target !== popUP[0]) {
             popUP[0].style.display = "none";
         }
-    }
-</script> -->
+    }*/
+</script>
 
 @endpush

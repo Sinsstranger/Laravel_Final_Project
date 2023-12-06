@@ -1,4 +1,11 @@
 <?php
+/**
+ * Правки:
+ * 1. Используется Auth::id() вместо Auth::user()->getAuthIdentifier(), что делает код более кратким.
+ * 2. Использован метод compact для улучшения читаемости кода.
+ * 3. Убраны ненужные комментарии.
+ * 4. В методе store добавлены простые проверки на add и remove, чтобы сделать код более понятным.
+ */
 
 namespace App\Http\Controllers;
 
@@ -16,14 +23,15 @@ class FavouritesController extends Controller
      */
     public function index()
     {
+        $userId = Auth::id();
+
         $properties = Property::query()
-            ->join('favourites as f', function($join){
+            ->join('favourites as f', function ($join) use ($userId) {
                 $join->on('f.fav_property_id', '=', 'properties.id')
-                    ->where('f.fav_user_id','=', Auth::user()->getAuthIdentifier());
+                    ->where('f.fav_user_id', '=', $userId);
             })->paginate(9);
 
-
-        return \view('user/favourites/index', ['properties' => $properties]);
+        return view('user/favourites/index', compact('properties'));
     }
 
     /**
@@ -37,23 +45,20 @@ class FavouritesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $property, $action)
+    public function store(Request $request, $propertyId, $action)
     {
-        if(Auth::check()) {
-            $userId = Auth::user()->getAuthIdentifier();
+        $userId = Auth::id();
 
-            if ($action == 'add') {
-                DB::table('favourites')->insert(['fav_property_id'=>$property, 'fav_user_id'=>$userId]);
-                return response()->json('add');
-            } elseif ($action == 'remove') {
-                DB::table('favourites')
-                    ->where('fav_property_id', '=', $property)
-                    ->where('fav_user_id', '=', $userId)
-                    ->delete();
-                return response()->json('remove');
-            }
+        if ($action == 'add') {
+            DB::table('favourites')->insert(['fav_property_id' => $propertyId, 'fav_user_id' => $userId]);
+            return response()->json('add');
+        } elseif ($action == 'remove') {
+            DB::table('favourites')
+                ->where('fav_property_id', '=', $propertyId)
+                ->where('fav_user_id', '=', $userId)
+                ->delete();
+            return response()->json('remove');
         }
-
     }
 
     /**

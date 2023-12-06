@@ -1,7 +1,19 @@
 @extends('layouts/admin')
+@section('title')
+    @parent @if(empty($dealStatus)) Создатель статусов
+    @else Редактор статусов @endif
+@endsection
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Редактор категории</h1>
+    @if(empty($dealStatus)) <h1 class="mt-4">Создатель статусов сделок</h1>
+    @else <h1 class="mt-4">Редактор статусов сделок</h1> @endif
+
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <x-alert :message="$error" type="danger"></x-alert>
+        @endforeach
+    @endif
+
     @include('inc.message')
     <div class="card mb-4">
         <div class="card-header">

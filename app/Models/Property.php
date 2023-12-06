@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 
-
-
 class Property extends Model
 {
     use HasFactory;
@@ -28,7 +26,7 @@ class Property extends Model
         'address_id',
         'user_id',
         'is_temporary_registration_possible',
-        'daily_rent'
+        'daily_rent',
     ];
 
     protected $casts = [
@@ -39,38 +37,41 @@ class Property extends Model
 
     public function user(): BelongsTo
     {
-        // return $this->belongsTo(User::class, 'user_id', 'user_id');
         return $this->belongsTo(User::class);
     }
 
     public function address(): BelongsTo
     {
-        return $this->belongsTo(Address::class,'address_id', 'id');
+        return $this->belongsTo(Address::class, 'address_id', 'id');
     }
 
     public function deal(): HasMany
     {
         return $this->hasMany(Deal::class, 'property_id');
     }
+
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class,  'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function scopeFilter(Builder $builder, QueryFilter $filter){
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
         return $filter->apply($builder);
     }
+
     public function getAllProperties(): Collection
     {
         return $this->all();
     }
-    public function reviews():HasMany
+
+    public function reviews(): HasMany
     {
         return $this->hasMany(Review::class, 'property_id', 'id');
     }
+
     public function createModel(array $data): bool
     {
-
         $property = $this->firstOrCreate([
             'title' => $data['title'],
             'category_id' => $data['category_id'],
@@ -81,17 +82,21 @@ class Property extends Model
             'price_per_day' => $data['price_per_day'],
             'address_id' => $data['address_id'],
             'user_id' => $data['user_id'],
-            'is_temporary_registration_possible' => isset($data['is_temporary_registration_possible']),
-            'daily_rent' => isset($data['daily_rent'])
+            'is_temporary_registration_possible' => $data['is_temporary_registration_possible'] ?? false,
+            'daily_rent' => $data['daily_rent'] ?? false,
         ]);
         event(new \App\Events\DefineNewPropertyEvent($property));
+
         return $property->save();
     }
+
     public function updatePropertyModel(array $data, Property $property): bool
     {
         $property->fill($data);
+
         return $property->save();
     }
+
     public function deleteProperty(Property $property): bool
     {
         return $property->delete();
@@ -103,6 +108,4 @@ class Property extends Model
             $query->where('title', request()->query('f', 'Выбрать категорию'));
         }
     }
-
-
 }

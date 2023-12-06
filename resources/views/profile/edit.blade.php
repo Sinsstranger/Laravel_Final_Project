@@ -48,24 +48,19 @@
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Фото профиля</div>
                     <div class="card-body text-center">
-                        <img src="{{ $user->avatar }}" alt="avatar" style="align-items: center">
-                        {{-- Доделать форму обновления инфы в БД --}}
-                        <div class="small font-italic text-muted mb-4">JPG, JPEG или PNG не больше 5 MB</div>
+                        <div class="avatar-edit-page">
+                            @if($user->avatar)
+                                <img src="{{ $user->avatar }}" alt="avatar">
+                            @else
+                                <div class="name-first-letters">
+                                    <p class="name-first-letters-content"></p>
+                                </div>
+                            @endif
 
-{{--                        <form action="{{ route('profile.edit', ['user' => $user->avatar]) }}" method="PUT" enctype="multipart/form-data">--}}
-
-<!--                        <form method="post"
-                              enctype="multipart/form-data"
-                              action="{{ route('profile.update', $user) }}">
-
-                            @csrf
-                            @method('PATCH')
-
-                            <input type="file" name="avatar" id="avatar"
-                                   accept="image/*"
-                            >
-                            <button class="btn btn-primary" style="margin-top: 15px;" type="submit">Сохранить</button><br>
-                        </form>-->
+                        </div>
+                        <div class="small font-italic text-muted mb-4">
+                            JPG, JPEG или PNG не больше 5 MB
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,10 +150,23 @@
                             </div>
 
                             <div class="row gx-3 mb-3">
+
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="avatar">
-                                        Изменить аватар (JPG, JPEG или PNG не больше 5 MB)</label>
-                                    <input type="file" name="avatar" id="avatar">
+                                    <span class="input-file-title">
+                                            Изменить аватар
+                                    </span>
+                                    <label class="small mb-1 input-file">
+
+                                        <input type="file" name="avatar" id="avatar"
+                                               class="@error('avatar') is-invalid @enderror">
+                                        <span class="input-file-btn">Выберите файл</span>
+                                        @error('avatar')
+                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
+                                    </label>
+                                    <span class="input-file-text">JPG, JPEG или PNG не более 5 MB</span>
 
                                 </div>
                             </div>
@@ -189,3 +197,42 @@
         <br>
 
 </x-app-layout>
+
+<script>
+
+    function customizeFileInput() {
+        const inputs = document.querySelectorAll('.input-file input[type=file]');
+
+        Array.prototype.forEach.call(inputs, function (input){
+
+            const label = document.querySelector('.input-file');
+            const labelVal = label.innerHTML;
+
+            input.addEventListener('change', function (e){
+                // console.log(this.files);
+
+                let fileName = '';
+                fileName = this.files[0].name;
+
+                if(fileName){
+                    label.querySelector('span').innerHTML = fileName;
+                } else {
+                    label.innerHTML = labelVal;
+                }
+            })
+        })
+
+    }
+
+    document.addEventListener("DOMContentLoaded", customizeFileInput);
+
+
+    const firstName = document.getElementById('first_name').value;
+    const lastName = document.getElementById('last_name').value;
+    document.querySelector('.name-first-letters-content').innerHTML = `${firstName[0]}${lastName[0]}`;
+
+
+
+</script>
+
+

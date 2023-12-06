@@ -1,4 +1,7 @@
 @extends('layouts/admin')
+@section('title')
+    @parent Категории
+@endsection
 @section('content')
 
     <div class="container-fluid px-4">

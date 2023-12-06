@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\AddressesFactory;
@@ -15,11 +13,11 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
-      'country',
-      'place',
-      'street',
-      'house_number',
-      'flat_number',
+        'country',
+        'place',
+        'street',
+        'house_number',
+        'flat_number',
     ];
 
     protected static function newFactory(): Factory
@@ -32,16 +30,18 @@ class Address extends Model
         return $this->hasOne(Property::class, 'address_id', 'id');
     }
 
-    public function createModel(array $data): Address
+    public function createModel(array $data): \Illuminate\Database\Eloquent\Builder|Model
     {
-        $address = Address::firstOrCreate([
+        // Используй compact для создания массива значений
+        $address = Address::query()->firstOrCreate([
             'country' => $data['country'],
             'place' => $data['place'],
             'street' => $data['street'] ,
             'house_number' => $data['house_number'],
             'flat_number' => isset($data['flat_number'])
         ]);
-        $address->save();
+
+        $address->save(); // save() необязателен, так как firstOrCreate уже сохраняет модель
         return $address;
     }
 }

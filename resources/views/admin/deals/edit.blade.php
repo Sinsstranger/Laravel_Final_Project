@@ -1,7 +1,17 @@
 @extends('layouts/admin')
+@section('title')
+    @parent Редактор сделки
+@endsection
 @section('content')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Редактор сделки</h1>
+
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <x-alert :message="$error" type="danger"></x-alert>
+            @endforeach
+        @endif
+
         @include('inc.message')
         <div class="card mb-4">
             <div class="card-header">

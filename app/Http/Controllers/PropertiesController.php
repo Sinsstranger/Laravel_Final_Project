@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Правки:
+ * 1. Использован метод Auth::id() вместо Auth::user()->getAuthIdentifier().
+ * 2. Заменены длинные списки параметров в методах на использование compact.
+ * 3. Убраны комментарии и неиспользуемый код.
+ */
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PropertiesRequest;
@@ -9,44 +14,42 @@ use App\Services\PropertiesServices;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Log;
 
 class PropertiesController extends Controller
 {
+    protected PropertiesServices $propertyServices;
+    protected UserInterface $usersServices;
 
-    public function __construct
-    (
-        protected PropertiesServices $propertyServices,
-        protected UserInterface $usersServices,
-    ){}
+    public function __construct(PropertiesServices $propertyServices, UserInterface $usersServices)
+    {
+        $this->propertyServices = $propertyServices;
+        $this->usersServices = $usersServices;
+    }
+
     public function index(): View
     {
-        $user = $this->usersServices->getUser(Auth::user()->getAuthIdentifier());
+        $propertiesUser = $this->propertyServices->getPropertiesByUserId(Auth::id());
 
-        $propertiesUser = $this->propertyServices->getPropertiesByUserId(Auth::user()->getAuthIdentifier());
-
-        return \view('user/properties/index', [
-            'propertiesUser' => $propertiesUser]);
+        return view('user/properties/index', compact('propertiesUser'));
     }
+
     public function edit(Property $property): View
     {
         $categoriesProperty = $this->propertyServices->getAllCategoriesProperty();
-        $user = $this->usersServices->getUser(Auth::user()->getAuthIdentifier());
-        return \view('user/properties/create', [
-            'property' => $property,
-            'categories' => $categoriesProperty,
-            'user' => $user,
-        ]);
+        $user = $this->usersServices->getUser(Auth::id());
+
+        return view('user/properties/create', compact('property', 'categoriesProperty', 'user'));
     }
+
     public function create(): View
     {
-        $user = $this->usersServices->getUser(Auth::user()->getAuthIdentifier());
+        $user = $this->usersServices->getUser(Auth::id());
         $categoriesProperty = $this->propertyServices->getAllCategoriesProperty();
 
-        return \view('user/properties/create', ['user' => $user, 'categories' => $categoriesProperty]);
+        return view('user/properties/create', compact('user', 'categoriesProperty'));
     }
 
-    public function store(PropertiesRequest $request)
+    public function store(PropertiesRequest $request): RedirectResponse
     {
         $address = $this->propertyServices->createAddress($request);
 
@@ -54,38 +57,27 @@ class PropertiesController extends Controller
         if ($propertySave) {
             return redirect()->route('user.properties.index')->with('success', 'Объявление опубликовано');
         }
+
         return back()->with('error', 'Не удалось создать объявление');
     }
+
     public function update(PropertiesRequest $request, Property $property): RedirectResponse
     {
+        $saveProperty = $this->propertyServices->updateProperty($request, $property);
+        if ($saveProperty) {
+            return redirect()->route('user.properties.index')->with('success', 'Объявление успешно отредактировано');
+        }
 
-         $saveProperty = $this->propertyServices->updateProperty($request, $property);
-         if ($saveProperty) {
-             return redirect()->route('user.properties.index')->with('success', 'Объявление успешно отредактировано');
-         }
-         return back()->with('error', 'Не удалось внести изменения');
-
+        return back()->with('error', 'Не удалось внести изменения');
     }
+
     public function destroy(Property $property): RedirectResponse
     {
         $deleteProperty = $this->propertyServices->destroyProperty($property);
         if ($deleteProperty) {
             return redirect()->route('user.properties.index')->with('success', 'Объявление удалено');
         }
+
         return back()->with('error', 'Объявление не удалено');
-
-
-            // try {
-                
-            //     $property->delete();
-
-
-            //     return response()->json('ok');
-
-            // } catch (\Exception $e) {
-            //     Log::error($e->getMessage(), $e->getTrace());
-            //     return response()->json('error', 400);
-            // }
     }
-
 }
