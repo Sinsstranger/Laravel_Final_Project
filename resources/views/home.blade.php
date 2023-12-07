@@ -171,7 +171,8 @@
         </div>
     </section>
 
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+
+    <!--<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
@@ -255,7 +256,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <section class="ftco-section testimony-section">
         <div class="container">

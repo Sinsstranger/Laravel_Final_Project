@@ -14798,7 +14798,7 @@ textarea.form-control {
     cursor: pointer;
     opacity: 0.7;
     height: 0;
-    animation: showDiv 15s forwards;
+    animation: showDiv 5s forwards;
 }
 
 @keyframes showDiv {

@@ -204,6 +204,7 @@
             </section>
 
             <!--Отзывы-->
+            @if($property->reviews->isNotEmpty())
             <section class="review-section container">
                 <div class="heading-section">
                     <h4>Отзывы</h4>
@@ -218,9 +219,6 @@
                                 <p class="dates">{{ $review->updated_at ?? $review->created_at  }}</p>
                             </div>
                             <div class="review-data">
-
-                                <!-- TODO Добавить рассчет рейтинга -->
-
                                 <div class="stars">
                                     <i id="star1{{ $loop->index }}" class="fas fa-star"></i>
                                     <i id="star2{{ $loop->index }}" class="fas fa-star"></i>
@@ -238,6 +236,7 @@
 
                 </div>
             </section>
+            @endif
 
             <!--Доп блок-->
             <section class="recommend-section container">

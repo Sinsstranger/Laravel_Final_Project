@@ -366,7 +366,7 @@
          phone.style.display = "block";
          text.style.display = "block";
      } else {
-         phone.style.display = "block";
+         phone.style.display = "none";
          text.style.display = "none";
      }
  }
