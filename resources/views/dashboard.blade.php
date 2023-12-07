@@ -61,8 +61,15 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-center text-center" style="height:120px">
-                {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">--}}
-                <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="120" height="120">
+                  @if($user->avatar)
+                      <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="120" height="120">
+                  @else
+                      <div class="name-first-letters-dashboard">
+                          <p class="name-first-letters-dashboard-content"></p>
+                      </div>
+                  @endif
+
+{{--                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle" width="120" height="120">--}}
                 <div class="mt-3">
                   {{-- <h4>{{ $user->first_name }} {{ $user->last_name }}</h4> --}}
                 </div>
@@ -86,7 +93,7 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">Имя</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
+                <div class="col-sm-9 text-secondary" id="first_name">
                   {{ $user->first_name }}
                 </div>
               </div>
@@ -95,7 +102,7 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">Фамилия</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
+                <div class="col-sm-9 text-secondary" id="last_name">
                   {{ $user->last_name }}
                 </div>
               </div>
@@ -131,3 +138,12 @@
   </div>
 
 </x-app-layout>
+
+<script>
+
+    const firstName = document.getElementById('first_name').innerText;
+    const lastName = document.getElementById('last_name').innerText;
+    
+    document.querySelector('.name-first-letters-dashboard-content').innerHTML = `${firstName[0]}${lastName[0]}`;
+
+</script>

@@ -171,7 +171,7 @@
                               maxlength="500" required></textarea>
 
                     <div>
-                        <p>Рассказать подробнее? <input type="checkbox" id="myCheck" onclick="checkContact()">
+                        <p><input type="checkbox" id="myCheck" onclick="checkContact()" style="margin-right: 5px;">Заказать обратный звонок 
                         </p>
 
                         <div style="display:none" id="phone">

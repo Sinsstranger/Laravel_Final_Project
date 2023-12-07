@@ -25,7 +25,7 @@
                         <span>Заявки</span>
                         @if ($deals->contains('status_id', 1))
                             <div class = "counter">
-                                {{$deals->countBy('status_id')->first()}}
+                                {{$deals->countBy('status_id')[1]}}
                             </div>
                         @endif
                     </div>
@@ -77,9 +77,8 @@
                                         <x-deals-card :deal="$deal"></x-deals-card>
 
                                         <div class="flex items-center gap-4 cabinet-index-btn">
-
                                             <x-secondary-button>
-                                                <a href="#">Написать cсообщение</a>
+                                                <a href="{{ route('chat.create', $deal->property->user_id ) }}">Написать сообщение</a>
                                             </x-secondary-button>
 
                                             <form method="post" action="{{ route('review.create') }}">

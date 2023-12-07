@@ -31,6 +31,7 @@ class ProfileUpdateRequest extends FormRequest
             'first_name' =>['required','string', 'max:150'],
             'last_name'=>['required','string', 'max:150'],
             'phone' =>['required', 'string', 'max:20'],
+            'avatar' => ['sometimes', 'image', 'mimes:jpeg,png,jpg', 'max:5000'],
 
         ];
     }
@@ -43,6 +44,7 @@ class ProfileUpdateRequest extends FormRequest
             'last_name' => 'Фамилия',
             'email' => 'Адрес электронной почты',
             'phone' => 'Телефон',
+            'avatar' => 'Аватар',
         ];
     }
 }

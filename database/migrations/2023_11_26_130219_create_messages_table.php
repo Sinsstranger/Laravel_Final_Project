@@ -14,11 +14,13 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)
-                ->constrained()
+            $table->foreignId('user_id_one')->constrained('users')
                 ->cascadeOnUpdate()
-            ->cascadeOnDelete();
-            $table->text('message');
+                ->cascadeOnDelete();
+            $table->foreignId('user_id_two')->constrained('users')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->json('text')->nullable();
             $table->timestamps();
         });
     }

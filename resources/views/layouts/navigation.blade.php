@@ -29,7 +29,8 @@
                         </x-nav-link>
                     @endif --}}
 
-                    <x-nav-link-2 {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}} id="dropdown">
+                    <x-nav-link-2
+                        {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}} id="dropdown">
                         Мои объявления
                         <i class="fa fa-caret-down downArrow "></i>
                         <div class="dropdown-content">
