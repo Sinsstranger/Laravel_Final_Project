@@ -88,12 +88,13 @@ body {
     margin-left: 15px;
 }
 .message-feed:not(.right) .mf-content {
-    background: #03a9f4;
+    background: #a6a6a6;
     color: #fff;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .message-feed.right .mf-content {
-    background: #eee;
+    background: #7188c9;
+    color: #fff;
     border-radius: 10px 20px 1px 10px;
 }
 .mf-content {
