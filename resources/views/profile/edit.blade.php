@@ -233,6 +233,35 @@
 
 
 
+    const noAvatarBlock = document.querySelector('.name-first-letters')
+    noAvatarBlock.style.background = 'navy';
+
+
+   /* const userId = `{{$user->id}}`
+
+    let currentDate = new Date();
+
+
+    let num = parseInt(userId + currentDate.getDate());
+    console.log(num);
+
+    function getColorIndex(num) {
+        let sum;
+        do {
+            let str = num.toString();
+            sum = 0;
+            for (let i = 0; i < str.length; i++) {
+                sum += parseInt(str[i]);
+            }
+            num = sum;
+        } while (sum > 9)
+
+        return num;
+    }
+
+    let res = getColorIndex(num);
+    console.log(res);*/
+
 </script>
 
 

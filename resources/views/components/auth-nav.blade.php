@@ -120,8 +120,8 @@
 
 @if(Auth::user())
     <script>
-        const firstName = `{{Auth::user()->first_name}}`;
-        const lastName = `{{Auth::user()->last_name}}`;
+        const firstName = `{{Auth::user()->first_name}}`
+        const lastName = `{{Auth::user()->last_name}}`
         document.querySelector('.no-avatar-block-content').innerText = `${firstName[0]}${lastName[0]}`;
     </script>
 @endif
