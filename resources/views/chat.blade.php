@@ -123,25 +123,9 @@
                                 </li>
                             </ul>
                         </div>
+
                         <div class="chat_body">
-
-
                                         <chat-messages :user="{{ auth()->user() }}" :chat="{{ $chat }}"></chat-messages>
-
-
-
-
-                            <!--<div class="message-feed media">
-                                <div class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
-                                </div>
-                                <div class="media-body">
-                                    <div class="mf-content">
-                                        Как дела?
-                                    </div>
-                                    <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:33</small>
-                                </div>
-                            </div>-->
                         </div>
                         <chat-form :chat="{{ $chat }}"></chat-form>
                     </div>
