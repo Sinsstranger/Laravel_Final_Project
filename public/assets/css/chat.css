@@ -94,12 +94,16 @@ body {
 }
 .message-feed.right .mf-content {
     background: #eee;
+    border-radius: 10px 20px 1px 10px;
 }
 .mf-content {
     padding: 12px 17px 13px;
-    border-radius: 2px;
+    border-radius: 20px 10px 10px 1px;
     display: inline-block;
-    max-width: 80%
+    max-width: 80%;
+}
+.chat-img-div {
+    width: 50px;
 }
 .mf-date {
     display: block;
@@ -189,7 +193,7 @@ body {
     padding: 0 10px;
 }
 .ms-body{
-    background:#fff;    
+    background:#fff;
 }
 #ms-menu-trigger {
     user-select: none;

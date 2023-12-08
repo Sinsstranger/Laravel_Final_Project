@@ -1,13 +1,15 @@
 <template>
-    <div  v-for="message in messages">
-        <div class="flex items-end" :class="{'justify-end': message.id != user.id}">
-            <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2" :class="{'items-end': message.id != user.id, 'items-start': message.id == user.id}">
-                <div>
-                    <span class="px-4 py-2 rounded-lg inline-block"
-                          :class="{'rounded-br-none bg-blue-600 text-white': message.id != user.id, 'rounded-bl-none bg-gray-300 text-gray-600': message.id == user.id}">
+    <div class="chat_body" v-for="message in messages">
+        <div class="flex items-end message-feed media " :class="{'justify-end right': message.id.id != user.id}">
+            <div class="flex flex-col" :class="{'items-end': message.id.id != user.id, 'items-start': message.id == user.id}">
+                <div class="flex align-items-center gap-2 media-body" :class="{'flex-row-reverse': message.id.id != user.id}">
+                    <div class="chat-img-div">
+                        <img class="img-fluid rounded-circle" alt="avatar" :src="message.id.avatar" :class="{'rounded-start-pill': message.id.id != user.id}">
+                    </div>
+                    <h6 class="mf-content"
+                          :class="{'text-black-600 ': message.id.id != user.id, 'text-black-600': message.id.id == user.id}">
                         {{ message.message }}
-                    </span>
-
+                    </h6>
                 </div>
             </div>
         </div>
@@ -41,12 +43,13 @@ export default {
             .listen('MessageSend', (e) => {
                 messages.value.push({
                     id: e.id,
-                    message: e.message
+                    message: e.message,
                 })
             })
             .error((error) => {
                 console.error(error);
             });
+        console.log(messages);
         return {
             messages
         }

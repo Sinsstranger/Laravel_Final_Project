@@ -71,6 +71,7 @@ class ChatController extends Controller
 
     public function send(Request $request)
     {
+
         $chat = Message::find($request->chat);
         $user = $request->user();
         if (Auth::user()->getAuthIdentifier() === $chat->user_id_one || Auth::user()->getAuthIdentifier() === $chat->user_id_two)
@@ -78,14 +79,14 @@ class ChatController extends Controller
             $message = $request->message;
             $text = [];
             if(!empty($chat->text)) {
-                $newMessage = ['id' => Auth::user()->getAuthIdentifier(),
+                $newMessage = ['id' => User::find(Auth::user()->getAuthIdentifier()),
                     'message' => $message];
                 foreach ($chat->text as $item) {
                     $text[] = $item;
                 }
                 $text[] = $newMessage;
             } else {
-                $text[] = ['id' => Auth::user()->getAuthIdentifier(),
+                $text[] = ['id' => User::find(Auth::user()->getAuthIdentifier()),
                     'message' => $message];
             }
 
