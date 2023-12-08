@@ -124,31 +124,14 @@
                             </ul>
                         </div>
                         <div class="chat_body">
-                            <div class="message-feed media">
-                                <div class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
-                                </div>
-                                <div class="media-body">
-                                    <div class="mf-content">
-                                        Привет
-                                    </div>
-                                    <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:00</small>
-                                </div>
-                            </div>
-                            <div class="message-feed right">
-                            </div>
-                            <div class="message-feed right" v-cloak>
-                                <div class="pull-right">
-                                    <img src="{{ auth()->user()->avatar }}"class="img-avatar">
-                                </div>
-                                <div class="media-body">
-                                    <div class="mf-content">
+
+
                                         <chat-messages :user="{{ auth()->user() }}" :chat="{{ $chat }}"></chat-messages>
-                                    </div>
-                                    <small class="mf-date">5<i class="fa fa-clock-o"></i></small>
-                                </div>
-                            </div>
-                            <div class="message-feed media">
+
+
+
+
+                            <!--<div class="message-feed media">
                                 <div class="pull-left">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
                                 </div>
@@ -158,7 +141,7 @@
                                     </div>
                                     <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:33</small>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <chat-form :chat="{{ $chat }}"></chat-form>
                     </div>
