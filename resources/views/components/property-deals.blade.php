@@ -6,7 +6,7 @@
             <span>На рассмотрении</span>
             @if ($property->deal->contains('status_id', 1))
                 <div class = "counter">
-                    {{$property->deal->countBy('status_id',1)->first()}}
+                    {{$property->deal->countBy('status_id')[1]}}
                 </div>
             @endif
         </div>
