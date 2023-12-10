@@ -281,7 +281,7 @@
     <script src="{{ asset("assets/js/jquery.animateNumber.min.js") }}"></script>
     <script src="{{ asset("assets/js/scrollax.min.js") }}"></script>
     <script src="{{ asset("assets/js/filter-form.js") }}"></script>
-    <script src="{{ asset("assets/js/main.js") }}"></script>
+    <script src="{{ asset("assets/js/main.js") }}"></script>    
 
     @stack('child-scripts')
 

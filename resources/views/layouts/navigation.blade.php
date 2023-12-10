@@ -30,7 +30,8 @@
                     @endif --}}
 
                     <x-nav-link-2
-                        {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}} id="dropdown">
+                        {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}} 
+                        id="dropdown">
                         Мои объявления
                         <i class="fa fa-caret-down downArrow "></i>
                         <div class="dropdown-content">
@@ -173,6 +174,10 @@
     let dropDownNav = document.getElementById("dropdown");
     let dropContent = document.getElementsByClassName("dropdown-content");
 
+    dropDownNav.onclick = function() {
+        dropContent[0].style.display = "block";        
+    }
+
     dropDownNav.onmouseover = function() {
         dropContent[0].style.display = "block";
     }
@@ -190,7 +195,7 @@
     }
 
     window.onclick = function(event) {
-        if (event.target !== dropContent[0]) {
+        if (event.target !== dropContent[0] && event.target !== dropDownNav) {
             dropContent[0].style.display = "none";
         }
     }

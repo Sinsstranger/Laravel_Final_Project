@@ -42,7 +42,8 @@ class ProfileController extends Controller
         $requestField = 'avatar';
 
         if ($request->hasFile($requestField)) {
-            $user->avatar = $storeImageService->storeImage($request, $user, $requestField);
+            $oldUser = $user->getOriginal();             
+            $user->avatar = $storeImageService->storeImage($request, $oldUser, $requestField);
         }
 
         $user->save();

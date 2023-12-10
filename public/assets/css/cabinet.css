@@ -595,12 +595,19 @@ table .formWrap {
 
 /*отображение аватара на странице редактирования профиля*/
 .avatar-edit-page {
-    margin:0 auto;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 50%;
     max-height: 300px;
     max-width: 300px;
 
+}
+
+.avatar_as_background {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 300px;
 }
 
 /*инпут для загрузки аватара*/
@@ -635,11 +642,13 @@ table .formWrap {
     margin: 0;
     transition: background-color 0.2s;
 }
+
 .input-file-text {
     /*padding: 0 10px;*/
     line-height: 40px;
     display: block;
 }
+
 .input-file input[type=file] {
     position: absolute;
     z-index: -1;
@@ -650,20 +659,21 @@ table .formWrap {
 }
 
 /* Focus */
-.input-file input[type=file]:focus + .input-file-btn {
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+.input-file input[type=file]:focus+.input-file-btn {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 }
 
 /* Hover/active */
 .input-file:hover .input-file-btn {
     background-color: #8661c5;
 }
+
 .input-file:active .input-file-btn {
     background-color: #4b287c;
 }
 
 /* Disabled */
-.input-file input[type=file]:disabled + .input-file-btn {
+.input-file input[type=file]:disabled+.input-file-btn {
     background-color: #eee;
 }
 
@@ -673,7 +683,7 @@ table .formWrap {
     justify-content: center;
     width: 300px;
     height: 300px;
-    background: #be0a9a;
+    /* background: #be0a9a; */
 }
 
 .name-first-letters-content {

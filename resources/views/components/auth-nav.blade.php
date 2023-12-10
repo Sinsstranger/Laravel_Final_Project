@@ -30,7 +30,7 @@
                                                         class="avatar-block">
                 </a>
             @elseif(!Auth::user()->avatar)
-                <div class="no-avatar-block">
+                <div class="no-avatar-block" id="noAvatarBlock">
                     <p class="no-avatar-block-content"></p>
                 </div>
 
@@ -123,6 +123,39 @@
         const firstName = `{{Auth::user()->first_name}}`
         const lastName = `{{Auth::user()->last_name}}`
         document.querySelector('.no-avatar-block-content').innerText = `${firstName[0]}${lastName[0]}`;
+
+        //Загрузка фоновых цветов в блок аватара в зависимости от id юзера и дня месяца
+        const noAvatarBlock = document.getElementById('noAvatarBlock');
+        // noAvatarBlock.style.background = 'navy';
+
+
+        const userId = `{{Auth::user()->id}}`;
+
+        let currentDate = new Date();
+
+
+        let num = parseInt(userId + currentDate.getDate());
+        // console.log(num);
+
+        function getColorIndex(num) {
+            let sum;
+            do {
+                let str = num.toString();
+                sum = 0;
+                for (let i = 0; i < str.length; i++) {
+                sum += parseInt(str[i]);
+                }
+                num = sum;
+            } while (sum > 9)
+
+            return num;
+        }
+
+        const colorArr = ['navy', '#DC143C', '#FF4500', '#9400D3', '#1E90FF', '#2E8B57', '#20B2AA', '#2F4F4F', '#8B4513', '#FF00FF'];
+
+        let res = getColorIndex(num);
+        noAvatarBlock.style.background = colorArr[res];
+        // console.log(getColorIndex(num));
     </script>
 @endif
 

@@ -25,12 +25,12 @@ class StoreImageService implements StoreImage
     }
 
     public function storeImage(Request $request, $user, string $requestField): string
-    {
+    {        
        
-        if ($request->hasFile('avatar')) {            
-
-            $oldPath = str_replace('storage', 'public', $user->avatar);
-            Storage::delete($oldPath);
+        if ($request->hasFile('avatar')) {           
+            
+            $oldPath = str_replace('storage', 'public', $user['avatar']);
+            Storage::delete($oldPath);            
 
             $path = Storage::putFileAs('public/images/user_profile', $request->file('avatar'),
                 $this->getUploadedFileName($request, $requestField));

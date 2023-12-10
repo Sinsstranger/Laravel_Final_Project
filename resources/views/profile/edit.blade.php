@@ -50,9 +50,11 @@
                     <div class="card-body text-center">
                         <div class="avatar-edit-page">
                             @if($user->avatar)
-                                <img src="{{ $user->avatar }}" alt="avatar">
+                            <div class="avatar_as_background" 
+                            style=" background-image: url({{ $user->avatar }});"></div>
+                                <!-- <img src="{{ $user->avatar }}" alt="avatar"> -->
                             @else
-                                <div class="name-first-letters">
+                                <div class="name-first-letters" id='noAvatarBlock'>
                                     <p class="name-first-letters-content"></p>
                                 </div>
                             @endif
@@ -158,6 +160,7 @@
                                     <label class="small mb-1 input-file">
 
                                         <input type="file" name="avatar" id="avatar"
+                                        value="{{$user->avatar ?? old('avatar')}}"
                                                class="@error('avatar') is-invalid @enderror">
                                         <span class="input-file-btn">Выберите файл</span>
                                         @error('avatar')
@@ -194,7 +197,7 @@
             </div>
         </div>
 
-        <br>
+        <br>       
 
 </x-app-layout>
 
@@ -226,42 +229,47 @@
 
     document.addEventListener("DOMContentLoaded", customizeFileInput);
 
+    //Вывод инициалов пользователя
 
     const firstName = document.getElementById('first_name').value;
     const lastName = document.getElementById('last_name').value;
     document.querySelector('.name-first-letters-content').innerHTML = `${firstName[0]}${lastName[0]}`;
 
+    //Загрузка фоновых цветов в блок аватара в зависимости от id юзера и дня месяца
+    const noAvatarBlock = document.getElementById('noAvatarBlock');
+    // noAvatarBlock.style.background = 'navy';
 
 
-    const noAvatarBlock = document.querySelector('.name-first-letters')
-    noAvatarBlock.style.background = 'navy';
-
-
-   /* const userId = `{{$user->id}}`
+    const userId = `{{$user->id}}`;
 
     let currentDate = new Date();
 
 
     let num = parseInt(userId + currentDate.getDate());
-    console.log(num);
+    // console.log(num);
 
     function getColorIndex(num) {
-        let sum;
-        do {
-            let str = num.toString();
-            sum = 0;
-            for (let i = 0; i < str.length; i++) {
-                sum += parseInt(str[i]);
-            }
-            num = sum;
-        } while (sum > 9)
+    let sum;
+    do {
+        let str = num.toString();
+        sum = 0;
+        for (let i = 0; i < str.length; i++) {
+        sum += parseInt(str[i]);
+        }
+        num = sum;
+    } while (sum > 9)
 
-        return num;
+    return num;
     }
 
-    let res = getColorIndex(num);
-    console.log(res);*/
+    const colorArr = ['navy', '#DC143C', '#FF4500', '#9400D3', '#1E90FF', '#2E8B57', '#20B2AA', '#2F4F4F', '#8B4513', '#FF00FF'];
 
+    let res = getColorIndex(num);
+    noAvatarBlock.style.background = colorArr[res];
+    // console.log(getColorIndex(num));
+   
 </script>
+
+
 
 
