@@ -129,17 +129,17 @@
          id="ftco-navbar" style="z-index: 2">
 {{--        При изменении z-index проверяйте не перекрывается ли выпадающее меню профиля!--}}
         <div class="container">
-            <a class="navbar-brand" href="/">«ЗОЛОТОЙ КЛЮЧИК»</a>
+            <a class="navbar-brand" href="/">ЗОЛОТОЙ КЛЮЧИК</a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Меню
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav nav ml-auto">
-                    <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>ГЛАВНАЯ</span></a></li>
-                    <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>КАТАЛОГ</span></a></li>
-                    <li class="nav-item"><a href="{{ route('about') }}" class="nav-link"><span>О НАС</span></a></li>
-                    <li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link"><span>КОНТАКТЫ</span></a></li>
+                    <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>Главная</span></a></li>
+                    <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>Каталог</span></a></li>
+                    <li class="nav-item"><a href="{{ route('about') }}" class="nav-link"><span>О нас</span></a></li>
+                    <li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link"><span>Контакты</span></a></li>
                 </ul>
             </div>
         </div>
@@ -190,7 +190,7 @@
                               maxlength="500" required >{{ $feedback->message ?? old('message') }}</textarea>
 
                     <div>
-                        <p><input type="checkbox" id="myCheck" onclick="checkContact()" style="margin-right: 5px;">Заказать обратный звонок 
+                        <p><input type="checkbox" id="myCheck" onclick="checkContact()" style="margin-right: 5px;">Заказать обратный звонок
                         </p>
 
                         <div style="display:none" id="phone">
@@ -306,7 +306,7 @@
     <script src="{{ asset("assets/js/jquery.animateNumber.min.js") }}"></script>
     <script src="{{ asset("assets/js/scrollax.min.js") }}"></script>
     <script src="{{ asset("assets/js/filter-form.js") }}"></script>
-    <script src="{{ asset("assets/js/main.js") }}"></script>    
+    <script src="{{ asset("assets/js/main.js") }}"></script>
 
     @stack('child-scripts')
 
