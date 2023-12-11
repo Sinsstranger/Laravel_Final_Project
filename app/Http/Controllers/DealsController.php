@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Models\Deal;
+use App\Models\Review;
 
 class DealsController extends Controller
 {
@@ -25,8 +26,9 @@ class DealsController extends Controller
     public function index(): View
     {
         $deals = $this->dealsServices->getDealsByUserId(Auth::id());
+        $reviews = Review::where('author_id', Auth::id())->get();
 
-        return view('user/deals/deals', compact('deals'));
+        return view('user/deals/deals', compact(['deals', 'reviews']));
     }
 
     public function store(DealsRequest $request)
