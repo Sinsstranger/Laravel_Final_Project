@@ -30,6 +30,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Адреса
                 </a>
+                <a class="nav-link" href="{{ route('admin.feedbacks.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Обратная связь
+                </a>
             </div>
         </div>
     </nav>

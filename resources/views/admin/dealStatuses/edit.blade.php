@@ -1,12 +1,7 @@
 @extends('layouts/admin')
-@section('title')
-    @parent @if(empty($dealStatus)) Создатель статусов
-    @else Редактор статусов @endif
-@endsection
 @section('content')
 <div class="container-fluid px-4">
-    @if(empty($dealStatus)) <h1 class="mt-4">Создатель статусов сделок</h1>
-    @else <h1 class="mt-4">Редактор статусов сделок</h1> @endif
+    <h1 class="mt-4">Редактор категории</h1>
 
     @if($errors->any())
         @foreach($errors->all() as $error)

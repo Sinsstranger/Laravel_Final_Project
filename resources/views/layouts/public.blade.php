@@ -153,22 +153,41 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeQue()">&times;</a>
         <div class="overlay-content">
             <div class="connection-form">
-                <h2>Вопросы по работе сайта</h2>
-                <form action="#">
+                <h2>Есть вопрос?</h2>
+                <form  method="post"
+                       enctype="multipart/form-data"
+                       action="{{ route('feedback.store') }}">
+                    @csrf
+                    @method('POST')
 
-                    <p><label for="fname">Представьтесь, пожалуйста</label></p>
-                    <input type="text" id="fname" name="firstname" placeholder="Ваше имя" required>
+                    <p><label for="first_name">Представьтесь, пожалуйста</label></p>
+                    <input type="text"
+                           name="first_name"
+                           class="form-control"
+                           id="first_name"
+                           placeholder="Ваше имя" required
+                           value="{{ $feedback->first_name ?? old('first_name') }}">
 
-                    <label for="lname" hidden>Фамилия</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Ваша фамилия">
+                    <label for="last_name" hidden>Фамилия</label>
+                    <input type="text"
+                           name="last_name"
+                           class="form-control"
+                           id="last_name"
+                           placeholder="Ваша фамилия" required
+                           value="{{ $feedback->last_name ?? old('last_name') }}">
 
                     <label for="email" hidden>Ваш Email</label>
-                    <input type="email" placeholder="Ваш Email" name="email" id="email"
-                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    <input type="email"
+                           name="email"
+                           class="form-control"
+                           id="email"
+                           placeholder="Ваш Email" required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                           value="{{ $feedback->email ?? old('email') }}">
 
                     <label for="subject">Напишите, чем мы могли бы вам помочь? </label>
-                    <textarea id="subject" name="subject" placeholder="Опишите ваши затруднения (не более 500 знаков)"
-                              maxlength="500" required></textarea>
+                    <textarea id="message" name="message" placeholder="Опишите ваши затруднения (не более 500 знаков)"
+                              maxlength="500" required >{{ $feedback->message ?? old('message') }}</textarea>
 
                     <div>
                         <p><input type="checkbox" id="myCheck" onclick="checkContact()" style="margin-right: 5px;">Заказать обратный звонок 
@@ -176,7 +195,13 @@
 
                         <div style="display:none" id="phone">
                             <label for="phone">Ваш номер телефона</label>
-                            <input type="tel" name="phone" placeholder="+7 (999) 123-45-67" data-phone-pattern />
+                            <input type="tel"
+                                   name="phone"
+                                   class="form-control"
+                                   id="phone"
+                                   placeholder="+7 (999) 123-45-67"
+                                   data-phone-pattern
+                                   value="{{ $feedback->phone ?? old('phone') }}">
                         </div>
                         <p id="textContact" style="display:none">Мы позвоним вам, как только прочитаем это
                             сообщение.</p>

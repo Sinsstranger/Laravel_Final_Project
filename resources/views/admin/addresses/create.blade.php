@@ -1,12 +1,7 @@
 @extends('layouts/admin')
-@section('title')
-    @parent @if(empty($address)) Создатель адресов
-    @else Редактор адресов @endif
-@endsection
 @section('content')
     <div class="container-fluid px-4">
-        @if(empty($address)) <h1 class="mt-4">Создатель адресов</h1>
-        @else <h1 class="mt-4">Редактор адресов</h1> @endif
+        <h1 class="mt-4">Адрес</h1>
 
         @if($errors->any())
             @foreach($errors->all() as $error)
