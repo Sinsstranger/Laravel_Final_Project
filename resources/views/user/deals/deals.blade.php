@@ -163,26 +163,28 @@
                                @endif
                             @endforeach
                         @else
-                            <p>У вас пока нет отклонённых или завершённых бронирвоаний</p>
+                            <p>У вас пока нет отклонённых или завершённых бронирований</p>
                         @endif
                     </div>
 
                 <button class="accordion">Отзывы</button>
                 <div class="panel">
-                    <p>Вы пока не оставляли отзывы.</p>
-                    <!--
+                    @forelse ($reviews as $review)
                     <div class="review-body">
-
                         <div class="review-header">
                             <div class="review-data">
-                                <h6>Название, адрес
-                                </h6>
+                                {{-- Заголовок объявления, к которому оставлен отзыв
+                                    и ссылка на него--}}
+                                <a href="{{ route('properties.show', $review->property) }}">{{ $review->property->title }}</a>
+                                {{-- Адрес объекта, к которому оставлен отзыв --}}
+                                <P>{{ $review->property->address->place }}, {{ $review->property->address->street }}, {{ $review->property->address->house_number }}, {{ $review->property->address->flat_number }} </p>
+                                {{-- Оценка --}}
+                                <p>Оценка: {{ $review->rating }}</p>
                             </div>
-                            <p class="dates">дата размещения/обновления</p>
+                            <p class="dates">{{ $review->created_at }}</p>
                         </div>
-
                         <div class="review-data">
-                            <p class="dates"> Даты проживания:дата заезда – дата выезда</p>
+                            {{-- <p class="dates"> Даты проживания:дата заезда – дата выезда</p> --}}
                             <div class="stars">
                                 <i id="star1" class="fas fa-star"></i>
                                 <i id="star2" class="fas fa-star"></i>
@@ -191,14 +193,12 @@
                                 <i id="star5" class="fas fa-star"></i>
                             </div>
                         </div>
-
-                        <p>Описание</p>
+                        <p>{{  $review->description  }}</p>
                         <hr>
-
-                    </div>-->
-
-                </div>
-
+                    </div>
+                    @empty
+                    <p>Вы пока не оставляли отзывы.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
