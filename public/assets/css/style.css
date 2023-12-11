@@ -4925,6 +4925,19 @@ input[type="button"].btn-block {
     display: block;
 }
 
+.close-button{
+    font-weight: bold;
+    background: #e88941;
+    border: 1px solid #e88941;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.close-button:hover{
+    background: #eca269;
+    border: 1px solid #eca269;
+}
+
 .navbar {
     position: relative;
     display: -webkit-box;
