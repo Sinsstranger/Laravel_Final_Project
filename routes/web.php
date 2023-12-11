@@ -37,6 +37,7 @@ Route::controller(ChatController::class)->middleware('auth')->group(function () 
     Route::get('/messages', 'messages');
     Route::get('/chat/create{user}', 'create')->name('chat.create');
     Route::post('/send', 'send');
+    Route::delete('/chat/destroy{message}', 'destroy')->name('chat.destroy');
 
 });
 

@@ -29,7 +29,12 @@ class ChatController extends Controller
                 $users[] = User::find($chatUser->user_id_two);
             }
         }
-        return \view('chat', ['chat' => $message, 'usersChat' => $users]);
+        if ($message->user_id_one === Auth::user()->getAuthIdentifier()) {
+            $user = User::find($message->user_id_two);
+        } else {
+            $user = User::find($message->user_id_one);
+        }
+        return \view('chat', ['message' => $message, 'usersChat' => $users, 'recipient' => $user]);
     }
     public function messages(Request $request): Collection|array
     {
@@ -98,6 +103,27 @@ class ChatController extends Controller
         }
 
         return $chat;
+    }
+    public function destroy(Message $message)
+    {
+        $message->delete();
+        $chats = Message::query()->where('user_id_one',Auth::user()->getAuthIdentifier())
+            ->orWhere('user_id_two', Auth::user()->getAuthIdentifier())->get();
+
+        if (count($chats)) {
+            foreach ($chats as $chatUser) {
+                if ($chatUser->user_id_one !== Auth::user()->getAuthIdentifier()) {
+                    return redirect()->route('getChat', $chatUser)->with('success', 'Чат удален');
+                }
+                if ($chatUser->user_id_two !== Auth::user()->getAuthIdentifier()) {
+                    return redirect()->route('getChat', $chatUser)->with('success', 'Чат удален');
+                }
+            }
+        } else {
+            return redirect()->route('dashboard')->with('success', 'Чат удален');
+        }
+
+       return redirect()->back()->with('error', 'Не удалось удалить чат');
     }
 
 }

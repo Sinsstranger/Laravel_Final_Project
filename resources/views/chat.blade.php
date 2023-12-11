@@ -9,9 +9,9 @@
 @endsection
 
 @section('content')
-        @if($chat->user_id_one === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()
-         || $chat->user_id_two === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())
-
+        @if($message->user_id_one === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()
+         || $message->user_id_two === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())
+{{--        @dump($user)--}}
             <div class="py-12" id="app">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
@@ -57,15 +57,18 @@
                     <div class="ms-body">
                         <div class="action-header clearfix">
                             <div class="pull-left hidden-xs">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png"class="img-avatar m-r-10">
-                                <span>Максим Максимов</span>
+                                <img src="{{ $recipient->avatar }}" class="img-avatar m-r-10">
+                                <span>{{ $recipient->first_name }} {{ $recipient->last_name }}</span>
                             </div>
 
                             <ul class="ah-actions actions">
                                 <li>
-                                    <a href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    <form method="post" action="{{ route('chat.destroy', $message) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"><i class="fa fa-trash"></i></button>
+
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="#">
@@ -109,9 +112,9 @@
                         </div>
 
                         <div class="chat_body">
-                                        <chat-messages :user="{{ auth()->user() }}" :chat="{{ $chat }}"></chat-messages>
+                                        <chat-messages :user="{{ auth()->user() }}" :chat="{{ $message }}"></chat-messages>
                         </div>
-                        <chat-form :chat="{{ $chat }}"></chat-form>
+                        <chat-form :chat="{{ $message }}"></chat-form>
                     </div>
                 </div>
             </div>
