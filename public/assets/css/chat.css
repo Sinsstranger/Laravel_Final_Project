@@ -8,8 +8,8 @@ body {
 
 #messages-main {
     position: relative;
-    margin: 0 auto;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    margin: 24px auto;
+
 }
 #messages-main:after, #messages-main:before {
     content: " ";
@@ -19,7 +19,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    border-right: 1px solid #eee;
+    border-right: 1px solid #ddd;
     padding-bottom: 50px;
     height: 100%;
     width: 240px;
@@ -88,13 +88,15 @@ body {
     margin-left: 15px;
 }
 .message-feed:not(.right) .mf-content {
-    background: #a6a6a6;
-    color: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border: 3px solid #e88941;
+    color: dimgrey;
+    background-color: #f7ddc8;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 .message-feed.right .mf-content {
-    background: #7188c9;
-    color: #fff;
+    border: 3px solid #4b69bd;
+    background: white;
+    color: #4b69bd;
     border-radius: 10px 20px 1px 10px;
 }
 .mf-content {
@@ -228,4 +230,10 @@ body {
 
 [v-cloak] {
     display: none;
+}
+
+.chat_body {
+    height: 60vh;
+    overflow-y: scroll;
+    background: url(https://catherineasquithgallery.com/uploads/posts/2021-03/1614566122_63-p-belii-fon-vektor-70.jpg) repeat right top scroll;
 }

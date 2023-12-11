@@ -1,41 +1,25 @@
-<x-app-layout>
-    @section('style')
+@extends('layouts/app')
+@section('style')
     @parent
     <link rel="stylesheet" href="{{ asset("assets/css/cabinet.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/chat.css") }}">
     <script src="{{ asset("assets/js/chat.js") }}"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src='https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
-    @endsection
+@endsection
+
+@section('content')
         @if($chat->user_id_one === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()
          || $chat->user_id_two === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())
 
-        <div id="app">
-            {{-- <div class="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
-                <div class="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
-                    <div class="flex items-center space-x-4">
-                        <div class="flex flex-col leading-tight">
-                            <div class="text-2xl mt-1 flex items-center">
-                                <span class="text-gray-700 mr-3">{{ auth()->user()->name }}</span>
-                            </div>
+            <div class="py-12" id="app">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
-                            <span class="text-lg text-gray-600">{{ auth()->user()->email }}</span>
-                        </div>
-                    </div>
+                <div class="flex justify-between items-center gap-4">
+                    <h1 class="text-lg font-medium text-gray-900 uppercase">Мои сообщения</h1>
                 </div>
 
-                <div  class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-                    <chat-messages :user="{{ auth()->user() }}"></chat-messages>
-                </div>
-
-                <div id="ChatForm" class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-
-                    <chat-form ></chat-form>
-                </div>
-            </div> --}}
-
-            <div class="container bootstrap snippets bootdey">
-                <div class="tile tile-alt" id="messages-main">
+                <div class="tile tile-alt bg-white shadow sm:rounded-lg" id="messages-main">
                     <div class="ms-menu">
                         <div class="ms-user clearfix">
                             <img class="img_main" src="{{ auth()->user()->avatar }}">
@@ -135,5 +119,5 @@
     @else
         Доступ запрещен
         @endif
-</x-app-layout>
+@endsection
 
