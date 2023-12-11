@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('favourites', function (Blueprint $table) {
 
             $table->foreignId('fav_property_id')
-                ->constrained('properties');
+                ->constrained('properties')
+                ->onDelete('cascade');;
             $table->foreignId('fav_user_id')
-                ->constrained('users');
+                ->constrained('users')
+                ->onDelete('cascade');
 
         });
     }

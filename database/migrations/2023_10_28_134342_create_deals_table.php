@@ -14,17 +14,21 @@ return new class extends Migration
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id')
-                ->constrained('properties');
+                ->constrained('properties')
+                ->onDelete('cascade');
             $table->foreignId('tenant_id')
-                ->constrained('users');
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->date('rent_starts_at');
             $table->date('rent_ends_at');
             $table->decimal('rent_costs', 11, 0);
             $table->integer('guests')->nullable();
             $table->boolean('registration');
             $table->foreignId('status_id')
-                ->constrained('deal_statuses');
+                ->constrained('deal_statuses')
+                ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

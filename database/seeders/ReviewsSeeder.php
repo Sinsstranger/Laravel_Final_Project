@@ -17,5 +17,8 @@ class ReviewsSeeder extends Seeder
         Review::factory()->count(30)->create([
             'property_id' => '3',
         ]);
+        Review::factory()->count(5)->create([
+            'author_id' => '1',
+        ]);
     }
 }

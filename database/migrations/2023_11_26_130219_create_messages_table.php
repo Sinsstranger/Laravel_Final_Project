@@ -14,10 +14,12 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id_one')->constrained('users')
+            $table->foreignId('user_id_one')
+                ->constrained('users')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->foreignId('user_id_two')->constrained('users')
+            $table->foreignId('user_id_two')
+                ->constrained('users')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->json('text')->nullable();

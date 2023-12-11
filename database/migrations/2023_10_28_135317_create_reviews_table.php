@@ -16,9 +16,11 @@ return new class extends Migration
             $table->text('description');
             $table->smallInteger('rating');
             $table->foreignId('author_id')
-                ->constrained('users');
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->foreignId('property_id')
-                ->constrained('properties');
+                ->constrained('properties')
+                ->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
