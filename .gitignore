@@ -5,8 +5,6 @@
 /public/storage
 /storage/*.key
 /vendor
-/node_modules
-.env
 .env.backup
 .env.production
 .phpunit.result.cache
@@ -19,7 +17,7 @@ yarn-error.log
 /.idea
 /.vscode
 composer.phar
-nbproject/   
+nbproject/
 package-lock.json
 .gitignore
 package.json
