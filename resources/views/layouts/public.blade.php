@@ -133,13 +133,13 @@
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Меню
             </button>
-
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav nav ml-auto">
                     <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><span>Главная</span></a></li>
                     <li class="nav-item"><a href="{{ route('properties') }}" class="nav-link"><span>Каталог</span></a></li>
                     <li class="nav-item"><a href="{{ route('about') }}" class="nav-link"><span>О нас</span></a></li>
                     <li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link"><span>Контакты</span></a></li>
+                    <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link"><span>Личный кабинет</span></a></li>
                 </ul>
             </div>
         </div>

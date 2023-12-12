@@ -347,7 +347,7 @@
             <button id="rateSiteBtn">Оценить сайт</button>
         </div>
     </section>
-    <section class="site-review-form">
+    <section class="site-review-form" style="margin-bottom: 40px">
 
         <form enctype="multipart/form-data" method="post" id="feedback-form">
             <label for="nameFF">Имя:</label>
