@@ -237,3 +237,16 @@ body {
     overflow-y: scroll;
     background: url(https://catherineasquithgallery.com/uploads/posts/2021-03/1614566122_63-p-belii-fon-vektor-70.jpg) repeat right top scroll;
 }
+.key_up_button {
+    position: absolute;
+    padding: 12px;
+    margin: 2px 6px;
+    border-radius: 26px;
+    right: 24px;
+    top: 12px;
+    transition: 0.8s;
+}
+.key_up_button:hover {
+    background: #4b69bd;
+}
+
