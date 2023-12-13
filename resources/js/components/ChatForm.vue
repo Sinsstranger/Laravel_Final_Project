@@ -38,14 +38,7 @@ export default {
         });
 
         const sendMessage = async (e) => {
-            if (e.target.nodeName == "INPUT") {
-                await addMessage({
-                    message: e.target.value,
-                    chat: props.chat.id
-                })
-            }
-            console.log(e);
-            // await addMessage(form);
+            await addMessage(form);
             form.message = '';
         }
         return {

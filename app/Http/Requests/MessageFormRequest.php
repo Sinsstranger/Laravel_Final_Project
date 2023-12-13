@@ -23,7 +23,7 @@ class MessageFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', 'integer', 'exists:users,id'],
+            'chat' => ['required', 'integer', 'exists:messages,id'],
             'message' => ['required', 'string', 'min: 3']
         ];
     }

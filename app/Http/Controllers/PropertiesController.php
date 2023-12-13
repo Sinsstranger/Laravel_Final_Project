@@ -35,18 +35,18 @@ class PropertiesController extends Controller
 
     public function edit(Property $property): View
     {
-        $categoriesProperty = $this->propertyServices->getAllCategoriesProperty();
+        $categories = $this->propertyServices->getAllCategoriesProperty();
         $user = $this->usersServices->getUser(Auth::id());
 
-        return view('user/properties/create', compact('property', 'categoriesProperty', 'user'));
+        return view('user/properties/create', compact('property', 'categories', 'user'));
     }
 
     public function create(): View
     {
         $user = $this->usersServices->getUser(Auth::id());
-        $categoriesProperty = $this->propertyServices->getAllCategoriesProperty();
+        $categories = $this->propertyServices->getAllCategoriesProperty();
 
-        return view('user/properties/create', compact('user', 'categoriesProperty'));
+        return view('user/properties/create', compact('user', 'categories'));
     }
 
     public function store(PropertiesRequest $request): RedirectResponse
