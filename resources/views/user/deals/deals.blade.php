@@ -173,25 +173,25 @@
                     <div class="review-body">
                         <div class="review-header">
                             <div class="review-data">
-                                {{-- Заголовок объявления, к которому оставлен отзыв
-                                    и ссылка на него--}}
-                                <a href="{{ route('properties.show', $review->property) }}">{{ $review->property->title }}</a>
-                                {{-- Адрес объекта, к которому оставлен отзыв --}}
-                                <P>{{ $review->property->address->place }}, {{ $review->property->address->street }}, {{ $review->property->address->house_number }}, {{ $review->property->address->flat_number }} </p>
-                                {{-- Оценка --}}
-                                <p>Оценка: {{ $review->rating }}</p>
+                                <a href="{{ route('properties.show', $review->property) }}"><h1 class="font-medium uppercase">{{ $review->property->title }}</h1></a>
+                                <div class="stars">
+                                    <i id="{{ $review->property->id }}star1{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="{{ $review->property->id }}star2{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="{{ $review->property->id }}star3{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="{{ $review->property->id }}star4{{ $loop->index }}" class="fas fa-star"></i>
+                                    <i id="{{ $review->property->id }}star5{{ $loop->index }}" class="fas fa-star"></i>
+                                </div>
+                                <p><b>{{ $review->rating }}</b></p>
                             </div>
                             <p class="dates">{{ $review->created_at }}</p>
                         </div>
                         <div class="review-data">
-                            {{-- <p class="dates"> Даты проживания:дата заезда – дата выезда</p> --}}
-                            <div class="stars">
-                                <i id="star1" class="fas fa-star"></i>
-                                <i id="star2" class="fas fa-star"></i>
-                                <i id="star3" class="fas fa-star"></i>
-                                <i id="star4" class="fas fa-star"></i>
-                                <i id="star5" class="fas fa-star"></i>
-                            </div>
+                            <p class="font-medium text-gray-900">{{ $review->property->address->place }},
+                                {{ $review->property->address->street }},
+                                {{ $review->property->address->house_number }},
+                                {{ $review->property->address->flat_number }}
+                            </p>
+
                         </div>
                         <p>{{  $review->description  }}</p>
                         <hr>
@@ -208,4 +208,21 @@
 @section('script')
     @parent
     <script src="{{ asset("assets/js/cabinet.js") }}"></script>
+    <script>
+        //Звёзды рейтинга
+
+        @foreach($reviews as $review)
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const rs = document.querySelectorAll('i');
+            rs.forEach(() => {
+                let rate{{ $loop->index }} = {{$review->rating}};
+                for (let s = 1; s <= rate{{ $loop->index }}; s++) {
+                    let $star = document.getElementById(`{{ $review->property->id }}star${s}{{ $loop->index }}`);
+                    $star.classList.add('golden');
+                }
+            });
+        });
+        @endforeach
+    </script>
 @endsection

@@ -56,9 +56,9 @@
 
                     <div class="ms-body">
                         <div class="action-header clearfix">
-                            <div class="pull-left hidden-xs">
+                            <div class="pull-left hidden-xs chat-name">
                                 <img src="{{ $recipient->avatar }}" class="img-avatar m-r-10">
-                                <span>{{ $recipient->first_name }} {{ $recipient->last_name }}</span>
+                                <p>{{ $recipient->first_name }} {{ $recipient->last_name }}</p>
                             </div>
 
                             <ul class="ah-actions actions">
@@ -111,14 +111,30 @@
                             </ul>
                         </div>
 
-                        <div class="chat_body">
-                                        <chat-messages :user="{{ auth()->user() }}" :chat="{{ $message }}"></chat-messages>
-                        </div>
+                            <div class="chat_body">
+                                <chat-messages :user="{{ auth()->user() }}" :chat="{{ $message }}"></chat-messages>
+                            </div>
+
                         <chat-form :chat="{{ $message }}"></chat-form>
                     </div>
                 </div>
             </div>
         </div>
+<script>
+
+    const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(() => {
+            const element = document.querySelector('.chat_body');
+            element.scrollTop = element.scrollHeight;
+        });
+    });
+
+    observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+    });
+
+   </script>
     @else
         Доступ запрещен
         @endif
