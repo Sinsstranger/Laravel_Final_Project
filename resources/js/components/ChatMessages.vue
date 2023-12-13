@@ -11,13 +11,16 @@
                         {{ message.message }}
                     </h6>
                 </div>
-                <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:00</small>
+                <small class="mf-date"><i class="fa fa-clock-o"></i>&nbsp;{{ currentDateTime() }}</small>
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
+
+
 
 import useChat from "../composables/chat";
 import {onMounted} from "vue";
@@ -35,6 +38,17 @@ export default {
             type: Object,
         }
     },
+
+    methods: {
+        currentDateTime() {
+            const current = new Date();
+            const date = current.getDate()+'-'+(current.getMonth()+1)+'-'+current.getFullYear();
+            const time = current.getHours() + ":" + current.getMinutes();
+
+            return date +' '+ time;
+        }
+    },
+
     setup(props) {
 
         const {messages, getMessages} = useChat()
@@ -46,6 +60,7 @@ export default {
                     id: e.id,
                     message: e.message,
                 })
+
             })
             .error((error) => {
                 console.error(error);
@@ -56,6 +71,8 @@ export default {
         }
     }
 }
+
+
 </script>
 
 <style scoped>

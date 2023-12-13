@@ -38,8 +38,8 @@
                 <div class="col-lg-12 d-block">
                     <div class="row d-flex">
                         <div class="col-md pr-4 d-flex topper align-items-center">
-                            <a class="header-link" href="tel:+1 (234) 567-89-00">
-                                <span class="icon-phone2"></span> + 1 (234) 567-89-00
+                            <a class="header-link" href="tel:+1 234 567-89-00">
+                                <span class="icon-phone2"></span> + 1 234 567-89-00
                             </a>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
@@ -263,7 +263,7 @@
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><a href="https://yandex.ru/maps/?um=constructor%3A965a1c917eac0cd24588108d7fc8d4bb6c6c7958a94c2c041df7b1ab4d797ba1&source=constructorLink"><span class="icon icon-map-marker"></span>123456, Москва, пр. Мира, д. 26</a></li>
-                                <li><a href="tel:+1 (234) 567-89-00"><span class="icon icon-phone"></span><span class="text">+ 1 (234)
+                                <li><a href="tel:+1 234 567-89-00"><span class="icon icon-phone"></span><span class="text">+ 1 234
                                             567-89-00</span></a></li>
                                 <li><a href="mailto:info@yoursite.com"><span class="icon icon-envelope pr-4"></span><span class="text">info@yoursite.com</span></a></li>
                             </ul>

@@ -39,7 +39,7 @@
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #4b69bd;
+    color: #eeedf2;
 }
 
 .auth-nav-span:hover {
@@ -446,6 +446,14 @@ table .formWrap {
     align-items: baseline;
 }
 
+.review-header {
+    margin-top: 20px;
+}
+
+.review-header a {
+    text-decoration: underline 2px solid #4b69bd;
+}
+
 .review-body .dates {
     font-size: 13px;
 
@@ -712,6 +720,9 @@ table .formWrap {
 
 }
 
+.review-header .stars {
+    margin: 0 10px;
+}
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
 /*.dropdown:hover .dropdown-content {display: block;}*/

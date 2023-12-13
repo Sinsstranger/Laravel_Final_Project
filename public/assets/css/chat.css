@@ -27,21 +27,21 @@ body {
 }
 @media (min-width:768px) {
     #messages-main .ms-body {
-    padding-left: 240px;
-}
+        padding-left: 240px;
+    }
 }@media (max-width:767px) {
     #messages-main .ms-menu {
-    height: calc(100% - 58px);
-    display: none;
-    z-index: 1;
-    top: 58px;
-}
-#messages-main .ms-menu.toggled {
-    display: block;
-}
-#messages-main .ms-body {
-    overflow: hidden;
-}
+        height: calc(100% - 58px);
+        display: none;
+        z-index: 1;
+        top: 58px;
+    }
+    #messages-main .ms-menu.toggled {
+        display: block;
+    }
+    #messages-main .ms-body {
+        overflow: hidden;
+    }
 }
 #messages-main .ms-user {
     padding: 15px;
@@ -87,6 +87,7 @@ body {
 .message-feed.right>.pull-right {
     margin-left: 15px;
 }
+
 .message-feed:not(.right) .mf-content {
     border: 3px solid #e88941;
     color: dimgrey;
@@ -95,7 +96,7 @@ body {
 }
 .message-feed.right .mf-content {
     border: 3px solid #4b69bd;
-    background: white;
+    background: aliceblue;
     color: #4b69bd;
     border-radius: 10px 20px 1px 10px;
 }
@@ -169,6 +170,7 @@ body {
     position: relative;
     background: #f8f8f8;
     padding: 15px 13px 15px 17px;
+    border-bottom: 1px solid #ddd;
 }
 .ah-actions {
     z-index: 3;
@@ -235,5 +237,22 @@ body {
 .chat_body {
     height: 60vh;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     background: url(https://catherineasquithgallery.com/uploads/posts/2021-03/1614566122_63-p-belii-fon-vektor-70.jpg) repeat right top scroll;
+}
+
+.action-header .chat-name {
+    display: flex;
+    align-items: center;
+}
+
+.chat-name p {
+    margin-left: 10px;
+    font-size: 16px;
+    color: dimgrey;
+}
+
+.btn-send-message {
+    width: 40px;
+    margin-left: 10px;
 }
