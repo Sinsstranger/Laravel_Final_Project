@@ -37,7 +37,7 @@
                         <p class="mb-5">Москва, пр. Мира, 26, этаж 1</p>
                     </div>
                     <div class="form-inline"><a href="mailto:info@yoursite.com">Почта info@yoursite.com</a></div>
-                    <div class="form-inline"><a href="tel:+1 (234) 567-89-00">Телефон + 1 (234) 567-89-00</a> </div>
+                    <div class="form-inline"><a href="tel:+1 234 567-89-00">Телефон + 1 234 567-89-00</a> </div>
                     <div class="form-inline">Часы работы Пн-Вс: 10:00 - 20:00</div>
                 </div>
                 <div class="y-map">

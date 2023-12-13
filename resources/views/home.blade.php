@@ -224,7 +224,7 @@
                                 </div>
                                 <div>
                                     <h3 class="mb-3">Контактный телефон</h3>
-                                    <p><a href="tel:+1 (234) 567-89-00">Телефон + 1 (234) 567-89-00</a></p>
+                                    <p><a href="tel:+1 234 567-89-00">Телефон + 1 234 567-89-00</a></p>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
             <button id="rateSiteBtn">Оценить сайт</button>
         </div>
     </section>
-    <section class="site-review-form">
+    <section class="site-review-form" style="margin-bottom: 40px">
 
         <form enctype="multipart/form-data" method="post" id="feedback-form">
             <label for="nameFF">Имя:</label>
