@@ -217,7 +217,7 @@
                                            id="is_temporary_registration_possible"
                                            @if(!empty($property->is_temporary_registration_possible)) checked @endif>
                                            <label for="is_temporary_registration_possible" class="text-lg font-medium text-gray-900">
-                                        Временная регистрация</label>                                    
+                                        Временная регистрация</label>
                                 </div>
                         </li>
 
@@ -225,7 +225,7 @@
                                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                                     <input name="daily_rent" type="checkbox" value="1" id="daily_rent"
                                            @if(!empty($property->daily_rent)) checked @endif >
-                                           <label for="daily_rent" class="text-lg font-medium text-gray-900">Посуточная аренда</label>                                    
+                                           <label for="daily_rent" class="text-lg font-medium text-gray-900">Посуточная аренда</label>
                                 </div>
                         </li>
 
