@@ -1,5 +1,5 @@
 .dashboard-link {
-    margin: 4px 0 0;
+    margin: 10px 0 0;
 }
 
 .dashboard-link img {
@@ -93,6 +93,10 @@
 .show-catalog-item-link:active {
     transform: translate(30px);
     transition: 0.4s ease-in;
+}
+
+.mobile-catalog-link {
+    display: none;
 }
 
 .tab {
@@ -295,10 +299,44 @@
 
 .dropdown-content #dropdown {
     display: none;
+    padding: 0;
 }
 
 .downArrow {
     margin: 2px 0 0 6px;
+}
+
+.dropdown-content-adapt {
+    padding: 5px 40px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 320px;
+    /*background-color: #63848c;*/
+    /*opacity: .75;*/
+}
+
+.dropdown-content-adapt a {
+    display: block;
+    color: #354d2d;
+    margin: 10px 0;
+}
+
+.dropdown-content-adapt a:active {
+    color: #a89ec1;
+    scale: .97;
+    transition: 0.2s ease-in;
+}
+
+.dropdown-content-adapt a:focus {
+    color: floralwhite;
+}
+
+.show-block {
+    display: none;
+}
+
+.dropdown-content-adapt #dropdown {
+    display: none;
 }
 
 .accordion {
@@ -412,6 +450,10 @@
 .deal-section-btn {
     display: flex;
     justify-content: flex-start;
+}
+
+.deal-section-btn-mobile{
+    display: none;
 }
 
 .rent-section-left h1 {
@@ -717,12 +759,115 @@ table .formWrap {
     font-size: 48px;
     font-weight: 700;
     color: #ffffff;
+}
 
+.table tbody tr td {
+    padding: 20px 0 20px 10px!important;
+}
+
+
+
+
+
+@media(max-width: 576px){
+    .deal-section{
+        grid-template-columns: none;
+        margin: 0 0 15px 0;
+    }
+
+    .deal-section-btn{
+        display: none;
+    }
+
+    .deal-section-btn-mobile{
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0 0 0;
+    }
+
+    .cabinet-index-btn {
+        margin: 0;
+    }
+
+    .text-lg {
+        line-height: 1.1rem!important;
+    }
+
+    .mobile-adapt {
+        flex-direction: column;
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+
+    .empty-block {
+        height: 0;
+    }
+
+    .show-catalog-item-link {
+        display: none;
+    }
+
+    .mobile-catalog-link {
+        display: block;
+    }
+
+    .mobile-catalog-link a{
+        color: orange;
+    }
+
+    table tr .col-center {
+        font-size: 11px;
+    }
+
+    .panel {
+        padding: 2px;
+    }
+
+    .td-mobile {
+        font-size: 11px;
+        color: #0b0b0b;
+    }
+
+    .actionButton {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+    }
+
+    .review-data {
+        display: block!important;
+    }
+
+}
+
+@media(max-width: 992px){
+    .hidden {
+        display: none!important;
+    }
+
+    .hamburger{
+        display: block!important;
+    }
+}
+
+@media(min-width: 992px) and (max-width: 1300px){
+    a.text-sm {
+        font-size: .7rem!important;
+    }
+
+    .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+        margin-left: calc(.5rem * calc(1 - var(--tw-space-x-reverse))) !important;
+    }
+
+    .cabinet-title {
+        font-size: 1rem;
+    }
 }
 
 .review-header .stars {
     margin: 0 10px;
 }
+
+
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
 /*.dropdown:hover .dropdown-content {display: block;}*/

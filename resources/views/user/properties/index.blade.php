@@ -18,7 +18,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             @include('inc.message')
 
-            <div class="flex justify-between items-center gap-4">
+            <div class="flex justify-between items-center gap-4 mobile-adapt">
                 <h1 class="text-lg font-medium text-gray-900 uppercase">
                     Опубликованные объявления</h1>
                 <x-primary-button>
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                             <div class="deal-section-left">
-                                <div>&nbsp;</div>
+                                <div class="empty-block">&nbsp;</div>
 
                                 <ul class="max-w-xl">
                                     <li class="dashboard-link">
@@ -174,11 +174,49 @@
                                     </li>
                                 </ul>
                             </div>
+
+{{--                            Ссылка на объявление для адаптива max-width 576px--}}
+
+                            <li class="dashboard-link show-catalog-item-link mobile-catalog-link">
+                                <a href="{{ route ('properties.show', $property) }}" class="text-lg font-medium text-gray-900">
+                                    Посмотреть объявление в каталоге >
+                                </a>
+                            </li>
                         </div>
 
                         <x-property-deals :property="$property"></x-property-deals>
 
+
+
+{{--Кнопки для адаптива max-width 576px--}}
+
+                        <div class="deal-section-btn-mobile">
+                                <div class="items-center gap-4 cabinet-index-btn">
+                                    <x-primary-button>
+                                        <a href="{{ route('user.properties.edit', $property) }}">
+                                            Редактировать
+                                        </a>
+                                    </x-primary-button>
+                                </div>
+
+
+                                <div class="flex items-center gap-4 cabinet-index-btn">
+                                    <form method="post" action="{{ route('user.properties.destroy', $property) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-secondary-button :type="'submit'" class="index-del-btn">
+                                            <span class="index-btn-span">Удалить</span>
+                                        </x-secondary-button>
+                                    </form>
+
+                                    <!--<a rel="{{$property->id}}" href="javascript:" class="index-btn-span delete">
+                                            Удалить объявление
+                                        </a>-->
+                                </div>
+                        </div>
                     </div>
+
+
             @empty
                     <h1>У Вас пока нет объявлений</h1>
             @endforelse
