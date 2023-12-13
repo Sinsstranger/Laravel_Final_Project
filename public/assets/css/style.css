@@ -755,11 +755,6 @@ pre code {
 
 }
 
-.mobile_filter {
-
-
-}
-
 @media (min-width: 769px) {
     .modal_block {
         display: none;
@@ -14701,13 +14696,6 @@ textarea.form-control {
 .myBtn:hover {
     background-color: #e88941;
 }
-
-
-.site-review-form {
-    display: flex;
-    justify-content: center;
-}
-
 
 #feedback-form {
     /* вся форма */

@@ -74,7 +74,6 @@
             </div>
         </div>
     </section>
-
     <section class="ftco-intro img" id="about-section" style="background-image: url(assets/images/bg_1.jpg);">
         <div class="overlay"></div>
         <div class="container">
@@ -347,8 +346,7 @@
             <button id="rateSiteBtn">Оценить сайт</button>
         </div>
     </section>
-    <section class="site-review-form" style="margin-bottom: 40px">
-
+    <section class="site-review-form">
         <form enctype="multipart/form-data" method="post" id="feedback-form">
             <label for="nameFF">Имя:</label>
             <input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
