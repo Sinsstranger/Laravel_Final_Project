@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Events\MessageSend;
 
+use App\Http\Requests\MessageFormRequest;
 use App\Models\Message;
 use App\Models\User;
+use Faker\Core\Uuid;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -74,24 +76,27 @@ class ChatController extends Controller
         return redirect()->route('getChat', $chat->id);
     }
 
-    public function send(Request $request)
+    public function send(MessageFormRequest $request)
     {
-
-        $chat = Message::find($request->chat);
+        $validated = $request->validated();
+        $chat = Message::find($validated['chat']);
         $user = $request->user();
+
         if (Auth::user()->getAuthIdentifier() === $chat->user_id_one || Auth::user()->getAuthIdentifier() === $chat->user_id_two)
         {
-            $message = $request->message;
+            $message = $validated['message'];
             $text = [];
             if(!empty($chat->text)) {
-                $newMessage = ['id' => User::find(Auth::user()->getAuthIdentifier()),
+                $newMessage = [
+                    'id' => User::find(Auth::user()->getAuthIdentifier()),
                     'message' => $message];
                 foreach ($chat->text as $item) {
                     $text[] = $item;
                 }
                 $text[] = $newMessage;
             } else {
-                $text[] = ['id' => User::find(Auth::user()->getAuthIdentifier()),
+                $text[] = [
+                    'id' => User::find(Auth::user()->getAuthIdentifier()),
                     'message' => $message];
             }
 
@@ -99,7 +104,7 @@ class ChatController extends Controller
                 'text' => $text
             ]);
             $chat->save();
-            broadcast(new MessageSend($user,$chat, $request->message));
+            broadcast(new MessageSend($user,$chat, $validated['message']));
         }
 
         return $chat;
