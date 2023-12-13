@@ -5,12 +5,12 @@
 
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle""><i class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
         <a class="navbar-brand ps-3" href="{{ route('admin.index') }}">Админка</a>
         <a class="navbar-brand ps-3" href="{{ route('home') }}">На главную</a>
 
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown" style="margin-left: 900px">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" onClick="toggleDropdown()" aria-expanded="false" style="margin-right: 50px"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" id="dropdownMenu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{{ route('dashboard') }}">Профиль</a></li>
@@ -18,11 +18,12 @@
                         <hr class="dropdown-divider" />
                     </li>
                     <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                    <li><x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                            {{ __('Выйти') }}
-                        </x-dropdown-link></li>
+                            @csrf
+                        <li><a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                {{ __('Выйти') }}
+                            </a>
+                        </li>
                     </form>
                 </ul>
             </li>
