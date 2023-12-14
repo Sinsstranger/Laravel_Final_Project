@@ -53,3 +53,32 @@
 
 @endsection
 
+        @push('js')
+            <script>
+                let elements = document.querySelectorAll(".delete");
+                elements.forEach(function (element, key) {
+                    element.addEventListener('click', function() {
+                        const id = this.getAttribute('rel');
+                        if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {
+                            send(`/admin/feedbacks/${id}`).then( () => {
+                                document.getElementById(id).remove();
+                            });
+                        } else {
+                            alert("Вы отменили удаление записи");
+                        }
+                    });
+                });
+
+                async function send(url) {
+                    let response = await fetch (url, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        }
+                    });
+                    let result = await response.json();
+                    return result.ok;
+                }
+            </script>
+    @endpush
+

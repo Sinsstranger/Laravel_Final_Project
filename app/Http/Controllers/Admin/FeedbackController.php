@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class FeedbackController extends Controller
@@ -79,8 +80,16 @@ class FeedbackController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Feedback $feedback)
     {
-        //
+        try{
+            $feedback->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }

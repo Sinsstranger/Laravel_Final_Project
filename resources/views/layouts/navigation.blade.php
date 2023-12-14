@@ -30,13 +30,15 @@
                     @endif --}}
 
                     <x-nav-link-2
-                        {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}} 
+                        {{--                            :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')"--}}
                         id="dropdown">
                         Мои объявления
                         <i class="fa fa-caret-down downArrow "></i>
                         <div class="dropdown-content">
-                            <a href="{{ route('user.properties.index') }}">Опубликованные</a>
-                            <a href="{{ route('user.favourites.index') }}">Избранные</a>
+                            <a href="{{ route('user.properties.index') }}">
+                                Опубликованные</a>
+                            <a href="{{ route('user.favourites.index') }}">
+                                Избранные</a>
                         </div>
                     </x-nav-link-2>
 
@@ -91,8 +93,9 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+            <div class="-mr-2 flex items-center sm:hidden hamburger" id="hamburger">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                style="margin-top: 12px">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -103,49 +106,53 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden">
+        <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Главная') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                 {{ __('Редактировать') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
                 {{ __('Оплата') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')" id="dropdown">
+        <div class="pt-2 pb-1 space-y-1">
+            <x-responsive-nav-link
+{{--                :href="route('user.properties.index')" :active="request()->routeIs('user.properties.index')" --}}
+                id="dropdown" class="dropdown">
                 {{ __('Мои объявления') }}
-            </x-responsive-nav-link>
-                <div>
-                    <a href="{{ route('user.properties.index') }}">Опубликованные</a>
-                    <a href="{{ route('user.favourites.index') }}">Избранные</a>
+                <i class="fa fa-caret-down downArrow "></i>
+                <div class="dropdown-content-adapt show-block">
+                    <a href="{{ route('user.properties.index') }}" class="ttt">Опубликованные</a>
+                    <a href="{{ route('user.favourites.index') }}" class="ttt">Избранные</a>
                 </div>
+            </x-responsive-nav-link>
+
         </div>
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link href="{{ route('user.deals.index') }}" :active="request()->routeIs('user.deals.index')">
                 {{ __('Мои бронирования') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                 {{ __('Админка') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Выйти на главную') }}
             </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-gray-200" style="border-top-width: 6px; border-color: lavender;">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
@@ -173,9 +180,11 @@
 <script>
     let dropDownNav = document.getElementById("dropdown");
     let dropContent = document.getElementsByClassName("dropdown-content");
+    let dropAdaptContent = document.getElementsByClassName("dropdown-content-adapt");
+    let dropAdapt = document.getElementsByClassName("dropdown");
 
     dropDownNav.onclick = function() {
-        dropContent[0].style.display = "block";        
+        dropContent[0].style.display = "block";
     }
 
     dropDownNav.onmouseover = function() {
@@ -199,4 +208,11 @@
             dropContent[0].style.display = "none";
         }
     }
+
+    dropAdapt[0].onclick = function() {
+        dropAdaptContent[0].classList.toggle('show-block');
+        console.log('hello');
+    }
+
+
 </script>

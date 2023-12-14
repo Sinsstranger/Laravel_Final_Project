@@ -30,16 +30,16 @@
                         @if ($item->status_id === 1)
                             <tbody>
                             <tr style="text-align: center!important">
-                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                                <td style="text-align: center!important">{{$item->guests}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->rent_starts_at}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->rent_ends_at}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->guests}}</td>
                                 @if($item->registration === 1)
-                                    <td style="text-align: center!important">Да</td>
+                                    <td style="text-align: center!important" class="td-mobile">Да</td>
                                 @else
-                                    <td style="text-align: center!important">Нет</td>
+                                    <td style="text-align: center!important" class="td-mobile">Нет</td>
                                 @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
-                                <td style="display: flex">
+                                <td style="text-align: center!important; padding:20px 5px" class="td-mobile"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="display: flex" class="td-mobile">
 
                                     <div class="formWrap">
                                         <form method="POST" enctype="multipart/form-data"
@@ -113,16 +113,16 @@
                             <tbody>
 
                             <tr style="text-align: center!important">
-                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                                <td style="text-align: center!important">{{$item->guests}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->rent_starts_at}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->rent_ends_at}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->guests}}</td>
                                 @if($item->registration > 0)
-                                    <td style="text-align: center!important">Да</td>
+                                    <td style="text-align: center!important" class="td-mobile">Да</td>
                                 @else
-                                    <td style="text-align: center!important">Нет</td>
+                                    <td style="text-align: center!important" class="td-mobile">Нет</td>
                                 @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
-                                <td style="display: flex">
+                                <td style="text-align: center!important; padding:20px 5px" class="td-mobile"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="display: flex" class="td-mobile">
 
                                     <div class="formWrap">
                                         <form style="display: flex; justify-content: center;" method="POST"
@@ -188,19 +188,19 @@
                         @if ($item->status_id === 3 || $item->status_id === 4)
                             <tbody>
                             <tr style="text-align: center!important">
-                                <td style="text-align: center!important">{{$item->rent_starts_at}}</td>
-                                <td style="text-align: center!important">{{$item->rent_ends_at}}</td>
-                                <td style="text-align: center!important">{{$item->guests}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->rent_starts_at}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->rent_ends_at}}</td>
+                                <td style="text-align: center!important" class="td-mobile">{{$item->guests}}</td>
                                 @if($item->registration === 1)
-                                    <td style="text-align: center!important">Да</td>
+                                    <td style="text-align: center!important" class="td-mobile">Да</td>
                                 @else
-                                    <td style="text-align: center!important">Нет</td>
+                                    <td style="text-align: center!important" class="td-mobile">Нет</td>
                                 @endif
-                                <td style="text-align: center!important; padding:20px 5px"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
+                                <td style="text-align: center!important; padding:20px 5px" class="td-mobile"><p>{{$item->tenant->first_name}}&nbsp;{{$item->tenant->last_name}},</p><p>{{$item->tenant->phone}}</p></td>
                                 @if($item->status_id === 4)
-                                    <td style="text-align: center!important">Завершена</td>
+                                    <td style="text-align: center!important" class="td-mobile">Завершена</td>
                                 @else
-                                    <td style="text-align: center!important; color: indianred">Отклонена</td>
+                                    <td style="text-align: center!important; color: indianred " class="td-mobile">Отклонена</td>
                                 @endif
                             </tr>
                             </tbody>
