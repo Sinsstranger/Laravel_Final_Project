@@ -2811,8 +2811,8 @@ textarea.form-control-lg {
   }
 }
 
-@media (min-width: 868px) {
-  .btn {
+@media (min-width: 968px) {
+  .btn_header {
     display: none;
   }
 }
