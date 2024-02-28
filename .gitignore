@@ -5,7 +5,6 @@
 /public/storage
 /storage/*.key
 /vendor
-/node_modules
 .env
 .env.backup
 .env.production
@@ -18,3 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+composer.phar
+nbproject/
+package-lock.json
+.gitignore
+package.json
+yarn.lock

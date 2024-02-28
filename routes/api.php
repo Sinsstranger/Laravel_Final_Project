@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::apiResources([
+    '/get-props/' => \App\Http\Controllers\HomeControllerApi::class,
+]);
+Route::get('/search/', \App\Http\Controllers\AccomodationLiveSearchController::class);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

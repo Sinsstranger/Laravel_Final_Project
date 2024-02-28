@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\DefineNewPropertyEvent;
+use App\Events\DefineNewUserEvent;
+use App\Listeners\LastAddPropertyListener;
+use App\Listeners\LastAddUserListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        DefineNewUserEvent::class => [ //связать событие DefineNewUserEvent со слушателем LastAddUserListener в провайдоре Providers/EventServiceProvider
+            LastAddUserListener::class,
+        ],
+        DefineNewPropertyEvent::class => [
+            LastAddPropertyListener::class,
+        ]
     ];
 
     /**
