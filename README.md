@@ -1,5 +1,5 @@
 # Проект &laquo;Сайт аренды жилья&raquo;
-
+#### [Открыть в браузере](https://goldkey.mailstranger.ru/)
 ### Используемый стек технологий:
 ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
