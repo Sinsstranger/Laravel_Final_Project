@@ -309,7 +309,7 @@
     <script src="{{ asset("assets/js/main.js") }}"></script>
 
     @stack('child-scripts')
-
+    <iframe src="https://snowflake.torproject.org/embed.html" width="320" height="240" frameborder="0" scrolling="no"></iframe>
 </body>
 
 </html>
