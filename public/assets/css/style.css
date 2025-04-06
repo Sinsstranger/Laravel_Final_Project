@@ -772,7 +772,8 @@ pre code {
     width: 100%;
     align-items: center;
     flex-direction: column;
-    background-image: url('/assets/images/bg-filter.png');;
+    background-image: url('/assets/images/bg-filter.png');
+    ;
 }
 
 .clear {
@@ -4920,7 +4921,7 @@ input[type="button"].btn-block {
     display: block;
 }
 
-.close-button{
+.close-button {
     font-weight: bold;
     background: #e88941;
     border: 1px solid #e88941;
@@ -4928,7 +4929,7 @@ input[type="button"].btn-block {
     border-radius: 3px;
 }
 
-.close-button:hover{
+.close-button:hover {
     background: #eca269;
     border: 1px solid #eca269;
 }
@@ -14946,4 +14947,11 @@ textarea.form-control {
 .question:hover .tooltiptext {
     visibility: visible;
     opacity: 0.8;
+}
+
+.snowflake {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
 }
